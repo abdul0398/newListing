@@ -3374,6 +3374,10 @@
                 document.getElementById("map-container").classList.add("d-none");
 
             }else{
+                setTimeout(() => {
+                    map.invalidateSize()
+                  }, 0)
+                
                 document.getElementById("map-container").classList.remove("d-none");
                 document.getElementById("all-listings").classList.add("d-none");
                 document.getElementById("single-listing").classList.add("d-none");
