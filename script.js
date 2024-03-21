@@ -3033,10 +3033,11 @@
         "created_at": "2024-03-12T08:23:04.000Z"
     }
 ]
-        
+        const searchListings = debounce(searchhandler, 500);
 
         start();
         
+
         
         async function start(){
             const data = await fetchNewListings();
@@ -3285,40 +3286,41 @@
         }
 
 
-        function openAllListingsInner() {
+        function openAllListingsInner(filterListing) {
             document.getElementById("all-listings-inner").classList.remove("d-none");
             document.getElementById("starting-page").classList.add("d-none");
-            populateAllListingsInner();
+            populateAllListingsInner(filterListing);
         }
 
 
-        function populateAllListingsInner(params) {
+        function populateAllListingsInner(filterListing) {
+
+            const newListing = filterListing ? filterListing : listings;
             
             const container  = document.getElementById("all-listings-inner");
             container.innerHTML = "";
             container.innerHTML = `
-                <div class="row position-relative ">
+                <div class="row position-relative " style="height:30px">
               <i class="fa-solid fa-arrow-left fa-xl position-absolute text-black" onclick="showMainPage()" style="top:25px; left:20px; cursor:pointer"></i>
                     <div class="col-md-12">
-                        <h5 class="text-center mt-3">All Listings</h3>
                     </div>
                 </div>
             `;
-            for (let i = 0; i < listings.length; i++) {
+            for (let i = 0; i < newListing.length; i++) {
                 
                 container.innerHTML += `
                     <div class="card my-3" style="max-width: 100%">
                         <div class="row g-0">
                             <div class="col-md-4">
-                            <img class="w-100" style="height:200px" src="${listings[i].images[0]}" alt="">
+                            <img class="w-100" style="height:200px" src="${newListing[i].images[0]}" alt="">
                             </div>
                             <div class="col-md-8">
                             <div class="card-body">
                                 <a class="pe-auto" onClick="">
-                                    <h5 class="card-title mb-3" style="color:#4d4d4d"><button class="bg-transparent border-0" onclick="openSingleListing(this)">${listings[i].name}</button></h5>
+                                    <h5 class="card-title mb-3" style="color:#4d4d4d"><button class="bg-transparent border-0" onclick="openSingleListing(this)">${newListing[i].name}</button></h5>
                                 </a>
                                 <h6 class="card-subtitle mb-4 text-muted">
-                                ${listings[i].geographical_region}
+                                ${newListing[i].geographical_region}
                                 </h6>
                                 <div class="card-campaign-desc">
                                 <p class="campaign-icon">
@@ -3383,4 +3385,39 @@
                 document.getElementById("single-listing").classList.add("d-none");
 
             }
+        }
+
+
+        function debounce(func, delay) {
+            let timerId;
+            
+            return function() {
+              const context = this;
+              const args = arguments;
+              
+              clearTimeout(timerId);
+              
+              timerId = setTimeout(function() {
+                func.apply(context, args);
+              }, delay);
+            };
+        }
+
+
+        function searchhandler(input) {
+            const value = input.value.trim().toLowerCase();
+            if (value == "") {
+                openAllListingsInner();
+                return;
+            }
+            const filteredListings = listings.filter((listing) => {
+                let stringtoSearch = listing.name.toLowerCase();
+                stringtoSearch += listing.geographical_region.toLowerCase();
+                stringtoSearch += listing.description.toLowerCase();
+                stringtoSearch += listing.details.toString().toLowerCase();
+                return stringtoSearch.includes(value);
+            })
+            console.log(filteredListings);
+            openAllListingsInner(filteredListings);
+            
         }
