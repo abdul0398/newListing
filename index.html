@@ -4,25 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://www.onemap.gov.sg/web-assets/libs/leaflet/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="https://www.onemap.gov.sg/web-assets/libs/leaflet/leaflet.css"
+    />
     <script src="https://www.onemap.gov.sg/web-assets/libs/leaflet/onemap-leaflet.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://kit.fontawesome.com/658a2960da.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.3.0/dist/css/glide.core.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.3.0/dist/css/glide.theme.min.css">
-    
-
+    <script
+      src="https://kit.fontawesome.com/658a2960da.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@glidejs/glide@3.3.0/dist/css/glide.core.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@glidejs/glide@3.3.0/dist/css/glide.theme.min.css"
+    />
 
     <style>
-        body{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            height: 100vh;
-            width: 100vw;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        height: 100vh;
+        width: 100vw;
+      }
       .donate-detail-header {
         background-color: #efefef;
         position: relative;
@@ -80,7 +99,7 @@
           }
         }
       }
-      .leaflet-popup-content{
+      .leaflet-popup-content {
         margin: 5px !important;
       }
       .donate-header-text h2 {
@@ -104,13 +123,13 @@
         font-weight: 200;
         color: #a7a4a4;
       }
-     
+
       @media (max-width: 396px) {
-        .main-container{
-            flex-direction: column;
+        .main-container {
+          flex-direction: column;
         }
-        .donate-detail-header{
-            height: auto;
+        .donate-detail-header {
+          height: auto;
         }
 
         .donate-header-text .donate-detail-icon {
@@ -174,218 +193,351 @@
           }
         }
       }
-      #mapdiv{ height: 100%; }
-      .mobile-switch-menu{
+      #mapdiv {
+        height: 100%;
+      }
+      .mobile-switch-menu {
         bottom: 40px;
-        z-index: 1000;
+        z-index: 10;
         height: 40px;
       }
       @media (max-width: 500px) {
-        #all-listings, #single-listing, #map-container{
-            width: 100% !important;
-        }        
-
+        #all-listings,
+        #single-listing,
+        #map-container {
+          width: 100% !important;
+        }
       }
-
+      .filter-container {
+        max-width: 300px;
+        width: 90%;
+        height: 100%;
+        z-index: 11;
+        background-color: #39548a;
+        transform: translateX(100%);
+        transition: transform 0.3s ease; /* Use 'transform' property for animation */
+      }
+      .close-btn-filter{
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+      }
     </style>
- 
   </head>
-  <body>
-<div class="d-flex mobile-switch-menu start-50 bg-white rounded-3 d-lg-none d-md-none translate-middle-x position-fixed border border-1 w-75">
-    <div class="w-50 border-end d-flex justify-content-center align-items-center">
-        <div>
-            <i class="fa-solid fa-list fa-xl" style="color: #39548a;"></i>
-            <button class="bg-transparent border-0" onclick="mobileLayoutHandler(this)">
-                Listings
-            </button> 
-        </div>
-    </div>
-    <div class="w-50 d-flex justify-content-center align-items-center">
-        <div>
-            <i class="fa-solid fa-map-location-dot fa-xl" style="color: #39548a;"></i>
-            <button class="bg-transparent border-0" onclick="mobileLayoutHandler(this)">
-                Map
-            </button> 
-        </div>
-    </div>
-</div>
+  <body class="position-relative">
 
-    <div class="d-flex h-100 main-container">
-        <div id="map-container" class="w-50 h-100 d-none d-lg-block d-md-block">
-            <div id="mapdiv">
-
+    <!--  Filter Container  -->
+    <div class="filter-container position-absolute end-0 z-2 text-white ">
+      <div class="filter position-relative mt-2">
+        <div class="filter__header">
+          <p class="text-center"><strong>Filters</strong></p>
+          <i class="fa-solid fa-times position-absolute close-btn-filter" onclick="closeFilterPopup()"></i>
+        </div>
+        <div class="filter__body p-3">
+          <div class="filter__item">
+            <p class="mb-1"><strong>Region</strong></p>
+            <div class="filter__item__body">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="region" id="north" value="North Region">
+                <label class="form-check-label" for="north">North Region</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="region" id="east" value="East Region">
+                <label class="form-check-label" for="east">East Region</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="region" id="west" value="West Region">
+                <label class="form-check-label" for="west">West Region</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="region" id="neregion" value="North East Region">
+                <label class="form-check-label" for="neregion">North East Region</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="region" id="downtown" value="Downtown Core">
+                <label class="form-check-label" for="downtown">Downtown Core</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="region" id="prime" value="Prime District">
+                <label class="form-check-label" for="prime">Prime District</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="region" id="city" value="City Fringe">
+                <label class="form-check-label" for="city">City Fringe</label>
+              </div>
             </div>
-    
-        </div>
-        <div id="all-listings" class="w-50 h-100">
-            <div class="container house-list mb-3 overflow-auto h-100">
-                <div class="mt-3">
-                  <div class="d-flex gap-2">
-                    <input
-                      class="form-control search"
-                      type="search"
-                      id="search"
-                      oninput="searchListings(this)"
-                      placeholder="Search Address"
-                      value=""
-                    />
-
-                    <div class="dropdown d-inline">
-                      <button
-                        class="dropdown-toggle filter-button"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <i class="fas fa-filter"></i>
-                      </button>
-                      <ul
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <li>
-                          <button class="dropdown-item">Launch Date</button>
-                        </li>
-                        <li><button class="dropdown-item">Region</button></li>
-                        <li><button class="dropdown-item">Status</button></li>
-                        <li><button class="dropdown-item">Unit</button></li>
-                      </ul>
-                    </div>
-                  </div>
-
-
-                <div id="starting-page">
-                    <div class="categories__box my-3">
-                        <div class="categories__track">
-                        <button class="categories__button active">All</button>
-
-                        <button class="categories__button">
-                            Private Condominium
-                        </button>
-
-                        <button class="categories__button">
-                            Executive Condominium
-                        </button>
-
-                        <button class="categories__button">Landed House</button>
-                        </div>
-                    </div>
-                    <div class="title">
-                        <div class="title-left">
-                        <i class="fa-solid fa-location-dot"></i>Near You
-                        </div>
-                        <div class="title-right"><button class="bg-transparent border-0" onclick="openAllListingsInner()">View All</button></div>
-                    </div>
-                    <div class="glide my-3">
-                        <div class="glide__track" data-glide-el="track">
-                        <ul class="glide__slides">
-                            
-                        </ul>
-                        </div>
-                    </div>
-                    <div class="title">
-                        <div class="title-left">Recomended For you</div>
-                        <div class="title-right"><button class="bg-transparent border-0" onclick="openAllListingsInner()">View All</button></div>
-                    </div>
-                    <div class="recommended-slider">
-                        <div class="card my-3" style="max-width: 100%">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                            <img src="" alt="">
-                            </div>
-                            <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3">Lentor Mansion</h5>
-                                <h6 class="card-subtitle mb-4 text-muted">
-                                North Region
-                                </h6>
-                                <div class="card-campaign-desc">
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>2 Bedroom
-                                </p>
-
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>3 Bedroom
-                                </p>
-
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>4 Bedroom
-                                </p>
-
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>5 Bedroom
-                                </p>
-
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>Overall
-                                </p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-                <div id="all-listings-inner" class="d-none">
-
-                </div>
-                </div>
+          </div>
+          <div class="filter__item mt-4">
+            <p class="mb-1"><strong>Market Segment</strong></p>
+            <div class="filter__item__body">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="market_segment" id="market_segment_1" value="Core Central Region">
+                <label class="form-check-label" for="market_segment_1">CCR - Core Central Region</label>
               </div>
-        </div>
-        <div id="single-listing" class="d-none w-50 h-100">
-          <div class="donate-detail-header">
-              <i class="fa-solid fa-arrow-left fa-xl position-absolute text-white" onclick="showMainPage()" style="top:25px; left:20px; cursor:pointer"></i>
-              <div class="donate-header-image">
-              
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="market_segment" id="market_segment_2" value="Rest of Central Region">
+                <label class="form-check-label" for="market_segment_2">RCR - Rest of Central Region</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="market_segment" id="market_segment_3" value="Outside Central Region">
+                <label class="form-check-label" for="market_segment_3">OCR - Outside Central Region</label>
+              </div>
+              <!-- Add more checkboxes for market segments if needed -->
             </div>
-    
-            <div class="donate-header-text overflow-auto">
-              <div class="donate-title">
-                <h2 id="projectName">Lentor Mansion</h2>
-                <p><i class="fa-solid fa-star"></i>4.5</p>
+          </div>
+          <div class="filter__item mt-4">
+            <p class="mb-1"><strong>Unit Category</strong></p>
+            <div class="filter__item__body">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="unit_category" id="unit_category_1" value="Private Condo">
+                <label class="form-check-label" for="unit_category_1">Private Condo</label>
               </div>
-              <div class="donate-detail-text">
-                <p id="projectRegion">North Region</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="unit_category" id="unit_category_2" value="Executive Condo">
+                <label class="form-check-label" for="unit_category_2">Executive Condo</label>
               </div>
-              <div class="donate-detail-icon my-2"></div>
-              <div class="donate-detail-desc">
-                <h2>Description</h2>
-                <p id="projectDesc">
-                  The latest addition to the series of residential developments
-                  along Lentor Gardens is Lentor Mansion, a 99-year leasehold new
-                  launch condo with 533 units, built on an expansive land size of
-                  over 21,000 square metres. Other than having a wide array of
-                  communal facilities available within the development, it is
-                  surrounded by parks and greenery, such as Thomson Nature Park,
-                  Lower Pierce Reservoir Park, as well as the upcoming Hillock Park
-                  and Linear Park to allow more options for outdoor activities.
-                  Within walking distance to Lentor MRT station, residents can
-                  commute to the city centre directly via the Thomson-East Coast
-                  Line (TEL). Those who drive will also appreciate its proximity to
-                  the Seletar Expressway (SLE) and Central Expressway (CTE) for
-                  island-wide connection. With esteemed schools like CHIJ St.
-                  Nicholas Girls’ School, Presbyterian High School and Anderson
-                  Primary School nearby, Lentor Mansion is an ideal choice for those
-                  with school-going children.
-                </p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="unit_category" id="unit_category_3" value="Landed House">
+                <label class="form-check-label" for="unit_category_3">Landed House</label>
               </div>
-              <div class="donate-detail-gallery">
-                <h2>Gallery</h2>
-    
-                <div class="gallery-list">
-
-                    
-                </div>
+            </div>
+          </div>
+          <div class="filter__item mt-4">
+            <p class="mb-1"><strong>Project Size</strong></p>
+            <div class="filter__item__body">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_1" value="0-99">
+                <label class="form-check-label" for="project_size_1">0 - 99 Units</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_2" value="100-399">
+                <label class="form-check-label" for="project_size_2">100 - 399 Units</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_3" value="400-699">
+                <label class="form-check-label" for="project_size_3">400 - 699 Units</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_4" value="700-999">
+                <label class="form-check-label" for="project_size_4">700 - 999 Units</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_5" value="1000+">
+                <label class="form-check-label" for="project_size_5">1000 & Above Units</label>
               </div>
             </div>
           </div>
         </div>
         
+      </div>
+
+      <div class="filter__footer p-3">
+        <button class="btn btn-success w-100" onclick="applyFilters()">Apply</button>
+      </div>
+
+    </div>
+
+
+    <!--  Mobile Switch Button -->
+    <div
+      class="d-flex mobile-switch-menu start-50 bg-white rounded-3 d-lg-none d-md-none translate-middle-x position-fixed border border-1 w-75"
+    >
+      <div
+        class="w-50 border-end d-flex justify-content-center align-items-center"
+      >
+        <div>
+          <i class="fa-solid fa-list fa-xl" style="color: #39548a"></i>
+          <button
+            class="bg-transparent border-0"
+            onclick="mobileLayoutHandler(this)"
+          >
+            Listings
+          </button>
+        </div>
+      </div>
+      <div class="w-50 d-flex justify-content-center align-items-center">
+        <div>
+          <i
+            class="fa-solid fa-map-location-dot fa-xl"
+            style="color: #39548a"
+          ></i>
+          <button
+            class="bg-transparent border-0"
+            onclick="mobileLayoutHandler(this)"
+          >
+            Map
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex h-100 main-container">
+      <div id="map-container" class="w-50 h-100 d-none d-lg-block d-md-block">
+        <div id="mapdiv"></div>
+      </div>
+      <div id="all-listings" class="w-50 h-100">
+        <div class="container house-list mb-3 overflow-auto h-100">
+          <div class="mt-3">
+            <div class="d-flex gap-2">
+              <input
+                class="form-control search"
+                type="search"
+                id="search"
+                oninput="searchListings(this)"
+                placeholder="Search Address"
+                value=""
+              />
+
+              <div class="dropdown d-inline">
+                <button
+                  class=" filter-button"
+                  type="button"
+                  id="dropdownMenuButton"
+                  onclick="openFilterPopup()"
+                >
+                <i class="fa-solid fa-filter"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="starting-page">
+              <!-- <div class="categories__box my-3">
+                <div class="categories__track">
+                  <button class="categories__button active">All</button>
+
+                  <button class="categories__button">
+                    Private Condominium
+                  </button>
+
+                  <button class="categories__button">
+                    Executive Condominium
+                  </button>
+
+                  <button class="categories__button">Landed House</button>
+                </div>
+              </div> -->
+              <div class="title mt-3">
+                <div class="title-left">
+                  <i class="fa-solid fa-location-dot"></i>Near You
+                </div>
+                <div class="title-right">
+                  <button
+                    class="bg-transparent border-0"
+                    onclick="openAllListingsInner()"
+                  >
+                    View All
+                  </button>
+                </div>
+              </div>
+              <div class="glide my-3">
+                <div class="glide__track" data-glide-el="track">
+                  <ul class="glide__slides"></ul>
+                </div>
+              </div>
+              <div class="title">
+                <div class="title-left">Recomended For you</div>
+                <div class="title-right">
+                  <button
+                    class="bg-transparent border-0"
+                    onclick="openAllListingsInner()"
+                  >
+                    View All
+                  </button>
+                </div>
+              </div>
+              <div class="recommended-slider">
+                <div class="card my-3" style="max-width: 100%">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="" alt="" />
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title mb-3">Lentor Mansion</h5>
+                        <h6 class="card-subtitle mb-4 text-muted">
+                          North Region
+                        </h6>
+                        <div class="card-campaign-desc">
+                          <p class="campaign-icon">
+                            <i class="fa-solid fa-bed"></i>2 Bedroom
+                          </p>
+
+                          <p class="campaign-icon">
+                            <i class="fa-solid fa-bed"></i>3 Bedroom
+                          </p>
+
+                          <p class="campaign-icon">
+                            <i class="fa-solid fa-bed"></i>4 Bedroom
+                          </p>
+
+                          <p class="campaign-icon">
+                            <i class="fa-solid fa-bed"></i>5 Bedroom
+                          </p>
+
+                          <p class="campaign-icon">
+                            <i class="fa-solid fa-bed"></i>Overall
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="all-listings-inner" class="d-none"></div>
+          </div>
+        </div>
+      </div>
+      <div id="single-listing" class="d-none w-50 h-100">
+        <div class="donate-detail-header">
+          <i
+            class="fa-solid fa-arrow-left fa-xl position-absolute text-white"
+            onclick="showMainPage()"
+            style="top: 25px; left: 20px; cursor: pointer"
+          ></i>
+          <div class="donate-header-image"></div>
+
+          <div class="donate-header-text overflow-auto">
+            <div class="donate-title">
+              <h2 id="projectName">Lentor Mansion</h2>
+              <p><i class="fa-solid fa-star"></i>4.5</p>
+            </div>
+            <div class="donate-detail-text">
+              <p id="projectRegion">North Region</p>
+            </div>
+            <div class="donate-detail-icon my-2"></div>
+            <div class="donate-detail-desc">
+              <h2>Description</h2>
+              <p id="projectDesc">
+                The latest addition to the series of residential developments
+                along Lentor Gardens is Lentor Mansion, a 99-year leasehold new
+                launch condo with 533 units, built on an expansive land size of
+                over 21,000 square metres. Other than having a wide array of
+                communal facilities available within the development, it is
+                surrounded by parks and greenery, such as Thomson Nature Park,
+                Lower Pierce Reservoir Park, as well as the upcoming Hillock
+                Park and Linear Park to allow more options for outdoor
+                activities. Within walking distance to Lentor MRT station,
+                residents can commute to the city centre directly via the
+                Thomson-East Coast Line (TEL). Those who drive will also
+                appreciate its proximity to the Seletar Expressway (SLE) and
+                Central Expressway (CTE) for island-wide connection. With
+                esteemed schools like CHIJ St. Nicholas Girls’ School,
+                Presbyterian High School and Anderson Primary School nearby,
+                Lentor Mansion is an ideal choice for those with school-going
+                children.
+              </p>
+            </div>
+            <div class="donate-detail-gallery">
+              <h2>Gallery</h2>
+
+              <div class="gallery-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
-    <script src="script.js" ></script>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -3232,7 +3232,37 @@
                                     </a>
                                 </li>
                             `
-            
+                const bedrooms = listings[i]?.balance_units?.data || [];
+                const bedroomHtml = bedrooms.map(bedroom => {
+                    return `
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>${bedroom.unitType}
+                    </p>
+                    `
+
+                })
+                let defaultBedroomHtml = `
+                        <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>2 Bedroom
+                    </p>
+
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>3 Bedroom
+                    </p>
+
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>4 Bedroom
+                    </p>
+
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>5 Bedroom
+                    </p>
+
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>Overall
+                    </p>
+                `
+
                 recommendedContainer.innerHTML += `
                 <div class="card my-3" style="max-width: 100%">
                       <div class="row g-0">
@@ -3248,25 +3278,7 @@
                               ${listings[i].geographical_region}
                             </h6>
                             <div class="card-campaign-desc">
-                              <p class="campaign-icon">
-                                <i class="fa-solid fa-bed"></i>2 Bedroom
-                              </p>
-
-                              <p class="campaign-icon">
-                                <i class="fa-solid fa-bed"></i>3 Bedroom
-                              </p>
-
-                              <p class="campaign-icon">
-                                <i class="fa-solid fa-bed"></i>4 Bedroom
-                              </p>
-
-                              <p class="campaign-icon">
-                                <i class="fa-solid fa-bed"></i>5 Bedroom
-                              </p>
-
-                              <p class="campaign-icon">
-                                <i class="fa-solid fa-bed"></i>Overall
-                              </p>
+                             ${bedrooms.length > 0 ? bedroomHtml.join('') : defaultBedroomHtml}
                             </div>
                           </div>
                         </div>
@@ -3308,6 +3320,37 @@
             `;
             for (let i = 0; i < newListing.length; i++) {
                 
+                const bedrooms = newListing[i]?.balance_units?.data || [];
+                const bedroomHtml = bedrooms.map(bedroom => {
+                    return `
+                    <p class="campaign-icon">
+
+                        <i class="fa-solid fa-bed"></i>${bedroom.unitType}
+                    </p>
+                    `
+                })
+                let defaultBedroomHtml = `
+                        <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>2 Bedroom
+                    </p>
+
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>3 Bedroom
+                    </p>
+
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>4 Bedroom
+                    </p>
+
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>5 Bedroom
+                    </p>
+
+                    <p class="campaign-icon">
+                        <i class="fa-solid fa-bed"></i>Overall
+                    </p>
+                `
+
                 container.innerHTML += `
                     <div class="card my-3" style="max-width: 100%">
                         <div class="row g-0">
@@ -3323,25 +3366,7 @@
                                 ${newListing[i].geographical_region}
                                 </h6>
                                 <div class="card-campaign-desc">
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>2 Bedroom
-                                </p>
-
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>3 Bedroom
-                                </p>
-
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>4 Bedroom
-                                </p>
-
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>5 Bedroom
-                                </p>
-
-                                <p class="campaign-icon">
-                                    <i class="fa-solid fa-bed"></i>Overall
-                                </p>
+                                ${bedrooms.length > 0 ? bedroomHtml.join('') : defaultBedroomHtml}
                                 </div>
                             </div>
                             </div>
@@ -3421,3 +3446,139 @@
             openAllListingsInner(filteredListings);
             
         }
+
+
+        function openFilterPopup() {
+            document.querySelector(".filter-container").style.transform = "translateX(0)";
+        }
+
+
+        function closeFilterPopup() {
+            document.querySelector(".filter-container").style.transform = "translateX(100%)";
+        }
+
+
+        function applyFilters() {
+            let selectedCheckboxes = extractCheckboxes();
+            console.log(selectedCheckboxes);
+            let filteredListings = listings.filter(function(listing) {
+                const project_size = listing.project_size;
+                const region = listing.geographical_region;
+                const unit_category = listing.project_category;
+                const market_segment = listing.details.find(detail => detail.title == "Market Segment").para;
+
+                let isMatch = true;
+                for (let category in selectedCheckboxes) {
+                    if (selectedCheckboxes[category].length > 0){
+                        if (category === "project_size") {
+                            let sizeMatched = false;
+                            for (let i = 0; i < selectedCheckboxes[category].length; i++) {
+                                let size = selectedCheckboxes[category][i];
+                                if (size === "1000+") {
+                                    if (project_size >= 1000) {
+                                        sizeMatched = true;
+                                        break;
+                                    }
+                                } else {
+                                    let range = size.split('-');
+                                    let min = parseInt(range[0]);
+                                    let max = parseInt(range[1]);
+                                    if (project_size >= min && project_size <= max) {
+                                        sizeMatched = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (!sizeMatched) {
+                                isMatch = false;
+                                break;
+                            }
+                        } else if (category == "region") {
+                            let isLocalMatch = false;
+                            for(let i = 0; i < selectedCheckboxes[category].length; i++ ){
+                                let filterRegions = selectedCheckboxes[category][i].toLowerCase().trim();
+                                if (region.toLowerCase().trim().includes(filterRegions)) {
+                                    isLocalMatch = true;
+                                    break;
+                                }
+
+                            }
+                            if (!isLocalMatch) {
+                                isMatch = false;
+                                break;
+                            }
+                    
+                        } else if (category == "unit_category") {
+                            let isLocalMatch = false;
+                            for(let i = 0; i < selectedCheckboxes[category].length; i++ ){
+                                let filterUnitCategory = selectedCheckboxes[category][i].toLowerCase().trim();
+                                if (unit_category.toLowerCase().trim().includes(filterUnitCategory)) {
+                                    isLocalMatch = true;
+                                    break;
+                                }
+
+                            }
+                            if (!isLocalMatch) {
+                                isMatch = false;
+                                break;
+                            }
+
+                        } else if (category == "market_segment") {
+
+                            let isLocalMatch = false;
+                            for(let i = 0; i < selectedCheckboxes[category].length; i++){
+                                let filterSegment = selectedCheckboxes[category][i].toLowerCase().trim();
+                                console.log(filterSegment, market_segment.toLowerCase().trim());
+                                if (market_segment.toLowerCase().trim().includes(filterSegment)) {
+                                    isLocalMatch = true;
+                                    break;
+                                }
+
+                            }
+                            if (!isLocalMatch) {
+                                isMatch = false;
+                                break;
+                            }
+                        }
+
+
+                    };
+                }
+                return isMatch;
+            });
+
+            console.log(filteredListings);
+            openAllListingsInner(filteredListings);
+            closeFilterPopup();
+
+        }
+
+
+
+        function extractCheckboxes() {
+            let categories = ['region', 'market_segment', 'unit_category', 'project_size'];
+            let selectedCheckboxes = {};
+          
+            categories.forEach(function(category) {
+                let checkboxes = document.querySelectorAll('[name="' + category + '"]:checked');
+                let values = [];
+          
+              checkboxes.forEach(function(checkbox) {
+                values.push(checkbox.value);
+              });
+          
+              selectedCheckboxes[category] = values;
+            });
+          
+            return selectedCheckboxes;
+          }
+
+
+          function processText(text) {
+            // Remove spaces
+            text = text.replace(/ /g, '');
+            // Convert to lowercase
+            text = text.toLowerCase();
+            return text;
+        }
+          
