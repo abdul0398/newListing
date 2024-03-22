@@ -426,11 +426,15 @@
 
         function openFilterPopup() {
             document.querySelector(".filter-container").style.transform = "translateX(0)";
+            document.querySelector(".main-container").classList.remove("overflow-auto");
+            document.querySelector(".main-container").classList.add("overflow-hidden");
         }
 
 
         function closeFilterPopup() {
             document.querySelector(".filter-container").style.transform = "translateX(100%)";
+            document.querySelector(".main-container").classList.remove("overflow-hidden");
+            document.querySelector(".main-container").classList.add("overflow-auto");
         }
 
 
