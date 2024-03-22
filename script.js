@@ -244,7 +244,7 @@
                 <div class="card my-3" style="max-width: 100%">
                       <div class="row g-0">
                         <div class="col-md-4">
-                          <img class="w-100" style="height:200px" src="${listings[i].images[0]}" alt="">
+                          <img class="w-100" style="height:200px" src="https://images.unsplash.com/photo-1711058539696-75d41199ef10?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="${listings[i].name}">
                         </div>
                         <div class="col-md-8">
                           <div class="card-body">
