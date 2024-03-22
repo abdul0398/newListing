@@ -198,7 +198,7 @@
       }
       .mobile-switch-menu {
         bottom: 40px;
-        z-index: 10;
+        z-index: 999;
         height: 40px;
       }
       @media (max-width: 500px) {
@@ -212,7 +212,7 @@
         max-width: 300px;
         width: 90%;
         height: 100vh;
-        z-index: 11;
+        z-index: 1000;
         overflow-y: hidden;
         background-color: #39548a;
         transform: translateX(100%);
@@ -406,21 +406,6 @@
             </div>
 
             <div id="starting-page">
-              <!-- <div class="categories__box my-3">
-                <div class="categories__track">
-                  <button class="categories__button active">All</button>
-
-                  <button class="categories__button">
-                    Private Condominium
-                  </button>
-
-                  <button class="categories__button">
-                    Executive Condominium
-                  </button>
-
-                  <button class="categories__button">Landed House</button>
-                </div>
-              </div> -->
               <div class="title mt-3">
                 <div class="title-left">
                   <i class="fa-solid fa-location-dot"></i>Near You
@@ -437,6 +422,9 @@
               <div class="glide my-3">
                 <div class="glide__track" data-glide-el="track">
                   <ul class="glide__slides"></ul>
+                </div>
+                <div class="glide__bullets" data-glide-el="controls[nav]">
+                  
                 </div>
               </div>
               <div class="title">

@@ -6,6 +6,7 @@
 
         let listings = [];
 
+        let glide;
         const searchListings = debounce(searchhandler, 500);
 
         start();
@@ -20,10 +21,8 @@
             }
             openMap();
             populatAllListings(listings);
-            await fetchCoordinatesAndPopulateMap(listings);
-            new Glide('.glide', {
+            glide = new Glide('.glide', {
                 type: 'carousel',
-                autoplay: 3500,
                 perView: 3,
                 breakpoints: {
                 1024: {
@@ -32,8 +31,8 @@
                 600: {
                 perView: 1
                 }
-            }
-            }).mount();
+            }}).mount();
+            await fetchCoordinatesAndPopulateMap(listings);
         }
 
 
@@ -161,10 +160,15 @@
 
              // Recommended populations
              const recommendedContainer = document.querySelector(".recommended-slider");
+            const bulletContainer = document.querySelector(".glide__bullets");
+            bulletContainer.innerHTML = "";
+
 
             recommendedContainer.innerHTML = "";
 
             for(let i = 0; i < listings.length && i < 10; i++){
+                bulletContainer.innerHTML += `<button class="glide__bullet" data-glide-dir="=${i}"></button>`;
+
                 nearYouContainer.innerHTML += `
                             <li
                                     class="glide__slide"
@@ -415,7 +419,6 @@
                 stringtoSearch += listing.details.toString().toLowerCase();
                 return stringtoSearch.includes(value);
             })
-            console.log(filteredListings);
             openAllListingsInner(filteredListings);
             
         }
@@ -433,7 +436,6 @@
 
         function applyFilters() {
             let selectedCheckboxes = extractCheckboxes();
-            console.log(selectedCheckboxes);
             let filteredListings = listings.filter(function(listing) {
                 const project_size = listing.project_size;
                 const region = listing.geographical_region;
@@ -501,7 +503,6 @@
                             let isLocalMatch = false;
                             for(let i = 0; i < selectedCheckboxes[category].length; i++){
                                 let filterSegment = selectedCheckboxes[category][i].toLowerCase().trim();
-                                console.log(filterSegment, market_segment.toLowerCase().trim());
                                 if (market_segment.toLowerCase().trim().includes(filterSegment)) {
                                     isLocalMatch = true;
                                     break;
@@ -520,8 +521,9 @@
                 return isMatch;
             });
 
-            console.log(filteredListings);
             openAllListingsInner(filteredListings);
+            document.getElementById("map-container").classList.add("d-none");
+            document.getElementById("single-listing").classList.add("d-none");
             closeFilterPopup();
 
         }
