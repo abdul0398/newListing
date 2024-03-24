@@ -271,6 +271,12 @@
             document.getElementById("all-listings-inner").classList.add("d-none");
             document.getElementById("all-listings").classList.remove("d-none");
             document.getElementById("starting-page").classList.remove("d-none");
+
+            // uncheck all filter checkbox
+            const checkboxes = document.querySelectorAll('.filter-container input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
             
         }
 
@@ -366,6 +372,7 @@
             const region = listing.geographical_region;
             const images = listing.images;
             addInfoToSingleListing(desc, name, region, images);
+            closeFilterPopup();
 
         }
 
@@ -428,6 +435,8 @@
             document.querySelector(".filter-container").style.transform = "translateX(0)";
             document.querySelector(".main-container").classList.remove("overflow-auto");
             document.querySelector(".main-container").classList.add("overflow-hidden");
+            document.querySelector(".house-list").classList.remove("overflow-auto");
+            document.querySelector(".house-list").classList.add("overflow-hidden");
         }
 
 
@@ -435,6 +444,8 @@
             document.querySelector(".filter-container").style.transform = "translateX(100%)";
             document.querySelector(".main-container").classList.remove("overflow-hidden");
             document.querySelector(".main-container").classList.add("overflow-auto");
+            document.querySelector(".house-list").classList.remove("overflow-hidden");
+            document.querySelector(".house-list").classList.add("overflow-auto");
         }
 
 
