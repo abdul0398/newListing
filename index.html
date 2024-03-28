@@ -33,11 +33,23 @@
       rel="stylesheet"
       href="https://unpkg.com/@glidejs/glide@3.3.0/dist/css/glide.theme.min.css"
     />
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js" integrity="sha512-BLW2Jrofiqm6m7JhkQDIh2olT0EBI58+hIL/AXWvo8gOXKmsNlU6myJyEkTy6rOAAZjn0032FRk8sl9RgXPYIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js" integrity="sha512-VBbe8aA3uiK90EUKJnZ4iEs0lKXRhzaAXL8CIHWYReUwULzxkOSxlNixn41OLdX0R1KNP23/s76YPyeRhE6P+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"
+      integrity="sha512-BLW2Jrofiqm6m7JhkQDIh2olT0EBI58+hIL/AXWvo8gOXKmsNlU6myJyEkTy6rOAAZjn0032FRk8sl9RgXPYIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"
+      integrity="sha512-VBbe8aA3uiK90EUKJnZ4iEs0lKXRhzaAXL8CIHWYReUwULzxkOSxlNixn41OLdX0R1KNP23/s76YPyeRhE6P+Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <style>
       body {
@@ -224,56 +236,108 @@
         transform: translateX(100%);
         transition: transform 0.3s ease; /* Use 'transform' property for animation */
       }
-      .close-btn-filter{
+      .close-btn-filter {
         top: 10px;
         left: 10px;
         cursor: pointer;
       }
       .filter__body {
-        overflow-y: auto; 
+        overflow-y: auto;
         height: calc(100% - 60px);
       }
     </style>
   </head>
-  <body class="position-relative overflow-hidden ">
-
+  <body class="position-relative overflow-hidden">
     <!--  Filter Container  -->
-    <div class="filter-container position-fixed end-0 z-2 text-white overflow-auto ">
+    <div
+      class="filter-container position-fixed end-0 z-2 text-white overflow-auto"
+    >
       <div class="filter position-relative mt-2">
         <div class="filter__header">
           <p class="text-center"><strong>Filters</strong></p>
-          <i class="fa-solid fa-times position-absolute close-btn-filter" onclick="closeFilterPopup()"></i>
+          <i
+            class="fa-solid fa-times position-absolute close-btn-filter"
+            onclick="closeFilterPopup()"
+          ></i>
         </div>
         <div class="filter__body p-3">
           <div class="filter__item">
             <p class="mb-1"><strong>Region</strong></p>
             <div class="filter__item__body">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="region" id="north" value="North Region">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="region"
+                  id="north"
+                  value="North Region"
+                />
                 <label class="form-check-label" for="north">North Region</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="region" id="east" value="East Region">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="region"
+                  id="east"
+                  value="East Region"
+                />
                 <label class="form-check-label" for="east">East Region</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="region" id="west" value="West Region">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="region"
+                  id="west"
+                  value="West Region"
+                />
                 <label class="form-check-label" for="west">West Region</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="region" id="neregion" value="North East Region">
-                <label class="form-check-label" for="neregion">North East Region</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="region"
+                  id="neregion"
+                  value="North East Region"
+                />
+                <label class="form-check-label" for="neregion"
+                  >North East Region</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="region" id="downtown" value="Downtown Core">
-                <label class="form-check-label" for="downtown">Downtown Core</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="region"
+                  id="downtown"
+                  value="Downtown Core"
+                />
+                <label class="form-check-label" for="downtown"
+                  >Downtown Core</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="region" id="prime" value="Prime District">
-                <label class="form-check-label" for="prime">Prime District</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="region"
+                  id="prime"
+                  value="Prime District"
+                />
+                <label class="form-check-label" for="prime"
+                  >Prime District</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="region" id="city" value="City Fringe">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="region"
+                  id="city"
+                  value="City Fringe"
+                />
                 <label class="form-check-label" for="city">City Fringe</label>
               </div>
             </div>
@@ -282,16 +346,40 @@
             <p class="mb-1"><strong>Market Segment</strong></p>
             <div class="filter__item__body">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="market_segment" id="market_segment_1" value="Core Central Region">
-                <label class="form-check-label" for="market_segment_1">CCR - Core Central Region</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="market_segment"
+                  id="market_segment_1"
+                  value="Core Central Region"
+                />
+                <label class="form-check-label" for="market_segment_1"
+                  >CCR - Core Central Region</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="market_segment" id="market_segment_2" value="Rest of Central Region">
-                <label class="form-check-label" for="market_segment_2">RCR - Rest of Central Region</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="market_segment"
+                  id="market_segment_2"
+                  value="Rest of Central Region"
+                />
+                <label class="form-check-label" for="market_segment_2"
+                  >RCR - Rest of Central Region</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="market_segment" id="market_segment_3" value="Outside Central Region">
-                <label class="form-check-label" for="market_segment_3">OCR - Outside Central Region</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="market_segment"
+                  id="market_segment_3"
+                  value="Outside Central Region"
+                />
+                <label class="form-check-label" for="market_segment_3"
+                  >OCR - Outside Central Region</label
+                >
               </div>
               <!-- Add more checkboxes for market segments if needed -->
             </div>
@@ -300,16 +388,40 @@
             <p class="mb-1"><strong>Unit Category</strong></p>
             <div class="filter__item__body">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="unit_category" id="unit_category_1" value="Private Condo">
-                <label class="form-check-label" for="unit_category_1">Private Condo</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="unit_category"
+                  id="unit_category_1"
+                  value="Private Condo"
+                />
+                <label class="form-check-label" for="unit_category_1"
+                  >Private Condo</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="unit_category" id="unit_category_2" value="Executive Condo">
-                <label class="form-check-label" for="unit_category_2">Executive Condo</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="unit_category"
+                  id="unit_category_2"
+                  value="Executive Condo"
+                />
+                <label class="form-check-label" for="unit_category_2"
+                  >Executive Condo</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="unit_category" id="unit_category_3" value="Landed House">
-                <label class="form-check-label" for="unit_category_3">Landed House</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="unit_category"
+                  id="unit_category_3"
+                  value="Landed House"
+                />
+                <label class="form-check-label" for="unit_category_3"
+                  >Landed House</label
+                >
               </div>
             </div>
           </div>
@@ -317,37 +429,76 @@
             <p class="mb-1"><strong>Project Size</strong></p>
             <div class="filter__item__body">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_1" value="0-99">
-                <label class="form-check-label" for="project_size_1">0 - 99 Units</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="project_size"
+                  id="project_size_1"
+                  value="0-99"
+                />
+                <label class="form-check-label" for="project_size_1"
+                  >0 - 99 Units</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_2" value="100-399">
-                <label class="form-check-label" for="project_size_2">100 - 399 Units</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="project_size"
+                  id="project_size_2"
+                  value="100-399"
+                />
+                <label class="form-check-label" for="project_size_2"
+                  >100 - 399 Units</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_3" value="400-699">
-                <label class="form-check-label" for="project_size_3">400 - 699 Units</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="project_size"
+                  id="project_size_3"
+                  value="400-699"
+                />
+                <label class="form-check-label" for="project_size_3"
+                  >400 - 699 Units</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_4" value="700-999">
-                <label class="form-check-label" for="project_size_4">700 - 999 Units</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="project_size"
+                  id="project_size_4"
+                  value="700-999"
+                />
+                <label class="form-check-label" for="project_size_4"
+                  >700 - 999 Units</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="project_size" id="project_size_5" value="1000+">
-                <label class="form-check-label" for="project_size_5">1000 & Above Units</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="project_size"
+                  id="project_size_5"
+                  value="1000+"
+                />
+                <label class="form-check-label" for="project_size_5"
+                  >1000 & Above Units</label
+                >
               </div>
             </div>
           </div>
         </div>
-        
       </div>
 
       <div class="filter__footer p-3">
-        <button class="btn btn-success w-100" onclick="applyFilters()">Apply</button>
+        <button class="btn btn-success w-100" onclick="applyFilters()">
+          Apply
+        </button>
       </div>
-
     </div>
-
 
     <!--  Mobile Switch Button -->
     <div
@@ -382,12 +533,12 @@
       </div>
     </div>
 
-    <div class="d-flex h-100 main-container overflow-auto ">
+    <div class="d-flex h-100 main-container overflow-auto">
       <div id="map-container" class="w-50 h-100 d-none d-lg-block d-md-block">
         <div id="mapdiv"></div>
       </div>
       <div id="all-listings" class="w-50 h-100">
-        <div class="container house-list mb-3  h-100 overflow-auto ">
+        <div class="container house-list mb-3 h-100 overflow-auto">
           <div class="mt-3">
             <div class="d-flex gap-2">
               <input
@@ -401,12 +552,12 @@
 
               <div class="dropdown d-inline">
                 <button
-                  class=" filter-button"
+                  class="filter-button"
                   type="button"
                   id="dropdownMenuButton"
                   onclick="openFilterPopup()"
                 >
-                <i class="fa-solid fa-filter"></i>
+                  <i class="fa-solid fa-filter"></i>
                 </button>
               </div>
             </div>
@@ -429,9 +580,7 @@
                 <div class="glide__track" data-glide-el="track">
                   <ul class="glide__slides"></ul>
                 </div>
-                <div class="glide__bullets" data-glide-el="controls[nav]">
-                  
-                </div>
+                <div class="glide__bullets" data-glide-el="controls[nav]"></div>
               </div>
               <div class="title">
                 <div class="title-left">Recomended For you</div>
@@ -508,36 +657,42 @@
             <div class="donate-detail-desc">
               <h2>Description</h2>
               <p id="projectDesc">
-                The latest addition to the series of residential developments
-                along Lentor Gardens is Lentor Mansion, a 99-year leasehold new
-                launch condo with 533 units, built on an expansive land size of
-                over 21,000 square metres. Other than having a wide array of
-                communal facilities available within the development, it is
-                surrounded by parks and greenery, such as Thomson Nature Park,
-                Lower Pierce Reservoir Park, as well as the upcoming Hillock
-                Park and Linear Park to allow more options for outdoor
-                activities. Within walking distance to Lentor MRT station,
-                residents can commute to the city centre directly via the
-                Thomson-East Coast Line (TEL). Those who drive will also
-                appreciate its proximity to the Seletar Expressway (SLE) and
-                Central Expressway (CTE) for island-wide connection. With
-                esteemed schools like CHIJ St. Nicholas Girls’ School,
-                Presbyterian High School and Anderson Primary School nearby,
-                Lentor Mansion is an ideal choice for those with school-going
-                children.
               </p>
             </div>
             <div class="donate-detail-gallery">
               <h2>Gallery</h2>
-
               <div class="gallery-list"></div>
+            </div>
+
+            <div id="sitePlan" class="mt-5"></div>
+
+            <div id="location-map" class="mt-5">
+
+            </div>
+
+
+            <div class="mt-5">
+              <table class="w-100 border border-1 ">
+                <thead>
+                  <tr>
+                    <td colspan="2" class="text-center" style="background-color: #ecebeb;">
+                      Project Details
+                    </td>
+                  </tr>
+                </thead>
+                <tbody id="projectDetails">
+                  <tr class="border border-1">
+                    <td class="p-2">Developer</td>
+                    <td id="developer" class="p-2 border border-start">Lentor Mansion Pte Ltd</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
     <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
-    <script src="script.js">
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

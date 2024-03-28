@@ -86,8 +86,11 @@ async function fetchCoordinatesAndPopulateMap(listings) {
                 const name = project.name;
                 const desc = project.description;
                 const region = project.geographical_region;
-                const images = project.images;
-                addInfoToSingleListing(desc, name, region, images);
+                const Galleryimages = project.images;
+                const sitePlan = project.siteplan;
+                const details = project.details;
+                const locationMap = project.location_map;
+                addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap);
             });
         });
     }
@@ -132,7 +135,7 @@ function carousel() {
 }
 
 
-function addInfoToSingleListing(desc,name, region, images){
+function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap){
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
 
@@ -143,11 +146,69 @@ function addInfoToSingleListing(desc,name, region, images){
 
     const galleryDiv = document.getElementsByClassName("gallery-list")[0];
     const mainImages = document.getElementsByClassName("donate-header-image")[0];
+    const sideMapContainer = document.getElementById("sitePlan");
+    const tbody = document.getElementById("projectDetails");
+    const locationMapContainer = document.getElementById("location-map");
 
+
+
+    // Site Plan
+    sideMapContainer.innerHTML = `<h2 class="mb-2">Site Plan</h2>`
+
+    const sitePlanImages = sitePlan?.images || [];
+
+    for (let i = 0; i < sitePlanImages.length; i++) {
+        const url = sitePlanImages[i];
+        sideMapContainer.innerHTML += `
+        <a href="${url}" target="_blank">
+        <img src="${url}" class="w-100 mb-3"></img>
+        </a>
+        `
+    }
+
+
+
+    // Project Detail Table
+    tbody.innerHTML = "";
+
+    for (let i = 0; i < details.length; i++) {
+        const detail = details[i];
+        tbody.innerHTML += `
+        <tr class="border border-1">
+            <td class="p-2">${detail.title}</td>
+            <td class="p-2 border border-start">${detail.para}</td>
+        </tr>
+        `
+    }
+
+
+
+
+    // location Map
+    locationMapContainer.innerHTML = "";
+    locationMapContainer.innerHTML = `<h2 class="mb-2">Location Map</h2>`
+
+    const locationMapImages = locationMap?.images || [];
+
+    for (let i = 0; i < locationMapImages.length; i++) {
+        const url = locationMapImages[i];
+        locationMapContainer.innerHTML += `
+        <a href="${url}" target="_blank">
+        <img src="${url}" class="w-100 mb-3"></img>
+        </a>
+        `
+    }
+
+
+
+
+
+
+    // Gallery
     galleryDiv.innerHTML = "";
     mainImages.innerHTML = "";
-    for (let i = 0; i < images.length; i++) {
-        const img = images[i];
+    for (let i = 0; i < Galleryimages.length; i++) {
+        const img = Galleryimages[i];
         galleryDiv.innerHTML += `
         <a href="${img}">
         <img src="${img}" alt="${name}">
@@ -357,8 +418,11 @@ function openSingleListing(btn) {
     const listing = listings.find(listing => listing.name == name);
     const desc = listing.description;
     const region = listing.geographical_region;
-    const images = listing.images;
-    addInfoToSingleListing(desc, name, region, images);
+    const Galleryimages = listing.images;
+    const sitePlan = listing.siteplan;
+    const details = listing.details;
+    const locationMap = listing.location_map;
+    addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap);
     closeFilterPopup();
 
 }
