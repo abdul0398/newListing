@@ -108,7 +108,7 @@ async function fetchNewListings(){
     
     }
     try {
-        const res = await fetch('http://api.jomejourney-portal.com/api/listings?page=all', options);
+        const res = await fetch('https://api.jomejourney-portal.com/api/listings?page=all', options);
         const data = await res.json();
         if(res.status == 200 && data?.length > 0){
             return data;
