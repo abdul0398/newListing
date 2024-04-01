@@ -245,9 +245,85 @@
         overflow-y: auto;
         height: calc(100% - 60px);
       }
+
+      .darksoul-layout {
+        margin: auto;
+        display: flex;
+        background-color: black;
+        height: 100%;
+        z-index: 999999;
+        width: 100%;
+      }
+      .darksoul-grid {
+        margin: auto;
+        margin-right: 1px;
+        width: 50px;
+        height: 50px;
+        display: grid;
+        gap: 0px;
+        grid-template-columns: auto auto;
+        animation: rotate 2s linear 0s infinite;
+        .item1 {
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-radius: 0%;
+          background-color: rgb(255, 255, 255);
+        }
+        .item2 {
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-radius: 0%;
+          background-color: rgb(255, 255, 255);
+        }
+        .item3 {
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-radius: 0%;
+          background-color: rgb(255, 255, 255);
+        }
+        .item4 {
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-radius: 0%;
+          background-color: rgb(255, 255, 255);
+        }
+      }
+
+      @keyframes rotate {
+        0% {
+          rotate: 0deg;
+          transform: scale(0.6);
+        }
+        50% {
+          rotate: 100deg;
+          transform: scale(0.4);
+        }
+        100% {
+          rotate: 360deg;
+          transform: scale(0.6);
+        }
+      }
+      .darksoul-loader-h {
+        margin: auto;
+        margin-left: 5px;
+      }
     </style>
   </head>
   <body class="position-relative overflow-hidden">
+    <div class="darksoul-layout position-absolute d-none">
+      <div class="darksoul-grid">
+        <div class="item1"></div>
+        <div class="item2"></div>
+        <div class="item3"></div>
+        <div class="item4"></div>
+      </div>
+      <h3 class="darksoul-loader-h">Loading</h3>
+    </div>
+
     <!--  Filter Container  -->
     <div
       class="filter-container position-fixed end-0 z-2 text-white overflow-auto"
@@ -656,26 +732,130 @@
             <div class="donate-detail-icon my-2"></div>
             <div class="donate-detail-desc">
               <h2>Description</h2>
-              <p id="projectDesc">
-              </p>
+              <p id="projectDesc"></p>
             </div>
+
+
+            <!-- Gallery -->
             <div class="donate-detail-gallery">
               <h2>Gallery</h2>
               <div class="gallery-list"></div>
             </div>
 
-            <div id="sitePlan" class="mt-5"></div>
 
-            <div id="location-map" class="mt-5">
+            <!-- Site Plan -->
+            <div id="sitePlan" class="mt-5">
+              <h2 class="mb-2">Site Plan</h2>
+              <p>List of Project Facilities</p>
+              <div id="sitePlan-detail">
+              </div>
+              <div id="sideMapImageContainer">
+
+              </div>
+            </div>
+
+
+            <!-- Location Map -->
+            <div id="location-map-container" class="mt-5">
+              <h2 class="mb-2">Location Map</h2>
+              <p>List of Essential Amenities</p>
+              <table class="w-100 border border-1 my-3 ">
+                <thead>
+                  <tr>
+                    <td class="text-center" style="background-color: #ecebeb ">
+                      Category
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      Location
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      District
+                    </td>
+                  </tr>
+                </thead>
+                <tbody id="location-map-tbody">
+                  <tr class="border border-1">
+                    <td class="p-2">Developer</td>
+                    <td id="developer" class="p-2 border border-start">
+                      Lentor Mansion Pte Ltd
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div id="location-map-images"></div>
+            </div>
+
+
+            <!-- Unit Mix -->
+            <div id="unitMix" class="mt-5">
+              <h2 class="mb-2">Unit Mix</h2>
+              <p>Distribution of Total Units</p>
+              <table class="w-100 border border-1 my-3 ">
+                <thead>
+                  <tr>
+                    <td class="text-center" style="background-color: #ecebeb ">
+                      Unit Type
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      Total Units
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      Size(sqft)
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      Unit Mix
+                    </td>
+                  </tr>
+                </thead>
+                <tbody id="unit-mix-tbody">
+                 
+                </tbody>
+              </table>
+              <div id="unitMixImages"></div>
 
             </div>
 
 
-            <div class="mt-5">
-              <table class="w-100 border border-1 ">
+            <div id="balanceUnits" class="mt-5">
+              <h2 class="mb-2">Balance Units</h2>
+              <p>Pricing of Available Units</p>
+              <table class="w-100 border border-1 my-3 ">
                 <thead>
                   <tr>
-                    <td colspan="2" class="text-center" style="background-color: #ecebeb;">
+                    <td class="text-center" style="background-color: #ecebeb ">
+                      Unit Type
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      Available Units
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      Size(sqft)
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      PSF
+                    </td>
+                    <td class="text-center border border-start" style="background-color: #ecebeb">
+                      Price
+                    </td>
+                  </tr>
+                </thead>
+                <tbody id="balance-unit-tbody">
+                 
+                </tbody>
+              </table>
+              <div id="balanceUnitImages"></div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="mt-5" id="projectDetailTable">
+              <table class="w-100 border border-1">
+                <thead>
+                  <tr>
+                    <td
+                      colspan="2"
+                      class="text-center"
+                      style="background-color: #ecebeb"
+                    >
                       Project Details
                     </td>
                   </tr>
@@ -683,7 +863,9 @@
                 <tbody id="projectDetails">
                   <tr class="border border-1">
                     <td class="p-2">Developer</td>
-                    <td id="developer" class="p-2 border border-start">Lentor Mansion Pte Ltd</td>
+                    <td id="developer" class="p-2 border border-start">
+                      Lentor Mansion Pte Ltd
+                    </td>
                   </tr>
                 </tbody>
               </table>

@@ -18,6 +18,7 @@ start();
 
 
 async function start(){
+    openLoading();
     listings = await fetchDataFromJson();
     const data = await fetchNewListings();
     if(data.length > 0){
@@ -36,6 +37,7 @@ async function start(){
         perView: 1
         }
     }}).mount();
+    closeLoading();
     await fetchCoordinatesAndPopulateMap(listings);
 }
 
@@ -90,7 +92,9 @@ async function fetchCoordinatesAndPopulateMap(listings) {
                 const sitePlan = project.siteplan;
                 const details = project.details;
                 const locationMap = project.location_map;
-                addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap);
+                const unit_mix = project.unit_mix;
+                const balance_units = project.balance_units;
+                addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units);
             });
         });
     }
@@ -135,7 +139,7 @@ function carousel() {
 }
 
 
-function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap){
+function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units){
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
 
@@ -146,20 +150,83 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
     const galleryDiv = document.getElementsByClassName("gallery-list")[0];
     const mainImages = document.getElementsByClassName("donate-header-image")[0];
-    const sideMapContainer = document.getElementById("sitePlan");
-    const tbody = document.getElementById("projectDetails");
-    const locationMapContainer = document.getElementById("location-map");
+    const sideMapImageContainer = document.getElementById("sideMapImageContainer");
+    const sidePlanDetails = document.getElementById('sitePlan-detail')
+    const projectDetailtbody = document.getElementById("projectDetails");
+    const locationMapImageContainer = document.getElementById("location-map-images");
+    const locationMaptbody = document.getElementById("location-map-tbody");
+    const unitMixtbody = document.getElementById("unit-mix-tbody");
+    const unitMixImages = document.getElementById("unitMixImages");
+    const balanceUnitBody = document.getElementById("balance-unit-tbody");
+    const balanceUnitImages = document.getElementById("balanceUnitImages");
 
 
 
+    sideMapImageContainer.innerHTML = '';
     // Site Plan
-    sideMapContainer.innerHTML = `<h2 class="mb-2">Site Plan</h2>`
+    const sideMapImages = sitePlan?.images || [];
 
-    const sitePlanImages = sitePlan?.images || [];
+    for (let i = 0; i < sideMapImages.length; i++) {
+        const url = sideMapImages[i];
+        sideMapImageContainer.innerHTML += `
+        <a href="${url}" target="_blank">
+        <img src="${url}" class="w-100 mb-3"></img>
+        </a>
+        `
+    }
+    const sitePlanFacilities = sitePlan?.facilities || [];
+    
 
-    for (let i = 0; i < sitePlanImages.length; i++) {
-        const url = sitePlanImages[i];
-        sideMapContainer.innerHTML += `
+    const sitePlanLeft = document.createElement('div');
+    sitePlanLeft.classList.add('w-50');
+    const sitePlanRight = document.createElement('div');
+    sitePlanRight.classList.add('w-50');
+
+    for (let i = 0; i < sitePlanFacilities.length; i++) {
+        if (i % 2 == 0) {
+            sitePlanLeft.innerHTML += `
+            <p style="height:50px" class="d-flex justify-content-center text-center align-items-center p-2 border border-1">${sitePlanFacilities[i]}</p>
+            `
+        }else{
+            sitePlanRight.innerHTML += `
+            <p style="height:50px" class="p-2 border border-1 d-flex justify-content-center text-center align-items-center">${sitePlanFacilities[i]}</p>
+            `
+        }
+    }
+
+
+    const siteplansInnercontainer = document.createElement('div');
+    siteplansInnercontainer.classList.add('d-flex');
+    siteplansInnercontainer.classList.add('w-100');
+    siteplansInnercontainer.appendChild(sitePlanLeft);
+    siteplansInnercontainer.appendChild(sitePlanRight);
+    sidePlanDetails.innerHTML = ""; 
+    sidePlanDetails.appendChild(siteplansInnercontainer);
+
+
+    // Unit Mix
+    unitMixtbody.innerHTML = "";
+    unitMixImages.innerHTML = "";
+    const unitMixData = unit_mix?.data || [];
+    const unitMixImagesData = unit_mix?.images || [];
+    for (let i = 0; i < unitMixData?.length || 0; i++) {
+        const unit = unitMixData[i];
+        unitMixtbody.innerHTML += `
+        <tr class="border border-1">
+            <td class="p-2">${unitMixData[i].unitType}</td>
+            <td class="p-2 border
+            border-start">${unitMixData[i].totalUnits}</td>
+            <td class="p-2 border
+            border-start">${unitMixData[i].size_sqft}</td>
+            <td class="p-2 border
+            border-start">${unitMixData[i].unitMix}</td>
+        </tr>
+        `
+    }
+
+    for (let i = 0; i < unitMixImagesData.length; i++) {
+        const url = unitMixImagesData[i];
+        unitMixImages.innerHTML += `
         <a href="${url}" target="_blank">
         <img src="${url}" class="w-100 mb-3"></img>
         </a>
@@ -168,12 +235,52 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
 
 
+    // Balance Units
+
+    balanceUnitBody.innerHTML = "";
+    balanceUnitImages.innerHTML = "";
+    const balanceUnitsData = balance_units?.data || [];
+    const balanceUnitsImages = balance_units?.images || [];
+
+    for (let i = 0; i < balanceUnitsData.length; i++) {
+        const unit = balanceUnitsData[i];
+        balanceUnitBody.innerHTML += `
+        <tr class="border border-1">
+            <td class="p-2">${balanceUnitsData[i].unitType}</td>
+            <td class="p-2 border
+            border-start">${balanceUnitsData[i].availableUnits}</td>
+            <td class="p-2 border
+            border-start">${balanceUnitsData[i].size_sqft}</td>
+            <td class="p-2 border
+            border-start">${balanceUnitsData[i].psf}</td>
+            <td class="p-2 border
+            border-start">${balanceUnitsData[i].price}</td>
+        </tr>
+        `
+    }
+
+    for (let i = 0; i < balanceUnitsImages.length; i++) {
+        const url = balanceUnitsImages[i];
+        balanceUnitImages.innerHTML += `
+        <a href="${url}" target="_blank">
+        <img src="${url}" class="w-100 mb-3"></img>
+        </a>
+        `
+    }
+    
+
+
+
+
+
+
+
     // Project Detail Table
-    tbody.innerHTML = "";
+    projectDetailtbody.innerHTML = "";
 
     for (let i = 0; i < details.length; i++) {
         const detail = details[i];
-        tbody.innerHTML += `
+        projectDetailtbody.innerHTML += `
         <tr class="border border-1">
             <td class="p-2">${detail.title}</td>
             <td class="p-2 border border-start">${detail.para}</td>
@@ -185,19 +292,32 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
 
     // location Map
-    locationMapContainer.innerHTML = "";
-    locationMapContainer.innerHTML = `<h2 class="mb-2">Location Map</h2>`
+    locationMapImageContainer.innerHTML = "";
 
     const locationMapImages = locationMap?.images || [];
 
     for (let i = 0; i < locationMapImages.length; i++) {
         const url = locationMapImages[i];
-        locationMapContainer.innerHTML += `
+        locationMapImageContainer.innerHTML += `
         <a href="${url}" target="_blank">
         <img src="${url}" class="w-100 mb-3"></img>
         </a>
         `
     }
+    locationMaptbody.innerHTML = "";
+
+    const amenities = locationMap?.amenities || [];
+    for (let i = 0; i < amenities.length; i++) {
+        const element = amenities[i];
+        locationMaptbody.innerHTML += `
+        <tr class="border border-1">
+            <td class="p-2">${element.Category}</td>
+            <td class="p-2 border border-start">${element.Distance}</td>
+            <td class="p-2 border border-start">${element.Location}</td>
+        </tr>
+            `
+    }
+
 
 
 
@@ -422,7 +542,9 @@ function openSingleListing(btn) {
     const sitePlan = listing.siteplan;
     const details = listing.details;
     const locationMap = listing.location_map;
-    addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap);
+    const unit_mix = listing.unit_mix;
+    const balance_units = listing.balance_units;
+    addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units);
     closeFilterPopup();
 
 }
@@ -635,3 +757,10 @@ async function fetchDataFromJson() {
 }
 
 
+function openLoading(){
+    document.querySelector(".darksoul-layout").classList.remove("d-none");
+}
+
+function closeLoading(){
+    document.querySelector(".darksoul-layout").classList.add("d-none");
+}
