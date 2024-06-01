@@ -15,8 +15,6 @@ const searchListings = debounce(searchhandler, 500);
 
 start();
 
-
-
 async function start(){
     openLoading();
     listings = await fetchDataFromJson();
@@ -24,6 +22,8 @@ async function start(){
     if(data.length > 0){
         listings = data;
     }
+
+    selectProjectBasedOnParams();
     openMap();
     populatAllListings(listings);
     glide = new Glide('.glide', {
@@ -41,7 +41,6 @@ async function start(){
     await fetchCoordinatesAndPopulateMap(listings);
 }
 
-
 function openMap(params) {
     map = L.map('mapdiv', {
        center: L.latLng(1.327450, 103.811203),
@@ -56,7 +55,6 @@ function openMap(params) {
     });
     basemap.addTo(map);
 }
-
 
 async function fetchCoordinatesAndPopulateMap(listings) {
     for (let i = 0; i < listings.length; i++) {
@@ -100,7 +98,6 @@ async function fetchCoordinatesAndPopulateMap(listings) {
     }
 }
         
-
 async function fetchNewListings(){
     const options = {
         method: 'GET',
@@ -123,7 +120,6 @@ async function fetchNewListings(){
     }
 }
 
-
 function carousel() {
     var i;
     var x = document.getElementsByClassName("slideImages");
@@ -137,7 +133,6 @@ function carousel() {
     
     timeoutId = setTimeout(carousel, 4000); // Change image every 2 seconds
 }
-
 
 function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units){
     document.getElementById("single-listing").classList.remove("d-none");
@@ -348,7 +343,6 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     
 }
 
-
 function populatAllListings(listings){
 
     // Near You population
@@ -433,7 +427,6 @@ function populatAllListings(listings){
     }
 }
 
-
 function showMainPage() {
     document.getElementById("single-listing").classList.add("d-none");
     document.getElementById("all-listings-inner").classList.add("d-none");
@@ -448,13 +441,11 @@ function showMainPage() {
     
 }
 
-
 function openAllListingsInner(filterListing) {
     document.getElementById("all-listings-inner").classList.remove("d-none");
     document.getElementById("starting-page").classList.add("d-none");
     populateAllListingsInner(filterListing);
 }
-
 
 function populateAllListingsInner(filterListing) {
 
@@ -528,7 +519,6 @@ function populateAllListingsInner(filterListing) {
 
 }
 
-
 function openSingleListing(btn) {
     const name = btn.innerText;
 
@@ -549,7 +539,6 @@ function openSingleListing(btn) {
 
 }
 
-
 function mobileLayoutHandler(btn) {
     const type = btn.innerText;
     if(type == 'Listings'){
@@ -569,7 +558,6 @@ function mobileLayoutHandler(btn) {
     }
 }
 
-
 function debounce(func, delay) {
     let timerId;
     
@@ -584,7 +572,6 @@ function debounce(func, delay) {
       }, delay);
     };
 }
-
 
 function searchhandler(input) {
     const value = input.value.trim().toLowerCase();
@@ -603,7 +590,6 @@ function searchhandler(input) {
     
 }
 
-
 function openFilterPopup() {
     document.querySelector(".filter-container").style.transform = "translateX(0)";
     document.querySelector(".main-container").classList.remove("overflow-auto");
@@ -612,7 +598,6 @@ function openFilterPopup() {
     document.querySelector(".house-list").classList.add("overflow-hidden");
 }
 
-
 function closeFilterPopup() {
     document.querySelector(".filter-container").style.transform = "translateX(100%)";
     document.querySelector(".main-container").classList.remove("overflow-hidden");
@@ -620,7 +605,6 @@ function closeFilterPopup() {
     document.querySelector(".house-list").classList.remove("overflow-hidden");
     document.querySelector(".house-list").classList.add("overflow-auto");
 }
-
 
 function applyFilters() {
     let selectedCheckboxes = extractCheckboxes();
@@ -716,8 +700,6 @@ function applyFilters() {
 
 }
 
-
-
 function extractCheckboxes() {
     let categories = ['region', 'market_segment', 'unit_category', 'project_size'];
     let selectedCheckboxes = {};
@@ -734,10 +716,9 @@ function extractCheckboxes() {
     });
   
     return selectedCheckboxes;
-  }
+}
 
-
-  function processText(text) {
+function processText(text) {
     // Remove spaces
     text = text.replace(/ /g, '');
     // Convert to lowercase
@@ -745,7 +726,6 @@ function extractCheckboxes() {
     return text;
 }
   
-
 async function fetchDataFromJson() {
     try {
         const response = await fetch('offlineData.json');
@@ -756,11 +736,35 @@ async function fetchDataFromJson() {
     }
 }
 
-
 function openLoading(){
     document.querySelector(".darksoul-layout").classList.remove("d-none");
 }
 
 function closeLoading(){
     document.querySelector(".darksoul-layout").classList.add("d-none");
+}
+
+function selectProjectBasedOnParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectName = urlParams.get('project');
+    console.log(projectName);
+    if (projectName) {
+        const project = listings.find(listing => processText(listing.name) == processText(projectName));
+        console.log(project);
+        if (project) {
+            const btn = document.createElement('button');
+            btn.innerText = project.name;
+            openSingleListing(btn);
+        }
+    }
+}
+
+
+// function to remove all spaces from a string and convert to lowercase
+function processText(text) {
+    // Remove spaces
+    text = text.replace(/ /g, '');
+    // Convert to lowercase
+    text = text.toLowerCase();
+    return text;
 }
