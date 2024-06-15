@@ -10,6 +10,14 @@ let listings = [];
 
 let glide;
 
+let circle;
+
+let maskLayer;
+
+let selectedMarker;
+
+let markerArray = [];
+
 let galleryIntance;
 const searchListings = debounce(searchhandler, 500);
 
@@ -47,13 +55,13 @@ function openMap(params) {
        zoom: 13
     });
 
-    let basemap = L.tileLayer('https://www.onemap.gov.sg/maps/tiles/Grey/{z}/{x}/{y}.png', {
+    let basemap = L.tileLayer('https://www.onemap.gov.sg/maps/tiles/Default/{z}/{x}/{y}.png', {
        detectRetina: true,
        maxZoom: 19,
        minZoom: 5,
-       attribution: '<img src="https://www.onemap.gov.sg/web-assets/images/logo/om_logo.png" style="height:20px;width:20px;"/>&nbsp;<a href="https://www.onemap.gov.sg/" target="_blank" rel="noopener noreferrer">OneMap</a>&nbsp;&copy;&nbsp;contributors&nbsp;&#124;&nbsp;<a href="https://www.sla.gov.sg/" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a>'
     });
     basemap.addTo(map);
+
 }
 
 async function fetchCoordinatesAndPopulateMap(listings) {
@@ -62,38 +70,70 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         const res = await fetch(`https://www.onemap.gov.sg/api/common/elastic/search?searchVal=${project.name}&returnGeom=Y&getAddrDetails=Y&pageNum=1`);
         const data = await res.json();
         const result = data.results[0];
-        if (!result || data.results.length == 0) continue;
+        if (!result || data.results.length == 0) {
+            console.log("No coordinates found for", project.name);
+            continue;
+        }
         const LATITUDE = result.LATITUDE;
         const LONGITUDE = result.LONGITUDE;
 
-        const marker = L.marker([LATITUDE, LONGITUDE], { riseOnHover: true, title: project.name })
+        const marker = L.marker([LATITUDE, LONGITUDE], { riseOnHover: true, title: project.name})
             .addTo(map);
 
+
+        const expectedTOP = project?.details.find(detail => detail.title == "Expected TOP").para || "";
+        const Land_Tenure = project?.details.find(detail => detail.title == "Land Tenure").para || "";
+        const Development_Size = project?.details.find(detail => detail.title == "Development Size").para || "";
+
         const popupContent = `
-            <div class="w-100" id="popup-${i}">
-                <div class="donate-title d-flex">
+            <div class="w-200" id="popup-${i}" style="height: 170px;">
+                <div class="donate-title d-flex" style="height: 110px; padding:5px">
                     <img src="${project.images[0]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
-                    <p class="mt-0" style="cursor:pointer">${project.name}</p>
+                    <div class="px-1">
+                    <p class="mt-0" style="cursor:pointer; font-weight:900; margin-bottom:0px; font-size: 15px;">${project.name}</p>
+                   <p style="margin-top: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${project.details[0].para}</p>
+                   <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">TOP: ${expectedTOP}</p>
+                   <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Land_Tenure}</p>
+                   <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Development_Size}</p>
+                </div>
+                </div>
+                <div>
+                    <hr>
                 </div>            
             </div>
         `;
 
-        marker.bindPopup(popupContent, { minWidth: 250, maxWidth: 300, padding: 0, className: "marker-popup" });
+        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup" });
+        markerArray.push(marker);
 
-        marker.on('popupopen', function (e) {
-            const popupPara = e.popup._container.querySelector("p");
-            popupPara.addEventListener('click', function (event) {
-                const name = project.name;
-                const desc = project.description;
-                const region = project.geographical_region;
-                const Galleryimages = project.images;
-                const sitePlan = project.siteplan;
-                const details = project.details;
-                const locationMap = project.location_map;
-                const unit_mix = project.unit_mix;
-                const balance_units = project.balance_units;
-                addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units);
-            });
+        marker.on('mouseover', function (e) {
+            marker.openPopup();
+        });
+
+        // Hide popup when mouse leaves
+        marker.on('mouseout', function (e) {
+            marker.closePopup();
+            if (selectedMarker){
+                selectedMarker.openPopup();
+            }
+        });
+
+
+        marker.on('click', function (e) {
+            changeSelectedMarkerLogo(marker);
+            marker.openPopup();
+            createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 2500);
+            const name = project.name;
+            const desc = project.description;
+            const region = project.geographical_region;
+            const Galleryimages = project.images;
+            const sitePlan = project.siteplan;
+            const details = project.details;
+            const locationMap = project.location_map;
+            const unit_mix = project.unit_mix;
+            const balance_units = project.balance_units;
+            addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units);
+                
         });
     }
 }
@@ -521,11 +561,23 @@ function populateAllListingsInner(filterListing) {
 
 function openSingleListing(btn) {
     const name = btn.innerText;
+    const marker = markerArray.find(marker => marker.options.title == name);
+    
+    if (marker) {
+        changeSelectedMarkerLogo(marker);
+        marker.openPopup();
+        createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 2500);
+    
+    }
+
+
 
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
 
     const listing = listings.find(listing => listing.name == name);
+
+
     const desc = listing.description;
     const region = listing.geographical_region;
     const Galleryimages = listing.images;
@@ -768,3 +820,119 @@ function processText(text) {
     text = text.toLowerCase();
     return text;
 }
+
+
+
+function createCircleInMap(lat, long, radius) {
+    if (circle) {
+        map.removeLayer(circle);
+    }
+    if (maskLayer) {
+        map.removeLayer(maskLayer);
+    }
+
+    let circleCenter = [lat, long];
+
+    // Create the circle
+    circle = L.circle(circleCenter, {
+        color: '#39548a',
+        fillColor: 'transparent',
+        fillOpacity: 0,
+        radius: radius,
+        weight:2
+    }).addTo(map);
+
+    // Define the outer bounds of the map to cover
+    let bounds = [
+        [90, -180],
+        [90, 180],
+        [-90, 180],
+        [-90, -180]
+    ];
+
+    // Create the hole (circle coordinates)
+    let hole = [];
+    let steps = 64; // Number of points to create a smooth circle
+    for (let i = 0; i < steps; i++) {
+        let angle = (i / steps) * (2 * Math.PI);
+        let dx = radius * Math.cos(angle);
+        let dy = radius * Math.sin(angle);
+        let latLng = L.latLng(lat + (dy / 111320), long + (dx / (111320 * Math.cos(lat * Math.PI / 180))));
+        hole.push([latLng.lat, latLng.lng]);
+    }
+
+    // Create a polygon with the outer bounds and the hole
+    maskLayer = L.polygon([bounds, hole], {
+        color: '#000',
+        fillColor: '#000',
+        fillOpacity: 0.5,
+        stroke: false
+    }).addTo(map);
+
+    map.fitBounds(circle.getBounds());
+}
+
+function refreshMap() {
+    let center = map.getCenter();
+    let zoom = map.getZoom();
+    map.invalidateSize();
+    map.setView(center, zoom);
+}
+
+
+function changeSelectedMarkerLogo(marker){
+      if(selectedMarker){
+          selectedMarker.setIcon(new L.Icon.Default());
+      }
+      selectedMarker = marker;
+      let activeIcon = L.icon({
+        iconUrl: 'public/home.png', // Replace with the path to your active icon
+        iconSize: [41, 47], // size of the icon
+        iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
+        popupAnchor: [1, -34] // point from which the popup should open relative to the iconAnchor
+    });
+    marker.setIcon(activeIcon);
+  }
+  
+
+
+/// ##################################### slider script ###################################
+
+const resizer = document.querySelector('.resizer');
+const leftPane = document.querySelector('.left-pane');
+const rightPane = document.querySelector('.right-pane');
+let startX = 0;
+let startWidthLeft = 0;
+let startWidthRight = 0;
+
+
+resizer.addEventListener('mousedown', function (e) {
+    startX = e.clientX;
+    startWidthLeft = leftPane.getBoundingClientRect().width;
+    startWidthRight = rightPane.getBoundingClientRect().width;
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+});
+
+function onMouseMove(e) {
+    const dx = e.clientX - startX;
+    const newWidthLeft = startWidthLeft + dx;
+    const newWidthRight = startWidthRight - dx;
+    const containerWidth = leftPane.parentNode.getBoundingClientRect().width;
+    
+    const newWidthLeftPercent = (newWidthLeft / containerWidth) * 100;
+    const newWidthRightPercent = (newWidthRight / containerWidth) * 100;
+
+    if (newWidthLeftPercent >= 30 && newWidthLeftPercent <= 70) {
+        leftPane.style.width = `${newWidthLeftPercent}%`;
+        rightPane.style.width = `${newWidthRightPercent}%`;
+        refreshMap();
+    }
+}
+
+function onMouseUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+}
+
+

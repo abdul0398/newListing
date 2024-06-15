@@ -312,6 +312,7 @@
         margin-left: 5px;
       }
     </style>
+    <link rel="stylesheet" href="slider.css">
   </head>
   <body class="position-relative overflow-hidden">
     <div class="darksoul-layout position-absolute d-none">
@@ -610,271 +611,280 @@
     </div>
 
     <div class="d-flex h-100 main-container overflow-auto">
-      <div id="map-container" class="w-50 h-100 d-none d-lg-block d-md-block">
+      
+      <div id="map-container" class="left-pane h-100 d-none d-lg-block d-md-block">
         <div id="mapdiv"></div>
       </div>
-      <div id="all-listings" class="w-50 h-100">
-        <div class="container house-list mb-3 h-100 overflow-auto">
-          <div class="mt-3">
-            <div class="d-flex gap-2">
-              <input
-                class="form-control search"
-                type="search"
-                id="search"
-                oninput="searchListings(this)"
-                placeholder="Search Address"
-                value=""
-              />
+      <div class="resizer"></div>
+      <div class="right-pane">
+        <div id="all-listings" class="w-100 h-100">
+          <div class="container house-list mb-3 h-100 overflow-auto">
+            <div class="mt-3">
+              <div class="d-flex gap-2">
+                <input
+                  class="form-control search"
+                  type="search"
+                  id="search"
+                  oninput="searchListings(this)"
+                  placeholder="Search Address"
+                  value=""
+                />
 
-              <div class="dropdown d-inline">
-                <button
-                  class="filter-button"
-                  type="button"
-                  id="dropdownMenuButton"
-                  onclick="openFilterPopup()"
-                >
-                  <i class="fa-solid fa-filter"></i>
-                </button>
-              </div>
-            </div>
-
-            <div id="starting-page">
-              <div class="title mt-3">
-                <div class="title-left">
-                  <i class="fa-solid fa-location-dot"></i>Near You
-                </div>
-                <div class="title-right">
+                <div class="dropdown d-inline">
                   <button
-                    class="bg-transparent border-0"
-                    onclick="openAllListingsInner()"
+                    class="filter-button"
+                    type="button"
+                    id="dropdownMenuButton"
+                    onclick="openFilterPopup()"
                   >
-                    View All
+                    <i class="fa-solid fa-filter"></i>
                   </button>
                 </div>
               </div>
-              <div class="glide my-3">
-                <div class="glide__track" data-glide-el="track">
-                  <ul class="glide__slides"></ul>
+
+              <div id="starting-page">
+                <div class="title mt-3">
+                  <div class="title-left">
+                    <i class="fa-solid fa-location-dot"></i>Near You
+                  </div>
+                  <div class="title-right">
+                    <button
+                      class="bg-transparent border-0"
+                      onclick="openAllListingsInner()"
+                    >
+                      View All
+                    </button>
+                  </div>
                 </div>
-                <div class="glide__bullets" data-glide-el="controls[nav]"></div>
-              </div>
-              <div class="title">
-                <div class="title-left">Recomended For you</div>
-                <div class="title-right">
-                  <button
-                    class="bg-transparent border-0"
-                    onclick="openAllListingsInner()"
-                  >
-                    View All
-                  </button>
+                <div class="glide my-3">
+                  <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides"></ul>
+                  </div>
+                  <div class="glide__bullets" data-glide-el="controls[nav]"></div>
                 </div>
-              </div>
-              <div class="recommended-slider">
-                <div class="card my-3" style="max-width: 100%">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <img src="" alt="" />
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title mb-3">Lentor Mansion</h5>
-                        <h6 class="card-subtitle mb-4 text-muted">
-                          North Region
-                        </h6>
-                        <div class="card-campaign-desc">
-                          <p class="campaign-icon">
-                            <i class="fa-solid fa-bed"></i>2 Bedroom
-                          </p>
+                <div class="title">
+                  <div class="title-left">Recomended For you</div>
+                  <div class="title-right">
+                    <button
+                      class="bg-transparent border-0"
+                      onclick="openAllListingsInner()"
+                    >
+                      View All
+                    </button>
+                  </div>
+                </div>
+                <div class="recommended-slider">
+                  <div class="card my-3" style="max-width: 100%">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="" alt="" />
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title mb-3">Lentor Mansion</h5>
+                          <h6 class="card-subtitle mb-4 text-muted">
+                            North Region
+                          </h6>
+                          <div class="card-campaign-desc">
+                            <p class="campaign-icon">
+                              <i class="fa-solid fa-bed"></i>2 Bedroom
+                            </p>
 
-                          <p class="campaign-icon">
-                            <i class="fa-solid fa-bed"></i>3 Bedroom
-                          </p>
+                            <p class="campaign-icon">
+                              <i class="fa-solid fa-bed"></i>3 Bedroom
+                            </p>
 
-                          <p class="campaign-icon">
-                            <i class="fa-solid fa-bed"></i>4 Bedroom
-                          </p>
+                            <p class="campaign-icon">
+                              <i class="fa-solid fa-bed"></i>4 Bedroom
+                            </p>
 
-                          <p class="campaign-icon">
-                            <i class="fa-solid fa-bed"></i>5 Bedroom
-                          </p>
+                            <p class="campaign-icon">
+                              <i class="fa-solid fa-bed"></i>5 Bedroom
+                            </p>
 
-                          <p class="campaign-icon">
-                            <i class="fa-solid fa-bed"></i>Overall
-                          </p>
+                            <p class="campaign-icon">
+                              <i class="fa-solid fa-bed"></i>Overall
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div id="all-listings-inner" class="d-none"></div>
-          </div>
-        </div>
-      </div>
-      <div id="single-listing" class="d-none w-50 h-100">
-        <div class="donate-detail-header">
-          <i
-            class="fa-solid fa-arrow-left fa-xl position-absolute text-white"
-            onclick="showMainPage()"
-            style="top: 25px; left: 20px; cursor: pointer"
-          ></i>
-          <div class="donate-header-image"></div>
-
-          <div class="donate-header-text overflow-auto">
-            <div class="donate-title">
-              <h2 id="projectName">Lentor Mansion</h2>
-              <p><i class="fa-solid fa-star"></i>4.5</p>
-            </div>
-            <div class="donate-detail-text">
-              <p id="projectRegion">North Region</p>
-            </div>
-            <div class="donate-detail-icon my-2"></div>
-            <div class="donate-detail-desc">
-              <h2>Description</h2>
-              <p id="projectDesc"></p>
-            </div>
-
-
-            <!-- Gallery -->
-            <div class="donate-detail-gallery">
-              <h2>Gallery</h2>
-              <div class="gallery-list"></div>
-            </div>
-
-
-            <!-- Site Plan -->
-            <div id="sitePlan" class="mt-5">
-              <h2 class="mb-2">Site Plan</h2>
-              <p>List of Project Facilities</p>
-              <div id="sitePlan-detail">
-              </div>
-              <div id="sideMapImageContainer">
-
-              </div>
-            </div>
-
-
-            <!-- Location Map -->
-            <div id="location-map-container" class="mt-5">
-              <h2 class="mb-2">Location Map</h2>
-              <p>List of Essential Amenities</p>
-              <table class="w-100 border border-1 my-3 ">
-                <thead>
-                  <tr>
-                    <td class="text-center" style="background-color: #ecebeb ">
-                      Category
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      Location
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      District
-                    </td>
-                  </tr>
-                </thead>
-                <tbody id="location-map-tbody">
-                  <tr class="border border-1">
-                    <td class="p-2">Developer</td>
-                    <td id="developer" class="p-2 border border-start">
-                      Lentor Mansion Pte Ltd
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div id="location-map-images"></div>
-            </div>
-
-
-            <!-- Unit Mix -->
-            <div id="unitMix" class="mt-5">
-              <h2 class="mb-2">Unit Mix</h2>
-              <p>Distribution of Total Units</p>
-              <table class="w-100 border border-1 my-3 ">
-                <thead>
-                  <tr>
-                    <td class="text-center" style="background-color: #ecebeb ">
-                      Unit Type
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      Total Units
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      Size(sqft)
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      Unit Mix
-                    </td>
-                  </tr>
-                </thead>
-                <tbody id="unit-mix-tbody">
-                 
-                </tbody>
-              </table>
-              <div id="unitMixImages"></div>
-
-            </div>
-
-
-            <div id="balanceUnits" class="mt-5">
-              <h2 class="mb-2">Balance Units</h2>
-              <p>Pricing of Available Units</p>
-              <table class="w-100 border border-1 my-3 ">
-                <thead>
-                  <tr>
-                    <td class="text-center" style="background-color: #ecebeb ">
-                      Unit Type
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      Available Units
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      Size(sqft)
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      PSF
-                    </td>
-                    <td class="text-center border border-start" style="background-color: #ecebeb">
-                      Price
-                    </td>
-                  </tr>
-                </thead>
-                <tbody id="balance-unit-tbody">
-                 
-                </tbody>
-              </table>
-              <div id="balanceUnitImages"></div>
-            </div>
-
-            <!-- Project Details -->
-            <div class="mt-5" id="projectDetailTable">
-              <table class="w-100 border border-1">
-                <thead>
-                  <tr>
-                    <td
-                      colspan="2"
-                      class="text-center"
-                      style="background-color: #ecebeb"
-                    >
-                      Project Details
-                    </td>
-                  </tr>
-                </thead>
-                <tbody id="projectDetails">
-                  <tr class="border border-1">
-                    <td class="p-2">Developer</td>
-                    <td id="developer" class="p-2 border border-start">
-                      Lentor Mansion Pte Ltd
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div id="all-listings-inner" class="d-none"></div>
             </div>
           </div>
         </div>
+        <div id="single-listing" class="d-none w-100 h-100">
+          <div class="donate-detail-header">
+            <i
+              class="fa-solid fa-arrow-left fa-xl position-absolute text-white"
+              onclick="showMainPage()"
+              style="top: 25px; left: 20px; cursor: pointer"
+            ></i>
+            <div class="donate-header-image"></div>
+
+            <div class="donate-header-text overflow-auto">
+              <div class="donate-title">
+                <h2 id="projectName">Lentor Mansion</h2>
+                <p><i class="fa-solid fa-star"></i>4.5</p>
+              </div>
+              <div class="donate-detail-text">
+                <p id="projectRegion">North Region</p>
+              </div>
+              <div class="donate-detail-icon my-2"></div>
+              <div class="donate-detail-desc">
+                <h2>Description</h2>
+                <p id="projectDesc"></p>
+              </div>
+
+
+              <!-- Gallery -->
+              <div class="donate-detail-gallery">
+                <h2>Gallery</h2>
+                <div class="gallery-list"></div>
+              </div>
+
+
+              <!-- Site Plan -->
+              <div id="sitePlan" class="mt-5">
+                <h2 class="mb-2">Site Plan</h2>
+                <p>List of Project Facilities</p>
+                <div id="sitePlan-detail">
+                </div>
+                <div id="sideMapImageContainer">
+
+                </div>
+              </div>
+
+
+              <!-- Location Map -->
+              <div id="location-map-container" class="mt-5">
+                <h2 class="mb-2">Location Map</h2>
+                <p>List of Essential Amenities</p>
+                <table class="w-100 border border-1 my-3 ">
+                  <thead>
+                    <tr>
+                      <td class="text-center" style="background-color: #ecebeb ">
+                        Category
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        Location
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        District
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="location-map-tbody">
+                    <tr class="border border-1">
+                      <td class="p-2">Developer</td>
+                      <td id="developer" class="p-2 border border-start">
+                        Lentor Mansion Pte Ltd
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div id="location-map-images"></div>
+              </div>
+
+
+              <!-- Unit Mix -->
+              <div id="unitMix" class="mt-5">
+                <h2 class="mb-2">Unit Mix</h2>
+                <p>Distribution of Total Units</p>
+                <table class="w-100 border border-1 my-3 ">
+                  <thead>
+                    <tr>
+                      <td class="text-center" style="background-color: #ecebeb ">
+                        Unit Type
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        Total Units
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        Size(sqft)
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        Unit Mix
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="unit-mix-tbody">
+                    
+                  </tbody>
+                </table>
+                <div id="unitMixImages"></div>
+
+              </div>
+
+
+              <div id="balanceUnits" class="mt-5">
+                <h2 class="mb-2">Balance Units</h2>
+                <p>Pricing of Available Units</p>
+                <table class="w-100 border border-1 my-3 ">
+                  <thead>
+                    <tr>
+                      <td class="text-center" style="background-color: #ecebeb ">
+                        Unit Type
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        Available Units
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        Size(sqft)
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        PSF
+                      </td>
+                      <td class="text-center border border-start" style="background-color: #ecebeb">
+                        Price
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="balance-unit-tbody">
+                    
+                  </tbody>
+                </table>
+                <div id="balanceUnitImages"></div>
+              </div>
+
+              <!-- Project Details -->
+              <div class="mt-5" id="projectDetailTable">
+                <table class="w-100 border border-1">
+                  <thead>
+                    <tr>
+                      <td
+                        colspan="2"
+                        class="text-center"
+                        style="background-color: #ecebeb"
+                      >
+                        Project Details
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="projectDetails">
+                    <tr class="border border-1">
+                      <td class="p-2">Developer</td>
+                      <td id="developer" class="p-2 border border-start">
+                        Lentor Mansion Pte Ltd
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
     <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
     <script src="script.js"></script>
   </body>
-</html>
+
+  </html>
+
+
+
