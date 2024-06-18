@@ -81,9 +81,9 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             .addTo(map);
 
 
-        const expectedTOP = project?.details.find(detail => detail.title == "Expected TOP").para || "";
-        const Land_Tenure = project?.details.find(detail => detail.title == "Land Tenure").para || "";
-        const Development_Size = project?.details.find(detail => detail.title == "Development Size").para || "";
+        const expectedTOP = project?.details.find(detail => detail.title == "Expected TOP")?.para || "";
+        const Land_Tenure = project?.details.find(detail => detail.title == "Land Tenure")?.para || "";
+        const Development_Size = project?.details.find(detail => detail.title == "Development Size")?.para || "";
 
         const popupContent = `
             <div class="w-200" id="popup-${i}" style="height: 170px;">
@@ -107,6 +107,8 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         markerArray.push(marker);
 
         marker.on('mouseover', function (e) {
+            console.log("hh")
+
             marker.openPopup();
         });
 
@@ -133,7 +135,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             const unit_mix = project.unit_mix;
             const balance_units = project.balance_units;
             addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units);
-                
+            
         });
     }
 }
@@ -177,6 +179,8 @@ function carousel() {
 function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units){
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
+    document.getElementsByClassName("right-pane")[0].classList.add("d-none");
+    document.getElementsByClassName("left-pane")[0].classList.remove("d-none");
 
 
     document.getElementById('projectName').innerText = name;
@@ -597,6 +601,8 @@ function mobileLayoutHandler(btn) {
         document.getElementById("all-listings").classList.remove("d-none");
         document.getElementById("single-listing").classList.add("d-none");
         document.getElementById("map-container").classList.add("d-none");
+        document.getElementsByClassName("right-pane")[0].classList.add("d-none");
+        document.getElementsByClassName("left-pane")[0].classList.remove("d-none");
 
     }else{
         setTimeout(() => {
@@ -606,6 +612,8 @@ function mobileLayoutHandler(btn) {
         document.getElementById("map-container").classList.remove("d-none");
         document.getElementById("all-listings").classList.add("d-none");
         document.getElementById("single-listing").classList.add("d-none");
+        document.getElementsByClassName("left-pane")[0].classList.add("d-none");
+        document.getElementsByClassName("right-pane")[0].classList.remove("d-none");
 
     }
 }

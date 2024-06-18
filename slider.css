@@ -23,6 +23,7 @@
         display: none;
     }
     .left-pane{
+        width: 100%;
         min-height: 100%;
     }
     
