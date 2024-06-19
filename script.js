@@ -67,15 +67,8 @@ function openMap(params) {
 async function fetchCoordinatesAndPopulateMap(listings) {
     for (let i = 0; i < listings.length; i++) {
         const project = listings[i];
-        const res = await fetch(`https://www.onemap.gov.sg/api/common/elastic/search?searchVal=${project.name}&returnGeom=Y&getAddrDetails=Y&pageNum=1`);
-        const data = await res.json();
-        const result = data.results[0];
-        if (!result || data.results.length == 0) {
-            console.log("No coordinates found for", project.name);
-            continue;
-        }
-        const LATITUDE = result.LATITUDE;
-        const LONGITUDE = result.LONGITUDE;
+        const LATITUDE = project.latitude;
+        const LONGITUDE = project.longitude;
 
         const marker = L.marker([LATITUDE, LONGITUDE], { riseOnHover: true, title: project.name})
             .addTo(map);
