@@ -21,6 +21,8 @@ let markerArray = [];
 let galleryIntance;
 const searchListings = debounce(searchhandler, 500);
 
+
+
 start();
 
 async function start(){
@@ -48,6 +50,7 @@ async function start(){
     closeLoading();
     await fetchCoordinatesAndPopulateMap(listings);
 }
+
 
 function openMap(params) {
     map = L.map('mapdiv', {
@@ -80,15 +83,15 @@ async function fetchCoordinatesAndPopulateMap(listings) {
 
         const popupContent = `
             <div class="w-200" id="popup-${i}" style="height: 170px;">
-                <div class="donate-title d-flex" style="height: 110px; padding:5px">
+                <div class="donate-title d-flex" style="height: 120px; padding:5px">
                     <img src="${project.images[0]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
                     <div class="px-1">
-                    <p class="mt-0" style="cursor:pointer; font-weight:900; margin-bottom:0px; font-size: 15px;">${project.name}</p>
-                   <p style="margin-top: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${project.details[0].para}</p>
-                   <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">TOP: ${expectedTOP}</p>
-                   <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Land_Tenure}</p>
-                   <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Development_Size}</p>
-                </div>
+                        <p class="mt-0" style="cursor:pointer; font-weight:900; margin-bottom:0px; font-size: 15px;">${project.name}</p>
+                        <p style="margin-top: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${project.details[0].para}</p>
+                        <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px"><span style="color:black">TOP: </span>${expectedTOP}</p>
+                        <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Land_Tenure}</p>
+                        <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Development_Size}</p>
+                    </div>
                 </div>
                 <div>
                     <hr>
@@ -244,14 +247,11 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     for (let i = 0; i < unitMixData?.length || 0; i++) {
         const unit = unitMixData[i];
         unitMixtbody.innerHTML += `
-        <tr class="border border-1">
+        <tr style="font-size:12px; ${i % 2 != 0 ? "background-color: #f9fafc;":""}">
             <td class="p-2">${unitMixData[i].unitType}</td>
-            <td class="p-2 border
-            border-start">${unitMixData[i].totalUnits}</td>
-            <td class="p-2 border
-            border-start">${unitMixData[i].size_sqft}</td>
-            <td class="p-2 border
-            border-start">${unitMixData[i].unitMix}</td>
+            <td class="p-2 text-center">${unitMixData[i].totalUnits}</td>
+            <td class="p-2 text-center">${unitMixData[i].size_sqft}</td>
+            <td class="p-2">${unitMixData[i].unitMix}</td>
         </tr>
         `
     }
@@ -277,16 +277,12 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     for (let i = 0; i < balanceUnitsData.length; i++) {
         const unit = balanceUnitsData[i];
         balanceUnitBody.innerHTML += `
-        <tr class="border border-1">
+        <tr style="font-size:12px; ${i % 2 != 0 ? "background-color: #f9fafc;":""}">
             <td class="p-2">${balanceUnitsData[i].unitType}</td>
-            <td class="p-2 border
-            border-start">${balanceUnitsData[i].availableUnits}</td>
-            <td class="p-2 border
-            border-start">${balanceUnitsData[i].size_sqft}</td>
-            <td class="p-2 border
-            border-start">${balanceUnitsData[i].psf}</td>
-            <td class="p-2 border
-            border-start">${balanceUnitsData[i].price}</td>
+            <td class="p-2 text-center">${balanceUnitsData[i].availableUnits}</td>
+            <td class="p-2">${balanceUnitsData[i].size_sqft}</td>
+            <td class="p-2 text-center" style="font-size:10px">${balanceUnitsData[i].psf}</td>
+            <td class="p-2 text-center" style="font-size:10px">${balanceUnitsData[i].price}</td>
         </tr>
         `
     }
@@ -342,10 +338,10 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     for (let i = 0; i < amenities.length; i++) {
         const element = amenities[i];
         locationMaptbody.innerHTML += `
-        <tr class="border border-1">
+        <tr style="font-size:12px; ${i % 2 != 0 ? "background-color: #f9fafc;":""}">
             <td class="p-2">${element.Category}</td>
-            <td class="p-2 border border-start">${element.Distance}</td>
-            <td class="p-2 border border-start">${element.Location}</td>
+            <td class="p-2">${element.Distance}</td>
+            <td class="p-2">${element.Location}</td>
         </tr>
             `
     }
@@ -935,5 +931,4 @@ function onMouseUp() {
     document.removeEventListener('mousemove', onMouseMove);
     document.removeEventListener('mouseup', onMouseUp);
 }
-
 
