@@ -27,7 +27,7 @@ start();
 
 async function start(){
     openLoading();
-    listings = await fetchDataFromJson();
+    // listings = await fetchDataFromJson();
     const data = await fetchNewListings();
     if(data.length > 0){
         listings = data;
@@ -72,6 +72,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         const project = listings[i];
         const LATITUDE = project.latitude;
         const LONGITUDE = project.longitude;
+        if(!LATITUDE || !LONGITUDE) continue;
 
         const marker = L.marker([LATITUDE, LONGITUDE], { riseOnHover: true, title: project.name})
             .addTo(map);
@@ -84,7 +85,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         const popupContent = `
             <div class="w-200" id="popup-${i}" style="height: 170px;">
                 <div class="donate-title d-flex" style="height: 120px; padding:5px">
-                    <img src="${project.images[0]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
+                    <img src="https://api.jomejourney-portal.com${project.images[0]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
                     <div class="px-1">
                         <p class="mt-0" style="cursor:pointer; font-weight:900; margin-bottom:0px; font-size: 15px;">${project.name}</p>
                         <p style="margin-top: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${project.details[0].para}</p>
@@ -204,39 +205,24 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     for (let i = 0; i < sideMapImages.length; i++) {
         const url = sideMapImages[i];
         sideMapImageContainer.innerHTML += `
-        <a href="${url}" target="_blank">
-        <img src="${url}" class="w-100 mb-3"></img>
+        <a href="https://api.jomejourney-portal.com${url}" target="_blank">
+        <img src="https://api.jomejourney-portal.com${url}" class="w-100 mb-3"></img>
         </a>
         `
     }
     const sitePlanFacilities = sitePlan?.facilities || [];
     
 
-    const sitePlanLeft = document.createElement('div');
-    sitePlanLeft.classList.add('w-50');
-    const sitePlanRight = document.createElement('div');
-    sitePlanRight.classList.add('w-50');
-
     for (let i = 0; i < sitePlanFacilities.length; i++) {
-        if (i % 2 == 0) {
-            sitePlanLeft.innerHTML += `
-            <p style="height:50px" class="d-flex justify-content-center text-center align-items-center p-2 border border-1">${sitePlanFacilities[i]}</p>
-            `
-        }else{
-            sitePlanRight.innerHTML += `
-            <p style="height:50px" class="p-2 border border-1 d-flex justify-content-center text-center align-items-center">${sitePlanFacilities[i]}</p>
-            `
-        }
+        const element = sitePlanFacilities[i];
+        
     }
 
+   
 
-    const siteplansInnercontainer = document.createElement('div');
-    siteplansInnercontainer.classList.add('d-flex');
-    siteplansInnercontainer.classList.add('w-100');
-    siteplansInnercontainer.appendChild(sitePlanLeft);
-    siteplansInnercontainer.appendChild(sitePlanRight);
-    sidePlanDetails.innerHTML = ""; 
-    sidePlanDetails.appendChild(siteplansInnercontainer);
+
+    // sidePlanDetails.innerHTML = ""; 
+    // sidePlanDetails.appendChild();
 
 
     // Unit Mix
@@ -259,8 +245,8 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     for (let i = 0; i < unitMixImagesData.length; i++) {
         const url = unitMixImagesData[i];
         unitMixImages.innerHTML += `
-        <a href="${url}" target="_blank">
-        <img src="${url}" class="w-100 mb-3"></img>
+        <a href="https://api.jomejourney-portal.com${url}" target="_blank">
+        <img src="https://api.jomejourney-portal.com${url}" class="w-100 mb-3"></img>
         </a>
         `
     }
@@ -290,8 +276,8 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     for (let i = 0; i < balanceUnitsImages.length; i++) {
         const url = balanceUnitsImages[i];
         balanceUnitImages.innerHTML += `
-        <a href="${url}" target="_blank">
-        <img src="${url}" class="w-100 mb-3"></img>
+        <a href="https://api.jomejourney-portal.com${url}" target="_blank">
+        <img src="https://api.jomejourney-portal.com${url}" class="w-100 mb-3"></img>
         </a>
         `
     }
@@ -327,8 +313,8 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     for (let i = 0; i < locationMapImages.length; i++) {
         const url = locationMapImages[i];
         locationMapImageContainer.innerHTML += `
-        <a href="${url}" target="_blank">
-        <img src="${url}" class="w-100 mb-3"></img>
+        <a href="https://api.jomejourney-portal.com${url}" target="_blank">
+        <img src="https://api.jomejourney-portal.com${url}" class="w-100 mb-3"></img>
         </a>
         `
     }
@@ -358,12 +344,12 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     for (let i = 0; i < Galleryimages.length; i++) {
         const img = Galleryimages[i];
         galleryDiv.innerHTML += `
-        <a href="${img}">
-        <img src="${img}" alt="${name}">
+        <a href="https://api.jomejourney-portal.com${img}">
+        <img src="https://api.jomejourney-portal.com${img}" alt="${name}">
         </a>
         
         `;
-        mainImages.innerHTML += `<img src="${img}"  class="slideImages h-100 w-100" alt="${name}">`;
+        mainImages.innerHTML += `<img src="https://api.jomejourney-portal.com${img}"  class="slideImages h-100 w-100" alt="${name}">`;
     }
     if(galleryIntance){
         galleryIntance.destroy();
@@ -406,7 +392,7 @@ function populatAllListings(listings){
                                 <figure
                                     class="card-campaign-image"
                                     style="
-                                        background-image: url('${listings[i].images[0]}');
+                                        background-image: url('https://api.jomejourney-portal.com${listings[i].images[0]}');
                                     "
                                 ></figure>
 
@@ -439,7 +425,7 @@ function populatAllListings(listings){
         <div class="card my-3" style="max-width: 100%">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img class="w-100" style="height:200px" src="${listings[i].images[0]}" alt="${listings[i].name}">
+                  <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${listings[i].images[0]}" alt="${listings[i].name}">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -530,7 +516,7 @@ function populateAllListingsInner(filterListing) {
             <div class="card my-3" style="max-width: 100%">
                 <div class="row g-0">
                     <div class="col-md-4">
-                    <img class="w-100" style="height:200px" src="${newListing[i].images[0]}" alt="">
+                    <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${newListing[i].images[0]}" alt="">
                     </div>
                     <div class="col-md-8">
                     <div class="card-body">
