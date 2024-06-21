@@ -225,6 +225,9 @@
         #map-container {
           width: 100% !important;
         }
+        .donate-header-text{
+          padding:20px 5px;
+        } 
       }
       .filter-container {
         max-width: 300px;
@@ -333,11 +336,16 @@
         margin: auto;
         margin-left: 5px;
       }
-      #balanceUnits, #unitMix, #location-map-container{
+      #balanceUnits, #unitMix, #location-map-container, #projectDetailTable, #sitePlan-detail, #dev-info-container, #transaction, #gallery-container, #top-header{
         padding: 15px 15px;
         border-radius: 4px;
       }
-
+      .scroll-btn{
+        background: transparent;
+        border: none;
+        color: #39548a;
+        font-weight: 900;
+      }
     </style>
     <link rel="stylesheet" href="slider.css">
   </head>
@@ -748,36 +756,90 @@
             <div class="donate-header-image"></div>
 
             <div class="donate-header-text overflow-auto">
+
+              <!-- Scroll buttons -->
+
+              <div style="height: 50px; overflow-x: auto;font-size: 12px;">
+                <div style="display: flex; min-width: 550px; justify-content: space-around;">
+                  <button data="projectDetailTable" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Project Details
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  <button data="sitePlan" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-chart-area"></i>
+                    Site Plan
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  
+                  <button data="location-map-container" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-map"></i>
+                    Location Map
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  
+                  <button data="unitMix" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-square-poll-horizontal"></i>
+                    Unit Mix
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  <button data="balanceUnits" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    Balance Units
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  <button data="transaction" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    Transactions
+                  </button>
+                </div>
+              </div>
+
+
+
+              <div class="bg-white my-5" id="top-header">
+
                 <div class="donate-title">
-                  <h2 id="projectName">Lentor Mansion</h2>
+                  <h2 id="projectName"  style="color: black;font-size: 16px;">Lentor Mansion</h2>
                   <p><i class="fa-solid fa-star"></i>4.5</p>
                 </div>
                 <div class="donate-detail-text">
-                  <p id="projectRegion">North Region</p>
+                  <p id="projectRegion"  >North Region</p>
                 </div>
                 <div class="donate-detail-icon my-2"></div>
                 <div class="donate-detail-desc">
-                  <h2>Description</h2>
-                  <p id="projectDesc"></p>
+                  <h2  style="color: black;font-size: 16px;">Description</h2>
+                  <p id="projectDesc" style="font-size: 14px;"></p>
                 </div>
-
+              </div>
+                
 
                 <!-- Gallery -->
                 <div class="donate-detail-gallery">
-                  <h2>Gallery</h2>
-                  <div class="gallery-list"></div>
+                  <div class="bg-white" id="gallery-container">
+                    <h2 style="color: black;font-size: 16px;">Gallery</h2>
+                    <div class="gallery-list"></div>
+                  </div>
+                </div>
+
+                 <!-- Project Details -->
+                 <div class="mt-5 bg-white" id="projectDetailTable" style="overflow-x: auto;">
+                  <h2 style="color: black;font-size: 16px;" class="mb-2">Project Details</h2>
+                  <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;"  id="projectDetailInnerDiv">
+                  </div>
                 </div>
 
 
                 <!-- Site Plan -->
                 <div id="sitePlan" class="mt-5">
-                  <h2 class="mb-2">Site Plan</h2>
-                  <p>List of Project Facilities</p>
-                  <div id="sitePlan-detail">
+                  <div id="sitePlan-detail" class="bg-white" style="overflow: auto;">
+                  <h2 style="color: black;font-size: 16px;" class="mb-2">Site Plan</h2>
+                  <p style="font-size: 12px; color: #6B7380; line-height: 19px;">List of Project Facilities</p>
+                    <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;" id="siteplan-details-inner">
+                    </div>
                   </div>
                 </div>
-                <div id="sideMapImageContainer">
-
+                <div id="sideMapImageContainer" class="mt-5">
                 </div>
 
 
@@ -794,10 +856,10 @@
                         <td class="ps-2">
                           Category
                         </td>
-                        <td class="text-center">
+                        <td class="ps-2">
                           Location
                         </td>
-                        <td class="text-center">
+                        <td class="ps-2">
                           District
                         </td>
                       </tr>
@@ -877,32 +939,60 @@
                 
                 <div id="balanceUnitImages"></div>
 
-                <!-- Project Details -->
-                <div class="mt-5" id="projectDetailTable">
-                  <table class="w-100 border border-1">
-                    <thead>
-                      <tr>
-                        <td
-                          colspan="2"
-                          class="text-center"
-                          style="background-color: #ecebeb"
-                        >
-                          Project Details
-                        </td>
-                      </tr>
-                    </thead>
-                    <tbody id="projectDetails">
-                      <tr class="border border-1">
-                        <td class="p-2">Developer</td>
-                        <td id="developer" class="p-2 border border-start">
-                          Lentor Mansion Pte Ltd
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <!-- Transactions -->
+                <div id="transaction" class="my-5 bg-white">
+                  <h2 style="color: black;
+                  font-size: 16px;" class="mb-2">Sales Transaction</h2>
+                  <div style="overflow-x: auto; max-height: 500px;">
+                    <table class="w-100 my-3 " style="min-width: 700px; ">
+                      <thead style="height: 38px;">
+                        <tr style="background-color: #39548a; font-size: 12px; color: white;">
+                          <td class="ps-2">
+                            Date
+                          </td>
+                          <td class="text-center">
+                            Unit Type
+                          </td>
+                          <td class="text-center">
+                            Size(sqft)
+                          </td>
+                          <td class="text-center">
+                            PSF
+                          </td>
+                          <td class="text-center">
+                            Price
+                          </td>
+                          <td class="text-center">
+                            Block
+                          </td>
+                          <td class="text-center">
+                            Floor
+                          </td>
+                          <td class="text-center">
+                            Stack
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody id="transaction-tbody">
+                        
+                      </tbody>
+                    </table>
+                    
+                  </div>
                 </div>
+               
 
-
+                <div class="bg-white mt-5" id="dev-info-container">
+                  <h2 style="color: black;font-size: 16px;" class="mb-2">Developers Profile</h2>
+                  <div>
+                    <div>
+                      <img id="dev-logo" src="" alt="">
+                    </div>
+                    <div>
+                      <p id="dev-para" style="font-size: 14px;"></p>
+                    </div>
+                  </div>
+                </div>
                 <!-- Bottom sticky card -->
                 <div class="h-200 sticky-bottom-banner">
                   Zero commission fee! Enquire with Direct to developer representatives! <a href=""> Enquire now!</a>

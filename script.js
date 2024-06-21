@@ -81,22 +81,36 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         const expectedTOP = project?.details.find(detail => detail.title == "Expected TOP")?.para || "";
         const Land_Tenure = project?.details.find(detail => detail.title == "Land Tenure")?.para || "";
         const Development_Size = project?.details.find(detail => detail.title == "Development Size")?.para || "";
-
+        const latestTransaction = Array.isArray(project.transactions)? project.transactions[0]: null;
         const popupContent = `
-            <div class="w-200" id="popup-${i}" style="height: 170px;">
+            <div class="w-200" id="popup-${i}" style="height: 180px;">
                 <div class="donate-title d-flex" style="height: 120px; padding:5px">
                     <img src="https://api.jomejourney-portal.com${project.images[0]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
                     <div class="px-1">
                         <p class="mt-0" style="cursor:pointer; font-weight:900; margin-bottom:0px; font-size: 15px;">${project.name}</p>
                         <p style="margin-top: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${project.details[0].para}</p>
-                        <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px"><span style="color:black">TOP: </span>${expectedTOP}</p>
+                       ${ expectedTOP? `<p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px"><span style="color:black">TOP: </span>${expectedTOP}</p>`:"" }
                         <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Land_Tenure}</p>
                         <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Development_Size}</p>
                     </div>
                 </div>
                 <div>
-                    <hr>
-                </div>            
+                    <hr style="margin-bottom:0px" >
+                </div>
+                ${
+                latestTransaction?`
+                <div style="padding:5px">
+                <p style="margin:0px; font-size: 10px; font-weight: bold; color: #6f6f6f;">LATEST TRANSACTION</p>
+                <div style="display: flex;justify-content: space-between;font-size: 11px;margin-top: 3px;font-weight: bold; color:black;">
+                    <div>${latestTransaction.Date}</div>
+                    <div>${latestTransaction.Size} sqft</div>
+                    <div>${latestTransaction.Price}</div>
+                </div>
+
+                </div>     
+                `:""
+                } 
+                   
             </div>
         `;
 
@@ -104,8 +118,6 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         markerArray.push(marker);
 
         marker.on('mouseover', function (e) {
-            console.log("hh")
-
             marker.openPopup();
         });
 
@@ -131,7 +143,9 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             const locationMap = project.location_map;
             const unit_mix = project.unit_mix;
             const balance_units = project.balance_units;
-            addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units);
+            const developer = project.developer;
+            const transactions = project.transactions;
+            addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions);
             
         });
     }
@@ -173,7 +187,7 @@ function carousel() {
     timeoutId = setTimeout(carousel, 4000); // Change image every 2 seconds
 }
 
-function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units){
+function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions){
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
     document.getElementsByClassName("right-pane")[0].classList.add("d-none");
@@ -187,14 +201,19 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     const galleryDiv = document.getElementsByClassName("gallery-list")[0];
     const mainImages = document.getElementsByClassName("donate-header-image")[0];
     const sideMapImageContainer = document.getElementById("sideMapImageContainer");
-    const sidePlanDetails = document.getElementById('sitePlan-detail')
-    const projectDetailtbody = document.getElementById("projectDetails");
+    const sidePlanDetails = document.getElementById('siteplan-details-inner')
+    const projectDetailTable = document.getElementById("projectDetailInnerDiv");
     const locationMapImageContainer = document.getElementById("location-map-images");
     const locationMaptbody = document.getElementById("location-map-tbody");
     const unitMixtbody = document.getElementById("unit-mix-tbody");
     const unitMixImages = document.getElementById("unitMixImages");
     const balanceUnitBody = document.getElementById("balance-unit-tbody");
     const balanceUnitImages = document.getElementById("balanceUnitImages");
+    const dev_logo = document.getElementById("dev-logo");
+    const dev_para = document.getElementById("dev-para");
+    const transactionTbody = document.getElementById("transaction-tbody");
+
+    
 
 
 
@@ -210,19 +229,40 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
         </a>
         `
     }
-    const sitePlanFacilities = sitePlan?.facilities || [];
-    
 
+
+    sidePlanDetails.innerHTML = "";
+    const sitePlanFacilities = sitePlan?.facilities || [];
+    console.log(sitePlan);
+    let sitePlanUl;
     for (let i = 0; i < sitePlanFacilities.length; i++) {
-        const element = sitePlanFacilities[i];
+        // Create a new <ul> element every 4 <li> elements
+        if (i % 4 === 0) {
+            sitePlanUl = document.createElement('ul');
+            sitePlanUl.style.minWidth = "170px";
+            sitePlanUl.style.padding = "0px";
+            sitePlanUl.style.listStyleType = "none";
+            sidePlanDetails.appendChild(sitePlanUl);
+        }
+
+        const detail = sitePlanFacilities[i];
+        
+        // Create an <li> element
+        const listItem = document.createElement('li');
+        listItem.style.margin = "20px 0px";
+
+        // Create and append <p> elements for title and paragraph
+        const titleParagraph = document.createElement('p');
+        titleParagraph.style.margin = "0px";
+        titleParagraph.style.color = "black"
+        titleParagraph.textContent = detail;
+
+        listItem.appendChild(titleParagraph);
+        // Append the <li> to the current <ul>
+        sitePlanUl.appendChild(listItem);
         
     }
 
-   
-
-
-    // sidePlanDetails.innerHTML = ""; 
-    // sidePlanDetails.appendChild();
 
 
     // Unit Mix
@@ -237,7 +277,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
             <td class="p-2">${unitMixData[i].unitType}</td>
             <td class="p-2 text-center">${unitMixData[i].totalUnits}</td>
             <td class="p-2 text-center">${unitMixData[i].size_sqft}</td>
-            <td class="p-2">${unitMixData[i].unitMix}</td>
+            <td class="p-2 text-center">${unitMixData[i].unitMix}</td>
         </tr>
         `
     }
@@ -266,7 +306,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
         <tr style="font-size:12px; ${i % 2 != 0 ? "background-color: #f9fafc;":""}">
             <td class="p-2">${balanceUnitsData[i].unitType}</td>
             <td class="p-2 text-center">${balanceUnitsData[i].availableUnits}</td>
-            <td class="p-2">${balanceUnitsData[i].size_sqft}</td>
+            <td class="p-2 text-center">${balanceUnitsData[i].size_sqft}</td>
             <td class="p-2 text-center" style="font-size:10px">${balanceUnitsData[i].psf}</td>
             <td class="p-2 text-center" style="font-size:10px">${balanceUnitsData[i].price}</td>
         </tr>
@@ -285,21 +325,42 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
 
 
+   // project detail table
+    projectDetailTable.innerHTML = "";
 
-
-
-
-    // Project Detail Table
-    projectDetailtbody.innerHTML = "";
-
+    let ul;
     for (let i = 0; i < details.length; i++) {
+        // Create a new <ul> element every 4 <li> elements
+        if (i % 4 === 0) {
+            ul = document.createElement('ul');
+            ul.style.minWidth = "170px";
+            ul.style.padding = "0px";
+            ul.style.listStyleType = "none";
+            projectDetailTable.appendChild(ul);
+        }
+
         const detail = details[i];
-        projectDetailtbody.innerHTML += `
-        <tr class="border border-1">
-            <td class="p-2">${detail.title}</td>
-            <td class="p-2 border border-start">${detail.para}</td>
-        </tr>
-        `
+        
+        // Create an <li> element
+        const listItem = document.createElement('li');
+        listItem.style.margin = "20px 0px";
+
+        // Create and append <p> elements for title and paragraph
+        const titleParagraph = document.createElement('p');
+        titleParagraph.style.margin = "0px";
+        titleParagraph.style.color = "#919191"
+        titleParagraph.textContent = detail.title;
+
+        const contentParagraph = document.createElement('p');
+        contentParagraph.style.margin = "3px 0px";
+        contentParagraph.textContent = detail.para;
+        contentParagraph.style.color = "#020202"
+
+        listItem.appendChild(titleParagraph);
+        listItem.appendChild(contentParagraph);
+
+        // Append the <li> to the current <ul>
+        ul.appendChild(listItem);
     }
 
 
@@ -332,7 +393,33 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
             `
     }
 
+    // Developer Logo
+    dev_logo.src = `https://api.jomejourney-portal.com${developer.image}`;
+    dev_para.innerText = developer.description;
 
+
+
+    // Transaction
+
+    transactionTbody.innerHTML = "";
+    const validTransactions = transactions || [];
+    console.log(validTransactions)
+    for (let i = 0; i < validTransactions.length; i++) {
+        const transaction = validTransactions[i];
+        transactionTbody.innerHTML += `
+        <tr style="font-size:12px; ${i % 2 != 0 ? "background-color: #f9fafc;":""}">
+            <td class="p-2">${transaction.Date}</td>
+            <td class="p-2 text-center">${transaction.UnitType}</td>
+            <td class="p-2 text-center">${transaction.Size}</td>
+            <td class="p-2 text-center">${transaction.PSF}</td>
+            <td class="p-2 text-center">${transaction.Price}</td>
+            <td class="p-2 text-center">${transaction.Block}</td>
+            <td class="p-2 text-center">${transaction.Floor}</td>
+            <td class="p-2 text-center">${transaction.Stack}</td>
+            
+        </tr>
+        `
+    }
 
 
 
@@ -397,7 +484,7 @@ function populatAllListings(listings){
                                 ></figure>
 
                             <div class="card-campaign-text">
-                                <div class="card-campaign-title"><button class="bg-transparent border-0" onclick="openSingleListing(this)">${listings[i].name}</button> </div>
+                                <div class="card-campaign-title"><button style="padding:0px" class="bg-transparent border-0" onclick="openSingleListing(this)">${listings[i].name}</button> </div>
                                 <div class="card-campaign-details">
                                 <div class="text-left">
                                     <p class="card-campaign__region">
@@ -565,7 +652,9 @@ function openSingleListing(btn) {
     const locationMap = listing.location_map;
     const unit_mix = listing.unit_mix;
     const balance_units = listing.balance_units;
-    addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units);
+    const developer = listing.developer;
+    const transactions = listing.transactions;
+    addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions);
     closeFilterPopup();
 
 }
@@ -918,3 +1007,10 @@ function onMouseUp() {
     document.removeEventListener('mouseup', onMouseUp);
 }
 
+
+
+function handleScroll(btn){
+    const target = btn.getAttribute('data');
+    const element = document.getElementById(target);
+    element.scrollIntoView({behavior: "smooth"});
+}
