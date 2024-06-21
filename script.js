@@ -508,6 +508,9 @@ function populatAllListings(listings){
                     `
         const address = listings[i]?.details[0].para + ', ' + listings[i]?.details[1].para ;
 
+        const totalUnits = listings[i]?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.totalUnits || 0;
+        const availableUnits = listings[i]?.balance_units?.data.find(unit => unit.unitType == "Overall")?.availableUnits || 0;
+        const unitsSold = totalUnits - availableUnits;
         recommendedContainer.innerHTML += `
         <div class="card my-3" style="max-width: 100%">
               <div class="row g-0">
@@ -517,7 +520,7 @@ function populatAllListings(listings){
                 <div class="col-md-8">
                   <div class="card-body">
                     <a class="pe-auto" onClick="">
-                        <h5 class="card-title mb-3" style="color:#4d4d4d"><button class="bg-transparent border-0" onclick="openSingleListing(this)">${listings[i].name}</button></h5>
+                        <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onclick="openSingleListing(this)">${listings[i].name}</button></h5>
                     </a>
                     <h6 class="card-subtitle mb-4 text-muted">
                     ${address} <br>
@@ -525,6 +528,11 @@ function populatAllListings(listings){
                     ${listings[i].geographical_region}
                     </p>
                     </h6>
+                  </div>
+                  <div style="font-size:11px; padding:0px 1rem">
+                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
+                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
+                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
                   </div>
                 </div>
               </div>
@@ -568,36 +576,41 @@ function populateAllListingsInner(filterListing) {
     `;
     for (let i = 0; i < newListing.length; i++) {
         
-        const bedrooms = newListing[i]?.balance_units?.data || [];
-        const bedroomHtml = bedrooms.map(bedroom => {
-            return `
-            <p class="campaign-icon">
+        // const bedrooms = newListing[i]?.balance_units?.data || [];
+        // const bedroomHtml = bedrooms.map(bedroom => {
+        //     return `
+        //     <p class="campaign-icon">
 
-                <i class="fa-solid fa-bed"></i>${bedroom.unitType}
-            </p>
-            `
-        })
-        let defaultBedroomHtml = `
-                <p class="campaign-icon">
-                <i class="fa-solid fa-bed"></i>2 Bedroom
-            </p>
+        //         <i class="fa-solid fa-bed"></i>${bedroom.unitType}
+        //     </p>
+        //     `
+        // })
+        // let defaultBedroomHtml = `
+        //         <p class="campaign-icon">
+        //         <i class="fa-solid fa-bed"></i>2 Bedroom
+        //     </p>
 
-            <p class="campaign-icon">
-                <i class="fa-solid fa-bed"></i>3 Bedroom
-            </p>
+        //     <p class="campaign-icon">
+        //         <i class="fa-solid fa-bed"></i>3 Bedroom
+        //     </p>
 
-            <p class="campaign-icon">
-                <i class="fa-solid fa-bed"></i>4 Bedroom
-            </p>
+        //     <p class="campaign-icon">
+        //         <i class="fa-solid fa-bed"></i>4 Bedroom
+        //     </p>
 
-            <p class="campaign-icon">
-                <i class="fa-solid fa-bed"></i>5 Bedroom
-            </p>
+        //     <p class="campaign-icon">
+        //         <i class="fa-solid fa-bed"></i>5 Bedroom
+        //     </p>
 
-            <p class="campaign-icon">
-                <i class="fa-solid fa-bed"></i>Overall
-            </p>
-        `
+        //     <p class="campaign-icon">
+        //         <i class="fa-solid fa-bed"></i>Overall
+        //     </p>
+        // `
+        const address = newListing[i]?.details[0].para + ', ' + newListing[i]?.details[1].para ;
+
+        const totalUnits = newListing[i]?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.totalUnits || 0;
+        const availableUnits = newListing[i]?.balance_units?.data.find(unit => unit.unitType == "Overall")?.availableUnits || 0;
+        const unitsSold = totalUnits - availableUnits;
 
         container.innerHTML += `
             <div class="card my-3" style="max-width: 100%">
@@ -608,18 +621,23 @@ function populateAllListingsInner(filterListing) {
                     <div class="col-md-8">
                     <div class="card-body">
                         <a class="pe-auto" onClick="">
-                            <h5 class="card-title mb-3" style="color:#4d4d4d"><button class="bg-transparent border-0" onclick="openSingleListing(this)">${newListing[i].name}</button></h5>
+                            <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onclick="openSingleListing(this)">${newListing[i].name}</button></h5>
                         </a>
-                        <h6 class="card-subtitle mb-4 text-muted">
-                        ${newListing[i].geographical_region}
-                        </h6>
-                        <div class="card-campaign-desc">
-                        ${bedrooms.length > 0 ? bedroomHtml.join('') : defaultBedroomHtml}
-                        </div>
-                    </div>
-                    </div>
+                       <h6 class="card-subtitle mb-4 text-muted">
+                    ${address} <br>
+                    <p class='mt-2'>
+                    ${newListing[i].geographical_region}
+                    </p>
+                    </h6>
+                  </div>
+                  <div style="font-size:11px; padding:0px 1rem">
+                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
+                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
+                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
+                  </div>
                 </div>
-                </div>
+              </div>
+            </div>
             `
     }
 
