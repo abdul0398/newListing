@@ -699,17 +699,14 @@ function debounce(func, delay) {
 function searchhandler(input) {
     const value = input.value.trim().toLowerCase();
     if (value == "") {
-        openAllListingsInner();
+        closeDropDown();
         return;
     }
     const filteredListings = listings.filter((listing) => {
         let stringtoSearch = listing.name.toLowerCase();
-        stringtoSearch += listing.geographical_region.toLowerCase();
-        stringtoSearch += listing.description.toLowerCase();
-        stringtoSearch += listing.details.toString().toLowerCase();
         return stringtoSearch.includes(value);
     })
-    openAllListingsInner(filteredListings);
+    openDropDown(filteredListings);
     
 }
 
@@ -1012,4 +1009,37 @@ function handleScroll(btn){
     const target = btn.getAttribute('data');
     const element = document.getElementById(target);
     element.scrollIntoView({behavior: "smooth"});
+}
+
+
+function openDropDown(filteredListings) {
+
+
+
+   const container = document.querySelector(".drop-down-search");
+   container.innerHTML = "";
+   container.classList.remove("d-none");
+    // add image and name to the dropdown
+    for (let i = 0; i < filteredListings.length; i++) {
+        const name = filteredListings[i].name;
+        container.innerHTML += `
+        <div class="d-flex align-items-center p-2" style="cursor:pointer" onclick="openSingleListing(this)">
+            <i class="fa-solid fa-house fa-xl" style="color: #39548a;"></i>
+            <p class="ms-2 my-0" style="color: black;font-size: 14px;">${name}</p>
+        </div>
+        `
+    }
+
+    if (filteredListings.length == 0) {
+        container.innerHTML = `
+        <div class="d-flex align-items-center p-2">
+            <p class="my-0 mx-auto" style="color: black;
+            font-size: 14px;">No results found</p>
+        </div>
+        `
+    }
+}
+
+function closeDropDown() {
+    document.querySelector(".drop-down-search").classList.add("d-none");
 }

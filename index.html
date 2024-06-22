@@ -226,8 +226,12 @@
           width: 100% !important;
         }
         .donate-header-text{
-          padding:20px 5px;
+          padding:20px 5px 100px 5px;
         } 
+        .drop-down-search{
+          width: 88%;
+        }
+       
       }
       .filter-container {
         max-width: 300px;
@@ -246,7 +250,7 @@
       }
 
       .sticky-bottom-banner{
-        background-color: #2392ec;
+        background-color: #39548a;
         height: 40px;
         border-radius: 10px;
         color: white;
@@ -350,6 +354,18 @@
         padding: 15px 0px;
         border-radius: 4px;
         margin-top: 15px;
+      }
+      .drop-down-search{
+        min-width: 92%;
+        position: absolute;
+        height: 350px;
+        border: 1px solid;
+        z-index: 10;
+        top: 43px;
+        border-radius: 5px;
+        background-color: white;
+        overflow: auto;
+        border: 1px solid #d5d5d5;
       }
     </style>
     <link rel="stylesheet" href="slider.css">
@@ -655,9 +671,10 @@
         <div id="all-listings" class="w-100 h-100">
           <div class="container house-list mb-3 h-100 overflow-auto">
             <div class="mt-3">
-              <div class="d-flex gap-2">
+              <div class="d-flex gap-1" style="position: relative;">
                 <input
                   class="form-control search"
+                  style="min-width: 92% !important; width: 92% !important;"
                   type="search"
                   id="search"
                   oninput="searchListings(this)"
@@ -668,12 +685,17 @@
                 <div class="dropdown d-inline">
                   <button
                     class="filter-button"
+                    style="margin: 0px;"
                     type="button"
                     id="dropdownMenuButton"
                     onclick="openFilterPopup()"
                   >
                     <i class="fa-solid fa-filter"></i>
                   </button>
+                </div>
+                
+                <div class="drop-down-search d-none">
+
                 </div>
               </div>
 
@@ -998,10 +1020,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Bottom sticky card -->
-                <div class="h-200 sticky-bottom-banner">
-                  Zero commission fee! Enquire with Direct to developer representatives! <a href=""> Enquire now!</a>
-                </div>
+               
 
 
                 <div id="dev-form" class="bg-white">
@@ -1026,9 +1045,10 @@
                       </p>
                       <p style="margin: 0px;
                       background-color: #ffc72c;
-                      font-size: 12px;
-                      padding: 3px;
-                      border-radius: 4px;">ARRANGE VIEWING</p>
+                      font-size: 11px;
+                      padding: 5px;
+                      border-radius: 4px;
+                      text-align: center;">ARRANGE VIEWING</p>
                     </div>
                     <div style="padding: 0px 10px; display: flex; margin: 0px; justify-content: space-between; margin: 20px 0px;">
                       <div style="margin: 0px;">
@@ -1046,7 +1066,7 @@
                       
                       >WhatsApp</button>
                     </div>
-                    <div style="display: flex;padding: 0px 10px; font-size: 14px; color: black; flex-direction: column;">
+                    <div style="display: flex;padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
                       <label for="checkbox1">
                         <input id="checkbox1" type="checkbox">
                         Get More Information
@@ -1072,14 +1092,14 @@
                       <input style="width: 100%;
                       border-radius: 9px;
                       border: 1px solid #b7b7b7;
-                      padding: 5px 10px;" type="text" placeholder="Phone">
+                      padding: 5px 10px;" type="tel" placeholder="Phone">
                     </div>
 
                     <div style="margin-top: 15px;padding: 0px 10px;">
                       <input style="width: 100%;
                       border-radius: 9px;
                       border: 1px solid #b7b7b7;
-                      padding: 5px 10px;" type="text" placeholder="Email">
+                      padding: 5px 10px;" type="email" placeholder="Email">
                     </div>
 
                     <div style="margin-top: 30px;padding: 0px 10px; display: flex;justify-content: space-around;">
@@ -1106,6 +1126,12 @@
                       </button>
                     </div>
                   </div>
+                </div>
+
+
+                 <!-- Bottom sticky card -->
+                 <div class="h-200 sticky-bottom-banner">
+                  Zero commission fee! Enquire with Direct to developer representatives! <a href=""> Enquire now!</a>
                 </div>
             </div>
           </div>
