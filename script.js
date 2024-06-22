@@ -209,17 +209,17 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     const unitMixImages = document.getElementById("unitMixImages");
     const balanceUnitBody = document.getElementById("balance-unit-tbody");
     const balanceUnitImages = document.getElementById("balanceUnitImages");
-    const dev_logo = document.getElementById("dev-logo");
+    const dev_logo = document.getElementsByClassName("dev-logo");
     const dev_para = document.getElementById("dev-para");
     const transactionTbody = document.getElementById("transaction-tbody");
-    const dev_name_form = document.getElementById("dev-name-form");
+    // const dev_name_form = document.getElementById("dev-name-form");
 
     
 
     // form dev name
 
-    const developerName = details.find(detail => detail.title == "Project Developer")?.para || "";
-    dev_name_form.innerText = developerName;
+    // const developerName = details.find(detail => detail.title == "Project Developer")?.para || "";
+    // dev_name_form.innerText = developerName;
 
 
     sideMapImageContainer.innerHTML = '';
@@ -399,7 +399,9 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     }
 
     // Developer Logo
-    dev_logo.src = `https://api.jomejourney-portal.com${developer.image}`;
+    dev_logo[0].src = `https://api.jomejourney-portal.com${developer.image}`;
+    dev_logo[1].src = `https://api.jomejourney-portal.com${developer.image}`;
+    
     dev_para.innerText = developer.description;
 
 
