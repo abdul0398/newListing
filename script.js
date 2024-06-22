@@ -289,6 +289,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
     for (let i = 0; i < unitMixImagesData.length; i++) {
         const url = unitMixImagesData[i];
+        if(!url) continue;
         unitMixImages.innerHTML += `
         <a href="https://api.jomejourney-portal.com${url}" target="_blank">
         <img src="https://api.jomejourney-portal.com${url}" class="w-100 mb-3"></img>
@@ -539,8 +540,8 @@ function populatAllListings(listings){
                     </p>
                     </h6>
                   </div>
-                  ${nearestMRT?`<p style="padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
-                  <div style="font-size:11px; padding:10px 1rem">
+                  ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
+                  <div style="font-size:11px; padding:10px 1rem;line-height: 30px;">
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
@@ -612,8 +613,8 @@ function populateAllListingsInner(filterListing) {
                     </p>
                     </h6>
                   </div>
-                  ${nearestMRT?`<p style="padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
-                  <div style="font-size:11px; padding:10px 1rem">
+                  ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
+                  <div style="font-size:11px; padding:10px 1rem; line-height: 30px;">
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
@@ -728,13 +729,15 @@ function closeFilterPopup() {
     document.querySelector(".house-list").classList.add("overflow-auto");
 }
 
-function applyFilters() {
+function applyFilterCheckbox() {
     let selectedCheckboxes = extractCheckboxes();
+    console.log(selectedCheckboxes);
     let filteredListings = listings.filter(function(listing) {
         const project_size = listing.project_size;
         const region = listing.geographical_region;
         const unit_category = listing.project_category;
-        const market_segment = listing.details.find(detail => detail.title == "Market Segment").para;
+        const market_segment = listing.details.find(detail => detail.title == "Market Segment")?.para;
+        const expectedTop = listing?.details?.find(detail => detail.title == "Expected TOP")?.para || 'all';
 
         let isMatch = true;
         for (let category in selectedCheckboxes) {
@@ -807,6 +810,20 @@ function applyFilters() {
                         isMatch = false;
                         break;
                     }
+                }else if (category == "expectedTop") {
+                    let isLocalMatch = false;
+                    for(let i = 0; i < selectedCheckboxes[category].length; i++){
+                        let filterTop = selectedCheckboxes[category][i].toLowerCase().trim();
+                        if (expectedTop.includes(filterTop) || expectedTop == 'all') {
+                            isLocalMatch = true;
+                            break;
+                        }
+
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
                 }
 
 
@@ -823,7 +840,7 @@ function applyFilters() {
 }
 
 function extractCheckboxes() {
-    let categories = ['region', 'market_segment', 'unit_category', 'project_size'];
+    let categories = ['region', 'market_segment', 'unit_category', 'project_size', 'expectedTop'];
     let selectedCheckboxes = {};
   
     categories.forEach(function(category) {
@@ -1044,4 +1061,151 @@ function openDropDown(filteredListings) {
 
 function closeDropDown() {
     document.querySelector(".drop-down-search").classList.add("d-none");
+}
+
+
+
+function extractSelectValues() {
+    let selectedFilters = {
+        project_size: [],
+        region: [],
+        unit_category: [],
+        market_segment: [],
+        TOP: []
+    };
+
+    document.querySelectorAll("select[name='project_size'] option:checked").forEach(option => {
+        selectedFilters.project_size.push(option.value);
+    });
+    document.querySelectorAll("select[name='region'] option:checked").forEach(option => {
+        selectedFilters.region.push(option.value);
+    });
+    document.querySelectorAll("select[name='unit_category'] option:checked").forEach(option => {
+        selectedFilters.unit_category.push(option.value);
+    });
+    document.querySelectorAll("select[name='market_segment'] option:checked").forEach(option => {
+        selectedFilters.market_segment.push(option.value);
+    });
+    document.querySelectorAll("select[name='top'] option:checked").forEach(option => {
+        selectedFilters.TOP.push(option.value);
+    });
+
+    return selectedFilters;
+}
+
+
+function applyFilterSelect() {
+    let selectedFilters = extractSelectValues();
+    let filteredListings = listings.filter(function(listing) {
+        const project_size = listing.project_size;
+        const region = listing.geographical_region;
+        const unit_category = listing.project_category;
+        const market_segment = listing.details.find(detail => detail.title == "Market Segment").para;
+        const TOP = listing?.details?.find(detail => detail.title == "Expected TOP")?.para || "all"
+        console.log(TOP);
+        console.log(selectedFilters);
+
+        let isMatch = true;
+        for (let category in selectedFilters) {
+            if (selectedFilters[category].length > 0  && !selectedFilters[category].includes("all")) {
+                if (category === "project_size") {
+                    let sizeMatched = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        let size = selectedFilters[category][i];
+                        if (size === "1000+") {
+                            if (project_size >= 1000) {
+                                sizeMatched = true;
+                                break;
+                            }
+                        } else {
+                            let range = size.split('-');
+                            let min = parseInt(range[0]);
+                            let max = parseInt(range[1]);
+                            if (project_size >= min && project_size <= max) {
+                                sizeMatched = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!sizeMatched) {
+                        isMatch = false;
+                        break;
+                    }
+                } else if (category === "region") {
+                    let isLocalMatch = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        let filterRegions = selectedFilters[category][i].toLowerCase().trim();
+                        if (region.toLowerCase().trim().includes(filterRegions)) {
+                            isLocalMatch = true;
+                            break;
+                        }
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
+                } else if (category === "unit_category") {
+                    let isLocalMatch = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        let filterUnitCategory = selectedFilters[category][i].toLowerCase().trim();
+                        if (unit_category.toLowerCase().trim().includes(filterUnitCategory)) {
+                            isLocalMatch = true;
+                            break;
+                        }
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
+                } else if (category === "market_segment") {
+                    let isLocalMatch = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        let filterSegment = selectedFilters[category][i].toLowerCase().trim();
+                        if (market_segment.toLowerCase().trim().includes(filterSegment)) {
+                            isLocalMatch = true;
+                            break;
+                        }
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
+                }else if(category === "TOP"){
+                    let isLocalMatch = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        let filterTOP = selectedFilters[category][i].toLowerCase().trim();
+                        if (TOP.includes(filterTOP) || TOP == "all") {
+                            isLocalMatch = true;
+                            break;
+                        }
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return isMatch;
+    });
+    // remove all markers from the map
+
+    markerArray.forEach(marker => {
+        marker.remove();
+    })
+
+    const filteredMarkers = markerArray.filter(marker => {
+        const name = marker.options.title;
+        const project = filteredListings.find(listing => listing.name == name);
+        return project;
+    })
+
+    filteredMarkers.forEach(marker => {
+        marker.addTo(map);
+    })
+
+    openAllListingsInner(filteredListings);
+    // document.getElementById("map-container").classList.add("d-none");
+    document.getElementById("single-listing").classList.add("d-none");
+    // closeFilterPopup();
 }

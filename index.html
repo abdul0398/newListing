@@ -166,6 +166,7 @@
             }
           }
         }
+      
       }
 
       .donate-header-text .donate-detail-icon {
@@ -231,6 +232,17 @@
         .drop-down-search{
           width: 88%;
         }
+        #search{
+          width: 90% !important;
+          max-width: 90% !important;
+          min-width: 90% !important;
+        }
+        .drop-down-search{
+          width: 90% !important;
+          max-width: 90% !important;
+          min-width: 90% !important;
+        }
+        
        
       }
       .filter-container {
@@ -357,7 +369,8 @@
         margin-top: 15px;
       }
       .drop-down-search{
-        min-width: 92%;
+        width: 100%;
+        min-width: 100%;
         position: absolute;
         height: 350px;
         border: 1px solid;
@@ -367,6 +380,13 @@
         background-color: white;
         overflow: auto;
         border: 1px solid #d5d5d5;
+      }
+      #search{
+        width: 100%;
+        min-width: 100%;
+      }
+      .filter-select-div{
+        width: 20%;
       }
     </style>
     <link rel="stylesheet" href="slider.css">
@@ -624,11 +644,89 @@
               </div>
             </div>
           </div>
+          <div class="filter__item mt-4">
+            <p class="mb-1"><strong>Expected TOP</strong></p>
+            <div class="filter__item__body">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="expectedTop"
+                  id="expectedTop_1"
+                  value="2024"
+                />
+                <label class="form-check-label" for="expectedTop_1"
+                  >2024</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="expectedTop"
+                  id="expectedTop_2"
+                  value="2025"
+                />
+                <label class="form-check-label" for="expectedTop_2"
+                  >2025</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="expectedTop"
+                  id="expectedTop_3"
+                  value="2026"
+                />
+                <label class="form-check-label" for="expectedTop_3"
+                  >2026</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="expectedTop"
+                  id="expectedTop_4"
+                  value="2027"
+                />
+                <label class="form-check-label" for="expectedTop_4"
+                >2027 </label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="expectedTop"
+                  id="expectedTop_5"
+                  value="2028"
+                />
+                <label class="form-check-label" for="expectedTop_5"
+                >2028</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="expectedTop"
+                  id="expectedTop_6"
+                  value="2029"
+                />
+                <label class="form-check-label" for="expectedTop_5"
+                >2029</label
+                >
+              </div>
+            </div>
+          </div>
         </div>
+        
       </div>
 
       <div class="filter__footer p-3">
-        <button class="btn btn-success w-100" onclick="applyFilters()">
+        <button class="btn btn-success w-100" onclick="applyFilterCheckbox()">
           Apply
         </button>
       </div>
@@ -667,23 +765,25 @@
       </div>
     </div>
 
+   
+    
     <div class="d-flex h-100 main-container overflow-auto">
+
       <div class="left-pane ">
         <div id="all-listings" class="w-100 h-100">
           <div class="container house-list mb-3 h-100 overflow-auto">
             <div class="mt-3">
               <div class="d-flex gap-1" style="position: relative;">
                 <input
-                  class="form-control search"
-                  style="min-width: 92% !important; width: 92% !important;"
+                  class="form-control search "
                   type="search"
                   id="search"
                   oninput="searchListings(this)"
                   placeholder="Search Address"
                   value=""
                 />
-
-                <div class="dropdown d-inline">
+          
+                <div class="dropdown d-flex d-lg-none" style="justify-content: center; align-items: center;">
                   <button
                     class="filter-button"
                     style="margin: 0px;"
@@ -695,8 +795,8 @@
                   </button>
                 </div>
                 
-                <div class="drop-down-search d-none">
-
+                 <div class="drop-down-search d-none">
+                   
                 </div>
               </div>
 
@@ -788,7 +888,7 @@
               <!-- Scroll buttons -->
 
               <div style="height: 50px; overflow-x: auto;font-size: 12px;">
-                <div style="display: flex; min-width: 550px; justify-content: space-around;">
+                <div style="display: flex; min-width: 620px; justify-content: space-around;">
                   <button data="projectDetailTable" class="scroll-btn" onclick="handleScroll(this)">
                     <i class="fa-solid fa-circle-info"></i>
                     Project Details
@@ -825,7 +925,7 @@
 
 
 
-              <div class="bg-white my-5" id="top-header">
+              <div class="bg-white mb-5 mt-2" id="top-header">
 
                 <div class="donate-title">
                   <h2 id="projectName"  style="color: black;font-size: 16px;">Lentor Mansion</h2>
@@ -1069,7 +1169,7 @@
                       
                       >WhatsApp</button>
                     </div>
-                    <div style="display: flex;padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
+                    <div style="display: flex; gap:10px; padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
                       <label for="checkbox1">
                         <input id="checkbox1" type="checkbox">
                         Get More Information
@@ -1142,6 +1242,63 @@
       </div>
       <div class="resizer"></div>
       <div id="map-container" class="right-pane h-100 d-none d-lg-block d-md-block">
+        <div id="filters-container" class="d-lg-flex d-none">
+          <div class="filter-select-div">
+            <select class="form-select" name="region" onchange="applyFilterSelect()" >
+              <option disabled selected value="all">Region</option>
+              <option value="all">All</option>
+              <option value="North Region">North Region</option>
+              <option value="East Region">East Region</option>
+              <option value="West Region">West Region</option>
+              <option value="North East Region">North East Region</option>
+              <option value="Downtown Core">Downtown Core</option>
+              <option value="Prime District">Prime District</option>
+              <option value="City Fringe">City Fringe</option>
+            </select>
+          </div>
+          <div class="filter-select-div">
+            <select class="form-select" name="market_segment"  onchange="applyFilterSelect()">
+              <option disabled selected value="all">Market Segment</option>
+              <option value="all">All</option>
+              <option value="Core Central Region">CCR - Core Central Region</option>
+              <option value="Rest of Central Region">RCR - Rest of Central Region</option>
+              <option value="Outside Central Region">OCR - Outside Central Region</option>
+            </select>
+          </div>
+          <div class="filter-select-div">
+            <select class="form-select" name="unit_category"  onchange="applyFilterSelect()">
+              <option disabled selected value="all">Unit Category</option>
+              <option value="all">All</option>
+              <option value="Private Condo">Private Condo</option>
+              <option value="Executive Condo">Executive Condo</option>
+              <option value="Landed House">Landed House</option>
+            </select>
+          </div>
+          <div class="filter-select-div">
+            <select class="form-select" name="project_size"  onchange="applyFilterSelect()">
+              <option disabled selected value="all">Project size</option>
+              <option value="all">All</option>
+              <option value="0-99">0 - 99 Units</option>
+              <option value="100-399">100 - 399 Units</option>
+              <option value="400-699">400 - 699 Units</option>
+              <option value="700-999">700 - 999 Units</option>
+              <option value="1000+">1000 & Above Units</option>
+            </select>
+          </div>
+
+          <div class="filter-select-div">
+            <select class="form-select" name="top" onchange="applyFilterSelect()">
+              <option disabled selected value="all">Expected TOP</option>
+              <option value="all">All</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+            </select>
+          </div>
+      </div>
         <div id="mapdiv"></div>
       </div>
      
