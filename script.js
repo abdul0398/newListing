@@ -85,11 +85,11 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         const popupContent = `
             <div class="w-200" id="popup-${i}" style="height: 180px;">
                 <div class="donate-title d-flex" style="height: 120px; padding:5px">
-                    <img src="https://api.jomejourney-portal.com${project.images[0]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
+                    <img src="https://api.jomejourney-portal.com${project.images[0]? project.images[0]:project.images[1]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
                     <div class="px-1">
                         <p class="mt-0" style="cursor:pointer; font-weight:900; margin-bottom:0px; font-size: 15px;">${project.name}</p>
                         <p style="margin-top: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${project.details[0].para}</p>
-                       ${ expectedTOP? `<p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px"><span style="color:black">TOP: </span>${expectedTOP}</p>`:"" }
+                       ${expectedTOP? `<p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px"><span style="color:black">TOP: </span>${expectedTOP}</p>`:"" }
                         <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Land_Tenure}</p>
                         <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Development_Size}</p>
                     </div>
@@ -184,7 +184,7 @@ function carousel() {
     x[myIndex-1].style.display = "block";  
     clearTimeout(timeoutId);
     
-    timeoutId = setTimeout(carousel, 4000); // Change image every 2 seconds
+    timeoutId = setTimeout(carousel, 4000); // Change image every 4 seconds
 }
 
 function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions){
@@ -212,9 +212,14 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     const dev_logo = document.getElementById("dev-logo");
     const dev_para = document.getElementById("dev-para");
     const transactionTbody = document.getElementById("transaction-tbody");
+    const dev_name_form = document.getElementById("dev-name-form");
 
     
 
+    // form dev name
+
+    const developerName = details.find(detail => detail.title == "Project Developer")?.para || "";
+    dev_name_form.innerText = developerName;
 
 
     sideMapImageContainer.innerHTML = '';
@@ -430,6 +435,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     mainImages.innerHTML = "";
     for (let i = 0; i < Galleryimages.length; i++) {
         const img = Galleryimages[i];
+        if(!img) continue;
         galleryDiv.innerHTML += `
         <a href="https://api.jomejourney-portal.com${img}">
         <img src="https://api.jomejourney-portal.com${img}" alt="${name}">
@@ -479,7 +485,7 @@ function populatAllListings(listings){
                                 <figure
                                     class="card-campaign-image"
                                     style="
-                                        background-image: url('https://api.jomejourney-portal.com${listings[i].images[0]}');
+                                        background-image: url('https://api.jomejourney-portal.com${listings[i].images[0]? listings[i].images[0] : listings[i].images[1]}');
                                     "
                                 ></figure>
 
@@ -511,28 +517,31 @@ function populatAllListings(listings){
         const totalUnits = listings[i]?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.totalUnits || 0;
         const availableUnits = listings[i]?.balance_units?.data.find(unit => unit.unitType == "Overall")?.availableUnits || 0;
         const unitsSold = totalUnits - availableUnits;
+        const nearestMRT = listings[i]?.location_map?.amenities?.find(detail => detail.Category == "MRT Stations") || null;
+
         recommendedContainer.innerHTML += `
         <div class="card my-3" style="max-width: 100%">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${listings[i].images[0]}" alt="${listings[i].name}">
+                  <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${listings[i].images[0]? listings[i].images[0] : listings[i].images[1]}" alt="${listings[i].name}">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
                     <a class="pe-auto" onClick="">
                         <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onclick="openSingleListing(this)">${listings[i].name}</button></h5>
                     </a>
-                    <h6 class="card-subtitle mb-4 text-muted">
+                    <h6 class="card-subtitle mb-1 text-muted">
                     ${address} <br>
-                    <p class='mt-2'>
+                    <p class='mt-2 mb-0'>
                     ${listings[i].geographical_region}
                     </p>
                     </h6>
                   </div>
-                  <div style="font-size:11px; padding:0px 1rem">
-                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
-                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
-                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
+                  ${nearestMRT?`<p style="padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
+                  <div style="font-size:11px; padding:10px 1rem">
+                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
+                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
+                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
                   </div>
                 </div>
               </div>
@@ -576,64 +585,36 @@ function populateAllListingsInner(filterListing) {
     `;
     for (let i = 0; i < newListing.length; i++) {
         
-        // const bedrooms = newListing[i]?.balance_units?.data || [];
-        // const bedroomHtml = bedrooms.map(bedroom => {
-        //     return `
-        //     <p class="campaign-icon">
-
-        //         <i class="fa-solid fa-bed"></i>${bedroom.unitType}
-        //     </p>
-        //     `
-        // })
-        // let defaultBedroomHtml = `
-        //         <p class="campaign-icon">
-        //         <i class="fa-solid fa-bed"></i>2 Bedroom
-        //     </p>
-
-        //     <p class="campaign-icon">
-        //         <i class="fa-solid fa-bed"></i>3 Bedroom
-        //     </p>
-
-        //     <p class="campaign-icon">
-        //         <i class="fa-solid fa-bed"></i>4 Bedroom
-        //     </p>
-
-        //     <p class="campaign-icon">
-        //         <i class="fa-solid fa-bed"></i>5 Bedroom
-        //     </p>
-
-        //     <p class="campaign-icon">
-        //         <i class="fa-solid fa-bed"></i>Overall
-        //     </p>
-        // `
         const address = newListing[i]?.details[0].para + ', ' + newListing[i]?.details[1].para ;
 
         const totalUnits = newListing[i]?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.totalUnits || 0;
         const availableUnits = newListing[i]?.balance_units?.data.find(unit => unit.unitType == "Overall")?.availableUnits || 0;
         const unitsSold = totalUnits - availableUnits;
+        const nearestMRT = newListing[i]?.location_map?.amenities?.find(detail => detail.Category == "MRT Stations") || null;
 
         container.innerHTML += `
             <div class="card my-3" style="max-width: 100%">
                 <div class="row g-0">
                     <div class="col-md-4">
-                    <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${newListing[i].images[0]}" alt="">
+                        <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${newListing[i].images[0]? newListing[i].images[0] : newListing[i].images[1]}">
                     </div>
                     <div class="col-md-8">
                     <div class="card-body">
                         <a class="pe-auto" onClick="">
                             <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onclick="openSingleListing(this)">${newListing[i].name}</button></h5>
                         </a>
-                       <h6 class="card-subtitle mb-4 text-muted">
+                       <h6 class="card-subtitle mb-1 text-muted">
                     ${address} <br>
-                    <p class='mt-2'>
+                    <p class='mt-2 mb-0'>
                     ${newListing[i].geographical_region}
                     </p>
                     </h6>
                   </div>
-                  <div style="font-size:11px; padding:0px 1rem">
-                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
-                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
-                <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
+                  ${nearestMRT?`<p style="padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
+                  <div style="font-size:11px; padding:10px 1rem">
+                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
+                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
+                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
                   </div>
                 </div>
               </div>
