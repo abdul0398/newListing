@@ -238,7 +238,6 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
     sidePlanDetails.innerHTML = "";
     const sitePlanFacilities = sitePlan?.facilities || [];
-    console.log(sitePlan);
     let sitePlanUl;
     for (let i = 0; i < sitePlanFacilities.length; i++) {
         // Create a new <ul> element every 4 <li> elements
@@ -411,7 +410,6 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
     transactionTbody.innerHTML = "";
     const validTransactions = transactions || [];
-    console.log(validTransactions)
     for (let i = 0; i < validTransactions.length; i++) {
         const transaction = validTransactions[i];
         transactionTbody.innerHTML += `
@@ -674,13 +672,13 @@ function mobileLayoutHandler(btn) {
         setTimeout(() => {
             map.invalidateSize()
           }, 0)
-        
-        document.getElementById("map-container").classList.remove("d-none");
-        document.getElementById("all-listings").classList.add("d-none");
-        document.getElementById("single-listing").classList.add("d-none");
-        document.getElementsByClassName("left-pane")[0].classList.add("d-none");
-        document.getElementsByClassName("right-pane")[0].classList.remove("d-none");
-
+          
+          document.getElementById("map-container").classList.remove("d-none");
+          document.getElementById("all-listings").classList.add("d-none");
+          document.getElementById("single-listing").classList.add("d-none");
+          document.getElementsByClassName("left-pane")[0].classList.add("d-none");
+          document.getElementsByClassName("right-pane")[0].classList.remove("d-none");
+          reopenSelectedMarkerPopup();
     }
 }
 
@@ -731,7 +729,6 @@ function closeFilterPopup() {
 
 function applyFilterCheckbox() {
     let selectedCheckboxes = extractCheckboxes();
-    console.log(selectedCheckboxes);
     let filteredListings = listings.filter(function(listing) {
         const project_size = listing.project_size;
         const region = listing.geographical_region;
@@ -886,10 +883,8 @@ function closeLoading(){
 function selectProjectBasedOnParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const projectName = urlParams.get('project');
-    console.log(projectName);
     if (projectName) {
         const project = listings.find(listing => processText(listing.name) == processText(projectName));
-        console.log(project);
         if (project) {
             const btn = document.createElement('button');
             btn.innerText = project.name;
@@ -1102,8 +1097,6 @@ function applyFilterSelect() {
         const unit_category = listing.project_category;
         const market_segment = listing.details.find(detail => detail.title == "Market Segment").para;
         const TOP = listing?.details?.find(detail => detail.title == "Expected TOP")?.para || "all"
-        console.log(TOP);
-        console.log(selectedFilters);
 
         let isMatch = true;
         for (let category in selectedFilters) {
@@ -1208,4 +1201,10 @@ function applyFilterSelect() {
     // document.getElementById("map-container").classList.add("d-none");
     document.getElementById("single-listing").classList.add("d-none");
     // closeFilterPopup();
+}
+
+function reopenSelectedMarkerPopup() {
+    if (selectedMarker) {
+        selectedMarker.openPopup();
+    }
 }
