@@ -519,11 +519,22 @@ function populatAllListings(listings){
         const availableUnits = listings[i]?.balance_units?.data.find(unit => unit.unitType == "Overall")?.availableUnits || 0;
         const unitsSold = totalUnits - availableUnits;
         const nearestMRT = listings[i]?.location_map?.amenities?.find(detail => detail.Category == "MRT Stations") || null;
-
+        const dev_type = listings[i].dev_type;
         recommendedContainer.innerHTML += `
         <div class="card my-3" style="max-width: 100%">
               <div class="row g-0">
-                <div class="col-md-4">
+                <div class="col-md-4" style="position:relative">
+                    ${dev_type?`<p style="
+                    position: absolute;
+                    background-color: #39548a;
+                    color: white;
+                    font-size: 10px;
+                    padding: 2px 5px;
+                    top: 10px;
+                    left: 10px;
+                    border-radius: 3px;
+                    font-weight: bold;
+                    ">${dev_type}</p>`:""}
                   <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${listings[i].images[0]? listings[i].images[0] : listings[i].images[1]}" alt="${listings[i].name}">
                 </div>
                 <div class="col-md-8">
@@ -592,11 +603,22 @@ function populateAllListingsInner(filterListing) {
         const availableUnits = newListing[i]?.balance_units?.data.find(unit => unit.unitType == "Overall")?.availableUnits || 0;
         const unitsSold = totalUnits - availableUnits;
         const nearestMRT = newListing[i]?.location_map?.amenities?.find(detail => detail.Category == "MRT Stations") || null;
-
+        const dev_type = newListing[i].dev_type;
         container.innerHTML += `
             <div class="card my-3" style="max-width: 100%">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="position:relative">
+                    ${dev_type?`<p style="
+                    position: absolute;
+                    background-color: #39548a;
+                    color: white;
+                    font-size: 10px;
+                    padding: 2px 5px;
+                    top: 10px;
+                    left: 10px;
+                    border-radius: 3px;
+                    font-weight: bold;
+                    ">${dev_type}</p>`:""}
                         <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${newListing[i].images[0]? newListing[i].images[0] : newListing[i].images[1]}">
                     </div>
                     <div class="col-md-8">
@@ -1207,4 +1229,21 @@ function reopenSelectedMarkerPopup() {
     if (selectedMarker) {
         selectedMarker.openPopup();
     }
+}
+
+
+
+function getToast(){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      return Toast;
 }
