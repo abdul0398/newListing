@@ -21,6 +21,8 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="select2.css" />
+
     <script
       src="https://kit.fontawesome.com/658a2960da.js"
       crossorigin="anonymous"
@@ -49,8 +51,10 @@
       integrity="sha512-VBbe8aA3uiK90EUKJnZ4iEs0lKXRhzaAXL8CIHWYReUwULzxkOSxlNixn41OLdX0R1KNP23/s76YPyeRhE6P+Q=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      ></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <style>
       body {
@@ -388,8 +392,11 @@
       }
       .filter-select-div{
         width: 20%;
+        height: 50px;
+        border-bottom: 1px solid black;
       }
     </style>
+    
     <link rel="stylesheet" href="slider.css">
   </head>
   <body class="position-relative overflow-hidden">
@@ -1245,8 +1252,8 @@
       <div id="map-container" class="right-pane h-100 d-none d-lg-block d-md-block">
         <div id="filters-container" class="d-lg-flex d-none">
           <div class="filter-select-div">
-            <select class="form-select" name="region" onchange="applyFilterSelect()" >
-              <option disabled selected value="all">Region</option>
+            <select class="form-select select-filter1" name="region" onchange="applyFilterSelect()" >
+              <option disabled selected>Region</option>
               <option value="all">All</option>
               <option value="North Region">North Region</option>
               <option value="East Region">East Region</option>
@@ -1258,8 +1265,8 @@
             </select>
           </div>
           <div class="filter-select-div">
-            <select class="form-select" name="market_segment"  onchange="applyFilterSelect()">
-              <option disabled selected value="all">Market Segment</option>
+            <select class="form-select select-filter2" name="market_segment"  onchange="applyFilterSelect()">
+              <option disabled selected>Market Segment</option>
               <option value="all">All</option>
               <option value="Core Central Region">CCR - Core Central Region</option>
               <option value="Rest of Central Region">RCR - Rest of Central Region</option>
@@ -1267,8 +1274,8 @@
             </select>
           </div>
           <div class="filter-select-div">
-            <select class="form-select" name="unit_category"  onchange="applyFilterSelect()">
-              <option disabled selected value="all">Unit Category</option>
+            <select class="form-select select-filter3" name="unit_category"  onchange="applyFilterSelect()">
+              <option disabled selected >Unit Category</option>
               <option value="all">All</option>
               <option value="Private Condo">Private Condo</option>
               <option value="Executive Condo">Executive Condo</option>
@@ -1276,8 +1283,8 @@
             </select>
           </div>
           <div class="filter-select-div">
-            <select class="form-select" name="project_size"  onchange="applyFilterSelect()">
-              <option disabled selected value="all">Project size</option>
+            <select class="form-select select-filter4" name="project_size"  onchange="applyFilterSelect()">
+              <option disabled selected>Project Size</option>
               <option value="all">All</option>
               <option value="0-99">0 - 99 Units</option>
               <option value="100-399">100 - 399 Units</option>
@@ -1288,8 +1295,8 @@
           </div>
 
           <div class="filter-select-div">
-            <select class="form-select" name="top" onchange="applyFilterSelect()">
-              <option disabled selected value="all">Expected TOP</option>
+            <select class="form-select select-filter5" name="top" onchange="applyFilterSelect()">
+              <option disabled selected>Expected TOP</option>
               <option value="all">All</option>
               <option value="2024">2024</option>
               <option value="2025">2025</option>
@@ -1307,6 +1314,7 @@
     </div>
     <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
     <script src="script.js"></script>
+    <script src="select2.js"></script>
   </body>
 
   </html>

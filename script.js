@@ -1113,6 +1113,7 @@ function extractSelectValues() {
 
 function applyFilterSelect() {
     let selectedFilters = extractSelectValues();
+    const defaultValues = ['Region', 'Project Size', 'Unit Category', 'Market Segment', 'Expected TOP'];
     let filteredListings = listings.filter(function(listing) {
         const project_size = listing.project_size;
         const region = listing.geographical_region;
@@ -1122,7 +1123,7 @@ function applyFilterSelect() {
 
         let isMatch = true;
         for (let category in selectedFilters) {
-            if (selectedFilters[category].length > 0  && !selectedFilters[category].includes("all")) {
+            if (selectedFilters[category].length > 0  && !selectedFilters[category].includes("all") && !defaultValues.includes(selectedFilters[category][0])) {
                 if (category === "project_size") {
                     let sizeMatched = false;
                     for (let i = 0; i < selectedFilters[category].length; i++) {
