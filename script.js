@@ -18,7 +18,12 @@ let selectedMarker;
 
 let markerArray = [];
 
+let AmmenetiesMarkers = [];
+
 let galleryIntance;
+
+let ammenities = [];
+
 const searchListings = debounce(searchhandler, 500);
 
 
@@ -28,6 +33,7 @@ start();
 async function start(){
     openLoading();
     // listings = await fetchDataFromJson();
+    ammenities =  await fetchAmmenities()
     const data = await fetchNewListings();
     if(data.length > 0){
         listings = data;
@@ -114,7 +120,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             </div>
         `;
 
-        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup" });
+        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup", autoClose: false });
         markerArray.push(marker);
 
         marker.on('mouseover', function (e) {
@@ -129,11 +135,16 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             }
         });
 
+        // on openinig popup i want to show the schools near by
+        marker.on('popupopen', function (e) {
+
+        })
+
 
         marker.on('click', function (e) {
             changeSelectedMarkerLogo(marker);
             marker.openPopup();
-            createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 2500);
+            createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
             const name = project.name;
             const desc = project.description;
             const region = project.geographical_region;
@@ -145,6 +156,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             const balance_units = project.balance_units;
             const developer = project.developer;
             const transactions = project.transactions;
+            addAmmenitiesMarkers(name);
             addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions);
             
         });
@@ -240,7 +252,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     const sitePlanFacilities = sitePlan?.facilities || [];
     let sitePlanUl;
     for (let i = 0; i < sitePlanFacilities.length; i++) {
-        // Create a new <ul> element every 4 <li> elements
+      
         if (i % 4 === 0) {
             sitePlanUl = document.createElement('ul');
             sitePlanUl.style.minWidth = "170px";
@@ -392,8 +404,8 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
         locationMaptbody.innerHTML += `
         <tr style="font-size:12px; ${i % 2 != 0 ? "background-color: #f9fafc;":""}">
             <td class="p-2">${element.Category}</td>
-            <td class="p-2">${element.Distance}</td>
             <td class="p-2">${element.Location}</td>
+            <td class="p-2">${element.Distance}</td>
         </tr>
             `
     }
@@ -654,7 +666,8 @@ function openSingleListing(btn) {
     if (marker) {
         changeSelectedMarkerLogo(marker);
         marker.openPopup();
-        createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 2500);
+        createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
+        addAmmenitiesMarkers(name);
     
     }
 
@@ -894,6 +907,16 @@ async function fetchDataFromJson() {
     }
 }
 
+async function fetchAmmenities() {
+    try {
+        const response = await fetch('schools.json');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
 function openLoading(){
     document.querySelector(".darksoul-layout").classList.remove("d-none");
 }
@@ -927,7 +950,7 @@ function processText(text) {
 
 
 
-function createCircleInMap(lat, long, radius) {
+async function createCircleInMap(lat, long, radius) {
     if (circle) {
         map.removeLayer(circle);
     }
@@ -972,6 +995,7 @@ function createCircleInMap(lat, long, radius) {
         fillOpacity: 0.5,
         stroke: false
     }).addTo(map);
+
 
     map.fitBounds(circle.getBounds());
 }
@@ -1247,4 +1271,80 @@ function getToast(){
         }
       });
       return Toast;
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the Earth in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a =
+        0.5 - Math.cos(dLat) / 2 +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        (1 - Math.cos(dLon)) / 2;
+    return R * 2 * Math.asin(Math.sqrt(a));
+}
+
+function addAmmenitiesMarkers(name){
+    AmmenetiesMarkers.forEach(marker => {
+        map.removeLayer(marker);
+    })
+
+    const amenities = ammenities[name]
+    
+    amenities.forEach(amenitie => {
+        const ammenitieMarker = L.marker([amenitie.latitude, amenitie.longitude], { title: amenitie.name })
+            .addTo(map)
+
+            const getIcon = (category)=>{
+                if(category?.toLowerCase()?.includes('school')){
+                    return 'public/schooll.png';
+                }else if(category?.toLowerCase()?.includes('station')){
+                    return 'public/train.png';
+                }else{
+                    return 'public/trolley.png';
+                }
+            }
+
+            let activeIcon = L.icon({
+                iconUrl: getIcon(amenitie.category), // Replace with the path to your active icon
+                iconSize: [31, 37], // size of the icon
+                iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
+                popupAnchor: [1, -34] // point from which the popup should open relative to the iconAnchor
+            });
+
+            ammenitieMarker.bindPopup(`<div style="display:flex; gap:10px;width:100%">
+            <div style="display: flex; justify-content: center; align-items: center;">
+            <img style="width:50px" src="${getIcon(amenitie.category)}"/>
+            </div>
+            <div>
+                <p style="font-weight: bold; margin-bottom:1px;">
+                <span style="font-size: 12px;sont-we: bold;font-weight: bold;color: #666;">
+                Name:
+                </span> ${amenitie.name}
+                </p>
+                <p style="font-weight: bold; margin-top:1px">
+                <span style="font-size: 12px;sont-we: bold;font-weight: bold;color: #666;">
+                Distance:
+                </span> ${amenitie.distance}
+                </p>
+            </div>
+           </div>`, { autoClose: false, closeOnClick: false });
+
+           ammenitieMarker.on('mouseover', function (e) {
+            ammenitieMarker.openPopup();
+        });
+
+        // Hide popup when mouse leaves
+        ammenitieMarker.on('mouseout', function (e) {
+            ammenitieMarker.closePopup();
+        });
+
+
+
+        ammenitieMarker.setIcon(activeIcon);
+        AmmenetiesMarkers.push(ammenitieMarker);
+    });
+
+
+
 }
