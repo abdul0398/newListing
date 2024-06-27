@@ -422,22 +422,30 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
     transactionTbody.innerHTML = "";
     const validTransactions = transactions || [];
+
+    const transactionFragment = document.createDocumentFragment();
     for (let i = 0; i < validTransactions.length; i++) {
         const transaction = validTransactions[i];
-        transactionTbody.innerHTML += `
-        <tr style="font-size:12px; ${i % 2 != 0 ? "background-color: #f9fafc;":""}">
-            <td class="p-2">${transaction.Date}</td>
-            <td class="p-2 text-center">${transaction.UnitType}</td>
-            <td class="p-2 text-center">${transaction.Size}</td>
-            <td class="p-2 text-center">${transaction.PSF}</td>
-            <td class="p-2 text-center">${transaction.Price}</td>
-            <td class="p-2 text-center">${transaction.Block}</td>
-            <td class="p-2 text-center">${transaction.Floor}</td>
-            <td class="p-2 text-center">${transaction.Stack}</td>
-            
-        </tr>
-        `
+
+        // Create a <tr> element
+        const tr = document.createElement('tr');
+        tr.style.fontSize = '12px';
+        if (i % 2 != 0) {
+            tr.style.backgroundColor = '#f9fafc';
+        }
+
+        const fields = ['Date', 'UnitType', 'Size', 'PSF', 'Price', 'Block', 'Floor', 'Stack'];
+        fields.forEach(field => {
+            const td = document.createElement('td');
+            td.className = 'p-2' + (field !== 'Date' ? ' text-center' : '');
+            td.textContent = transaction[field];
+            tr.appendChild(td);
+        });
+
+        transactionFragment.appendChild(tr);
     }
+
+    transactionTbody.appendChild(transactionFragment);
 
 
 
