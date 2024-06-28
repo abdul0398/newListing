@@ -1144,6 +1144,25 @@ function extractSelectValues() {
 
 
 function applyFilterSelect() {
+    document.getElementById("all-listings").classList.remove("d-none");
+    // remove the circle from the map and zoom out
+
+    if (circle) {
+        map.removeLayer(circle);
+    }
+    if (maskLayer) {
+        map.removeLayer(maskLayer);
+    }
+    map.setView([1.3521, 103.8198], 12);
+
+    // remove all ammenities markers
+
+    AmmenetiesMarkers.forEach(marker => {
+        map.removeLayer(marker);
+    })
+
+
+
     let selectedFilters = extractSelectValues();
     const defaultValues = ['Region', 'Project Size', 'Unit Category', 'Market Segment', 'Expected TOP'];
     let filteredListings = listings.filter(function(listing) {

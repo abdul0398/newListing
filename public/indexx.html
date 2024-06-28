@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/658a2960da.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@glidejs/glide@3.3.0/dist/css/glide.core.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@glidejs/glide@3.3.0/dist/css/glide.theme.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"
+      integrity="sha512-BLW2Jrofiqm6m7JhkQDIh2olT0EBI58+hIL/AXWvo8gOXKmsNlU6myJyEkTy6rOAAZjn0032FRk8sl9RgXPYIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"
+      integrity="sha512-VBbe8aA3uiK90EUKJnZ4iEs0lKXRhzaAXL8CIHWYReUwULzxkOSxlNixn41OLdX0R1KNP23/s76YPyeRhE6P+Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      ></script>
+       <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+    <style>
+         body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        height: 100vh;
+        width: 100vw;
+      }
+      .donate-detail-header {
+        background-color: #efefef;
+        position: relative;
+        width: 100%;
+        border-radius: 15px;
+        padding: 5px;
+        height: 100%;
+        overflow: auto;
+      }
+
+      .donate-header-image {
+        width: 100%;
+        height: 337px;
+        border-radius: 10px;
+      }
+
+      .header-image {
+        width: 100%;
+        height: 337px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 15px 15px 0px 0px;
+      }
+
+      .banner-hero {
+        position: relative;
+        width: 100%;
+      }
+
+      .banner-hero .glide__bullets {
+        bottom: 2.5em;
+      }
+
+      .donate-header-text {
+        padding: 20px 25px 25px;
+        border-radius: 15px;
+        transform: translateY(-10px);
+        background-color: #f1f4f9;
+        height: calc(100% - 337px);
+
+        .donate-title {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 3px;
+
+          p {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0px;
+
+            i {
+              margin-right: 5px;
+              color: gold;
+            }
+          }
+        }
+      }
+      .leaflet-popup-content {
+        margin: 5px !important;
+      }
+      .donate-header-text h2 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 0px;
+      }
+
+      .donate-header-text .donate-detail-text {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        width: 100%;
+      }
+
+      .donate-header-text .donate-detail-text p {
+        font-size: 14px;
+        font-weight: 200;
+        color: #a7a4a4;
+      }
+
+      @media (max-width: 396px) {
+        .main-container {
+          flex-direction: column;
+        }
+        .donate-detail-header {
+          height: auto;
+        }
+
+        .donate-header-text .donate-detail-icon {
+          margin-top: 7px;
+          display: contents !important;
+          justify-content: space-between;
+          width: 100%;
+          gap: 25px;
+
+          p {
+            font-size: 18px;
+            font-weight: 500;
+
+            i {
+              margin-right: 10px;
+              color: #39548a;
+            }
+          }
+        }
+      
+      }
+
+      .donate-header-text .donate-detail-icon {
+        margin-top: 7px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: justify;
+        width: 100%;
+        gap: 25px;
+
+        p {
+          font-size: 18px;
+          font-weight: 500;
+
+          i {
+            margin-right: 10px;
+            color: #39548a;
+          }
+        }
+      }
+
+      .donate-header-text .donate-detail-desc h2 {
+        margin-bottom: 6px;
+      }
+
+      .donate-header-text .donate-detail-gallery {
+        h2 {
+          margin-bottom: 6px;
+        }
+
+        .gallery-list {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 6.5%;
+          row-gap: 15px;
+          justify-content: center;
+
+          img {
+            border-radius: 7px;
+            width: 120px;
+            height: 80px;
+          }
+        }
+      }
+      #mapdiv {
+        height: 95%;
+      }
+      .mobile-switch-menu {
+        bottom: 40px;
+        z-index: 999;
+        height: 40px;
+      }
+      @media (max-width: 500px) {
+        #all-listings,
+        #single-listing,
+        #map-container {
+          width: 100% !important;
+        }
+        .donate-header-text{
+          padding:20px 5px 100px 5px;
+        } 
+        .drop-down-search{
+          width: 88%;
+        }
+        #search{
+          width: 90% !important;
+          max-width: 90% !important;
+          min-width: 90% !important;
+        }
+        .drop-down-search{
+          width: 90% !important;
+          max-width: 90% !important;
+          min-width: 90% !important;
+        }
+        #mapdiv{
+          height:100%;
+        }
+        
+       
+      }
+      .filter-container {
+        max-width: 300px;
+        width: 90%;
+        height: 100vh;
+        z-index: 1000;
+        overflow-y: hidden;
+        background-color: #39548a;
+        transform: translateX(100%);
+        transition: transform 0.3s ease; /* Use 'transform' property for animation */
+      }
+      .close-btn-filter {
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+      }
+
+      .sticky-bottom-banner{
+        background-color: #39548a;
+        height: 40px;
+        border-radius: 10px;
+        color: white;
+        margin: 20px 0px;
+        font-size: 12px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px 4px;
+      }
+
+      .sticky-bottom-banner a {
+          color: white;
+          text-decoration: underline;
+      }
+
+
+
+
+      .filter__body {
+        overflow-y: auto;
+        height: calc(100% - 60px);
+      }
+
+      .darksoul-layout {
+        margin: auto;
+        display: flex;
+        background-color: black;
+        height: 100%;
+        z-index: 999999;
+        width: 100%;
+      }
+      .darksoul-grid {
+        margin: auto;
+        margin-right: 1px;
+        width: 50px;
+        height: 50px;
+        display: grid;
+        gap: 0px;
+        grid-template-columns: auto auto;
+        animation: rotate 2s linear 0s infinite;
+        .item1 {
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-radius: 0%;
+          background-color: rgb(255, 255, 255);
+        }
+        .item2 {
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-radius: 0%;
+          background-color: rgb(255, 255, 255);
+        }
+        .item3 {
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-radius: 0%;
+          background-color: rgb(255, 255, 255);
+        }
+        .item4 {
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-radius: 0%;
+          background-color: rgb(255, 255, 255);
+        }
+      }
+
+      @keyframes rotate {
+        0% {
+          rotate: 0deg;
+          transform: scale(0.6);
+        }
+        50% {
+          rotate: 100deg;
+          transform: scale(0.4);
+        }
+        100% {
+          rotate: 360deg;
+          transform: scale(0.6);
+        }
+      }
+      .darksoul-loader-h {
+        margin: auto;
+        margin-left: 5px;
+      }
+      #balanceUnits, #unitMix, #location-map-container, #projectDetailTable, #sitePlan-detail, #dev-info-container, #transaction, #gallery-container, #top-header{
+        padding: 15px 15px;
+        border-radius: 4px;
+      }
+      .scroll-btn{
+        background: transparent;
+        border: none;
+        color: #39548a;
+        font-weight: 900;
+      }
+      #dev-form{
+        padding: 15px 0px;
+        border-radius: 4px;
+        margin-top: 15px;
+      }
+      .drop-down-search{
+        width: 100%;
+        min-width: 100%;
+        position: absolute;
+        height: 350px;
+        border: 1px solid;
+        z-index: 10;
+        top: 43px;
+        border-radius: 5px;
+        background-color: white;
+        overflow: auto;
+        border: 1px solid #d5d5d5;
+      }
+      #search{
+        width: 100%;
+        min-width: 100%;
+      }
+      .filter-select-div{
+        width: 20%;
+        height: 50px;
+        border-bottom: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+
+    <div id="single-listing" class="h-100" style="width: 50%;  margin: auto;">
+        <div class="donate-detail-header">
+         
+          <div class="donate-header-image"></div>
+
+          <div class="donate-header-text overflow-auto">
+
+            <!-- Scroll buttons -->
+
+            <div style="height: 50px; overflow-x: auto;font-size: 12px;">
+                <div style="display: flex; min-width: 620px; justify-content: space-around;">
+                  <button data="projectDetailTable" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    Project Details
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  <button data="sitePlan" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-chart-area" aria-hidden="true"></i>
+                    Site Plan
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  
+                  <button data="location-map-container" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-map" aria-hidden="true"></i>
+                    Location Map
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  
+                  <button data="unitMix" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-square-poll-horizontal" aria-hidden="true"></i>
+                    Unit Mix
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  <button data="balanceUnits" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+                    Balance Units
+                  </button>
+                  <div style="border: 1px solid #aeaeae;"></div>
+                  <button data="transaction" class="scroll-btn" onclick="handleScroll(this)">
+                    <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+                    Transactions
+                  </button>
+                </div>
+              </div>
+
+
+
+            <div class="bg-white mb-5 mt-2" id="top-header">
+                <div class="donate-title">
+                  <h2 id="projectName" style="color: black;font-size: 16px;">The Hillshore</h2>
+                  <p><i class="fa-solid fa-star" aria-hidden="true"></i>4.5</p>
+                </div>
+                <div class="donate-detail-text">
+                  <p id="projectRegion">West Region</p>
+                </div>
+                <div class="donate-detail-icon my-2"></div>
+                <div class="donate-detail-desc">
+                  <h2 style="color: black;font-size: 16px;">Description</h2>
+                  <p id="projectDesc" style="font-size: 14px;">Replacing Gloria Mansion along Pasir Panjang Road, The Hillshore is a freehold condominium featuring 59 exclusive units within two 5-storey blocks. Despite having a compact land size of 45,742 square feet, the new condo development still provides a comprehensive range of facilities for its residents, including a pool, sky grill, and gym. Located near several green spaces like Kent Ridge Park and Mount Faber Park, nature enthusiasts can easily go for a short hike and bask in nature’s embrace. Its proximity to the upcoming Greater Southern Waterfront, a visionary redevelopment, promises The Hillshore residents a dynamic blend of enhanced green spaces, leisure, and lifestyle opportunities. Those who drive will appreciate its proximity to West Coast Highway and Ayer Rajah Expressway, while commuters will be able to reach Haw Par Villa MRT station by foot in 8 minutes, enjoying island-wide accessibility via the Circle Line.</p>
+                </div>
+              </div>
+
+              <!-- Gallery -->
+              <div class="donate-detail-gallery">
+                <div class="bg-white" id="gallery-container">
+                  <h2 style="color: black;font-size: 16px;">Gallery</h2>
+                  <div class="gallery-list">
+      <a href="https://api.jomejourney-portal.com/uploads/1ec976d4489a164d0ffca6b0e5336f.jpg" data-lg-id="1f90c07c-5f63-455f-bca2-34c9b4733d2b">
+      <img src="https://api.jomejourney-portal.com/uploads/1ec976d4489a164d0ffca6b0e5336f.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/07ed96605cbb0eac96ad187afddc9d.jpg" data-lg-id="bee9ffab-f1a7-4057-bb97-0f8e6e7373e6">
+      <img src="https://api.jomejourney-portal.com/uploads/07ed96605cbb0eac96ad187afddc9d.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/77d8cd4f1582be689d984b8ff4214d.jpg" data-lg-id="6460f18f-b44b-4f4c-b547-d53700000c8e">
+      <img src="https://api.jomejourney-portal.com/uploads/77d8cd4f1582be689d984b8ff4214d.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/ec59c4a29f9b18b8c0845da139843d.jpg" data-lg-id="e651c0e5-aaf7-4977-84c1-e287e63c18b6">
+      <img src="https://api.jomejourney-portal.com/uploads/ec59c4a29f9b18b8c0845da139843d.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/e5c3d3e7aae5f577af05e246ba23cc.jpg" data-lg-id="54a81f39-39ef-4c44-a403-a386ca51de1f">
+      <img src="https://api.jomejourney-portal.com/uploads/e5c3d3e7aae5f577af05e246ba23cc.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/775fc7363e6fb6cc9c72fcd72d6d85.jpg" data-lg-id="7735c12e-32e5-45a6-b36d-1934b7917ffb">
+      <img src="https://api.jomejourney-portal.com/uploads/775fc7363e6fb6cc9c72fcd72d6d85.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/1406037d1062c88a44998618446629.jpg" data-lg-id="20c28ff1-af43-4738-994a-22048d5efaf0">
+      <img src="https://api.jomejourney-portal.com/uploads/1406037d1062c88a44998618446629.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/0807a22746c858bed37a183d07819f.jpg" data-lg-id="ecb140b3-1d8e-4488-a3f3-2938a7e68c5c">
+      <img src="https://api.jomejourney-portal.com/uploads/0807a22746c858bed37a183d07819f.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/e8ba30103e1efe7ce5db38f10f5228.jpg" data-lg-id="0db2ccff-f0cc-4608-b20a-79fa9068ab98">
+      <img src="https://api.jomejourney-portal.com/uploads/e8ba30103e1efe7ce5db38f10f5228.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/f0849587319381b450e2abef8173c3.jpg" data-lg-id="6a0b9bae-1b20-409c-854a-4e2683c0ed37">
+      <img src="https://api.jomejourney-portal.com/uploads/f0849587319381b450e2abef8173c3.jpg" alt="The Hillshore">
+      </a>
+      
+      
+      <a href="https://api.jomejourney-portal.com/uploads/5a40fa8d4932f92e567acea002e7b8.jpg" data-lg-id="ec6b8519-c200-40e6-a66e-bfc4f8cdc7c8">
+      <img src="https://api.jomejourney-portal.com/uploads/5a40fa8d4932f92e567acea002e7b8.jpg" alt="The Hillshore">
+      </a>
+      
+      </div>
+                </div>
+              </div>
+
+               <!-- Project Details -->
+               <div class="mt-5 bg-white" id="projectDetailTable" style="overflow-x: auto;">
+                <h2 style="color: black;font-size: 16px;" class="mb-2">Project Details</h2>
+                <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;"  id="projectDetailInnerDiv">
+                </div>
+              </div>
+
+
+              <!-- Site Plan -->
+              <div id="sitePlan" class="mt-5">
+                <div id="sitePlan-detail" class="bg-white" style="overflow: auto;">
+                <h2 style="color: black;font-size: 16px;" class="mb-2">Site Plan</h2>
+                <p style="font-size: 12px; color: #6B7380; line-height: 19px;">List of Project Facilities</p>
+                  <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;" id="siteplan-details-inner">
+                  </div>
+                </div>
+              </div>
+              <div id="sideMapImageContainer" class="mt-5">
+              </div>
+
+
+              <!-- Location Map -->
+              <div id="location-map-container" class="my-5 bg-white">
+                <h2 style="color: black;
+                font-size: 16px;" class="mb-2">Location Map</h2>
+                <p style="font-size: 12px;
+                color: #6B7380;
+                line-height: 19px;">List of Essential Amenities</p>
+                <table class="w-100 my-3 ">
+                  <thead style="height: 38px;">
+                    <tr style="background-color: #39548a; font-size: 12px; color: white;">
+                      <td class="ps-2">
+                        Category
+                      </td>
+                      <td class="ps-2">
+                        Location
+                      </td>
+                      <td class="ps-2">
+                        Distance
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="location-map-tbody">
+                    
+                  </tbody>
+                </table>
+              </div>
+              <div id="location-map-images"></div>
+
+
+              <!-- Unit Mix -->
+              <div id="unitMix" class="my-5 bg-white">
+                <h2 style="color: black;
+                font-size: 16px;" class="mb-2">Unit Mix</h2>
+                <p style="font-size: 12px;
+                color: #6B7380;
+                line-height: 19px;">Distribution of Total Units</p>
+                <table class="w-100 my-3 ">
+                  <thead style="height: 38px;">
+                    <tr style="background-color: #39548a; font-size: 12px; color: white;">
+                      <td class="ps-2">
+                        Unit Type
+                      </td>
+                      <td class="text-center">
+                        Total Units
+                      </td>
+                      <td class="text-center">
+                        Size(sqft)
+                      </td>
+                      <td class="text-center">
+                        Unit Mix
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="unit-mix-tbody">
+                    
+                  </tbody>
+                </table>
+                
+              </div>
+              <div id="unitMixImages"></div>
+
+              <!-- Balance units -->
+              <div id="balanceUnits"  class="my-5 bg-white ">
+                <h2 style="color: black;
+font-size: 16px;" class="mb-2">Balance Units</h2>
+                <p style="font-size: 12px;
+                color: #6B7380;
+                line-height: 19px;">Pricing of Available Units</p>
+                <table class="w-100 my-3 ">
+                  <thead style="height: 38px;">
+                    <tr style="background-color: #39548a; font-size: 12px; color: white;">
+                      <td class="ps-2">
+                        Unit Type
+                      </td>
+                      <td class="text-center">
+                        Available Units
+                      </td>
+                      <td class="text-center">
+                        Size(sqft)
+                      </td>
+                      <td class="text-center">
+                        PSF
+                      </td>
+                      <td class="text-center">
+                        Price
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="balance-unit-tbody">
+                    
+                  </tbody>
+                </table>
+              </div>
+              
+              <div id="balanceUnitImages"></div>
+
+              <!-- Transactions -->
+              <div id="transaction" class="my-5 bg-white">
+                <h2 style="color: black;
+                font-size: 16px;" class="mb-2">Sales Transaction</h2>
+                <div style="overflow-x: auto; max-height: 500px;">
+                  <table class="w-100 my-3 " style="min-width: 700px; ">
+                    <thead style="height: 38px;">
+                      <tr style="background-color: #39548a; font-size: 12px; color: white;">
+                        <td class="ps-2">
+                          Date
+                        </td>
+                        <td class="text-center">
+                          Unit Type
+                        </td>
+                        <td class="text-center">
+                          Size(sqft)
+                        </td>
+                        <td class="text-center">
+                          PSF
+                        </td>
+                        <td class="text-center">
+                          Price
+                        </td>
+                        <td class="text-center">
+                          Block
+                        </td>
+                        <td class="text-center">
+                          Floor
+                        </td>
+                        <td class="text-center">
+                          Stack
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody id="transaction-tbody">
+                      
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+             
+
+              <div class="bg-white mt-5" id="dev-info-container">
+                <h2 style="color: black;font-size: 16px;" class="mb-2">Developers Profile</h2>
+                <div>
+                  <div class="my-3">
+                    <img class="dev-logo" src="" alt="developer" style="width: 100px;">
+                  </div>
+                  <div>
+                    <p id="dev-para" style="font-size: 14px;"></p>
+                  </div>
+                </div>
+              </div>
+             
+
+              <!-- Form -->
+              <div id="dev-form" class="bg-white">
+                <div>
+                  <div>
+                    <p style="padding: 0px 10px; color: black; font-weight: bold; margin: 0px;">Contact Sales</p>
+                  </div>
+                  <div style="
+                  display: flex;
+                  justify-content: space-between;
+                  background-color: #fff7e1;
+                  font-size: 14px;
+                  color: #384152;
+                  font-weight: 400;
+                  align-items: center;
+                  height: 40px;
+                  padding: 0px 10px;
+                  margin: 20px 0px;
+                  ">
+                    <p  style="margin: 0px;">
+                      Get Exclusive Developer Discounts 
+                    </p>
+                    <p style="margin: 0px;
+                    background-color: #ffc72c;
+                    font-size: 11px;
+                    padding: 5px;
+                    border-radius: 4px;
+                    text-align: center;">ARRANGE VIEWING</p>
+                  </div>
+                  <div style="padding: 0px 10px; display: flex; margin: 0px; justify-content: space-between; margin: 20px 0px;">
+                    <div style="margin: 0px;">
+                      <img class="dev-logo" src="" alt="developer" style="width: 100px;">
+                      <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
+                      <p style="margin: 0px; font-size: 10px; color: #716f6f;">Developer Sales Team</p>
+                    </div>
+                    <button
+                    style="background-color: transparent;
+                    border: 1px solid #39548a;
+                    border-radius: 6px;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: #39548a;
+                    height: 40px;"
+                    
+                    >WhatsApp</button>
+                  </div>
+                  <div style="display: flex; gap:10px; padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
+                    <label for="checkbox1">
+                      <input id="checkbox1" type="checkbox">
+                      Get More Information
+                    </label>
+                    <label for="checkbox2">
+                      <input id="checkbox2" type="checkbox">
+                      Gain Valuable Insights
+                    </label>
+                    <label for="checkbox3">
+                      <input id="checkbox3" type="checkbox">
+                      Arrange Showflat Viewing
+                    </label>
+                  </div>
+
+                  <div style="margin-top: 30px;padding: 0px 10px;">
+                    <input style="width: 100%;
+                    border-radius: 9px;
+                    border: 1px solid #b7b7b7;
+                    padding: 5px 10px;" type="text" placeholder="Name">
+                  </div>
+
+                  <div style="margin-top: 15px;padding: 0px 10px;">
+                    <input style="width: 100%;
+                    border-radius: 9px;
+                    border: 1px solid #b7b7b7;
+                    padding: 5px 10px;" type="tel" placeholder="Phone">
+                  </div>
+
+                  <div style="margin-top: 15px;padding: 0px 10px;">
+                    <input style="width: 100%;
+                    border-radius: 9px;
+                    border: 1px solid #b7b7b7;
+                    padding: 5px 10px;" type="email" placeholder="Email">
+                  </div>
+
+                  <div style="margin-top: 30px;padding: 0px 10px; display: flex;justify-content: space-around;">
+                    <button style="background-color: #39548a;
+                    border: 1px solid #39548a;
+                    border-radius: 6px;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: white;
+                    width: 40%;"
+                    >
+                      Enquire Now
+                    </button>
+                    <button  style="background-color: transparent;
+                    border: 1px solid #39548a;
+                    border-radius: 6px;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: #39548a;
+                    width: 40%;">
+                      Call Sales
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+
+               <!-- Bottom sticky card -->
+               <div class="h-200 sticky-bottom-banner">
+                Zero commission fee! Enquire with Direct to developer representatives! <a href=""> Enquire now!</a>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+      <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
+    
+</body>
+</html>
+
+
+
