@@ -1316,8 +1316,9 @@ function addAmmenitiesMarkers(name){
         map.removeLayer(marker);
     })
 
-    const amenities = ammenities[name]
-    
+    const amenities = ammenities[name] || [];
+
+        
     amenities.forEach(amenitie => {
         const ammenitieMarker = L.marker([amenitie.latitude, amenitie.longitude], { title: amenitie.name })
             .addTo(map)
