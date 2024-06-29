@@ -1317,7 +1317,7 @@ function addAmmenitiesMarkers(name){
     })
 
     const amenities = ammenities[name] || [];
-
+    console.log(name);
         
     amenities.forEach(amenitie => {
         const ammenitieMarker = L.marker([amenitie.latitude, amenitie.longitude], { title: amenitie.name })

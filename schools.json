@@ -3474,5 +3474,92 @@
       "longitude": "103.844033569199",
       "distance": "0.56 km"
     }
+  ],
+  "SORA" : [
+    {
+      "name": "JS 8EW 26 Lakeside MRT Station",
+      "category": "MRT Stations",
+      "distance": "1.13 km",
+      "latitude": "1.34425911493819",
+      "longitude": "103.720949087456"
+    },
+    {
+      "name": "EW 25 Chinese Garden MRT Station",
+      "category": "MRT Stations",
+      "distance": "1.14 km",
+      "latitude": "1.34235282081401",
+      "longitude": "103.732596738363"
+    },
+    {
+      "name": "NS 1JE 5EW 24 Jurong East MRT Station",
+      "category": "MRT Stations",
+      "distance": "1.86 km",
+      "latitude": "1.33315281585758",
+      "longitude": "103.742286332403"
+    },
+    {
+      "name": "Lakeside Primary School",
+      "category": "Primary Schools",
+      "distance": "0.90 km",
+      "latitude": "1.33820397704287",
+      "longitude": "103.718089546664"
+    },
+    {
+      "name": "Fuhua Primary School",
+      "category": "Primary Schools",
+      "distance": "1.19 km",
+      "latitude": "1.33650394789627",
+      "longitude": "103.736103745748"
+    },
+    {
+      "name": "Shuqun Primary School",
+      "category": "Primary Schools",
+      "distance": "1.47 km",
+      "latitude": "1.34765311431632",
+      "longitude": "103.721523713379"
+    },
+    {
+      "name": "Jurong Secondary School",
+      "category": "Secondary Schools",
+      "distance": "0.57 km",
+      "latitude": "1.33002032220942",
+      "longitude": "103.723952961648"
+    },
+    {
+      "name": "Yuan Ching Secondary School",
+      "category": "Secondary Schools",
+      "distance": "0.93 km",
+      "latitude": "1.34200635764467",
+      "longitude": "103.72089870437"
+    },
+    {
+      "name": "Fuhua Secondary School",
+      "category": "Secondary Schools",
+      "distance": "1.34 km",
+      "latitude": "1.34701408913756",
+      "longitude": "103.72652089832"
+    },
+    {
+      "name": "Taman Jurong Shopping Centre",
+      "category": "Shopping Malls",
+      "distance": "0.56 km",
+      "latitude": "1.33484487416514",
+      "longitude": "103.720462024278"
+    },
+    {
+      "name": "Jurong Entertainment Centre",
+      "category": "Shopping Malls",
+      "distance": "1.64 km",
+      "latitude": "1.333319",
+      "longitude": "103.739975"
+    },
+    {
+      "name": "JEM",
+      "category": "Shopping Malls",
+      "distance": "1.87 km",
+      "latitude": "1.33305999269581",
+      "longitude": "103.743503708169"
+    }
   ]
+  
 }
