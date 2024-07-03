@@ -32,12 +32,9 @@ start();
 
 async function start(){
     openLoading();
-    // listings = await fetchDataFromJson();
-    ammenities =  await fetchAmmenities()
     const data = await fetchNewListings();
-    if(data.length > 0){
-        listings = data;
-    }
+        listings = data.listings;
+        ammenities = data.amenities;
 
     selectProjectBasedOnParams();
     openMap();
@@ -176,7 +173,7 @@ async function fetchNewListings(){
     try {
         const res = await fetch('https://api.jomejourney-portal.com/api/listings?page=all', options);
         const data = await res.json();
-        if(res.status == 200 && data?.length > 0){
+        if(res.status == 200){
             return data;
         }
     } catch (error) {
@@ -908,16 +905,6 @@ function processText(text) {
 async function fetchDataFromJson() {
     try {
         const response = await fetch('offlineData.json');
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
-
-async function fetchAmmenities() {
-    try {
-        const response = await fetch('schools.json');
         const data = await response.json();
         return data;
     } catch (error) {
