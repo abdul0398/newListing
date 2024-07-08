@@ -52,6 +52,8 @@ async function start(){
     }}).mount();
     closeLoading();
     await fetchCoordinatesAndPopulateMap(listings);
+    addEventListenerToInput();
+
 }
 
 
@@ -696,7 +698,6 @@ function openSingleListing(btn) {
     const transactions = listing.transactions;
     addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions);
     closeFilterPopup();
-
 }
 
 function mobileLayoutHandler(btn) {
@@ -1275,9 +1276,12 @@ function reopenSelectedMarkerPopup() {
 function getToast(){
     const Toast = Swal.mixin({
         toast: true,
-        position: "top-end",
+        position: "top-start",
         showConfirmButton: false,
         timer: 3000,
+        customClass: {
+          popup: 'custom-toast'
+      },
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.onmouseenter = Swal.stopTimer;
@@ -1286,7 +1290,6 @@ function getToast(){
       });
       return Toast;
 }
-
 function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Radius of the Earth in km
     const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -1362,4 +1365,96 @@ function addAmmenitiesMarkers(name){
 
 
 
+}
+
+
+function handleFormSubmit() {
+    const container = document.querySelector('#dev-form');
+    const name = container.querySelector('input[name="name"]').value;
+    const email = container.querySelector('input[name="email"]').value;
+    const phone = container.querySelector('input[name="phone"]').value;
+    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+    const errorMessage = container.querySelector('#error-form-para');
+    errorMessage.innerHTML = "";
+    
+    let isCheckBox = false;
+    
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked){
+            isCheckBox = true;
+        }
+    })
+    
+
+
+    
+    // validate inputs
+    let isEmailValid = validateEmail(email);
+    let isPhoneValid = validatePhone(phone);
+
+    if(name.trim() == ""){
+        errorMessage.innerHTML = "Name is required";
+        return;
+    }
+    
+    
+    
+    
+    if(!isPhoneValid){
+      errorMessage.innerHTML = "Invalid phone number";
+      return;
+    }
+
+    if(!isEmailValid){
+        errorMessage.innerHTML = "Invalid email";
+        return;
+    }
+
+    if(!isCheckBox){
+        errorMessage.innerHTML = "Please select at least one checkbox";
+        return;
+    }
+
+    getToast().fire({
+        icon: 'success',
+        title: 'Form submitted successfully'
+    });
+    
+    
+    // clear form
+
+    email.value = "";
+    phone.value = "";
+    name.value = "";
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+}
+
+function validateEmail(email) {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+  
+
+function validatePhone(phone) {
+  // phione number should be 8 digits
+  return phone.length == 8;
+}
+
+
+
+
+function addEventListenerToInput(){
+    const input = document.querySelector('input[name="phone"]')
+    input.addEventListener('input',()=>{
+        // check if the input is not a number
+        if(isNaN(input.value)){
+            input.value = input.value.slice(0,input.value.length - 1);
+        }
+
+        if(input.value.length > 8){
+            input.value = input.value.slice(0,8);
+        }
+    });
 }

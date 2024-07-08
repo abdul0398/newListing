@@ -55,6 +55,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
       body {
@@ -1199,25 +1200,25 @@
                       <input style="width: 100%;
                       border-radius: 9px;
                       border: 1px solid #b7b7b7;
-                      padding: 5px 10px;" type="text" placeholder="Name">
+                      padding: 5px 10px;" type="text" name="name" placeholder="Name">
                     </div>
 
                     <div style="margin-top: 15px;padding: 0px 10px;">
                       <input style="width: 100%;
                       border-radius: 9px;
                       border: 1px solid #b7b7b7;
-                      padding: 5px 10px;" type="tel" placeholder="Phone">
+                      padding: 5px 10px;" type="text" name="phone" placeholder="Phone">
                     </div>
 
                     <div style="margin-top: 15px;padding: 0px 10px;">
                       <input style="width: 100%;
                       border-radius: 9px;
                       border: 1px solid #b7b7b7;
-                      padding: 5px 10px;" type="email" placeholder="Email">
+                      padding: 5px 10px;" type="email" name="email" placeholder="Email">
                     </div>
-
+                    <p id="error-form-para" class="text-danger" style="font-size: 12px; text-align: center; margin-top: 5px;"></p>
                     <div style="margin-top: 30px;padding: 0px 10px; display: flex;justify-content: space-around;">
-                      <button style="background-color: #39548a;
+                      <button onClick="handleFormSubmit()" style="background-color: #39548a;
                       border: 1px solid #39548a;
                       border-radius: 6px;
                       padding: 8px 12px;
@@ -1228,7 +1229,7 @@
                       >
                         Enquire Now
                       </button>
-                      <button  style="background-color: transparent;
+                      <button onClick="handleFormSubmit()"  style="background-color: transparent;
                       border: 1px solid #39548a;
                       border-radius: 6px;
                       padding: 8px 12px;
