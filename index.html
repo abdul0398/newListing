@@ -399,6 +399,11 @@
         height: 50px;
         border-bottom: 1px solid black;
       }
+
+      .search-dropdown-result :hover{
+        background-color: #f1f1f1;
+        border: 1px solid #d5d5d5;
+      }
     </style>
     
     <link rel="stylesheet" href="slider.css">
@@ -779,8 +784,11 @@
 
    
     
-    <div class="d-flex h-100 main-container overflow-auto">
+    <div style="height: 25px; width: 100%; background-color: #dcdcdc;  color: black; font-size: 14px; text-align: center; padding: 3px 5px;">
+      With powerful filtration algorithms, an innovative listing approach, and detailed sales analytics, supported by data from HDB OneMap and URA.gov, you'll quickly find the most suitable new launches.
 
+    </div>
+    <div class="d-flex  main-container " style="height: 97%;">
       <div class="left-pane ">
         <div id="all-listings" class="w-100 h-100">
           <div class="container house-list mb-3 h-100 overflow-auto">
@@ -1312,17 +1320,20 @@
           </div>
       </div>
         <div id="mapdiv">
-          <!-- <div style="height: 18px;
+          <div style="height:40px;
           width: 70%;
+          padding: 3px;
+          border-radius: 5px;
+          color: black;
           background: color;
           background-color: white;
-          z-index: 9999999999999999;
+          z-index: 9999;
           position: absolute;
           bottom: 0px;
-          right: 0px;;">
+          right: 0px;">
 With powerful filtration algorithms, an innovative listing approach, and detailed sales analytics, supported by data from HDB OneMap and URA.gov, you'll quickly find the most suitable new launches.
 
-          </div> -->
+          </div>
         </div>
       </div>
      

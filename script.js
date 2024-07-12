@@ -70,6 +70,12 @@ function openMap(params) {
     });
     basemap.addTo(map);
 
+    map.on('zoomend', function() {
+        checkMarkersInView();
+    });
+    map.on('moveend', checkMarkersInView);
+
+
 }
 
 async function fetchCoordinatesAndPopulateMap(listings) {
@@ -559,17 +565,17 @@ function populatAllListings(listings){
                 <div class="col-md-8">
                   <div class="card-body">
                     <a class="pe-auto" onClick="">
-                        <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onclick="openSingleListing(this)">${listings[i].name}</button></h5>
+                        <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onmouseover="hoverListingHandler(this)" onmouseout="removeHoverPopup(this)" onclick="openSingleListing(this)">${listings[i].name}</button></h5>
                     </a>
-                    <h6 class="card-subtitle mb-1 text-muted">
+                    <h6 class="card-subtitle mb-1 text-muted" style="white-space: nowrap; text-overflow: ellipsis; width: 100%; overflow: hidden;">
                     ${address} <br>
-                    <p class='mt-2 mb-0'>
+                    <p class='mt-1 mb-0'>
                     ${listings[i].geographical_region}
                     </p>
                     </h6>
                   </div>
                   ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
-                  <div style="font-size:11px; padding:10px 1rem;line-height: 30px;">
+                  <div style="font-size:11px; padding:0px 1rem;line-height: 30px;">
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
@@ -582,6 +588,26 @@ function populatAllListings(listings){
 }
 
 function showMainPage() {
+
+    if(selectedMarker){
+        selectedMarker.closePopup();
+        // change selected marker logo to default
+        selectedMarker.setIcon(new L.Icon.Default());
+        selectedMarker = null;
+    }
+
+    if (circle) {
+        map.removeLayer(circle);
+    }
+    if (maskLayer) {
+        map.removeLayer(maskLayer);
+    }
+    map.setView([1.3521, 103.8198], 12);
+
+    // remove all ammenities markers
+    AmmenetiesMarkers.forEach(marker => {
+        map.removeLayer(marker);
+    })
     document.getElementById("single-listing").classList.add("d-none");
     document.getElementById("all-listings-inner").classList.add("d-none");
     document.getElementById("all-listings").classList.remove("d-none");
@@ -592,6 +618,8 @@ function showMainPage() {
     checkboxes.forEach(checkbox => {
         checkbox.checked = false;
     });
+
+
     
 }
 
@@ -642,18 +670,18 @@ function populateAllListingsInner(filterListing) {
                     </div>
                     <div class="col-md-8">
                     <div class="card-body">
-                        <a class="pe-auto" onClick="">
-                            <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onclick="openSingleListing(this)">${newListing[i].name}</button></h5>
+                        <a class="pe-auto">
+                            <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onmouseover="hoverListingHandler(this)" onmouseout="removeHoverPopup(this)"  onclick="openSingleListing(this)">${newListing[i].name}</button></h5>
                         </a>
                        <h6 class="card-subtitle mb-1 text-muted">
                     ${address} <br>
-                    <p class='mt-2 mb-0'>
+                    <p class='mt-1 mb-0'>
                     ${newListing[i].geographical_region}
                     </p>
                     </h6>
                   </div>
                   ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
-                  <div style="font-size:11px; padding:10px 1rem; line-height: 30px;">
+                  <div style="font-size:11px; padding:0px 1rem; line-height: 30px;">
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
                     <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
@@ -1079,8 +1107,8 @@ function openDropDown(filteredListings) {
     for (let i = 0; i < filteredListings.length; i++) {
         const name = filteredListings[i].name;
         container.innerHTML += `
-        <div class="d-flex align-items-center p-2" style="cursor:pointer" onclick="openSingleListing(this)">
-            <i class="fa-solid fa-house fa-xl" style="color: #39548a;"></i>
+        <div class="d-flex align-items-center p-2 " onmouseover="searchResultHoverHandler(this)" onmouseout="searchResultOutHandler(this)" style="cursor:pointer; border-bottom:1px solid #dbd9d9" onclick="openSingleListing(this)">
+            <img src="public/office-building.png" style="width:40px"/>
             <p class="ms-2 my-0" style="color: black;font-size: 14px;">${name}</p>
         </div>
         `
@@ -1457,4 +1485,46 @@ function addEventListenerToInput(){
             input.value = input.value.slice(0,8);
         }
     });
+}
+
+
+function hoverListingHandler(btn){
+    const name = btn.innerText;
+    const marker = markerArray.find(marker => marker.options.title == name);
+    if(marker){
+        marker.openPopup();
+    }
+}
+
+
+function removeHoverPopup(btn){
+    const name = btn.innerText;
+    const marker = markerArray.find(marker => marker.options.title == name);
+    if(marker){
+        marker.closePopup();
+    }
+    
+}
+
+
+
+function searchResultHoverHandler(btn){
+    btn.style.backgroundColor = "#c5d1e8";
+}
+
+function searchResultOutHandler(btn){
+    btn.style.backgroundColor = "white";
+}
+
+function checkMarkersInView() {
+    const bounds = map.getBounds();
+    const filterArray =  markerArray.filter(marker => {
+        const latLng = marker.getLatLng();
+        return bounds.contains(latLng);
+    });
+    // find filtered listings
+    const filteredListings = filterArray.map(marker => {
+        return listings.find(listing => listing.name == marker.options.title);
+    });
+    openAllListingsInner(filteredListings);
 }
