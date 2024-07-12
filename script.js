@@ -119,7 +119,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             </div>
         `;
 
-        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup", autoClose: false });
+        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup"});
         markerArray.push(marker);
 
         marker.on('mouseover', function (e) {
@@ -1047,7 +1047,7 @@ function onMouseMove(e) {
     const newWidthLeftPercent = (newWidthLeft / containerWidth) * 100;
     const newWidthRightPercent = (newWidthRight / containerWidth) * 100;
 
-    if (newWidthLeftPercent >= 30 && newWidthLeftPercent <= 70) {
+    if (newWidthLeftPercent >= 40 && newWidthLeftPercent <= 60) {
         leftPane.style.width = `${newWidthLeftPercent}%`;
         rightPane.style.width = `${newWidthRightPercent}%`;
         refreshMap();
