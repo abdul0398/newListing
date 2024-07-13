@@ -33,23 +33,17 @@ start();
 async function start(){
     openLoading();
     const data = await fetchNewListings();
-        listings = data.listings;
-        ammenities = data.amenities;
+    listings = data.listings;
+    ammenities = data.amenities;
+    const sqft = listings.map(listing => {
+        return listing?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.size_sqft || 0;
+    });
 
+    console.log(sqft)
     selectProjectBasedOnParams();
     openMap();
     populatAllListings(listings);
-    glide = new Glide('.glide', {
-        type: 'carousel',
-        perView: 3,
-        breakpoints: {
-        1024: {
-        perView: 2
-        },
-        600: {
-        perView: 1
-        }
-    }}).mount();
+    initializeGlide();
     closeLoading();
     await fetchCoordinatesAndPopulateMap(listings);
     addEventListenerToInput();
@@ -57,7 +51,7 @@ async function start(){
 }
 
 
-function openMap(params) {
+function openMap() {
     map = L.map('mapdiv', {
        center: L.latLng(1.327450, 103.811203),
        zoom: 13
@@ -73,7 +67,9 @@ function openMap(params) {
     map.on('zoomend', function() {
         checkMarkersInView();
     });
-    map.on('moveend', checkMarkersInView);
+    map.on('moveend', ()=>{
+        checkMarkersInView();
+    })
 
 
 }
@@ -125,7 +121,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             </div>
         `;
 
-        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup"});
+        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup", autoClose: true});
         markerArray.push(marker);
 
         marker.on('mouseover', function (e) {
@@ -141,13 +137,14 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         });
 
         // on openinig popup i want to show the schools near by
-        marker.on('popupopen', function (e) {
-
-        })
+        // marker.on('popupopen', function (e) {
+        
+        // })
 
 
         marker.on('click', function (e) {
             changeSelectedMarkerLogo(marker);
+            marker.setZIndexOffset(1000);
             marker.openPopup();
             createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
             const name = project.name;
@@ -163,7 +160,6 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             const transactions = project.transactions;
             addAmmenitiesMarkers(name);
             addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions);
-            
         });
     }
 }
@@ -588,7 +584,12 @@ function populatAllListings(listings){
 }
 
 function showMainPage() {
+    // map.off('zoomend', checkMarkersInView);
+    // map.off('moveend', checkMarkersInView);
 
+    destroyGlide();
+
+   
     if(selectedMarker){
         selectedMarker.closePopup();
         // change selected marker logo to default
@@ -602,7 +603,10 @@ function showMainPage() {
     if (maskLayer) {
         map.removeLayer(maskLayer);
     }
+
+
     map.setView([1.3521, 103.8198], 12);
+
 
     // remove all ammenities markers
     AmmenetiesMarkers.forEach(marker => {
@@ -619,6 +623,7 @@ function showMainPage() {
         checkbox.checked = false;
     });
 
+    initializeGlide();
 
     
 }
@@ -701,6 +706,7 @@ function openSingleListing(btn) {
     if (marker) {
         changeSelectedMarkerLogo(marker);
         marker.openPopup();
+        marker.setZIndexOffset(1000);
         createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
         addAmmenitiesMarkers(name);
     
@@ -1136,7 +1142,11 @@ function extractSelectValues() {
         region: [],
         unit_category: [],
         market_segment: [],
-        TOP: []
+        TOP: [],
+        price: [],
+        psf: [],
+        bedrooms:[],
+        sqft:[]
     };
 
     document.querySelectorAll("select[name='project_size'] option:checked").forEach(option => {
@@ -1155,14 +1165,32 @@ function extractSelectValues() {
         selectedFilters.TOP.push(option.value);
     });
 
+    document.querySelectorAll("select[name='price'] option:checked").forEach(option => {
+        selectedFilters.price.push(option.value);
+    })
+
+    document.querySelectorAll("select[name='psf'] option:checked").forEach(option => {
+        selectedFilters.psf.push(option.value);
+    })
+
+    document.querySelectorAll("select[name='bedrooms'] option:checked").forEach(option => {
+        selectedFilters.bedrooms.push(option.value);
+    })
+
+
+    document.querySelectorAll("select[name='sqft'] option:checked").forEach(option => {
+        selectedFilters.sqft.push(option.value);
+    })
+
     return selectedFilters;
 }
 
 
 function applyFilterSelect() {
     document.getElementById("all-listings").classList.remove("d-none");
+    
+    
     // remove the circle from the map and zoom out
-
     if (circle) {
         map.removeLayer(circle);
     }
@@ -1171,22 +1199,40 @@ function applyFilterSelect() {
     }
     map.setView([1.3521, 103.8198], 12);
 
-    // remove all ammenities markers
 
+    // remove all ammenities markers
     AmmenetiesMarkers.forEach(marker => {
         map.removeLayer(marker);
     })
 
+    //remove selected marker
+    if(selectedMarker){
+        selectedMarker.setIcon(new L.Icon.Default());
+        selectedMarker.closePopup();
+        selectedMarker = null;
+    }
 
 
     let selectedFilters = extractSelectValues();
-    const defaultValues = ['Region', 'Project Size', 'Unit Category', 'Market Segment', 'Expected TOP'];
+    const defaultValues = ['Region', 'Project Size', 'Unit Category', 'Market Segment', 'Expected TOP', 'Price', "PSF", "Beds", "Floor area(sqft)"];
     let filteredListings = listings.filter(function(listing) {
         const project_size = listing.project_size;
         const region = listing.geographical_region;
         const unit_category = listing.project_category;
         const market_segment = listing.details.find(detail => detail.title == "Market Segment").para;
         const TOP = listing?.details?.find(detail => detail.title == "Expected TOP")?.para || "all"
+        const price = listing?.balance_units?.data.find(unit => unit.unitType == "Overall")?.price || 0;
+        const {lowerValue:lowerValueOfListing, upperValue:upperValueOfListing} = changePriceString(price)
+
+        const psf = listing?.balance_units?.data.find(unit => unit.unitType == "Overall")?.psf || 0;
+        const {lowerValue:lowerValueOfPSF, upperValue:upperValueOfPSF} = changePsfString(psf)
+
+        const bedroomstypes  = listing?.unit_mix?.data.map(unit => unit.unitType) || [];
+
+        const sqft = listing?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.size_sqft || 0;
+        const {lowerValue:lowerValueOfSQFT, upperValue:upperValueOfSQFT} = changeSqftString(sqft);
+
+
 
         let isMatch = true;
         for (let category in selectedFilters) {
@@ -1266,13 +1312,77 @@ function applyFilterSelect() {
                         isMatch = false;
                         break;
                     }
+                }else if(category == "price"){
+                    let isLocalMatch = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        const {lowerValue, upperValue} = changePriceString(selectedFilters[category][i]);
+                        if ((lowerValueOfListing >= lowerValue && lowerValueOfListing <= upperValue) || (upperValueOfListing >= lowerValue && upperValueOfListing <= upperValue) || selectedFilters[category][i] == "all") {
+                            isLocalMatch = true;
+                            break;
+                        }
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
+                
+                }else if(category == "psf"){
+                    let isLocalMatch = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        const {lowerValue, upperValue} = changePsfString(selectedFilters[category][i]);
+                        console.log(lowerValueOfPSF, upperValueOfPSF, lowerValue, upperValue)
+                        if ((lowerValueOfPSF >= lowerValue && lowerValueOfPSF <= upperValue) || (upperValueOfPSF >= lowerValue && upperValueOfPSF <= upperValue) || selectedFilters[category][i] == "all") {
+                            isLocalMatch = true;
+                            break;
+                        }
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
+                
+                }else if(category == "bedrooms"){
+                    let isLocalMatch = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        const filterBedroom = selectedFilters[category][i];
+                        
+                        for(let i = 0; i < bedroomstypes.length; i++){
+                            if (bedroomstypes[i].includes(filterBedroom) || filterBedroom == "all") {
+                                isLocalMatch = true;
+                                break;
+                            }
+                        }
+
+
+                       
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
+                
+                }else if(category == "sqft"){
+                    let isLocalMatch = false;
+                    for (let i = 0; i < selectedFilters[category].length; i++) {
+                        const {lowerValue, upperValue} = changeSqftString(selectedFilters[category][i]);
+                        if ((lowerValueOfSQFT >= lowerValue && lowerValueOfSQFT <= upperValue) || (upperValueOfSQFT >= lowerValue && upperValueOfSQFT <= upperValue) || selectedFilters[category][i] == "all") {
+                            isLocalMatch = true;
+                            break;
+                        }
+                    }
+                    if (!isLocalMatch) {
+                        isMatch = false;
+                        break;
+                    }
+                    
                 }
             }
         }
         return isMatch;
     });
-    // remove all markers from the map
 
+
+    // remove all markers from the map
     markerArray.forEach(marker => {
         marker.remove();
     })
@@ -1335,7 +1445,7 @@ function addAmmenitiesMarkers(name){
     })
 
     const amenities = ammenities[name] || [];
-    console.log(name);
+
         
     amenities.forEach(amenitie => {
         const ammenitieMarker = L.marker([amenitie.latitude, amenitie.longitude], { title: amenitie.name })
@@ -1500,7 +1610,7 @@ function hoverListingHandler(btn){
 function removeHoverPopup(btn){
     const name = btn.innerText;
     const marker = markerArray.find(marker => marker.options.title == name);
-    if(marker){
+    if(marker && marker != selectedMarker){
         marker.closePopup();
     }
     
@@ -1517,6 +1627,7 @@ function searchResultOutHandler(btn){
 }
 
 function checkMarkersInView() {
+    
     const bounds = map.getBounds();
     const filterArray =  markerArray.filter(marker => {
         const latLng = marker.getLatLng();
@@ -1527,4 +1638,80 @@ function checkMarkersInView() {
         return listings.find(listing => listing.name == marker.options.title);
     });
     openAllListingsInner(filteredListings);
+}
+
+function initializeGlide() {
+    glide = new Glide('.glide', {
+        type: 'carousel',
+        perView: 3,
+        breakpoints: {
+            1024: {
+                perView: 2
+            },
+            600: {
+                perView: 1
+            }
+        }
+    }).mount();
+}
+
+function destroyGlide() {
+    if (glide) {
+        glide.destroy();
+    }
+}
+
+
+
+
+function changePriceString(priceRange){
+    const prices = priceRange.replace(/\$|M/g, '').split(/\s*-\s*/);
+    const lowerValue = parseFloat(prices[0]) * 1000000;
+    const upperValue = parseFloat(prices[1]) * 1000000;
+    
+    return {
+        lowerValue,
+        upperValue
+    }
+    
+}
+function changePsfString(psfRange){
+
+    // Remove the dollar sign and "M" suffix, then split by the hyphen with optional spaces around it
+    const psf = psfRange.replace(/\$|M/g, '').split(/\s*-\s*/);
+    
+    // Convert to numbers and multiply by one million
+    const lowerValue = parseFloat(psf[0]);
+    const upperValue = parseFloat(psf[1]);
+    
+    return {
+        lowerValue,
+        upperValue
+    }
+    
+}
+
+function changeSqftString(sqftRange){
+        const sqft = sqftRange.replace(/\$|M|,/g, '').split(/\s*-\s*/);
+        
+        // Convert to numbers
+        const lowerValue = parseFloat(sqft[0]);
+        const upperValue = parseFloat(sqft[1]);
+        
+        return {
+            lowerValue,
+            upperValue
+        };
+}
+
+
+function toggleForm(){
+    const form = document.querySelector(".listing-form-container-mobile");
+    // check if the form is visible
+    const display = form.style.display;
+    if(display == "block"){
+        form.style.display = "none";
+    }else{
+        form.style.display = "block";
+    }
 }

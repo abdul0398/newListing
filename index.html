@@ -229,6 +229,7 @@
       @media (max-width: 500px) {
         #all-listings,
         #single-listing,
+        .single-listing-inner,
         #map-container {
           width: 100% !important;
         }
@@ -251,9 +252,22 @@
         #mapdiv{
           height:100%;
         }
+        .listing-form-container{
+          display: none !important;
+        }
+        
         
        
       }
+
+      @media (min-width: 500px) {
+        .floating_form_btn{
+          display: none !important;
+        }
+        
+      }
+
+
       .filter-container {
         max-width: 300px;
         width: 90%;
@@ -375,7 +389,7 @@
       #dev-form{
         padding: 15px 0px;
         border-radius: 4px;
-        margin-top: 15px;
+        margin-top: 9px;
       }
       .drop-down-search{
         width: 100%;
@@ -404,6 +418,44 @@
         background-color: #f1f1f1;
         border: 1px solid #d5d5d5;
       }
+      .single-listing-inner{
+        width: 50%;
+      }
+      .listing-form-container{
+        width: 45%; 
+        height: 500px; 
+        position: sticky; 
+        top: 0;
+      }
+      .listing-form-container-mobile{
+        width: 100%; 
+        height: 500px; 
+        position: fixed;
+        display: none;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 45%;
+        z-index: 1000;
+      }
+      .floating_form_btn{
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        padding: 33px;
+        border-radius: 50%;
+        font-size: 40px;
+        transition: 0.3s ease-in-out;
+        outline: none;
+        cursor: pointer;
+        z-index: 2;
+        bottom: 18%;
+        background-color: #aaa;
+        height: 35px;
+        width: 35px;
+      }
+      
     </style>
     
     <link rel="stylesheet" href="slider.css">
@@ -903,8 +955,119 @@
             ></i>
             <div class="donate-header-image"></div>
 
-            <div class="donate-header-text overflow-auto">
+              <!-- form for mobile view -->
+              <div class="floating_form_btn" onclick="toggleForm()">
+                <i class="fa-solid fa-message"></i>
+              </div>
+            <div class="listing-form-container-mobile">
+              <div id="dev-form" class="bg-white" style="box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);">
+                <div>
+                  <div>
+                    <p style="padding: 0px 10px; color: black; font-weight: bold; margin: 0px;">Contact Sales</p>
+                  </div>
+                  <div style="
+                  display: flex;
+                  justify-content: space-between;
+                  background-color: #fff7e1;
+                  font-size: 14px;
+                  color: #384152;
+                  font-weight: 400;
+                  align-items: center;
+                  height: 40px;
+                  padding: 0px 10px;
+                  margin: 20px 0px;
+                  ">
+                    <p  style="margin: 0px;">
+                      Get Exclusive Developer Discounts 
+                    </p>
+                    <p style="margin: 0px;
+                    background-color: #ffc72c;
+                    font-size: 11px;
+                    padding: 5px;
+                    border-radius: 4px;
+                    text-align: center;">ARRANGE VIEWING</p>
+                  </div>
+                  <div style="padding: 0px 10px; display: flex; margin: 0px; justify-content: space-between; margin: 20px 0px;">
+                    <div style="margin: 0px;">
+                      <img class="dev-logo" src="" alt="developer" style="width: 100px;">
+                      <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
+                      <p style="margin: 0px; font-size: 10px; color: #716f6f;">Developer Sales Team</p>
+                    </div>
+                    <button
+                    style="background-color: transparent;
+                    border: 1px solid #39548a;
+                    border-radius: 6px;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: #39548a;
+                    height: 40px;"
+                    
+                    >WhatsApp</button>
+                  </div>
+                  <div style="display: flex; gap:10px; padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
+                    <label for="checkbox1">
+                      <input id="checkbox1" type="checkbox">
+                      Get More Information
+                    </label>
+                    <label for="checkbox2">
+                      <input id="checkbox2" type="checkbox">
+                      Gain Valuable Insights
+                    </label>
+                    <label for="checkbox3">
+                      <input id="checkbox3" type="checkbox">
+                      Arrange Showflat Viewing
+                    </label>
+                  </div>
 
+                  <div style="margin-top: 30px;padding: 0px 10px;">
+                    <input style="width: 100%;
+                    border-radius: 9px;
+                    border: 1px solid #b7b7b7;
+                    padding: 5px 10px;" type="text" name="name" placeholder="Name">
+                  </div>
+
+                  <div style="margin-top: 15px;padding: 0px 10px;">
+                    <input style="width: 100%;
+                    border-radius: 9px;
+                    border: 1px solid #b7b7b7;
+                    padding: 5px 10px;" type="text" name="phone" placeholder="Phone">
+                  </div>
+
+                  <div style="margin-top: 15px;padding: 0px 10px;">
+                    <input style="width: 100%;
+                    border-radius: 9px;
+                    border: 1px solid #b7b7b7;
+                    padding: 5px 10px;" type="email" name="email" placeholder="Email">
+                  </div>
+                  <p id="error-form-para" class="text-danger" style="font-size: 12px; text-align: center; margin-top: 5px;"></p>
+                  <div style="margin-top: 30px;padding: 0px 10px; display: flex;justify-content: space-around;">
+                    <button onClick="handleFormSubmit()" style="background-color: #39548a;
+                    border: 1px solid #39548a;
+                    border-radius: 6px;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: white;
+                    width: 40%;"
+                    >
+                      Enquire Now
+                    </button>
+                    <button onClick="handleFormSubmit()"  style="background-color: transparent;
+                    border: 1px solid #39548a;
+                    border-radius: 6px;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: #39548a;
+                    width: 40%;">
+                      Call Sales
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="donate-header-text overflow-auto">
               <!-- Scroll buttons -->
 
               <div style="height: 50px; overflow-x: auto;font-size: 12px;">
@@ -943,163 +1106,245 @@
                 </div>
               </div>
 
-
-
-              <div class="bg-white mb-5 mt-2" id="top-header">
-
-                <div class="donate-title">
-                  <h2 id="projectName"  style="color: black;font-size: 16px;">Lentor Mansion</h2>
-                  <p><i class="fa-solid fa-star"></i>4.5</p>
-                </div>
-                <div class="donate-detail-text">
-                  <p id="projectRegion"  >North Region</p>
-                </div>
-                <div class="donate-detail-icon my-2"></div>
-                <div class="donate-detail-desc">
-                  <h2  style="color: black;font-size: 16px;">Description</h2>
-                  <p id="projectDesc" style="font-size: 14px;"></p>
-                </div>
-              </div>
-                
-
-                <!-- Gallery -->
-                <div class="donate-detail-gallery">
-                  <div class="bg-white" id="gallery-container">
-                    <h2 style="color: black;font-size: 16px;">Gallery</h2>
-                    <div class="gallery-list"></div>
-                  </div>
-                </div>
-
-                 <!-- Project Details -->
-                 <div class="mt-5 bg-white" id="projectDetailTable" style="overflow-x: auto;">
-                  <h2 style="color: black;font-size: 16px;" class="mb-2">Project Details</h2>
-                  <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;"  id="projectDetailInnerDiv">
-                  </div>
-                </div>
-
-
-                <!-- Site Plan -->
-                <div id="sitePlan" class="mt-5">
-                  <div id="sitePlan-detail" class="bg-white" style="overflow: auto;">
-                  <h2 style="color: black;font-size: 16px;" class="mb-2">Site Plan</h2>
-                  <p style="font-size: 12px; color: #6B7380; line-height: 19px;">List of Project Facilities</p>
-                    <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;" id="siteplan-details-inner">
+              <div class="d-flex">
+                <div class="listing-form-container">
+                  <div id="dev-form" class="bg-white">
+                    <div>
+                      <div>
+                        <p style="padding: 0px 10px; color: black; font-weight: bold; margin: 0px;">Contact Sales</p>
+                      </div>
+                      <div style="
+                      display: flex;
+                      justify-content: space-between;
+                      background-color: #fff7e1;
+                      font-size: 14px;
+                      color: #384152;
+                      font-weight: 400;
+                      align-items: center;
+                      height: 40px;
+                      padding: 0px 10px;
+                      margin: 20px 0px;
+                      ">
+                        <p  style="margin: 0px;">
+                          Get Exclusive Developer Discounts 
+                        </p>
+                        <p style="margin: 0px;
+                        background-color: #ffc72c;
+                        font-size: 11px;
+                        padding: 5px;
+                        border-radius: 4px;
+                        text-align: center;">ARRANGE VIEWING</p>
+                      </div>
+                      <div style="padding: 0px 10px; display: flex; margin: 0px; justify-content: space-between; margin: 20px 0px;">
+                        <div style="margin: 0px;">
+                          <img class="dev-logo" src="" alt="developer" style="width: 100px;">
+                          <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
+                          <p style="margin: 0px; font-size: 10px; color: #716f6f;">Developer Sales Team</p>
+                        </div>
+                        <button
+                        style="background-color: transparent;
+                        border: 1px solid #39548a;
+                        border-radius: 6px;
+                        padding: 8px 12px;
+                        font-size: 13px;
+                        font-weight: bold;
+                        color: #39548a;
+                        height: 40px;"
+                        
+                        >WhatsApp</button>
+                      </div>
+                      <div style="display: flex; gap:10px; padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
+                        <label for="checkbox1">
+                          <input id="checkbox1" type="checkbox">
+                          Get More Information
+                        </label>
+                        <label for="checkbox2">
+                          <input id="checkbox2" type="checkbox">
+                          Gain Valuable Insights
+                        </label>
+                        <label for="checkbox3">
+                          <input id="checkbox3" type="checkbox">
+                          Arrange Showflat Viewing
+                        </label>
+                      </div>
+          
+                      <div style="margin-top: 30px;padding: 0px 10px;">
+                        <input style="width: 100%;
+                        border-radius: 9px;
+                        border: 1px solid #b7b7b7;
+                        padding: 5px 10px;" type="text" name="name" placeholder="Name">
+                      </div>
+          
+                      <div style="margin-top: 15px;padding: 0px 10px;">
+                        <input style="width: 100%;
+                        border-radius: 9px;
+                        border: 1px solid #b7b7b7;
+                        padding: 5px 10px;" type="text" name="phone" placeholder="Phone">
+                      </div>
+          
+                      <div style="margin-top: 15px;padding: 0px 10px;">
+                        <input style="width: 100%;
+                        border-radius: 9px;
+                        border: 1px solid #b7b7b7;
+                        padding: 5px 10px;" type="email" name="email" placeholder="Email">
+                      </div>
+                      <p id="error-form-para" class="text-danger" style="font-size: 12px; text-align: center; margin-top: 5px;"></p>
+                      <div style="margin-top: 30px;padding: 0px 10px; display: flex;justify-content: space-around;">
+                        <button onClick="handleFormSubmit()" style="background-color: #39548a;
+                        border: 1px solid #39548a;
+                        border-radius: 6px;
+                        padding: 8px 12px;
+                        font-size: 13px;
+                        font-weight: bold;
+                        color: white;
+                        width: 40%;"
+                        >
+                          Enquire Now
+                        </button>
+                        <button onClick="handleFormSubmit()"  style="background-color: transparent;
+                        border: 1px solid #39548a;
+                        border-radius: 6px;
+                        padding: 8px 12px;
+                        font-size: 13px;
+                        font-weight: bold;
+                        color: #39548a;
+                        width: 40%;">
+                          Call Sales
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div id="sideMapImageContainer" class="mt-5">
+
+               
+                <div class="single-listing-inner ms-auto">
+
+
+
+
+
+                <div class="bg-white mb-5 mt-2" id="top-header">
+
+                  <div class="donate-title">
+                    <h2 id="projectName"  style="color: black;font-size: 16px;">Lentor Mansion</h2>
+                    <p><i class="fa-solid fa-star"></i>4.5</p>
+                  </div>
+                  <div class="donate-detail-text">
+                    <p id="projectRegion"  >North Region</p>
+                  </div>
+                  <div class="donate-detail-icon my-2"></div>
+                  <div class="donate-detail-desc">
+                    <h2  style="color: black;font-size: 16px;">Description</h2>
+                    <p id="projectDesc" style="font-size: 14px;"></p>
+                  </div>
                 </div>
-
-
-                <!-- Location Map -->
-                <div id="location-map-container" class="my-5 bg-white">
-                  <h2 style="color: black;
-                  font-size: 16px;" class="mb-2">Location Map</h2>
-                  <p style="font-size: 12px;
-                  color: #6B7380;
-                  line-height: 19px;">List of Essential Amenities</p>
-                  <table class="w-100 my-3 ">
-                    <thead style="height: 38px;">
-                      <tr style="background-color: #39548a; font-size: 12px; color: white;">
-                        <td class="ps-2">
-                          Category
-                        </td>
-                        <td class="ps-2">
-                          Location
-                        </td>
-                        <td class="ps-2">
-                          Distance
-                        </td>
-                      </tr>
-                    </thead>
-                    <tbody id="location-map-tbody">
-                      
-                    </tbody>
-                  </table>
-                </div>
-                <div id="location-map-images"></div>
-
-
-                <!-- Unit Mix -->
-                <div id="unitMix" class="my-5 bg-white">
-                  <h2 style="color: black;
-                  font-size: 16px;" class="mb-2">Unit Mix</h2>
-                  <p style="font-size: 12px;
-                  color: #6B7380;
-                  line-height: 19px;">Distribution of Total Units</p>
-                  <table class="w-100 my-3 ">
-                    <thead style="height: 38px;">
-                      <tr style="background-color: #39548a; font-size: 12px; color: white;">
-                        <td class="ps-2">
-                          Unit Type
-                        </td>
-                        <td class="text-center">
-                          Total Units
-                        </td>
-                        <td class="text-center">
-                          Size(sqft)
-                        </td>
-                        <td class="text-center">
-                          Unit Mix
-                        </td>
-                      </tr>
-                    </thead>
-                    <tbody id="unit-mix-tbody">
-                      
-                    </tbody>
-                  </table>
                   
-                </div>
-                <div id="unitMixImages"></div>
 
-                <!-- Balance units -->
-                <div id="balanceUnits"  class="my-5 bg-white ">
-                  <h2 style="color: black;
-  font-size: 16px;" class="mb-2">Balance Units</h2>
-                  <p style="font-size: 12px;
-                  color: #6B7380;
-                  line-height: 19px;">Pricing of Available Units</p>
-                  <table class="w-100 my-3 ">
-                    <thead style="height: 38px;">
-                      <tr style="background-color: #39548a; font-size: 12px; color: white;">
-                        <td class="ps-2">
-                          Unit Type
-                        </td>
-                        <td class="text-center">
-                          Available Units
-                        </td>
-                        <td class="text-center">
-                          Size(sqft)
-                        </td>
-                        <td class="text-center">
-                          PSF
-                        </td>
-                        <td class="text-center">
-                          Price
-                        </td>
-                      </tr>
-                    </thead>
-                    <tbody id="balance-unit-tbody">
-                      
-                    </tbody>
-                  </table>
-                </div>
-                
-                <div id="balanceUnitImages"></div>
+                  <!-- Gallery -->
+                  <div class="donate-detail-gallery">
+                    <div class="bg-white" id="gallery-container">
+                      <h2 style="color: black;font-size: 16px;">Gallery</h2>
+                      <div class="gallery-list"></div>
+                    </div>
+                  </div>
 
-                <!-- Transactions -->
-                <div id="transaction" class="my-5 bg-white">
-                  <h2 style="color: black;
-                  font-size: 16px;" class="mb-2">Sales Transaction</h2>
-                  <div style="overflow-x: auto; max-height: 500px;">
-                    <table class="w-100 my-3 " style="min-width: 700px; ">
+                  <!-- Project Details -->
+                  <div class="mt-5 bg-white" id="projectDetailTable" style="overflow-x: auto;">
+                    <h2 style="color: black;font-size: 16px;" class="mb-2">Project Details</h2>
+                    <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;"  id="projectDetailInnerDiv">
+                    </div>
+                  </div>
+
+
+                  <!-- Site Plan -->
+                  <div id="sitePlan" class="mt-5">
+                    <div id="sitePlan-detail" class="bg-white" style="overflow: auto;">
+                    <h2 style="color: black;font-size: 16px;" class="mb-2">Site Plan</h2>
+                    <p style="font-size: 12px; color: #6B7380; line-height: 19px;">List of Project Facilities</p>
+                      <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;" id="siteplan-details-inner">
+                      </div>
+                    </div>
+                  </div>
+                  <div id="sideMapImageContainer" class="mt-5">
+                  </div>
+
+
+                  <!-- Location Map -->
+                  <div id="location-map-container" class="my-5 bg-white">
+                    <h2 style="color: black;
+                    font-size: 16px;" class="mb-2">Location Map</h2>
+                    <p style="font-size: 12px;
+                    color: #6B7380;
+                    line-height: 19px;">List of Essential Amenities</p>
+                    <table class="w-100 my-3 ">
                       <thead style="height: 38px;">
                         <tr style="background-color: #39548a; font-size: 12px; color: white;">
                           <td class="ps-2">
-                            Date
+                            Category
+                          </td>
+                          <td class="ps-2">
+                            Location
+                          </td>
+                          <td class="ps-2">
+                            Distance
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody id="location-map-tbody">
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                  <div id="location-map-images"></div>
+
+
+                  <!-- Unit Mix -->
+                  <div id="unitMix" class="my-5 bg-white">
+                    <h2 style="color: black;
+                    font-size: 16px;" class="mb-2">Unit Mix</h2>
+                    <p style="font-size: 12px;
+                    color: #6B7380;
+                    line-height: 19px;">Distribution of Total Units</p>
+                    <table class="w-100 my-3 ">
+                      <thead style="height: 38px;">
+                        <tr style="background-color: #39548a; font-size: 12px; color: white;">
+                          <td class="ps-2">
+                            Unit Type
                           </td>
                           <td class="text-center">
+                            Total Units
+                          </td>
+                          <td class="text-center">
+                            Size(sqft)
+                          </td>
+                          <td class="text-center">
+                            Unit Mix
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody id="unit-mix-tbody">
+                        
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                  <div id="unitMixImages"></div>
+
+                  <!-- Balance units -->
+                  <div id="balanceUnits"  class="my-5 bg-white ">
+                    <h2 style="color: black;
+    font-size: 16px;" class="mb-2">Balance Units</h2>
+                    <p style="font-size: 12px;
+                    color: #6B7380;
+                    line-height: 19px;">Pricing of Available Units</p>
+                    <table class="w-100 my-3 ">
+                      <thead style="height: 38px;">
+                        <tr style="background-color: #39548a; font-size: 12px; color: white;">
+                          <td class="ps-2">
                             Unit Type
+                          </td>
+                          <td class="text-center">
+                            Available Units
                           </td>
                           <td class="text-center">
                             Size(sqft)
@@ -1110,161 +1355,139 @@
                           <td class="text-center">
                             Price
                           </td>
-                          <td class="text-center">
-                            Block
-                          </td>
-                          <td class="text-center">
-                            Floor
-                          </td>
-                          <td class="text-center">
-                            Stack
-                          </td>
                         </tr>
                       </thead>
-                      <tbody id="transaction-tbody">
+                      <tbody id="balance-unit-tbody">
                         
                       </tbody>
                     </table>
-                    
                   </div>
-                </div>
-               
+                  
+                  <div id="balanceUnitImages"></div>
 
-                <div class="bg-white mt-5" id="dev-info-container">
-                  <h2 style="color: black;font-size: 16px;" class="mb-2">Developers Profile</h2>
-                  <div>
-                    <div class="my-3">
-                      <img class="dev-logo" src="" alt="developer" style="width: 100px;">
-                    </div>
-                    <div>
-                      <p id="dev-para" style="font-size: 14px;"></p>
-                    </div>
-                  </div>
-                </div>
-               
-
-                <!-- Form -->
-                <div id="dev-form" class="bg-white">
-                  <div>
-                    <div>
-                      <p style="padding: 0px 10px; color: black; font-weight: bold; margin: 0px;">Contact Sales</p>
-                    </div>
-                    <div style="
-                    display: flex;
-                    justify-content: space-between;
-                    background-color: #fff7e1;
-                    font-size: 14px;
-                    color: #384152;
-                    font-weight: 400;
-                    align-items: center;
-                    height: 40px;
-                    padding: 0px 10px;
-                    margin: 20px 0px;
-                    ">
-                      <p  style="margin: 0px;">
-                        Get Exclusive Developer Discounts 
-                      </p>
-                      <p style="margin: 0px;
-                      background-color: #ffc72c;
-                      font-size: 11px;
-                      padding: 5px;
-                      border-radius: 4px;
-                      text-align: center;">ARRANGE VIEWING</p>
-                    </div>
-                    <div style="padding: 0px 10px; display: flex; margin: 0px; justify-content: space-between; margin: 20px 0px;">
-                      <div style="margin: 0px;">
-                        <img class="dev-logo" src="" alt="developer" style="width: 100px;">
-                        <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
-                        <p style="margin: 0px; font-size: 10px; color: #716f6f;">Developer Sales Team</p>
-                      </div>
-                      <button
-                      style="background-color: transparent;
-                      border: 1px solid #39548a;
-                      border-radius: 6px;
-                      padding: 8px 12px;
-                      font-size: 13px;
-                      font-weight: bold;
-                      color: #39548a;
-                      height: 40px;"
+                  <!-- Transactions -->
+                  <div id="transaction" class="my-5 bg-white">
+                    <h2 style="color: black;
+                    font-size: 16px;" class="mb-2">Sales Transaction</h2>
+                    <div style="overflow-x: auto; max-height: 500px;">
+                      <table class="w-100 my-3 " style="min-width: 700px; ">
+                        <thead style="height: 38px;">
+                          <tr style="background-color: #39548a; font-size: 12px; color: white;">
+                            <td class="ps-2">
+                              Date
+                            </td>
+                            <td class="text-center">
+                              Unit Type
+                            </td>
+                            <td class="text-center">
+                              Size(sqft)
+                            </td>
+                            <td class="text-center">
+                              PSF
+                            </td>
+                            <td class="text-center">
+                              Price
+                            </td>
+                            <td class="text-center">
+                              Block
+                            </td>
+                            <td class="text-center">
+                              Floor
+                            </td>
+                            <td class="text-center">
+                              Stack
+                            </td>
+                          </tr>
+                        </thead>
+                        <tbody id="transaction-tbody">
+                          
+                        </tbody>
+                      </table>
                       
-                      >WhatsApp</button>
-                    </div>
-                    <div style="display: flex; gap:10px; padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
-                      <label for="checkbox1">
-                        <input id="checkbox1" type="checkbox">
-                        Get More Information
-                      </label>
-                      <label for="checkbox2">
-                        <input id="checkbox2" type="checkbox">
-                        Gain Valuable Insights
-                      </label>
-                      <label for="checkbox3">
-                        <input id="checkbox3" type="checkbox">
-                        Arrange Showflat Viewing
-                      </label>
-                    </div>
-
-                    <div style="margin-top: 30px;padding: 0px 10px;">
-                      <input style="width: 100%;
-                      border-radius: 9px;
-                      border: 1px solid #b7b7b7;
-                      padding: 5px 10px;" type="text" name="name" placeholder="Name">
-                    </div>
-
-                    <div style="margin-top: 15px;padding: 0px 10px;">
-                      <input style="width: 100%;
-                      border-radius: 9px;
-                      border: 1px solid #b7b7b7;
-                      padding: 5px 10px;" type="text" name="phone" placeholder="Phone">
-                    </div>
-
-                    <div style="margin-top: 15px;padding: 0px 10px;">
-                      <input style="width: 100%;
-                      border-radius: 9px;
-                      border: 1px solid #b7b7b7;
-                      padding: 5px 10px;" type="email" name="email" placeholder="Email">
-                    </div>
-                    <p id="error-form-para" class="text-danger" style="font-size: 12px; text-align: center; margin-top: 5px;"></p>
-                    <div style="margin-top: 30px;padding: 0px 10px; display: flex;justify-content: space-around;">
-                      <button onClick="handleFormSubmit()" style="background-color: #39548a;
-                      border: 1px solid #39548a;
-                      border-radius: 6px;
-                      padding: 8px 12px;
-                      font-size: 13px;
-                      font-weight: bold;
-                      color: white;
-                      width: 40%;"
-                      >
-                        Enquire Now
-                      </button>
-                      <button onClick="handleFormSubmit()"  style="background-color: transparent;
-                      border: 1px solid #39548a;
-                      border-radius: 6px;
-                      padding: 8px 12px;
-                      font-size: 13px;
-                      font-weight: bold;
-                      color: #39548a;
-                      width: 40%;">
-                        Call Sales
-                      </button>
                     </div>
                   </div>
-                </div>
+                
+
+                  <div class="bg-white mt-5" id="dev-info-container">
+                    <h2 style="color: black;font-size: 16px;" class="mb-2">Developers Profile</h2>
+                    <div>
+                      <div class="my-3">
+                        <img class="dev-logo" src="" alt="developer" style="width: 100px;">
+                      </div>
+                      <div>
+                        <p id="dev-para" style="font-size: 14px;"></p>
+                      </div>
+                    </div>
+                  </div>
+                
+
+                  <!-- Form -->
+                  
 
 
-                 <!-- Bottom sticky card -->
-                 <div class="h-200 sticky-bottom-banner">
-                  Zero commission fee! Enquire with Direct to developer representatives! <a href=""> Enquire now!</a>
+                  <!-- Bottom sticky card -->
+                  <div class="h-200 sticky-bottom-banner">
+                    Zero commission fee! Enquire with Direct to developer representatives! <a href=""> Enquire now!</a>
+                  </div>
+              
+              
                 </div>
+
             </div>
-          </div>
+
+            </div>
+          
+            </div>
         </div>
       </div>
       <div class="resizer"></div>
       <div id="map-container" class="right-pane h-100 d-none d-lg-block d-md-block">
         <div id="filters-container" class="d-lg-flex d-none">
           <div class="filter-select-div">
-            <select class="form-select select-filter1" name="region" onchange="applyFilterSelect()" >
+            <select class="form-select select-filter1" name="price" onchange="applyFilterSelect()" >
+              <option disabled selected>Price</option>
+              <option value="all">All</option>
+              <option value="0-3">$0 - $3M</option>
+              <option value="3-6">$3M - $6M</option>
+              <option value="6-10">$6m - $10M</option>
+              <option value="10-100">above $10M </option>
+            </select>
+          </div>
+          <div class="filter-select-div">
+            <select class="form-select select-filter1" name="psf" onchange="applyFilterSelect()" >
+              <option disabled selected>PSF</option>
+              <option value="all">All</option>
+              <option value="1-2">$1000 - $2000</option>
+              <option value="2-3">$2000 - $3000</option>
+              <option value="3-4">$3000 - $4000</option>
+              <option value="4-10">4000+ </option>
+            </select>
+          </div>
+          <div class="filter-select-div">
+            <select class="form-select select-filter1" name="bedrooms" onchange="applyFilterSelect()" >
+              <option disabled selected>Beds</option>
+              <option value="all">All</option>
+              <option value="1">1 Bedroom</option>
+              <option value="2">2 Bedroom</option>
+              <option value="3">3 Bedroom</option>
+              <option value="4">4 Bedroom</option>
+              <option value="5">5+ Bedroom</option>
+            </select>
+          </div>
+          <div class="filter-select-div">
+            <select class="form-select select-filter1" name="sqft" onchange="applyFilterSelect()" >
+              <option disabled selected>Floor area(sqft)</option>
+              <option value="all">All</option>
+              <option value="300-700">300 - 700 sqft</option>
+              <option value="700-1200">700 - 1200 sqft</option>
+              <option value="1000-2000">1000 - 2000 sqft</option>
+              <option value="2000-4000">2000 - 4000 sqft</option>
+              <option value="4000-10000">4000+ sqft</option>
+            </select>
+          </div>
+          
+          <div class="filter-select-div">
+            <!-- <select class="form-select select-filter1" name="region" onchange="applyFilterSelect()" >
               <option disabled selected>Region</option>
               <option value="all">All</option>
               <option value="North Region">North Region</option>
@@ -1274,9 +1497,10 @@
               <option value="Downtown Core">Downtown Core</option>
               <option value="Prime District">Prime District</option>
               <option value="City Fringe">City Fringe</option>
-            </select>
+            </select> -->
+            
           </div>
-          <div class="filter-select-div">
+          <!-- <div class="filter-select-div">
             <select class="form-select select-filter2" name="market_segment"  onchange="applyFilterSelect()">
               <option disabled selected>Market Segment</option>
               <option value="all">All</option>
@@ -1317,7 +1541,7 @@
               <option value="2028">2028</option>
               <option value="2029">2029</option>
             </select>
-          </div>
+          </div> -->
       </div>
         <div id="mapdiv">
           <div style="height:40px;
@@ -1336,9 +1560,13 @@ With powerful filtration algorithms, an innovative listing approach, and detaile
           </div>
         </div>
       </div>
-     
+
+    
 
     </div>
+    
+    
+    
     <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
     <script src="script.js"></script>
     <script src="select2.js"></script>
