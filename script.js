@@ -636,6 +636,8 @@ function openAllListingsInner(filterListing) {
 
 function populateAllListingsInner(filterListing) {
 
+    
+
     const newListing = filterListing ? filterListing : listings;
     
     const container  = document.getElementById("all-listings-inner");
@@ -647,6 +649,18 @@ function populateAllListingsInner(filterListing) {
             </div>
         </div>
     `;
+
+
+    if(filterListing.length == 0){
+        container.innerHTML += `
+        <div class="d-flex justify-content-center align-items-center" style="height: 80vh">
+            <h5>No Listings Found</h5>
+        </div>
+        `   
+    }
+
+
+
     for (let i = 0; i < newListing.length; i++) {
         
         const address = newListing[i]?.details[0].para + ', ' + newListing[i]?.details[1].para ;
@@ -803,6 +817,31 @@ function closeFilterPopup() {
 }
 
 function applyFilterCheckbox() {
+    document.getElementById("all-listings").classList.remove("d-none");
+    
+    
+    // remove the circle from the map and zoom out
+    if (circle) {
+        map.removeLayer(circle);
+    }
+    if (maskLayer) {
+        map.removeLayer(maskLayer);
+    }
+    map.setView([1.3521, 103.8198], 12);
+
+
+    // remove all ammenities markers
+    AmmenetiesMarkers.forEach(marker => {
+        map.removeLayer(marker);
+    })
+
+    //remove selected marker
+    if(selectedMarker){
+        selectedMarker.setIcon(new L.Icon.Default());
+        selectedMarker.closePopup();
+        selectedMarker = null;
+    }
+
     let selectedCheckboxes = extractCheckboxes();
     let filteredListings = listings.filter(function(listing) {
         const project_size = listing.project_size;
@@ -903,6 +942,21 @@ function applyFilterCheckbox() {
         }
         return isMatch;
     });
+
+    markerArray.forEach(marker => {
+        marker.remove();
+    })
+
+    const filteredMarkers = markerArray.filter(marker => {
+        const name = marker.options.title;
+        const project = filteredListings.find(listing => listing.name == name);
+        return project;
+    })
+
+    filteredMarkers.forEach(marker => {
+        marker.addTo(map);
+    })
+
 
     openAllListingsInner(filteredListings);
     document.getElementById("map-container").classList.add("d-none");
