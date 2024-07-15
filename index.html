@@ -104,6 +104,7 @@
 
       .donate-header-text {
         padding: 20px 25px 25px;
+        padding-bottom: 100px;
         border-radius: 15px;
         transform: translateY(-10px);
         background-color: #f1f4f9;
@@ -272,7 +273,7 @@
         width: 90%;
         height: 100vh;
         font-size: 12px;
-        z-index: 1000;
+        z-index: 10000;
         padding-bottom: 40px;
         overflow-y: hidden;
         background-color: #39548a;
@@ -431,13 +432,16 @@
         border: 1px solid #d5d5d5;
       }
       .single-listing-inner {
-        width: 50%;
+        padding-right: 20px;
+        width: 70%;
       }
       .listing-form-container {
         width: 45%;
         height: 500px;
         position: sticky;
-        top: 0;
+        top: 20px;
+        max-width: 350px;
+        min-width: 300px;
       }
       .listing-form-container-mobile {
         width: 100%;
@@ -1001,7 +1005,7 @@
             <i
               class="fa-solid fa-arrow-left fa-xl position-absolute text-white"
               onclick="showMainPage()"
-              style="top: 25px; left: 20px; cursor: pointer"
+              style="top: 25px; left: 50px; cursor: pointer"
             ></i>
             <div class="donate-header-image"></div>
 
@@ -1011,7 +1015,7 @@
             </div>
             <div class="listing-form-container-mobile">
               <div
-                id="dev-form"
+                id="dev-form-mobile"
                 class="bg-white"
                 style="box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75)"
               >
@@ -1275,12 +1279,17 @@
 
               <div class="d-flex">
                 <div class="single-listing-inner me-auto">
-                  <div class="bg-white mb-5 mt-2" id="top-header">
-                    <div class="donate-title">
-                      <h2
+                  <div class="bg-white d-flex mb-5 mt-2" id="top-header">
+                    <div class="p-2">
+                      <img id="image-nxt-title" src="https://api.jomejourney-portal.com/uploads/6e6724084720f99f00703998b427c2.jpg" height="150px" style="border-radius: 15px;" width="200px" alt="">
+                    </div>
+                    <div class="p-3">
+
+                      <div class="donate-title">
+                        <h2
                         id="projectName"
-                        style="color: black; font-size: 16px"
-                      >
+                        style="color: black; font-size: 20px"
+                        >
                         Lentor Mansion
                       </h2>
                       <p><i class="fa-solid fa-star"></i>4.5</p>
@@ -1288,11 +1297,11 @@
                     <div class="donate-detail-text">
                       <p id="projectRegion">North Region</p>
                     </div>
-                    <div class="donate-detail-icon my-2"></div>
                     <div class="donate-detail-desc">
                       <h2 style="color: black; font-size: 16px">Description</h2>
                       <p id="projectDesc" style="font-size: 14px"></p>
                     </div>
+                  </div>
                   </div>
 
                   <!-- Gallery -->

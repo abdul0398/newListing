@@ -193,6 +193,10 @@ function carousel() {
 }
 
 function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions){
+
+      // hiding bottom listings and changing map dimensions
+      changeMapDimentionsAndToggleBottomListings(false);
+      
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
     document.getElementsByClassName("right-pane")[0].classList.add("d-none");
@@ -217,6 +221,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     const dev_logo = document.getElementsByClassName("dev-logo");
     const dev_para = document.getElementById("dev-para");
     const transactionTbody = document.getElementById("transaction-tbody");
+    const titleNextImage = document.getElementById("image-nxt-title");
 
 
 
@@ -435,12 +440,18 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
 
 
+    
 
 
     // Gallery
     galleryDiv.innerHTML = "";
     mainImages.innerHTML = "";
     for (let i = 0; i < Galleryimages.length; i++) {
+        if(i == 0){
+            titleNextImage.src = `https://api.jomejourney-portal.com${Galleryimages[i]}`;
+        }        
+
+
         const img = Galleryimages[i];
         if(!img) continue;
         galleryDiv.innerHTML += `
@@ -519,7 +530,7 @@ function populateAllListings(listings){
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
                     </div>
                     <div class="text-center pt-3" style="padding-left: 1rem;">
-                      <button class="read-more-btn">Read More</button>
+                      <button class="read-more-btn" onclick="openSingleListing(this)" data_name="${listings[i].name}">Read More</button>
                     </div>
                   </div>
 
@@ -637,7 +648,14 @@ function showMainPage() {
 }
 
 function openSingleListing(btn) {
-    const name = btn.innerText;
+    let name = btn.innerText;
+
+
+    if(name == 'Read More'){
+        name = btn.getAttribute("data_name");
+    }
+
+
     const marker = markerArray.find(marker => marker.options.title == name);
     
     if (marker) {
@@ -650,8 +668,7 @@ function openSingleListing(btn) {
     }
 
 
-    // hiding bottom listings and changing map dimensions
-    changeMapDimentionsAndToggleBottomListings(false);
+  
 
 
 
@@ -1126,6 +1143,8 @@ function extractSelectValues() {
 
 function applyFilterSelect() {
     document.getElementById("all-listings").classList.remove("d-none");
+
+    changeMapDimentionsAndToggleBottomListings(true);
     
     
     // remove the circle from the map and zoom out
@@ -1461,6 +1480,11 @@ function handleFormSubmit() {
         }
     })
     
+    if(!isCheckBox){
+        errorMessage.innerHTML = "Please select at least one checkbox";
+        return;
+    }
+
 
 
     
@@ -1486,11 +1510,7 @@ function handleFormSubmit() {
         return;
     }
 
-    if(!isCheckBox){
-        errorMessage.innerHTML = "Please select at least one checkbox";
-        return;
-    }
-
+   
     getToast().fire({
         icon: 'success',
         title: 'Form submitted successfully'
