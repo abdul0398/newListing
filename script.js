@@ -196,7 +196,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
       // hiding bottom listings and changing map dimensions
       changeMapDimentionsAndToggleBottomListings(false);
-      
+
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
     document.getElementsByClassName("right-pane")[0].classList.add("d-none");
@@ -521,9 +521,9 @@ function populateAllListings(listings){
                     </h6>
                       </div>
                       <p class='mb-2 text-muted' style="padding-left:1rem; font-size:11px">
-                      <img src="/public/placeholder.png" width="20px" />  West Region
+                      <img src="public/placeholder.png" width="20px" />  West Region
                       </p>
-                     ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="/public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
+                     ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
                     <div style="font-size:11px; padding:0px 1rem;line-height: 30px;">
                        <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
@@ -588,9 +588,9 @@ function populateAllListings(listings){
                     </h6>
                     </div>
                     <p class='mb-2 text-muted' style="padding-left:1rem; font-size:11px">
-                    <img src="/public/placeholder.png" width="20px" /> ${listings[i].geographical_region}
+                    <img src="public/placeholder.png" width="20px" /> ${listings[i].geographical_region}
                     </p>
-                  ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="/public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
+                  ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
                   <div style="font-size:11px; padding:0px 1rem;line-height: 30px;">
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
