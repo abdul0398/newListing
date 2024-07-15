@@ -20,7 +20,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <link rel="stylesheet" href="select2.css" />
 
     <script
@@ -51,9 +51,12 @@
       integrity="sha512-VBbe8aA3uiK90EUKJnZ4iEs0lKXRhzaAXL8CIHWYReUwULzxkOSxlNixn41OLdX0R1KNP23/s76YPyeRhE6P+Q=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-      ></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -66,7 +69,7 @@
         width: 100vw;
       }
       .donate-detail-header {
-        background-color: #efefef;
+        background-color: white;
         position: relative;
         width: 100%;
         border-radius: 15px;
@@ -76,9 +79,10 @@
       }
 
       .donate-header-image {
-        width: 100%;
-        height: 337px;
+        width: 95%;
+        height: 550px;
         border-radius: 10px;
+        margin: 0px auto 30px auto;
       }
 
       .header-image {
@@ -103,7 +107,7 @@
         border-radius: 15px;
         transform: translateY(-10px);
         background-color: #f1f4f9;
-        height: calc(100% - 337px);
+       
 
         .donate-title {
           display: flex;
@@ -143,7 +147,7 @@
 
       .donate-header-text .donate-detail-text p {
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 500;
         color: #a7a4a4;
       }
 
@@ -172,7 +176,6 @@
             }
           }
         }
-      
       }
 
       .donate-header-text .donate-detail-icon {
@@ -219,7 +222,8 @@
         }
       }
       #mapdiv {
-        height: 95%;
+        height: 60%;
+        border-radius: 32px;
       }
       .mobile-switch-menu {
         bottom: 40px;
@@ -233,40 +237,35 @@
         #map-container {
           width: 100% !important;
         }
-        .donate-header-text{
-          padding:20px 5px 100px 5px;
-        } 
-        .drop-down-search{
+        .donate-header-text {
+          padding: 20px 5px 100px 5px;
+        }
+        .drop-down-search {
           width: 88%;
         }
-        #search{
+        #search {
           width: 90% !important;
           max-width: 90% !important;
           min-width: 90% !important;
         }
-        .drop-down-search{
+        .drop-down-search {
           width: 90% !important;
           max-width: 90% !important;
           min-width: 90% !important;
         }
-        #mapdiv{
-          height:100%;
+        #mapdiv {
+          height: 100%;
         }
-        .listing-form-container{
+        .listing-form-container {
           display: none !important;
         }
-        
-        
-       
       }
 
       @media (min-width: 500px) {
-        .floating_form_btn{
+        .floating_form_btn {
           display: none !important;
         }
-        
       }
-
 
       .filter-container {
         max-width: 300px;
@@ -286,7 +285,7 @@
         cursor: pointer;
       }
 
-      .sticky-bottom-banner{
+      .sticky-bottom-banner {
         background-color: #39548a;
         height: 40px;
         border-radius: 10px;
@@ -301,12 +300,9 @@
       }
 
       .sticky-bottom-banner a {
-          color: white;
-          text-decoration: underline;
+        color: white;
+        text-decoration: underline;
       }
-
-
-
 
       .filter__body {
         overflow-y: auto;
@@ -378,22 +374,30 @@
         margin: auto;
         margin-left: 5px;
       }
-      #balanceUnits, #unitMix, #location-map-container, #projectDetailTable, #sitePlan-detail, #dev-info-container, #transaction, #gallery-container, #top-header{
+      #balanceUnits,
+      #unitMix,
+      #location-map-container,
+      #projectDetailTable,
+      #sitePlan-detail,
+      #dev-info-container,
+      #transaction,
+      #gallery-container,
+      #top-header {
         padding: 15px 15px;
         border-radius: 4px;
       }
-      .scroll-btn{
+      .scroll-btn {
         background: transparent;
         border: none;
         color: #39548a;
         font-weight: 900;
       }
-      #dev-form{
+      #dev-form {
         padding: 15px 0px;
         border-radius: 4px;
         margin-top: 9px;
       }
-      .drop-down-search{
+      .drop-down-search {
         width: 100%;
         min-width: 100%;
         position: absolute;
@@ -406,32 +410,38 @@
         overflow: auto;
         border: 1px solid #d5d5d5;
       }
-      #search{
+
+      #search {
         width: 100%;
         min-width: 100%;
-      }
-      .filter-select-div{
-        width: 20%;
+        background-color: white;
+        border-radius: 31px;
+        box-shadow: -5px 5px 23px -3px rgba(189, 189, 189, 1);
         height: 50px;
-        border-bottom: 1px solid #bdbbbb;
       }
 
-      .search-dropdown-result :hover{
+      .filter-select-div {
+        width: 20%;
+        margin: 0px 3px;
+        height: 50px;
+      }
+
+      .search-dropdown-result :hover {
         background-color: #f1f1f1;
         border: 1px solid #d5d5d5;
       }
-      .single-listing-inner{
+      .single-listing-inner {
         width: 50%;
       }
-      .listing-form-container{
-        width: 45%; 
-        height: 500px; 
-        position: sticky; 
+      .listing-form-container {
+        width: 45%;
+        height: 500px;
+        position: sticky;
         top: 0;
       }
-      .listing-form-container-mobile{
-        width: 100%; 
-        height: 500px; 
+      .listing-form-container-mobile {
+        width: 100%;
+        height: 500px;
         position: fixed;
         display: none;
         left: 50%;
@@ -439,7 +449,7 @@
         top: 45%;
         z-index: 1000;
       }
-      .floating_form_btn{
+      .floating_form_btn {
         position: fixed;
         display: flex;
         align-items: center;
@@ -457,10 +467,28 @@
         height: 35px;
         width: 35px;
       }
-      
+      .read-more-btn {
+        width: 200px;
+        border: none;
+        border-radius: 25px;
+        height: 40px;
+        background-color: #39548a;
+        color: white;
+      }
+      .left-pane {
+        transition: 0.4 ease-in-out;
+      }
+      #filters-container{
+        padding: 10px;
+      }
+      #all-listings{
+        height: 90%;
+        overflow: auto;
+        padding-bottom: 100px;
+      }
     </style>
-    
-    <link rel="stylesheet" href="slider.css">
+
+    <link rel="stylesheet" href="slider.css" />
   </head>
   <body class="position-relative overflow-hidden">
     <div class="darksoul-layout position-absolute d-none">
@@ -726,9 +754,7 @@
                   id="expectedTop_1"
                   value="2024"
                 />
-                <label class="form-check-label" for="expectedTop_1"
-                  >2024</label
-                >
+                <label class="form-check-label" for="expectedTop_1">2024</label>
               </div>
               <div class="form-check">
                 <input
@@ -738,9 +764,7 @@
                   id="expectedTop_2"
                   value="2025"
                 />
-                <label class="form-check-label" for="expectedTop_2"
-                  >2025</label
-                >
+                <label class="form-check-label" for="expectedTop_2">2025</label>
               </div>
               <div class="form-check">
                 <input
@@ -750,9 +774,7 @@
                   id="expectedTop_3"
                   value="2026"
                 />
-                <label class="form-check-label" for="expectedTop_3"
-                  >2026</label
-                >
+                <label class="form-check-label" for="expectedTop_3">2026</label>
               </div>
               <div class="form-check">
                 <input
@@ -763,8 +785,8 @@
                   value="2027"
                 />
                 <label class="form-check-label" for="expectedTop_4"
-                >2027 </label
-                >
+                  >2027
+                </label>
               </div>
               <div class="form-check">
                 <input
@@ -774,9 +796,7 @@
                   id="expectedTop_5"
                   value="2028"
                 />
-                <label class="form-check-label" for="expectedTop_5"
-                >2028</label
-                >
+                <label class="form-check-label" for="expectedTop_5">2028</label>
               </div>
               <div class="form-check">
                 <input
@@ -786,14 +806,11 @@
                   id="expectedTop_6"
                   value="2029"
                 />
-                <label class="form-check-label" for="expectedTop_5"
-                >2029</label
-                >
+                <label class="form-check-label" for="expectedTop_5">2029</label>
               </div>
             </div>
           </div>
         </div>
-        
       </div>
 
       <div class="filter__footer p-3">
@@ -836,637 +853,47 @@
       </div>
     </div>
 
-   
-    
-    <div style="height: 25px; width: 100%; background-color: #dcdcdc;  color: black; font-size: 14px; text-align: center; padding: 3px 5px;">
+    <!-- <div style="height: 25px; width: 100%; background-color: #dcdcdc;  color: black; font-size: 14px; text-align: center; padding: 3px 5px;">
       With powerful filtration algorithms, an innovative listing approach, and detailed sales analytics, supported by data from HDB OneMap and URA.gov, you'll quickly find the most suitable new launches.
 
-    </div>
-    <div class="d-flex  main-container " style="height: 97%;">
-      <div class="left-pane ">
-        <div id="all-listings" class="w-100 h-100">
-          <div class="container house-list mb-3 h-100 overflow-auto">
-            <div class="mt-3">
-              <div class="d-flex gap-1" style="position: relative;">
-                <input
-                  class="form-control search "
-                  type="search"
-                  id="search"
-                  oninput="searchListings(this)"
-                  placeholder="Search Address"
-                  value=""
-                />
-          
-                <div class="dropdown d-flex d-lg-none" style="justify-content: center; align-items: center;">
-                  <button
-                    class="filter-button"
-                    style="margin: 0px;"
-                    type="button"
-                    id="dropdownMenuButton"
-                    onclick="openFilterPopup()"
-                  >
-                    <i class="fa-solid fa-filter"></i>
-                  </button>
-                </div>
-                
-                 <div class="drop-down-search d-none">
-                   
-                </div>
-              </div>
-
-              <div id="starting-page">
-                <div class="title mt-3">
-                  <div class="title-left">
-                    <i class="fa-solid fa-location-dot"></i>Near You
-                  </div>
-                  <div class="title-right">
-                    <button
-                      class="bg-transparent border-0"
-                      onclick="openAllListingsInner()"
-                    >
-                      View All
-                    </button>
-                  </div>
-                </div>
-                <div class="glide my-3">
-                  <div class="glide__track" data-glide-el="track">
-                    <ul class="glide__slides"></ul>
-                  </div>
-                  <div class="glide__bullets" data-glide-el="controls[nav]"></div>
-                </div>
-                <div class="title">
-                  <div class="title-left">Recomended For you</div>
-                  <div class="title-right">
-                    <button
-                      class="bg-transparent border-0"
-                      onclick="openAllListingsInner()"
-                    >
-                      View All
-                    </button>
-                  </div>
-                </div>
-                <div class="recommended-slider">
-                  <div class="card my-3" style="max-width: 100%">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="" alt="" />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title mb-3">Lentor Mansion</h5>
-                          <h6 class="card-subtitle mb-4 text-muted">
-                            North Region
-                          </h6>
-                          <div class="card-campaign-desc">
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>2 Bedroom
-                            </p>
-
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>3 Bedroom
-                            </p>
-
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>4 Bedroom
-                            </p>
-
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>5 Bedroom
-                            </p>
-
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>Overall
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="all-listings-inner" class="d-none"></div>
-            </div>
-          </div>
-        </div>
-        <div id="single-listing" class="d-none w-100 h-100">
-          <div class="donate-detail-header">
-            <i
-              class="fa-solid fa-arrow-left fa-xl position-absolute text-white"
-              onclick="showMainPage()"
-              style="top: 25px; left: 20px; cursor: pointer"
-            ></i>
-            <div class="donate-header-image"></div>
-
-              <!-- form for mobile view -->
-              <div class="floating_form_btn" onclick="toggleForm()">
-                <i class="fa-solid fa-message"></i>
-              </div>
-            <div class="listing-form-container-mobile">
-              <div id="dev-form" class="bg-white" style="box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);">
-                <div>
-                  <div>
-                    <p style="padding: 0px 10px; color: black; font-weight: bold; margin: 0px;">Contact Sales</p>
-                  </div>
-                  <div style="
-                  display: flex;
-                  justify-content: space-between;
-                  background-color: #fff7e1;
-                  font-size: 14px;
-                  color: #384152;
-                  font-weight: 400;
-                  align-items: center;
-                  height: 40px;
-                  padding: 0px 10px;
-                  margin: 20px 0px;
-                  ">
-                    <p  style="margin: 0px;">
-                      Get Exclusive Developer Discounts 
-                    </p>
-                    <p style="margin: 0px;
-                    background-color: #ffc72c;
-                    font-size: 11px;
-                    padding: 5px;
-                    border-radius: 4px;
-                    text-align: center;">ARRANGE VIEWING</p>
-                  </div>
-                  <div style="padding: 0px 10px; display: flex; margin: 0px; justify-content: space-between; margin: 20px 0px;">
-                    <div style="margin: 0px;">
-                      <img class="dev-logo" src="" alt="developer" style="width: 100px; height: 50px;">
-                      <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
-                      <p style="margin: 0px; font-size: 10px; color: #716f6f;">Developer Sales Team</p>
-                    </div>
-                    <button
-                    style="background-color: transparent;
-                    border: 1px solid #39548a;
-                    border-radius: 6px;
-                    padding: 8px 12px;
-                    font-size: 13px;
-                    font-weight: bold;
-                    color: #39548a;
-                    height: 40px;"
-                    
-                    >WhatsApp</button>
-                  </div>
-                  <div style="display: flex; gap:10px; padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
-                    <label for="checkbox1">
-                      <input id="checkbox1" type="checkbox">
-                      Get More Information
-                    </label>
-                    <label for="checkbox2">
-                      <input id="checkbox2" type="checkbox">
-                      Gain Valuable Insights
-                    </label>
-                    <label for="checkbox3">
-                      <input id="checkbox3" type="checkbox">
-                      Arrange Showflat Viewing
-                    </label>
-                  </div>
-
-                  <div style="margin-top: 30px;padding: 0px 10px;">
-                    <input style="width: 100%;
-                    border-radius: 9px;
-                    border: 1px solid #b7b7b7;
-                    padding: 5px 10px;" type="text" name="name" placeholder="Name">
-                  </div>
-
-                  <div style="margin-top: 15px;padding: 0px 10px;">
-                    <input style="width: 100%;
-                    border-radius: 9px;
-                    border: 1px solid #b7b7b7;
-                    padding: 5px 10px;" type="text" name="phone" placeholder="Phone">
-                  </div>
-
-                  <div style="margin-top: 15px;padding: 0px 10px;">
-                    <input style="width: 100%;
-                    border-radius: 9px;
-                    border: 1px solid #b7b7b7;
-                    padding: 5px 10px;" type="email" name="email" placeholder="Email">
-                  </div>
-                  <p id="error-form-para" class="text-danger" style="font-size: 12px; text-align: center; margin-top: 5px;"></p>
-                  <div style="margin-top: 30px;padding: 0px 10px; display: flex;justify-content: space-around;">
-                    <button onClick="handleFormSubmit()" style="background-color: #39548a;
-                    border: 1px solid #39548a;
-                    border-radius: 6px;
-                    padding: 8px 12px;
-                    font-size: 13px;
-                    font-weight: bold;
-                    color: white;
-                    width: 40%;"
-                    >
-                      Enquire Now
-                    </button>
-                    <button onClick="handleFormSubmit()"  style="background-color: transparent;
-                    border: 1px solid #39548a;
-                    border-radius: 6px;
-                    padding: 8px 12px;
-                    font-size: 13px;
-                    font-weight: bold;
-                    color: #39548a;
-                    width: 40%;">
-                      Call Sales
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="donate-header-text overflow-auto">
-              <!-- Scroll buttons -->
-
-              <div style="height: 50px; overflow-x: auto;font-size: 12px;">
-                <div style="display: flex; min-width: 620px; justify-content: space-around;">
-                  <button data="projectDetailTable" class="scroll-btn" onclick="handleScroll(this)">
-                    <i class="fa-solid fa-circle-info"></i>
-                    Project Details
-                  </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
-                  <button data="sitePlan" class="scroll-btn" onclick="handleScroll(this)">
-                    <i class="fa-solid fa-chart-area"></i>
-                    Site Plan
-                  </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
-                  
-                  <button data="location-map-container" class="scroll-btn" onclick="handleScroll(this)">
-                    <i class="fa-solid fa-map"></i>
-                    Location Map
-                  </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
-                  
-                  <button data="unitMix" class="scroll-btn" onclick="handleScroll(this)">
-                    <i class="fa-solid fa-square-poll-horizontal"></i>
-                    Unit Mix
-                  </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
-                  <button data="balanceUnits" class="scroll-btn" onclick="handleScroll(this)">
-                    <i class="fa-solid fa-scale-balanced"></i>
-                    Balance Units
-                  </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
-                  <button data="transaction" class="scroll-btn" onclick="handleScroll(this)">
-                    <i class="fa-solid fa-chart-simple"></i>
-                    Transactions
-                  </button>
-                </div>
-              </div>
-
-              <div class="d-flex">
-                <div class="listing-form-container">
-                  <div id="dev-form" class="bg-white">
-                    <div>
-                      <div>
-                        <p style="padding: 0px 10px; color: black; font-weight: bold; margin: 0px;">Contact Sales</p>
-                      </div>
-                      <div style="
-                      display: flex;
-                      justify-content: space-between;
-                      background-color: #fff7e1;
-                      font-size: 14px;
-                      color: #384152;
-                      font-weight: 400;
-                      align-items: center;
-                      height: 40px;
-                      padding: 0px 10px;
-                      margin: 20px 0px;
-                      ">
-                        <p  style="margin: 0px;">
-                          Get Exclusive Developer Discounts 
-                        </p>
-                        <p style="margin: 0px;
-                        background-color: #ffc72c;
-                        font-size: 11px;
-                        padding: 5px;
-                        border-radius: 4px;
-                        text-align: center;">ARRANGE VIEWING</p>
-                      </div>
-                      <div style="padding: 0px 10px; display: flex; margin: 0px; justify-content: space-between; margin: 20px 0px;">
-                        <div style="margin: 0px;">
-                          <img class="dev-logo" src="" alt="developer" style="width: 100px;">
-                          <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
-                          <p style="margin: 0px; font-size: 10px; color: #716f6f;">Developer Sales Team</p>
-                        </div>
-                        <button
-                        style="background-color: transparent;
-                        border: 1px solid #39548a;
-                        border-radius: 6px;
-                        padding: 8px 12px;
-                        font-size: 13px;
-                        font-weight: bold;
-                        color: #39548a;
-                        height: 40px;"
-                        
-                        >WhatsApp</button>
-                      </div>
-                      <div style="display: flex; gap:10px; padding: 0px 10px; font-size: 12px; color: black; flex-direction: column;">
-                        <label for="checkbox1">
-                          <input id="checkbox1" type="checkbox">
-                          Get More Information
-                        </label>
-                        <label for="checkbox2">
-                          <input id="checkbox2" type="checkbox">
-                          Gain Valuable Insights
-                        </label>
-                        <label for="checkbox3">
-                          <input id="checkbox3" type="checkbox">
-                          Arrange Showflat Viewing
-                        </label>
-                      </div>
-          
-                      <div style="margin-top: 30px;padding: 0px 10px;">
-                        <input style="width: 100%;
-                        border-radius: 9px;
-                        border: 1px solid #b7b7b7;
-                        padding: 5px 10px;" type="text" name="name" placeholder="Name">
-                      </div>
-          
-                      <div style="margin-top: 15px;padding: 0px 10px;">
-                        <input style="width: 100%;
-                        border-radius: 9px;
-                        border: 1px solid #b7b7b7;
-                        padding: 5px 10px;" type="text" name="phone" placeholder="Phone">
-                      </div>
-          
-                      <div style="margin-top: 15px;padding: 0px 10px;">
-                        <input style="width: 100%;
-                        border-radius: 9px;
-                        border: 1px solid #b7b7b7;
-                        padding: 5px 10px;" type="email" name="email" placeholder="Email">
-                      </div>
-                      <p id="error-form-para" class="text-danger" style="font-size: 12px; text-align: center; margin-top: 5px;"></p>
-                      <div style="margin-top: 30px;padding: 0px 10px; display: flex;justify-content: space-around;">
-                        <button onClick="handleFormSubmit()" style="background-color: #39548a;
-                        border: 1px solid #39548a;
-                        border-radius: 6px;
-                        padding: 8px 12px;
-                        font-size: 13px;
-                        font-weight: bold;
-                        color: white;
-                        width: 40%;"
-                        >
-                          Enquire Now
-                        </button>
-                        <button onClick="handleFormSubmit()"  style="background-color: transparent;
-                        border: 1px solid #39548a;
-                        border-radius: 6px;
-                        padding: 8px 12px;
-                        font-size: 13px;
-                        font-weight: bold;
-                        color: #39548a;
-                        width: 40%;">
-                          Call Sales
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-               
-                <div class="single-listing-inner ms-auto">
-
-
-
-
-
-                <div class="bg-white mb-5 mt-2" id="top-header">
-
-                  <div class="donate-title">
-                    <h2 id="projectName"  style="color: black;font-size: 16px;">Lentor Mansion</h2>
-                    <p><i class="fa-solid fa-star"></i>4.5</p>
-                  </div>
-                  <div class="donate-detail-text">
-                    <p id="projectRegion"  >North Region</p>
-                  </div>
-                  <div class="donate-detail-icon my-2"></div>
-                  <div class="donate-detail-desc">
-                    <h2  style="color: black;font-size: 16px;">Description</h2>
-                    <p id="projectDesc" style="font-size: 14px;"></p>
-                  </div>
-                </div>
-                  
-
-                  <!-- Gallery -->
-                  <div class="donate-detail-gallery">
-                    <div class="bg-white" id="gallery-container">
-                      <h2 style="color: black;font-size: 16px;">Gallery</h2>
-                      <div class="gallery-list"></div>
-                    </div>
-                  </div>
-
-                  <!-- Project Details -->
-                  <div class="mt-5 bg-white" id="projectDetailTable" style="overflow-x: auto;">
-                    <h2 style="color: black;font-size: 16px;" class="mb-2">Project Details</h2>
-                    <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;"  id="projectDetailInnerDiv">
-                    </div>
-                  </div>
-
-
-                  <!-- Site Plan -->
-                  <div id="sitePlan" class="mt-5">
-                    <div id="sitePlan-detail" class="bg-white" style="overflow: auto;">
-                    <h2 style="color: black;font-size: 16px;" class="mb-2">Site Plan</h2>
-                    <p style="font-size: 12px; color: #6B7380; line-height: 19px;">List of Project Facilities</p>
-                      <div style="display: flex; min-width: 700px; font-size: 12px; justify-content: space-between;" id="siteplan-details-inner">
-                      </div>
-                    </div>
-                  </div>
-                  <div id="sideMapImageContainer" class="mt-5">
-                  </div>
-
-
-                  <!-- Location Map -->
-                  <div id="location-map-container" class="my-5 bg-white">
-                    <h2 style="color: black;
-                    font-size: 16px;" class="mb-2">Location Map</h2>
-                    <p style="font-size: 12px;
-                    color: #6B7380;
-                    line-height: 19px;">List of Essential Amenities</p>
-                    <table class="w-100 my-3 ">
-                      <thead style="height: 38px;">
-                        <tr style="background-color: #39548a; font-size: 12px; color: white;">
-                          <td class="ps-2">
-                            Category
-                          </td>
-                          <td class="ps-2">
-                            Location
-                          </td>
-                          <td class="ps-2">
-                            Distance
-                          </td>
-                        </tr>
-                      </thead>
-                      <tbody id="location-map-tbody">
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                  <div id="location-map-images"></div>
-
-
-                  <!-- Unit Mix -->
-                  <div id="unitMix" class="my-5 bg-white">
-                    <h2 style="color: black;
-                    font-size: 16px;" class="mb-2">Unit Mix</h2>
-                    <p style="font-size: 12px;
-                    color: #6B7380;
-                    line-height: 19px;">Distribution of Total Units</p>
-                    <table class="w-100 my-3 ">
-                      <thead style="height: 38px;">
-                        <tr style="background-color: #39548a; font-size: 12px; color: white;">
-                          <td class="ps-2">
-                            Unit Type
-                          </td>
-                          <td class="text-center">
-                            Total Units
-                          </td>
-                          <td class="text-center">
-                            Size(sqft)
-                          </td>
-                          <td class="text-center">
-                            Unit Mix
-                          </td>
-                        </tr>
-                      </thead>
-                      <tbody id="unit-mix-tbody">
-                        
-                      </tbody>
-                    </table>
-                    
-                  </div>
-                  <div id="unitMixImages"></div>
-
-                  <!-- Balance units -->
-                  <div id="balanceUnits"  class="my-5 bg-white ">
-                    <h2 style="color: black;
-    font-size: 16px;" class="mb-2">Balance Units</h2>
-                    <p style="font-size: 12px;
-                    color: #6B7380;
-                    line-height: 19px;">Pricing of Available Units</p>
-                    <table class="w-100 my-3 ">
-                      <thead style="height: 38px;">
-                        <tr style="background-color: #39548a; font-size: 12px; color: white;">
-                          <td class="ps-2">
-                            Unit Type
-                          </td>
-                          <td class="text-center">
-                            Available Units
-                          </td>
-                          <td class="text-center">
-                            Size(sqft)
-                          </td>
-                          <td class="text-center">
-                            PSF
-                          </td>
-                          <td class="text-center">
-                            Price
-                          </td>
-                        </tr>
-                      </thead>
-                      <tbody id="balance-unit-tbody">
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                  
-                  <div id="balanceUnitImages"></div>
-
-                  <!-- Transactions -->
-                  <div id="transaction" class="my-5 bg-white">
-                    <h2 style="color: black;
-                    font-size: 16px;" class="mb-2">Sales Transaction</h2>
-                    <div style="overflow-x: auto; max-height: 500px;">
-                      <table class="w-100 my-3 " style="min-width: 700px; ">
-                        <thead style="height: 38px;">
-                          <tr style="background-color: #39548a; font-size: 12px; color: white;">
-                            <td class="ps-2">
-                              Date
-                            </td>
-                            <td class="text-center">
-                              Unit Type
-                            </td>
-                            <td class="text-center">
-                              Size(sqft)
-                            </td>
-                            <td class="text-center">
-                              PSF
-                            </td>
-                            <td class="text-center">
-                              Price
-                            </td>
-                            <td class="text-center">
-                              Block
-                            </td>
-                            <td class="text-center">
-                              Floor
-                            </td>
-                            <td class="text-center">
-                              Stack
-                            </td>
-                          </tr>
-                        </thead>
-                        <tbody id="transaction-tbody">
-                          
-                        </tbody>
-                      </table>
-                      
-                    </div>
-                  </div>
-                
-
-                  <div class="bg-white mt-5" id="dev-info-container">
-                    <h2 style="color: black;font-size: 16px;" class="mb-2">Developers Profile</h2>
-                    <div>
-                      <div class="my-3">
-                        <img class="dev-logo" src="" alt="developer" style="width: 100px;">
-                      </div>
-                      <div>
-                        <p id="dev-para" style="font-size: 14px;"></p>
-                      </div>
-                    </div>
-                  </div>
-                
-
-                  <!-- Form -->
-                  
-
-
-                  <!-- Bottom sticky card -->
-                  <div class="h-200 sticky-bottom-banner">
-                    Zero commission fee! Enquire with Direct to developer representatives! <a href=""> Enquire now!</a>
-                  </div>
-              
-              
-                </div>
-
-            </div>
-
-            </div>
-          
-            </div>
-        </div>
-      </div>
-      <div class="resizer"></div>
-      <div id="map-container" class="right-pane h-100 d-none d-lg-block d-md-block">
-        <div id="filters-container" class="d-lg-flex d-none">
+    </div> -->
+    <div class="d-flex h-100 main-container">
+      <div class="left-pane">
+        <div id="filters-container" class="d-lg-flex d-none text-center justify-content-center">
           <div class="filter-select-div">
-            <select class="form-select select-filter1" name="price" onchange="applyFilterSelect()" >
+            <select
+              class="form-select select-filter1"
+              name="price"
+              onchange="applyFilterSelect()"
+            >
               <option disabled selected>Price</option>
               <option value="all">All</option>
               <option value="0-3">$0 - $3M</option>
               <option value="3-6">$3M - $6M</option>
               <option value="6-10">$6m - $10M</option>
-              <option value="10-100">above $10M </option>
+              <option value="10-100">above $10M</option>
             </select>
           </div>
           <div class="filter-select-div">
-            <select class="form-select select-filter1" name="psf" onchange="applyFilterSelect()" >
+            <select
+              class="form-select select-filter1"
+              name="psf"
+              onchange="applyFilterSelect()"
+            >
               <option disabled selected>PSF</option>
               <option value="all">All</option>
               <option value="1-2">$1000 - $2000</option>
               <option value="2-3">$2000 - $3000</option>
               <option value="3-4">$3000 - $4000</option>
-              <option value="4-10">4000+ </option>
+              <option value="4-10">4000+</option>
             </select>
           </div>
           <div class="filter-select-div">
-            <select class="form-select select-filter1" name="bedrooms" onchange="applyFilterSelect()" >
+            <select
+              class="form-select select-filter1"
+              name="bedrooms"
+              onchange="applyFilterSelect()"
+            >
               <option disabled selected>Beds</option>
               <option value="all">All</option>
               <option value="1">1 Bedroom</option>
@@ -1477,7 +904,11 @@
             </select>
           </div>
           <div class="filter-select-div">
-            <select class="form-select select-filter1" name="sqft" onchange="applyFilterSelect()" >
+            <select
+              class="form-select select-filter1"
+              name="sqft"
+              onchange="applyFilterSelect()"
+            >
               <option disabled selected>Floor area(sqft)</option>
               <option value="all">All</option>
               <option value="300-700">300 - 700 sqft</option>
@@ -1487,8 +918,8 @@
               <option value="4000-10000">4000+ sqft</option>
             </select>
           </div>
-          
-          <div class="filter-select-div">
+
+          <div>
             <!-- <select class="form-select select-filter1" name="region" onchange="applyFilterSelect()" >
               <option disabled selected>Region</option>
               <option value="all">All</option>
@@ -1500,8 +931,22 @@
               <option value="Prime District">Prime District</option>
               <option value="City Fringe">City Fringe</option>
             </select> -->
-            <button onclick="openFilterPopup()" style="font-weight: bold; width: 100%; height: 100%; border: none; background-color: white; font-size: 12px; color:rgb(0, 104, 201)">
-              More filters <i class="fa-solid fa-arrow-down-long"></i>
+            <button
+              onclick="openFilterPopup()"
+              style="
+                margin-left: 3px;
+                border: 1px solid #aaa;
+                border-radius: 70px;
+                font-weight: 500;
+                width: 100px;
+                height: 100%;
+                background-color: white;
+                font-size: 14px;
+                color: #7d7d7d;
+              "
+            >
+              More
+              <!-- <i class="fa-solid fa-arrow-down-long"></i> -->
             </button>
           </div>
           <!-- <div class="filter-select-div">
@@ -1546,37 +991,792 @@
               <option value="2029">2029</option>
             </select>
           </div> -->
-      </div>
-        <div id="mapdiv">
-          <div style="height:40px;
-          width: 70%;
-          padding: 3px;
-          border-radius: 5px;
-          color: black;
-          background: color;
-          background-color: white;
-          z-index: 9999;
-          position: absolute;
-          bottom: 0px;
-          right: 0px;">
-With powerful filtration algorithms, an innovative listing approach, and detailed sales analytics, supported by data from HDB OneMap and URA.gov, you'll quickly find the most suitable new launches.
+        </div>
+        <div id="all-listings" class="px-3">
 
+
+        </div>
+        <div id="single-listing" class="d-none w-100 h-100">
+          <div class="donate-detail-header">
+            <i
+              class="fa-solid fa-arrow-left fa-xl position-absolute text-white"
+              onclick="showMainPage()"
+              style="top: 25px; left: 20px; cursor: pointer"
+            ></i>
+            <div class="donate-header-image"></div>
+
+            <!-- form for mobile view -->
+            <div class="floating_form_btn" onclick="toggleForm()">
+              <i class="fa-solid fa-message"></i>
+            </div>
+            <div class="listing-form-container-mobile">
+              <div
+                id="dev-form"
+                class="bg-white"
+                style="box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75)"
+              >
+                <div>
+                  <div>
+                    <p
+                      style="
+                        padding: 0px 10px;
+                        color: black;
+                        font-weight: bold;
+                        margin: 0px;
+                      "
+                    >
+                      Contact Sales
+                    </p>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      background-color: #fff7e1;
+                      font-size: 14px;
+                      color: #384152;
+                      font-weight: 400;
+                      align-items: center;
+                      height: 40px;
+                      padding: 0px 10px;
+                      margin: 20px 0px;
+                    "
+                  >
+                    <p style="margin: 0px">Get Exclusive Developer Discounts</p>
+                    <p
+                      style="
+                        margin: 0px;
+                        background-color: #ffc72c;
+                        font-size: 11px;
+                        padding: 5px;
+                        border-radius: 4px;
+                        text-align: center;
+                      "
+                    >
+                      ARRANGE VIEWING
+                    </p>
+                  </div>
+                  <div
+                    style="
+                      padding: 0px 10px;
+                      display: flex;
+                      margin: 0px;
+                      justify-content: space-between;
+                      margin: 20px 0px;
+                    "
+                  >
+                    <div style="margin: 0px">
+                      <img
+                        class="dev-logo"
+                        src=""
+                        alt="developer"
+                        style="width: 100px; height: 50px"
+                      />
+                      <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
+                      <p style="margin: 0px; font-size: 10px; color: #716f6f">
+                        Developer Sales Team
+                      </p>
+                    </div>
+                    <button
+                      style="
+                        background-color: transparent;
+                        border: 1px solid #39548a;
+                        border-radius: 6px;
+                        padding: 8px 12px;
+                        font-size: 13px;
+                        font-weight: bold;
+                        color: #39548a;
+                        height: 40px;
+                      "
+                    >
+                      WhatsApp
+                    </button>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      gap: 10px;
+                      padding: 0px 10px;
+                      font-size: 12px;
+                      color: black;
+                      flex-direction: column;
+                    "
+                  >
+                    <label for="checkbox1">
+                      <input id="checkbox1" type="checkbox" />
+                      Get More Information
+                    </label>
+                    <label for="checkbox2">
+                      <input id="checkbox2" type="checkbox" />
+                      Gain Valuable Insights
+                    </label>
+                    <label for="checkbox3">
+                      <input id="checkbox3" type="checkbox" />
+                      Arrange Showflat Viewing
+                    </label>
+                  </div>
+
+                  <div style="margin-top: 30px; padding: 0px 10px">
+                    <input
+                      style="
+                        width: 100%;
+                        border-radius: 9px;
+                        border: 1px solid #b7b7b7;
+                        padding: 5px 10px;
+                      "
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                    />
+                  </div>
+
+                  <div style="margin-top: 15px; padding: 0px 10px">
+                    <input
+                      style="
+                        width: 100%;
+                        border-radius: 9px;
+                        border: 1px solid #b7b7b7;
+                        padding: 5px 10px;
+                      "
+                      type="text"
+                      name="phone"
+                      placeholder="Phone"
+                    />
+                  </div>
+
+                  <div style="margin-top: 15px; padding: 0px 10px">
+                    <input
+                      style="
+                        width: 100%;
+                        border-radius: 9px;
+                        border: 1px solid #b7b7b7;
+                        padding: 5px 10px;
+                      "
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                    />
+                  </div>
+                  <p
+                    id="error-form-para"
+                    class="text-danger"
+                    style="font-size: 12px; text-align: center; margin-top: 5px"
+                  ></p>
+                  <div
+                    style="
+                      margin-top: 30px;
+                      padding: 0px 10px;
+                      display: flex;
+                      justify-content: space-around;
+                    "
+                  >
+                    <button
+                      onClick="handleFormSubmit()"
+                      style="
+                        background-color: #39548a;
+                        border: 1px solid #39548a;
+                        border-radius: 6px;
+                        padding: 8px 12px;
+                        font-size: 13px;
+                        font-weight: bold;
+                        color: white;
+                        width: 40%;
+                      "
+                    >
+                      Enquire Now
+                    </button>
+                    <button
+                      onClick="handleFormSubmit()"
+                      style="
+                        background-color: transparent;
+                        border: 1px solid #39548a;
+                        border-radius: 6px;
+                        padding: 8px 12px;
+                        font-size: 13px;
+                        font-weight: bold;
+                        color: #39548a;
+                        width: 40%;
+                      "
+                    >
+                      Call Sales
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="donate-header-text">
+              <!-- Scroll buttons -->
+
+              <div style="height: 50px; overflow-x: auto; font-size: 12px">
+                <div
+                  style="
+                    display: flex;
+                    min-width: 620px;
+                    justify-content: space-around;
+                  "
+                >
+                  <button
+                    data="projectDetailTable"
+                    class="scroll-btn"
+                    onclick="handleScroll(this)"
+                  >
+                    <i class="fa-solid fa-circle-info"></i>
+                    Project Details
+                  </button>
+                  <div style="border: 1px solid #aeaeae"></div>
+                  <button
+                    data="sitePlan"
+                    class="scroll-btn"
+                    onclick="handleScroll(this)"
+                  >
+                    <i class="fa-solid fa-chart-area"></i>
+                    Site Plan
+                  </button>
+                  <div style="border: 1px solid #aeaeae"></div>
+
+                  <button
+                    data="location-map-container"
+                    class="scroll-btn"
+                    onclick="handleScroll(this)"
+                  >
+                    <i class="fa-solid fa-map"></i>
+                    Location Map
+                  </button>
+                  <div style="border: 1px solid #aeaeae"></div>
+
+                  <button
+                    data="unitMix"
+                    class="scroll-btn"
+                    onclick="handleScroll(this)"
+                  >
+                    <i class="fa-solid fa-square-poll-horizontal"></i>
+                    Unit Mix
+                  </button>
+                  <div style="border: 1px solid #aeaeae"></div>
+                  <button
+                    data="balanceUnits"
+                    class="scroll-btn"
+                    onclick="handleScroll(this)"
+                  >
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    Balance Units
+                  </button>
+                  <div style="border: 1px solid #aeaeae"></div>
+                  <button
+                    data="transaction"
+                    class="scroll-btn"
+                    onclick="handleScroll(this)"
+                  >
+                    <i class="fa-solid fa-chart-simple"></i>
+                    Transactions
+                  </button>
+                </div>
+              </div>
+
+              <div class="d-flex">
+                <div class="single-listing-inner me-auto">
+                  <div class="bg-white mb-5 mt-2" id="top-header">
+                    <div class="donate-title">
+                      <h2
+                        id="projectName"
+                        style="color: black; font-size: 16px"
+                      >
+                        Lentor Mansion
+                      </h2>
+                      <p><i class="fa-solid fa-star"></i>4.5</p>
+                    </div>
+                    <div class="donate-detail-text">
+                      <p id="projectRegion">North Region</p>
+                    </div>
+                    <div class="donate-detail-icon my-2"></div>
+                    <div class="donate-detail-desc">
+                      <h2 style="color: black; font-size: 16px">Description</h2>
+                      <p id="projectDesc" style="font-size: 14px"></p>
+                    </div>
+                  </div>
+
+                  <!-- Gallery -->
+                  <div class="donate-detail-gallery">
+                    <div class="bg-white" id="gallery-container">
+                      <h2 style="color: black; font-size: 16px">Gallery</h2>
+                      <div class="gallery-list"></div>
+                    </div>
+                  </div>
+
+                  <!-- Project Details -->
+                  <div
+                    class="mt-5 bg-white"
+                    id="projectDetailTable"
+                    style="overflow-x: auto"
+                  >
+                    <h2 style="color: black; font-size: 16px" class="mb-2">
+                      Project Details
+                    </h2>
+                    <div
+                      style="
+                        display: flex;
+                        min-width: 700px;
+                        font-size: 12px;
+                        justify-content: space-between;
+                      "
+                      id="projectDetailInnerDiv"
+                    ></div>
+                  </div>
+
+                  <!-- Site Plan -->
+                  <div id="sitePlan" class="mt-5">
+                    <div
+                      id="sitePlan-detail"
+                      class="bg-white"
+                      style="overflow: auto"
+                    >
+                      <h2 style="color: black; font-size: 16px" class="mb-2">
+                        Site Plan
+                      </h2>
+                      <p
+                        style="
+                          font-size: 12px;
+                          color: #6b7380;
+                          line-height: 19px;
+                        "
+                      >
+                        List of Project Facilities
+                      </p>
+                      <div
+                        style="
+                          display: flex;
+                          min-width: 700px;
+                          font-size: 12px;
+                          justify-content: space-between;
+                        "
+                        id="siteplan-details-inner"
+                      ></div>
+                    </div>
+                  </div>
+                  <div id="sideMapImageContainer" class="mt-5"></div>
+
+                  <!-- Location Map -->
+                  <div id="location-map-container" class="my-5 bg-white">
+                    <h2 style="color: black; font-size: 16px" class="mb-2">
+                      Location Map
+                    </h2>
+                    <p
+                      style="font-size: 12px; color: #6b7380; line-height: 19px"
+                    >
+                      List of Essential Amenities
+                    </p>
+                    <table class="w-100 my-3">
+                      <thead style="height: 38px">
+                        <tr
+                          style="
+                            background-color: #39548a;
+                            font-size: 12px;
+                            color: white;
+                          "
+                        >
+                          <td class="ps-2">Category</td>
+                          <td class="ps-2">Location</td>
+                          <td class="ps-2">Distance</td>
+                        </tr>
+                      </thead>
+                      <tbody id="location-map-tbody"></tbody>
+                    </table>
+                  </div>
+                  <div id="location-map-images"></div>
+
+                  <!-- Unit Mix -->
+                  <div id="unitMix" class="my-5 bg-white">
+                    <h2 style="color: black; font-size: 16px" class="mb-2">
+                      Unit Mix
+                    </h2>
+                    <p
+                      style="font-size: 12px; color: #6b7380; line-height: 19px"
+                    >
+                      Distribution of Total Units
+                    </p>
+                    <table class="w-100 my-3">
+                      <thead style="height: 38px">
+                        <tr
+                          style="
+                            background-color: #39548a;
+                            font-size: 12px;
+                            color: white;
+                          "
+                        >
+                          <td class="ps-2">Unit Type</td>
+                          <td class="text-center">Total Units</td>
+                          <td class="text-center">Size(sqft)</td>
+                          <td class="text-center">Unit Mix</td>
+                        </tr>
+                      </thead>
+                      <tbody id="unit-mix-tbody"></tbody>
+                    </table>
+                  </div>
+                  <div id="unitMixImages"></div>
+
+                  <!-- Balance units -->
+                  <div id="balanceUnits" class="my-5 bg-white">
+                    <h2 style="color: black; font-size: 16px" class="mb-2">
+                      Balance Units
+                    </h2>
+                    <p
+                      style="font-size: 12px; color: #6b7380; line-height: 19px"
+                    >
+                      Pricing of Available Units
+                    </p>
+                    <table class="w-100 my-3">
+                      <thead style="height: 38px">
+                        <tr
+                          style="
+                            background-color: #39548a;
+                            font-size: 12px;
+                            color: white;
+                          "
+                        >
+                          <td class="ps-2">Unit Type</td>
+                          <td class="text-center">Available Units</td>
+                          <td class="text-center">Size(sqft)</td>
+                          <td class="text-center">PSF</td>
+                          <td class="text-center">Price</td>
+                        </tr>
+                      </thead>
+                      <tbody id="balance-unit-tbody"></tbody>
+                    </table>
+                  </div>
+
+                  <div id="balanceUnitImages"></div>
+
+                  <!-- Transactions -->
+                  <div id="transaction" class="my-5 bg-white">
+                    <h2 style="color: black; font-size: 16px" class="mb-2">
+                      Sales Transaction
+                    </h2>
+                    <div style="overflow-x: auto; max-height: 500px">
+                      <table class="w-100 my-3" style="min-width: 700px">
+                        <thead style="height: 38px">
+                          <tr
+                            style="
+                              background-color: #39548a;
+                              font-size: 12px;
+                              color: white;
+                            "
+                          >
+                            <td class="ps-2">Date</td>
+                            <td class="text-center">Unit Type</td>
+                            <td class="text-center">Size(sqft)</td>
+                            <td class="text-center">PSF</td>
+                            <td class="text-center">Price</td>
+                            <td class="text-center">Block</td>
+                            <td class="text-center">Floor</td>
+                            <td class="text-center">Stack</td>
+                          </tr>
+                        </thead>
+                        <tbody id="transaction-tbody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="bg-white mt-5" id="dev-info-container">
+                    <h2 style="color: black; font-size: 16px" class="mb-2">
+                      Developers Profile
+                    </h2>
+                    <div>
+                      <div class="my-3">
+                        <img
+                          class="dev-logo"
+                          src=""
+                          alt="developer"
+                          style="width: 100px"
+                        />
+                      </div>
+                      <div>
+                        <p id="dev-para" style="font-size: 14px"></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Form -->
+
+                  <!-- Bottom sticky card -->
+                  <div class="h-200 sticky-bottom-banner">
+                    Zero commission fee! Enquire with Direct to developer
+                    representatives! <a href=""> Enquire now!</a>
+                  </div>
+                </div>
+                <div class="listing-form-container">
+                  <div id="dev-form" class="bg-white">
+                    <div>
+                      <div>
+                        <p
+                          style="
+                            padding: 0px 10px;
+                            color: black;
+                            font-weight: bold;
+                            margin: 0px;
+                          "
+                        >
+                          Contact Sales
+                        </p>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          background-color: #fff7e1;
+                          font-size: 14px;
+                          color: #384152;
+                          font-weight: 400;
+                          align-items: center;
+                          height: 40px;
+                          padding: 0px 10px;
+                          margin: 20px 0px;
+                        "
+                      >
+                        <p style="margin: 0px">
+                          Get Exclusive Developer Discounts
+                        </p>
+                        <p
+                          style="
+                            margin: 0px;
+                            background-color: #ffc72c;
+                            font-size: 11px;
+                            padding: 5px;
+                            border-radius: 4px;
+                            text-align: center;
+                          "
+                        >
+                          ARRANGE VIEWING
+                        </p>
+                      </div>
+                      <div
+                        style="
+                          padding: 0px 10px;
+                          display: flex;
+                          margin: 0px;
+                          justify-content: space-between;
+                          margin: 20px 0px;
+                        "
+                      >
+                        <div style="margin: 0px">
+                          <img
+                            class="dev-logo"
+                            src=""
+                            alt="developer"
+                            style="width: 100px"
+                          />
+                          <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
+                          <p
+                            style="margin: 0px; font-size: 10px; color: #716f6f"
+                          >
+                            Developer Sales Team
+                          </p>
+                        </div>
+                        <button
+                          style="
+                            background-color: transparent;
+                            border: 1px solid #39548a;
+                            border-radius: 6px;
+                            padding: 8px 12px;
+                            font-size: 13px;
+                            font-weight: bold;
+                            color: #39548a;
+                            height: 40px;
+                          "
+                        >
+                          WhatsApp
+                        </button>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          gap: 10px;
+                          padding: 0px 10px;
+                          font-size: 12px;
+                          color: black;
+                          flex-direction: column;
+                        "
+                      >
+                        <label for="checkbox1">
+                          <input id="checkbox1" type="checkbox" />
+                          Get More Information
+                        </label>
+                        <label for="checkbox2">
+                          <input id="checkbox2" type="checkbox" />
+                          Gain Valuable Insights
+                        </label>
+                        <label for="checkbox3">
+                          <input id="checkbox3" type="checkbox" />
+                          Arrange Showflat Viewing
+                        </label>
+                      </div>
+
+                      <div style="margin-top: 30px; padding: 0px 10px">
+                        <input
+                          style="
+                            width: 100%;
+                            border-radius: 9px;
+                            border: 1px solid #b7b7b7;
+                            padding: 5px 10px;
+                          "
+                          type="text"
+                          name="name"
+                          placeholder="Name"
+                        />
+                      </div>
+
+                      <div style="margin-top: 15px; padding: 0px 10px">
+                        <input
+                          style="
+                            width: 100%;
+                            border-radius: 9px;
+                            border: 1px solid #b7b7b7;
+                            padding: 5px 10px;
+                          "
+                          type="text"
+                          name="phone"
+                          placeholder="Phone"
+                        />
+                      </div>
+
+                      <div style="margin-top: 15px; padding: 0px 10px">
+                        <input
+                          style="
+                            width: 100%;
+                            border-radius: 9px;
+                            border: 1px solid #b7b7b7;
+                            padding: 5px 10px;
+                          "
+                          type="email"
+                          name="email"
+                          placeholder="Email"
+                        />
+                      </div>
+                      <p
+                        id="error-form-para"
+                        class="text-danger"
+                        style="
+                          font-size: 12px;
+                          text-align: center;
+                          margin-top: 5px;
+                        "
+                      ></p>
+                      <div
+                        style="
+                          margin-top: 30px;
+                          padding: 0px 10px;
+                          display: flex;
+                          justify-content: space-around;
+                        "
+                      >
+                        <button
+                          onClick="handleFormSubmit()"
+                          style="
+                            background-color: #39548a;
+                            border: 1px solid #39548a;
+                            border-radius: 6px;
+                            padding: 8px 12px;
+                            font-size: 13px;
+                            font-weight: bold;
+                            color: white;
+                            width: 40%;
+                          "
+                        >
+                          Enquire Now
+                        </button>
+                        <button
+                          onClick="handleFormSubmit()"
+                          style="
+                            background-color: transparent;
+                            border: 1px solid #39548a;
+                            border-radius: 6px;
+                            padding: 8px 12px;
+                            font-size: 13px;
+                            font-weight: bold;
+                            color: #39548a;
+                            width: 40%;
+                          "
+                        >
+                          Call Sales
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+               
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="divider"></div>
+      <div
+        id="map-container"
+        class="right-pane h-100 d-none d-lg-block d-md-block p-4"
+      >
+        <div id="mapdiv">
+          <div
+            class="map-search-container"
+            style="z-index: 999; position: relative"
+          >
+            <div
+              class="d-flex gap-1"
+              style="
+                position: absolute;
+                width: 90%;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+              "
+            >
+              <input
+                class="form-control search"
+                type="search"
+                id="search"
+                oninput="searchListings(this)"
+                placeholder="Search Address"
+                value=""
+              />
 
-    
+              <div
+                class="dropdown d-flex d-lg-none"
+                style="justify-content: center; align-items: center"
+              >
+                <button
+                  class="filter-button"
+                  style="margin: 0px"
+                  type="button"
+                  id="dropdownMenuButton"
+                  onclick="openFilterPopup()"
+                >
+                  <i class="fa-solid fa-filter"></i>
+                </button>
+              </div>
+              <div class="drop-down-search d-none"></div>
+            </div>
+          </div>
+          <!-- <div style="height:40px;
+              width: 70%;
+              padding: 3px;
+              border-radius: 5px;
+              color: black;
+              background: color;
+              background-color: white;
+              z-index: 9999;
+              position: absolute;
+              bottom: 0px;
+              right: 0px;">
+    With powerful filtration algorithms, an innovative listing approach, and detailed sales analytics, supported by data from HDB OneMap and URA.gov, you'll quickly find the most suitable new launches.
 
+          </div> -->
+        </div>
+
+        <div id="map-bottom-listing" style="height: 40%"></div>
+      </div>
     </div>
-    
-    
-    
+
     <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
     <script src="script.js"></script>
     <script src="select2.js"></script>
   </body>
-
-  </html>
-
-
-
+</html>

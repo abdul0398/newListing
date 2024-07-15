@@ -35,15 +35,9 @@ async function start(){
     const data = await fetchNewListings();
     listings = data.listings;
     ammenities = data.amenities;
-    const sqft = listings.map(listing => {
-        return listing?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.size_sqft || 0;
-    });
-
-    console.log(sqft)
     selectProjectBasedOnParams();
     openMap();
-    populatAllListings(listings);
-    initializeGlide();
+    populateAllListings(listings);
     closeLoading();
     await fetchCoordinatesAndPopulateMap(listings);
     addEventListenerToInput();
@@ -54,7 +48,8 @@ async function start(){
 function openMap() {
     map = L.map('mapdiv', {
        center: L.latLng(1.327450, 103.811203),
-       zoom: 13
+       zoom: 13,
+       zoomControl: false
     });
 
     let basemap = L.tileLayer('https://www.onemap.gov.sg/maps/tiles/Default/{z}/{x}/{y}.png', {
@@ -136,10 +131,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             }
         });
 
-        // on openinig popup i want to show the schools near by
-        // marker.on('popupopen', function (e) {
-        
-        // })
+    
 
 
         marker.on('click', function (e) {
@@ -225,14 +217,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     const dev_logo = document.getElementsByClassName("dev-logo");
     const dev_para = document.getElementById("dev-para");
     const transactionTbody = document.getElementById("transaction-tbody");
-    // const dev_name_form = document.getElementById("dev-name-form");
 
-    
-
-    // form dev name
-
-    // const developerName = details.find(detail => detail.title == "Project Developer")?.para || "";
-    // dev_name_form.innerText = developerName;
 
 
     sideMapImageContainer.innerHTML = '';
@@ -464,7 +449,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
         </a>
         
         `;
-        mainImages.innerHTML += `<img src="https://api.jomejourney-portal.com${img}"  class="slideImages h-100 w-100" alt="${name}">`;
+        mainImages.innerHTML += `<img src="https://api.jomejourney-portal.com${img}" style="border-radius:35px"  class="slideImages h-100 w-100" alt="${name}">`;
     }
     if(galleryIntance){
         galleryIntance.destroy();
@@ -477,63 +462,13 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     
 }
 
-function populatAllListings(listings){
+function populateAllListings(listings){
 
-    // Near You population
-    const nearYouContainer = document.querySelector('.glide__slides') ;
-    nearYouContainer.innerHTML = "";
+    const listingContainer = document.getElementById('all-listings');
+    listingContainer.innerHTML = "";
 
-     // Recommended populations
-     const recommendedContainer = document.querySelector(".recommended-slider");
-    const bulletContainer = document.querySelector(".glide__bullets");
-    bulletContainer.innerHTML = "";
+    for(let i = 0; i < listings.length; i++){
 
-
-    recommendedContainer.innerHTML = "";
-
-    for(let i = 0; i < listings.length && i < 10; i++){
-        bulletContainer.innerHTML += `<button class="glide__bullet" data-glide-dir="=${i}"></button>`;
-
-        nearYouContainer.innerHTML += `
-                    <li
-                            class="glide__slide"
-                            style="
-                            width: 267.667px;
-                            margin-left: 5px;
-                            margin-right: 5px;
-                            "
-                        >
-                            <a class="card-campaign-column" href="#">
-                                <figure
-                                    class="card-campaign-image"
-                                    style="
-                                        background-image: url('https://api.jomejourney-portal.com${listings[i].images[0]? listings[i].images[0] : listings[i].images[1]}');
-                                    "
-                                ></figure>
-
-                            <div class="card-campaign-text">
-                                <div class="card-campaign-title"><button style="padding:0px" class="bg-transparent border-0" onclick="openSingleListing(this)">${listings[i].name}</button> </div>
-                                <div class="card-campaign-details">
-                                <div class="text-left">
-                                    <p class="card-campaign__region">
-                                        ${listings[i].geographical_region}
-                                    </p>
-                                    <p class="my-badge">
-                                    <i class="fa-solid fa-location-dot"></i
-                                    ><small>2.3 km</small>
-                                    </p>
-                                </div>
-                                <div class="text-right">
-                                    <p><i class="fa-solid fa-star"></i>4.5</p>
-                                    <p class="love-icon">
-                                    <i class="fa-solid fa-heart"></i>
-                                    </p>
-                                </div>
-                                </div>
-                            </div>
-                            </a>
-                        </li>
-                    `
         const address = listings[i]?.details[0].para + ', ' + listings[i]?.details[1].para ;
 
         const totalUnits = listings[i]?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.totalUnits || 0;
@@ -541,10 +476,84 @@ function populatAllListings(listings){
         const unitsSold = totalUnits - availableUnits;
         const nearestMRT = listings[i]?.location_map?.amenities?.find(detail => detail.Category == "MRT Stations") || null;
         const dev_type = listings[i].dev_type;
-        recommendedContainer.innerHTML += `
-        <div class="card my-3" style="max-width: 100%">
-              <div class="row g-0">
-                <div class="col-md-4" style="position:relative">
+
+
+            // populate the map bottom listing
+            if(i == 0){
+                const mapBottomListing = document.getElementById("map-bottom-listing");
+                mapBottomListing.innerHTML = "";
+                mapBottomListing.innerHTML = `
+                <div class="card my-3" style="max-width: 100%; height: 100%; border-radius: 40px; border:none;box-shadow: -5px 5px 23px -3px rgba(189,189,189,1);">
+              <div class="h-100 d-flex p-3">
+                <div class="w-50" style="position:relative">
+                  <!-- ${dev_type?`<p style="
+                  position: absolute;
+                  background-color: #39548a;
+                  color: white;
+                  font-size: 10px;
+                  padding: 2px 5px;
+                  top: 10px;
+                  left: 30px;
+                  border-radius: 3px;
+                  font-weight: bold;
+                  ">${dev_type}</p>`:""} -->
+                      <img class="w-100" style="height:100%; border-radius: 40px;" src="https://api.jomejourney-portal.com${listings[i].images[0]? listings[i].images[0] : listings[i].images[1]}">
+                </div>
+                <div class="w-50" style="padding-top: 0px;">
+                  <div class="card-body">
+                    <a class="pe-auto" onClick="">
+                        <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onmouseover="hoverListingHandler(this)" onmouseout="removeHoverPopup(this)" onclick="openSingleListing(this)">${listings[i].name}</button></h5>
+                    </a>
+                    <h6 class="card-subtitle mb-1 text-muted" style="white-space: nowrap; text-overflow: ellipsis; width: 100%; overflow: hidden;">
+                      
+                         ${address} <br>
+                    </h6>
+                      </div>
+                      <p class='mb-2 text-muted' style="padding-left:1rem; font-size:11px">
+                      <img src="/public/placeholder.png" width="20px" />  West Region
+                      </p>
+                     ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="/public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
+                    <div style="font-size:11px; padding:0px 1rem;line-height: 30px;">
+                       <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
+                    <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
+                    <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
+                    </div>
+                    <div class="text-center pt-3" style="padding-left: 1rem;">
+                      <button class="read-more-btn">Read More</button>
+                    </div>
+                  </div>
+
+              </div>
+          </div>
+                `
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            listingContainer.innerHTML += `
+        <div class="card mb-3" style="max-width: 100%; border-radius: 40px; border: 1px solid #dbdbdb; box-shadow:none">
+                <div class="row g-0 p-3">
+                    <div class="col-md-4" style="position:relative">
                     ${dev_type?`<p style="
                     position: absolute;
                     background-color: #39548a;
@@ -552,12 +561,12 @@ function populatAllListings(listings){
                     font-size: 10px;
                     padding: 2px 5px;
                     top: 10px;
-                    left: 10px;
+                    left: 30px;
                     border-radius: 3px;
                     font-weight: bold;
                     ">${dev_type}</p>`:""}
-                  <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${listings[i].images[0]? listings[i].images[0] : listings[i].images[1]}" alt="${listings[i].name}">
-                </div>
+                        <img class="w-100" style="height:200px; border-radius: 40px;" src="https://api.jomejourney-portal.com${listings[i].images[0]? listings[i].images[0] : listings[i].images[1]}">
+                   </div>
                 <div class="col-md-8">
                   <div class="card-body">
                     <a class="pe-auto" onClick="">
@@ -565,33 +574,36 @@ function populatAllListings(listings){
                     </a>
                     <h6 class="card-subtitle mb-1 text-muted" style="white-space: nowrap; text-overflow: ellipsis; width: 100%; overflow: hidden;">
                     ${address} <br>
-                    <p class='mt-1 mb-0'>
-                    ${listings[i].geographical_region}
-                    </p>
                     </h6>
-                  </div>
-                  ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
+                    </div>
+                    <p class='mb-2 text-muted' style="padding-left:1rem; font-size:11px">
+                    <img src="/public/placeholder.png" width="20px" /> ${listings[i].geographical_region}
+                    </p>
+                  ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="/public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
                   <div style="font-size:11px; padding:0px 1rem;line-height: 30px;">
-                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
-                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
-                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
+                    <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
+                    <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
+                    <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
                   </div>
                 </div>
               </div>
             </div>
         `
     }
+
+
+
+
+
+
 }
 
 function showMainPage() {
-    // map.off('zoomend', checkMarkersInView);
-    // map.off('moveend', checkMarkersInView);
-
-    destroyGlide();
 
    
     if(selectedMarker){
         selectedMarker.closePopup();
+
         // change selected marker logo to default
         selectedMarker.setIcon(new L.Icon.Default());
         selectedMarker = null;
@@ -613,9 +625,7 @@ function showMainPage() {
         map.removeLayer(marker);
     })
     document.getElementById("single-listing").classList.add("d-none");
-    document.getElementById("all-listings-inner").classList.add("d-none");
     document.getElementById("all-listings").classList.remove("d-none");
-    document.getElementById("starting-page").classList.remove("d-none");
 
     // uncheck all filter checkbox
     const checkboxes = document.querySelectorAll('.filter-container input[type="checkbox"]');
@@ -623,94 +633,7 @@ function showMainPage() {
         checkbox.checked = false;
     });
 
-    initializeGlide();
-
-    
-}
-
-function openAllListingsInner(filterListing) {
-    document.getElementById("all-listings-inner").classList.remove("d-none");
-    document.getElementById("starting-page").classList.add("d-none");
-    populateAllListingsInner(filterListing);
-}
-
-function populateAllListingsInner(filterListing) {
-
-    
-
-    const newListing = filterListing ? filterListing : listings;
-    
-    const container  = document.getElementById("all-listings-inner");
-    container.innerHTML = "";
-    container.innerHTML = `
-        <div class="row position-relative " style="height:30px">
-      <i class="fa-solid fa-arrow-left fa-xl position-absolute text-black" onclick="showMainPage()" style="top:25px; left:20px; cursor:pointer"></i>
-            <div class="col-md-12">
-            </div>
-        </div>
-    `;
-
-
-    if(filterListing.length == 0){
-        container.innerHTML += `
-        <div class="d-flex justify-content-center align-items-center" style="height: 80vh">
-            <h5>No Listings Found</h5>
-        </div>
-        `   
-    }
-
-
-
-    for (let i = 0; i < newListing.length; i++) {
-        
-        const address = newListing[i]?.details[0].para + ', ' + newListing[i]?.details[1].para ;
-
-        const totalUnits = newListing[i]?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.totalUnits || 0;
-        const availableUnits = newListing[i]?.balance_units?.data.find(unit => unit.unitType == "Overall")?.availableUnits || 0;
-        const unitsSold = totalUnits - availableUnits;
-        const nearestMRT = newListing[i]?.location_map?.amenities?.find(detail => detail.Category == "MRT Stations") || null;
-        const dev_type = newListing[i].dev_type;
-        container.innerHTML += `
-            <div class="card my-3" style="max-width: 100%">
-                <div class="row g-0">
-                    <div class="col-md-4" style="position:relative">
-                    ${dev_type?`<p style="
-                    position: absolute;
-                    background-color: #39548a;
-                    color: white;
-                    font-size: 10px;
-                    padding: 2px 5px;
-                    top: 10px;
-                    left: 10px;
-                    border-radius: 3px;
-                    font-weight: bold;
-                    ">${dev_type}</p>`:""}
-                        <img class="w-100" style="height:200px" src="https://api.jomejourney-portal.com${newListing[i].images[0]? newListing[i].images[0] : newListing[i].images[1]}">
-                    </div>
-                    <div class="col-md-8">
-                    <div class="card-body">
-                        <a class="pe-auto">
-                            <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onmouseover="hoverListingHandler(this)" onmouseout="removeHoverPopup(this)"  onclick="openSingleListing(this)">${newListing[i].name}</button></h5>
-                        </a>
-                       <h6 class="card-subtitle mb-1 text-muted">
-                    ${address} <br>
-                    <p class='mt-1 mb-0'>
-                    ${newListing[i].geographical_region}
-                    </p>
-                    </h6>
-                  </div>
-                  ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important;">${nearestMRT.Distance} to <span style="color:black; font-weight:bold;">${nearestMRT.Location}</span></p>`:""}
-                  <div style="font-size:11px; padding:0px 1rem; line-height: 30px;">
-                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
-                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
-                    <span style="background-color: #eeeaea;padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            `
-    }
-
+    changeMapDimentionsAndToggleBottomListings(true);
 }
 
 function openSingleListing(btn) {
@@ -725,6 +648,13 @@ function openSingleListing(btn) {
         addAmmenitiesMarkers(name);
     
     }
+
+
+    // hiding bottom listings and changing map dimensions
+    changeMapDimentionsAndToggleBottomListings(false);
+
+
+
 
 
 
@@ -804,16 +734,12 @@ function openFilterPopup() {
     document.querySelector(".filter-container").style.transform = "translateX(0)";
     document.querySelector(".main-container").classList.remove("overflow-auto");
     document.querySelector(".main-container").classList.add("overflow-hidden");
-    document.querySelector(".house-list").classList.remove("overflow-auto");
-    document.querySelector(".house-list").classList.add("overflow-hidden");
 }
 
 function closeFilterPopup() {
     document.querySelector(".filter-container").style.transform = "translateX(100%)";
     document.querySelector(".main-container").classList.remove("overflow-hidden");
     document.querySelector(".main-container").classList.add("overflow-auto");
-    document.querySelector(".house-list").classList.remove("overflow-hidden");
-    document.querySelector(".house-list").classList.add("overflow-auto");
 }
 
 function applyFilterCheckbox() {
@@ -958,7 +884,7 @@ function applyFilterCheckbox() {
     })
 
 
-    openAllListingsInner(filteredListings);
+    populateAllListings(filteredListings);
     document.getElementById("map-container").classList.add("d-none");
     document.getElementById("single-listing").classList.add("d-none");
     closeFilterPopup();
@@ -1106,48 +1032,6 @@ function changeSelectedMarkerLogo(marker){
     marker.setIcon(activeIcon);
   }
   
-
-
-/// ##################################### slider script ###################################
-
-const resizer = document.querySelector('.resizer');
-const leftPane = document.querySelector('.left-pane');
-const rightPane = document.querySelector('.right-pane');
-let startX = 0;
-let startWidthLeft = 0;
-let startWidthRight = 0;
-
-
-resizer.addEventListener('mousedown', function (e) {
-    startX = e.clientX;
-    startWidthLeft = leftPane.getBoundingClientRect().width;
-    startWidthRight = rightPane.getBoundingClientRect().width;
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
-});
-
-function onMouseMove(e) {
-    const dx = e.clientX - startX;
-    const newWidthLeft = startWidthLeft + dx;
-    const newWidthRight = startWidthRight - dx;
-    const containerWidth = leftPane.parentNode.getBoundingClientRect().width;
-    
-    const newWidthLeftPercent = (newWidthLeft / containerWidth) * 100;
-    const newWidthRightPercent = (newWidthRight / containerWidth) * 100;
-
-    if (newWidthLeftPercent >= 40 && newWidthLeftPercent <= 60) {
-        leftPane.style.width = `${newWidthLeftPercent}%`;
-        rightPane.style.width = `${newWidthRightPercent}%`;
-        refreshMap();
-    }
-}
-
-function onMouseUp() {
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
-}
-
-
 
 function handleScroll(btn){
     const target = btn.getAttribute('data');
@@ -1451,7 +1335,7 @@ function applyFilterSelect() {
         marker.addTo(map);
     })
 
-    openAllListingsInner(filteredListings);
+    populateAllListings(filteredListings);
     // document.getElementById("map-container").classList.add("d-none");
     document.getElementById("single-listing").classList.add("d-none");
     // closeFilterPopup();
@@ -1691,31 +1575,8 @@ function checkMarkersInView() {
     const filteredListings = filterArray.map(marker => {
         return listings.find(listing => listing.name == marker.options.title);
     });
-    openAllListingsInner(filteredListings);
+    populateAllListings(filteredListings);
 }
-
-function initializeGlide() {
-    glide = new Glide('.glide', {
-        type: 'carousel',
-        perView: 3,
-        breakpoints: {
-            1024: {
-                perView: 2
-            },
-            600: {
-                perView: 1
-            }
-        }
-    }).mount();
-}
-
-function destroyGlide() {
-    if (glide) {
-        glide.destroy();
-    }
-}
-
-
 
 
 function changePriceString(priceRange){
@@ -1768,4 +1629,26 @@ function toggleForm(){
     }else{
         form.style.display = "block";
     }
+}
+
+
+
+function changeMapDimentionsAndToggleBottomListings(show){
+    if(show){
+        document.getElementById("map-bottom-listing").classList.remove("d-none");
+        document.getElementById("mapdiv").style.height = "60%";
+        document.querySelector(".left-pane").style.width = "50%"
+        document.querySelector(".right-pane").style.width = "50%"
+        map.invalidateSize();
+    }else{
+        document.getElementById("map-bottom-listing").classList.add("d-none");
+        document.getElementById("mapdiv").style.height = "100%";
+        document.querySelector(".left-pane").style.width = "70%"
+        document.querySelector(".right-pane").style.width = "30%"
+        map.invalidateSize();
+    }
+
+    const dropodown_container = document.querySelector(".drop-down-search")
+    dropodown_container.innerHTML = "";
+    dropodown_container.classList.add("d-none");
 }

@@ -4,10 +4,10 @@
   }
   
   .select2.select2-container .select2-selection {
-    border:none;
+    /* border:none; */
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    border-radius: 0px !important;
+    border-radius: 76px !important;
     height: 50px;
     margin-bottom: 15px;
     outline: none !important;
@@ -15,13 +15,14 @@
   }
   
   .select2.select2-container .select2-selection .select2-selection__rendered {
-    color: #000;
+    color: #7d7d7d;
     line-height:15px;
     padding-right: 33px;
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     height: 100%;
-    padding-top: 15px;
+    padding: 15px 28px 15px 15px;
+    text-align: center;
     /* display: flex;
     align-items: center;
     justify-content: center; */
