@@ -260,6 +260,20 @@
         .listing-form-container {
           display: none !important;
         }
+        #all-listings{
+          padding-top: 20px;
+        }
+        #top-header{
+          flex-direction: column;
+        }
+
+        #top-header img{
+          width: 100%;
+          height: 300px;
+        }
+        .single-listing-inner{
+          padding-right: 0px !important;
+        }
       }
 
       @media (min-width: 500px) {
@@ -1009,205 +1023,6 @@
             ></i>
             <div class="donate-header-image"></div>
 
-            <!-- form for mobile view -->
-            <div class="floating_form_btn" onclick="toggleForm()">
-              <i class="fa-solid fa-message"></i>
-            </div>
-            <div class="listing-form-container-mobile">
-              <div
-                id="dev-form-mobile"
-                class="bg-white"
-                style="box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75)"
-              >
-                <div>
-                  <div>
-                    <p
-                      style="
-                        padding: 0px 10px;
-                        color: black;
-                        font-weight: bold;
-                        margin: 0px;
-                      "
-                    >
-                      Contact Sales
-                    </p>
-                  </div>
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      background-color: #fff7e1;
-                      font-size: 14px;
-                      color: #384152;
-                      font-weight: 400;
-                      align-items: center;
-                      height: 40px;
-                      padding: 0px 10px;
-                      margin: 20px 0px;
-                    "
-                  >
-                    <p style="margin: 0px">Get Exclusive Developer Discounts</p>
-                    <p
-                      style="
-                        margin: 0px;
-                        background-color: #ffc72c;
-                        font-size: 11px;
-                        padding: 5px;
-                        border-radius: 4px;
-                        text-align: center;
-                      "
-                    >
-                      ARRANGE VIEWING
-                    </p>
-                  </div>
-                  <div
-                    style="
-                      padding: 0px 10px;
-                      display: flex;
-                      margin: 0px;
-                      justify-content: space-between;
-                      margin: 20px 0px;
-                    "
-                  >
-                    <div style="margin: 0px">
-                      <img
-                        class="dev-logo"
-                        src=""
-                        alt="developer"
-                        style="width: 100px; height: 50px"
-                      />
-                      <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
-                      <p style="margin: 0px; font-size: 10px; color: #716f6f">
-                        Developer Sales Team
-                      </p>
-                    </div>
-                    <button
-                      style="
-                        background-color: transparent;
-                        border: 1px solid #39548a;
-                        border-radius: 6px;
-                        padding: 8px 12px;
-                        font-size: 13px;
-                        font-weight: bold;
-                        color: #39548a;
-                        height: 40px;
-                      "
-                    >
-                      WhatsApp
-                    </button>
-                  </div>
-                  <div
-                    style="
-                      display: flex;
-                      gap: 10px;
-                      padding: 0px 10px;
-                      font-size: 12px;
-                      color: black;
-                      flex-direction: column;
-                    "
-                  >
-                    <label for="checkbox1">
-                      <input id="checkbox1" type="checkbox" />
-                      Get More Information
-                    </label>
-                    <label for="checkbox2">
-                      <input id="checkbox2" type="checkbox" />
-                      Gain Valuable Insights
-                    </label>
-                    <label for="checkbox3">
-                      <input id="checkbox3" type="checkbox" />
-                      Arrange Showflat Viewing
-                    </label>
-                  </div>
-
-                  <div style="margin-top: 30px; padding: 0px 10px">
-                    <input
-                      style="
-                        width: 100%;
-                        border-radius: 9px;
-                        border: 1px solid #b7b7b7;
-                        padding: 5px 10px;
-                      "
-                      type="text"
-                      name="name"
-                      placeholder="Name"
-                    />
-                  </div>
-
-                  <div style="margin-top: 15px; padding: 0px 10px">
-                    <input
-                      style="
-                        width: 100%;
-                        border-radius: 9px;
-                        border: 1px solid #b7b7b7;
-                        padding: 5px 10px;
-                      "
-                      type="text"
-                      name="phone"
-                      placeholder="Phone"
-                    />
-                  </div>
-
-                  <div style="margin-top: 15px; padding: 0px 10px">
-                    <input
-                      style="
-                        width: 100%;
-                        border-radius: 9px;
-                        border: 1px solid #b7b7b7;
-                        padding: 5px 10px;
-                      "
-                      type="email"
-                      name="email"
-                      placeholder="Email"
-                    />
-                  </div>
-                  <p
-                    id="error-form-para"
-                    class="text-danger"
-                    style="font-size: 12px; text-align: center; margin-top: 5px"
-                  ></p>
-                  <div
-                    style="
-                      margin-top: 30px;
-                      padding: 0px 10px;
-                      display: flex;
-                      justify-content: space-around;
-                    "
-                  >
-                    <button
-                      onClick="handleFormSubmit()"
-                      style="
-                        background-color: #39548a;
-                        border: 1px solid #39548a;
-                        border-radius: 6px;
-                        padding: 8px 12px;
-                        font-size: 13px;
-                        font-weight: bold;
-                        color: white;
-                        width: 40%;
-                      "
-                    >
-                      Enquire Now
-                    </button>
-                    <button
-                      onClick="handleFormSubmit()"
-                      style="
-                        background-color: transparent;
-                        border: 1px solid #39548a;
-                        border-radius: 6px;
-                        padding: 8px 12px;
-                        font-size: 13px;
-                        font-weight: bold;
-                        color: #39548a;
-                        width: 40%;
-                      "
-                    >
-                      Call Sales
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="donate-header-text">
               <!-- Scroll buttons -->
 
@@ -1505,6 +1320,209 @@
                   </div>
 
                   <!-- Form -->
+                  <div id="dev-form-mobile" style="margin-top: 20px; padding: 10px 0px;" class="bg-white bg-none">
+                    <div>
+                      <div>
+                        <p
+                          style="
+                            padding: 0px 10px;
+                            color: black;
+                            font-weight: bold;
+                            margin: 0px;
+                          "
+                        >
+                          Contact Sales
+                        </p>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          background-color: #fff7e1;
+                          font-size: 14px;
+                          color: #384152;
+                          font-weight: 400;
+                          align-items: center;
+                          height: 40px;
+                          padding: 0px 10px;
+                          margin: 20px 0px;
+                        "
+                      >
+                        <p style="margin: 0px">
+                          Get Exclusive Developer Discounts
+                        </p>
+                        <p
+                          style="
+                            margin: 0px;
+                            background-color: #ffc72c;
+                            font-size: 11px;
+                            padding: 5px;
+                            border-radius: 4px;
+                            text-align: center;
+                          "
+                        >
+                          ARRANGE VIEWING
+                        </p>
+                      </div>
+                      <div
+                        style="
+                          padding: 0px 10px;
+                          display: flex;
+                          margin: 0px;
+                          justify-content: space-between;
+                          margin: 20px 0px;
+                        "
+                      >
+                        <div style="margin: 0px">
+                          <img
+                            class="dev-logo-mobile"
+                            src=""
+                            alt="developer"
+                            style="width: 100px"
+                          />
+                          <!-- <p style="margin: 0px; color: black; font-weight: bold;" id="dev-name-form"></p> -->
+                          <p
+                            style="margin: 0px; font-size: 10px; color: #716f6f"
+                          >
+                            Developer Sales Team
+                          </p>
+                        </div>
+                        <button
+                          style="
+                            background-color: transparent;
+                            border: 1px solid #39548a;
+                            border-radius: 6px;
+                            padding: 8px 12px;
+                            font-size: 13px;
+                            font-weight: bold;
+                            color: #39548a;
+                            height: 40px;
+                          "
+                        >
+                          WhatsApp
+                        </button>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          gap: 10px;
+                          padding: 0px 10px;
+                          font-size: 12px;
+                          color: black;
+                          flex-direction: column;
+                        "
+                      >
+                        <label for="checkbox1-mobile">
+                          <input id="checkbox1-mobile" type="checkbox" />
+                          Get More Information
+                        </label>
+                        <label for="checkbox2-mobile">
+                          <input id="checkbox2-mobile" type="checkbox" />
+                          Gain Valuable Insights
+                        </label>
+                        <label for="checkbox3-mobile">
+                          <input id="checkbox3-mobile" type="checkbox" />
+                          Arrange Showflat Viewing
+                        </label>
+                      </div>
+
+                      <div style="margin-top: 30px; padding: 0px 10px">
+                        <input
+                          style="
+                            width: 100%;
+                            border-radius: 9px;
+                            border: 1px solid #b7b7b7;
+                            padding: 5px 10px;
+                          "
+                          type="text"
+                          name="name"
+                          id="name-mobile"
+                          placeholder="Name"
+                        />
+                      </div>
+
+                      <div style="margin-top: 15px; padding: 0px 10px">
+                        <input
+                          style="
+                            width: 100%;
+                            border-radius: 9px;
+                            border: 1px solid #b7b7b7;
+                            padding: 5px 10px;
+                          "
+                          type="text"
+                          name="phone"
+                          id="phone-mobile"
+                          placeholder="Phone"
+                        />
+                      </div>
+
+                      <div style="margin-top: 15px; padding: 0px 10px">
+                        <input
+                          style="
+                            width: 100%;
+                            border-radius: 9px;
+                            border: 1px solid #b7b7b7;
+                            padding: 5px 10px;
+                          "
+                          type="email"
+                          name="email"
+                          id="email-mobile"
+                          placeholder="Email"
+                        />
+                      </div>
+                      <p
+                        id="error-form-para-mobile"
+                        class="text-danger"
+                        style="
+                          font-size: 12px;
+                          text-align: center;
+                          margin-top: 5px;
+                        "
+                      ></p>
+                      <div
+                        style="
+                          margin-top: 30px;
+                          padding: 0px 10px;
+                          display: flex;
+                          justify-content: space-around;
+                        "
+                      >
+                        <button
+                          onClick="handleFormSubmit()"
+                          style="
+                            background-color: #39548a;
+                            border: 1px solid #39548a;
+                            border-radius: 6px;
+                            padding: 8px 12px;
+                            font-size: 13px;
+                            font-weight: bold;
+                            color: white;
+                            width: 40%;
+                          "
+                        >
+                          Enquire Now
+                        </button>
+                        <button
+                          onClick="handleFormSubmit()"
+                          style="
+                            background-color: transparent;
+                            border: 1px solid #39548a;
+                            border-radius: 6px;
+                            padding: 8px 12px;
+                            font-size: 13px;
+                            font-weight: bold;
+                            color: #39548a;
+                            width: 40%;
+                          "
+                        >
+                          Call Sales
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+
+
 
                   <!-- Bottom sticky card -->
                   <div class="h-200 sticky-bottom-banner">
@@ -1753,12 +1771,16 @@
               >
                 <button
                   class="filter-button"
-                  style="margin: 0px"
+                  style="margin: 0px;
+                  color: #39548a;
+                  border: 1px solid #6f6f6f;
+                  background: white;
+                  border-radius: 5px;"
                   type="button"
                   id="dropdownMenuButton"
                   onclick="openFilterPopup()"
                 >
-                  <i class="fa-solid fa-filter"></i>
+                  <i class="fa-solid fa-filter" style="font-size: 23px; color: #39548a;"></i>
                 </button>
               </div>
               <div class="drop-down-search d-none"></div>

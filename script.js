@@ -24,6 +24,8 @@ let galleryIntance;
 
 let ammenities = [];
 
+const isMobile = window.innerWidth < 768;
+
 const searchListings = debounce(searchhandler, 500);
 
 
@@ -47,26 +49,26 @@ async function start(){
 
 function openMap() {
     map = L.map('mapdiv', {
-       center: L.latLng(1.327450, 103.811203),
-       zoom: 13,
-       zoomControl: false
+        center: L.latLng(1.327450, 103.811203),
+        zoom: 13,
+        zoomControl: false
     });
 
     let basemap = L.tileLayer('https://www.onemap.gov.sg/maps/tiles/Default/{z}/{x}/{y}.png', {
-       detectRetina: true,
-       maxZoom: 19,
-       minZoom: 5,
+        detectRetina: true,
+        maxZoom: 19,
+        minZoom: 5,
     });
     basemap.addTo(map);
 
-    map.on('zoomend', function() {
-        checkMarkersInView();
-    });
-    map.on('moveend', ()=>{
-        checkMarkersInView();
-    })
-
-
+    if(!isMobile){
+        map.on('zoomend', function() {
+                checkMarkersInView();
+        });
+        map.on('moveend', function() {
+            checkMarkersInView();
+        });
+    }
 }
 
 async function fetchCoordinatesAndPopulateMap(listings) {
@@ -668,6 +670,11 @@ function openSingleListing(btn) {
     }
 
 
+    if(isMobile){
+        document.querySelector(".left-pane").style.width = "100% !important";
+        document.querySelector(".listing-form-container").style.display = "none";
+    }
+
   
 
 
@@ -761,6 +768,8 @@ function closeFilterPopup() {
 
 function applyFilterCheckbox() {
     document.getElementById("all-listings").classList.remove("d-none");
+    document.querySelector(".left-pane").classList.remove("d-none");
+
     
     
     // remove the circle from the map and zoom out
@@ -1464,12 +1473,22 @@ function addAmmenitiesMarkers(name){
 
 
 function handleFormSubmit() {
-    const container = document.querySelector('#dev-form');
-    const name = container.querySelector('input[name="name"]').value;
-    const email = container.querySelector('input[name="email"]').value;
-    const phone = container.querySelector('input[name="phone"]').value;
+    const ids = {
+        container: isMobile ? 'dev-form-mobile' : 'dev-form',
+        name: isMobile ? 'name-mobile' : 'name',
+        email: isMobile ? 'email-mobile' : 'email',
+        phone: isMobile ? 'phone-mobile' : 'phone',
+        errorMessage: isMobile ? 'error-form-para-mobile' : 'error-form-para'
+    }
+
+
+
+    const container = document.getElementById(ids.container);
+    const name = document.getElementById(ids.name).value;
+    const email = document.getElementById(ids.email).value;
+    const phone = document.getElementById(ids.phone).value;
+    const errorMessage = document.getElementById(ids.errorMessage);
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-    const errorMessage = container.querySelector('#error-form-para');
     errorMessage.innerHTML = "";
     
     let isCheckBox = false;

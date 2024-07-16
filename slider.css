@@ -16,14 +16,25 @@
 
 @media screen and (max-width: 768px) {
     .right-pane {
-        width: 100%;
+        width: 100% !important;
+        height: 100% !important;
     }
-    .resizer {
+    .divider {
         display: none;
     }
     .left-pane{
-        width: 100%;
-        min-height: 100%;
+        width: 100% !important;
+        min-height: 100% !important;
     }
+    #map-bottom-listing{
+        display: none;
+    }
+    #mapdiv{
+        height: 100% !important;
+    }
+    #dev-form-mobile{
+        display: block;
+    }
+    
     
 }
