@@ -1492,6 +1492,8 @@ function handleFormSubmit() {
     }
 
 
+    console.log(ids);
+
 
     const container = document.getElementById(ids.container);
     const name = document.getElementById(ids.name).value;
