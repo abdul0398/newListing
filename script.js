@@ -121,19 +121,28 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup", autoClose: true});
         markerArray.push(marker);
 
+       // Assuming you have your map instance defined as 'map' and your marker defined as 'marker'
+
         marker.on('mouseover', function (e) {
             // Open the popup
             marker.openPopup();
-        
+
             // Get the marker's latitude and longitude
             const latLng = marker.getLatLng();
-        
-            // Center the map on the marker's position
-            map.setView(latLng, map.getZoom(), {
+
+            // Calculate the new center position to move the marker slightly below the center
+            const offsetLatLng = L.latLng(
+                latLng.lat - (map.getBounds().getSouth() - map.getBounds().getNorth()) * 0.15, // Adjust the factor as needed
+                latLng.lng
+            );
+
+            // Center the map on the new position
+            map.setView(offsetLatLng, map.getZoom(), {
                 animate: true,
                 pan: { duration: 0.5 }
             });
         });
+
 
         // Hide popup when mouse leaves
         marker.on('mouseout', function (e) {
