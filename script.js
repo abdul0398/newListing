@@ -122,15 +122,25 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         markerArray.push(marker);
 
         marker.on('mouseover', function (e) {
+            // Open the popup
             marker.openPopup();
+        
+            // Get the marker's latitude and longitude
+            const latLng = marker.getLatLng();
+        
+            // Center the map on the marker's position
+            map.setView(latLng, map.getZoom(), {
+                animate: true,
+                pan: { duration: 0.5 }
+            });
         });
 
         // Hide popup when mouse leaves
         marker.on('mouseout', function (e) {
-            marker.closePopup();
-            if (selectedMarker){
-                selectedMarker.openPopup();
-            }
+            setTimeout(() => {
+                marker.closePopup();
+            }, 2000);
+            
         });
 
     
