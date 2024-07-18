@@ -1,0 +1,3565 @@
+{
+  "The Hill @ One North": [
+    {
+      "name": "EW 20 Commonwealth",
+      "category": "MRT Stations",
+      "latitude": "1.31140529320963",
+      "longitude": "103.778637841909",
+      "distance": "0.88 km"
+    },
+    {
+      "name": "Fairfield Methodist School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.30100441916733",
+      "longitude": "103.785455606827",
+      "distance": "0.60 km"
+    },
+    {
+      "name": "New Town Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29964188181021",
+      "longitude": "103.80010216304",
+      "distance": "1.16 km"
+    },
+    {
+      "name": "Henry Park Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31667646178347",
+      "longitude": "103.784296227747",
+      "distance": "1.66 km"
+    },
+    {
+      "name": "Fairfield Methodist School (Secondary)",
+      "category": "Secondary Schools",
+      "latitude": "1.30163374395823",
+      "longitude": "103.784099647149",
+      "distance": "0.67 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Independent)",
+      "category": "Secondary Schools",
+      "latitude": "1.30370409257783",
+      "longitude": "103.780363417671",
+      "distance": "1.10 km"
+    },
+    {
+      "name": "Queensway Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30022271592188",
+      "longitude": "103.802207291625",
+      "distance": "1.36 km"
+    },
+    {
+      "name": "Anglo-chinese School (Independent)",
+      "category": "Integrated Schools",
+      "latitude": "1.30370409257783",
+      "longitude": "103.780363417671",
+      "distance": "1.10 km"
+    },
+    {
+      "name": "Rochester Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30540765569962",
+      "longitude": "103.788446680148",
+      "distance": "0.34 km"
+    },
+    {
+      "name": "The Star Vista",
+      "category": "Shopping Malls",
+      "latitude": "1.30681500712523",
+      "longitude": "103.788462732266",
+      "distance": "0.49 km"
+    },
+    {
+      "name": "Holland Road Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.31027747574118",
+      "longitude": "103.795371163103",
+      "distance": "0.99 km"
+    }
+  ],
+  "The Hillshore": [
+    {
+      "name": "Fairfield Methodist School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.30100441916733",
+      "longitude": "103.785455606827",
+      "distance": "1.62 km"
+    },
+    {
+      "name": "Fairfield Methodist School (Secondary)",
+      "category": "Secondary Schools",
+      "latitude": "1.30163374395823",
+      "longitude": "103.784099647149",
+      "distance": "1.72 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Independent)",
+      "category": "Secondary Schools",
+      "latitude": "1.30370409257783",
+      "longitude": "103.780363417671",
+      "distance": "1.87 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Independent)",
+      "category": "Integrated Schools",
+      "latitude": "1.30370409257783",
+      "longitude": "103.780363417671",
+      "distance": "1.87 km"
+    }
+  ],
+  "Lentor Mansion": [
+    {
+      "name": "TE 5 Lentor",
+      "category": "MRT Stations",
+      "latitude": "1.3895476630487",
+      "longitude": "103.836419380941",
+      "distance": "0.41 km"
+    },
+    {
+      "name": "Anderson Primary",
+      "category": "Primary Schools",
+      "latitude": "1.38419941907925",
+      "longitude": "103.841411716006",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "0.95 km"
+    },
+    {
+      "name": "Mayflower Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37637683547682",
+      "longitude": "103.843252803742",
+      "distance": "1.17 km"
+    },
+    {
+      "name": "Presbyterian High",
+      "category": "Secondary Schools",
+      "latitude": "1.38201194250223",
+      "longitude": "103.843149382823",
+      "distance": "0.91 km"
+    },
+    {
+      "name": "Yio Chu Kang Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.37797597740925",
+      "longitude": "103.84213696352",
+      "distance": "0.93 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "0.95 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Integrated Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "0.95 km"
+    },
+    {
+      "name": "Broadway Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.37193729131781",
+      "longitude": "103.845949444498",
+      "distance": "1.71 km"
+    },
+    {
+      "name": "Djitsun Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.32611970329469",
+      "longitude": "103.929554495615",
+      "distance": "1.81 km"
+    },
+    {
+      "name": "Jubilee Square",
+      "category": "Shopping Malls",
+      "latitude": "1.37178558575829",
+      "longitude": "103.847837565378",
+      "distance": "1.88 km"
+    }
+  ],
+  "Lentoria": [
+    {
+      "name": "TE 5 Lentor",
+      "category": "MRT Stations",
+      "latitude": "1.3895476630487",
+      "longitude": "103.836419380941",
+      "distance": "0.44 km"
+    },
+    {
+      "name": "Anderson Primary",
+      "category": "Primary Schools",
+      "latitude": "1.38419941907925",
+      "longitude": "103.841411716006",
+      "distance": "0.82 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "0.92 km"
+    },
+    {
+      "name": "Mayflower Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37637683547682",
+      "longitude": "103.843252803742",
+      "distance": "1.14 km"
+    },
+    {
+      "name": "Presbyterian High",
+      "category": "Secondary Schools",
+      "latitude": "1.38201194250223",
+      "longitude": "103.843149382823",
+      "distance": "0.88 km"
+    },
+    {
+      "name": "Yio Chu Kang Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.37797597740925",
+      "longitude": "103.84213696352",
+      "distance": "0.90 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "0.92 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Integrated Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "0.92 km"
+    },
+    {
+      "name": "Broadway Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.37193729131781",
+      "longitude": "103.845949444498",
+      "distance": "1.68 km"
+    },
+    {
+      "name": "Djitsun Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.32611970329469",
+      "longitude": "103.929554495615",
+      "distance": "1.77 km"
+    },
+    {
+      "name": "Jubilee Square",
+      "category": "Shopping Malls",
+      "latitude": "1.37178558575829",
+      "longitude": "103.847837565378",
+      "distance": "1.85 km"
+    }
+  ],
+  "Koon Seng House": [
+    {
+      "name": "Haig Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.31194344271383",
+      "longitude": "103.902902557195",
+      "distance": "0.41 km"
+    },
+    {
+      "name": "CHIJ (Katong) Primary",
+      "category": "Primary Schools",
+      "latitude": "1.30648535277087",
+      "longitude": "103.911105620496",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "Tao Nan",
+      "category": "Primary Schools",
+      "latitude": "1.2943321052493",
+      "longitude": "103.849026157822",
+      "distance": "0.99 km"
+    },
+    {
+      "name": "Tanjong Katong Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30873515955341",
+      "longitude": "103.897225196199",
+      "distance": "1.12 km"
+    },
+    {
+      "name": "Tanjong Katong Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.30821274627283",
+      "longitude": "103.895820094229",
+      "distance": "1.29 km"
+    },
+    {
+      "name": "St. Patrick's",
+      "category": "Secondary Schools",
+      "latitude": "1.30782693897975",
+      "longitude": "103.916058241977",
+      "distance": "1.34 km"
+    },
+    {
+      "name": "i12 Katong",
+      "category": "Shopping Malls",
+      "latitude": "1.30522306203042",
+      "longitude": "103.905043928938",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "Joo Chiat Complex",
+      "category": "Shopping Malls",
+      "latitude": "1.31567196429635",
+      "longitude": "103.899183182411",
+      "distance": "0.98 km"
+    },
+    {
+      "name": "Katong V",
+      "category": "Shopping Malls",
+      "latitude": "1.30386120759163",
+      "longitude": "103.902871405205",
+      "distance": "1.06 km"
+    }
+  ],
+  "Lumina Grand": [
+    {
+      "name": "Dazhong Primary",
+      "category": "Primary Schools",
+      "latitude": "1.3591797447277",
+      "longitude": "103.74847210784",
+      "distance": "0.72 km"
+    },
+    {
+      "name": "Princess Elizabeth Primary",
+      "category": "Primary Schools",
+      "latitude": "1.34919098857585",
+      "longitude": "103.740719208011",
+      "distance": "1.17 km"
+    },
+    {
+      "name": "Dunearn Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.36357900792871",
+      "longitude": "103.74472109107",
+      "distance": "0.55 km"
+    },
+    {
+      "name": "Swiss Cottage Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.36471742697475",
+      "longitude": "103.750396136688",
+      "distance": "1.11 km"
+    },
+    {
+      "name": "Bukit Batok Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.34849111079052",
+      "longitude": "103.74087370482",
+      "distance": "1.24 km"
+    },
+    {
+      "name": "Le Quest",
+      "category": "Shopping Malls",
+      "latitude": "1.35641720019399",
+      "longitude": "103.740927523447",
+      "distance": "0.45 km"
+    },
+    {
+      "name": "West Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.35009714832628",
+      "longitude": "103.74921385957",
+      "distance": "1.27 km"
+    },
+    {
+      "name": "Keat Hong Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.37736607441394",
+      "longitude": "103.744393648768",
+      "distance": "1.99 km"
+    }
+  ],
+  "Hillhaven": [
+    {
+      "name": "CHIJ Our Lady Queen of Peace",
+      "category": "Primary Schools",
+      "latitude": "1.366603668561",
+      "longitude": "103.767412204602",
+      "distance": "0.66 km"
+    },
+    {
+      "name": "Lianhua Primary",
+      "category": "Primary Schools",
+      "latitude": "1.35424191127295",
+      "longitude": "103.754165828711",
+      "distance": "1.37 km"
+    },
+    {
+      "name": "Bukit Panjang Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37350089986584",
+      "longitude": "103.769417337654",
+      "distance": "1.44 km"
+    },
+    {
+      "name": "Assumption Pathway",
+      "category": "Secondary Schools",
+      "latitude": "1.3696707043227",
+      "longitude": "103.765959130581",
+      "distance": "0.89 km"
+    },
+    {
+      "name": "Assumption English",
+      "category": "Secondary Schools",
+      "latitude": "1.36838160662857",
+      "longitude": "103.766687526556",
+      "distance": "0.93 km"
+    },
+    {
+      "name": "HillV2",
+      "category": "Shopping Malls",
+      "latitude": "1.36267450828024",
+      "longitude": "103.76417292006",
+      "distance": "0.09 km"
+    },
+    {
+      "name": "The Rail Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.35773050150178",
+      "longitude": "103.768137724847",
+      "distance": "0.47 km"
+    },
+    {
+      "name": "Hillion Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.37841165144214",
+      "longitude": "103.76382945872",
+      "distance": "1.84 km"
+    }
+  ],
+  "The Arcady": [
+    {
+      "name": "NE 9 Boon Keng",
+      "category": "MRT Stations",
+      "latitude": "1.31933570922514",
+      "longitude": "103.861569454156",
+      "distance": "0.46 km"
+    },
+    {
+      "name": "Bendemeer Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32181250780475",
+      "longitude": "103.865404167629",
+      "distance": "0.24 km"
+    },
+    {
+      "name": "Hong Wen",
+      "category": "Primary Schools",
+      "latitude": "1.32175999964553",
+      "longitude": "103.857628468881",
+      "distance": "0.71 km"
+    },
+    {
+      "name": "St. Andrew's Junior",
+      "category": "Primary Schools",
+      "latitude": "1.33306515740956",
+      "longitude": "103.863576377056",
+      "distance": "0.91 km"
+    },
+    {
+      "name": "Bendemeer Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.32461111307996",
+      "longitude": "103.860970284401",
+      "distance": "0.35 km"
+    },
+    {
+      "name": "St. Andrew's Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.33069360968075",
+      "longitude": "103.866249138562",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "Northlight",
+      "category": "Secondary Schools",
+      "latitude": "1.3191002158167",
+      "longitude": "103.85575955353",
+      "distance": "1.02 km"
+    },
+    {
+      "name": "Bendemeer Shopping Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.31868262266763",
+      "longitude": "103.862702893919",
+      "distance": "0.51 km"
+    },
+    {
+      "name": "Shaw Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.32471984327386",
+      "longitude": "103.851722813244",
+      "distance": "1.44 km"
+    },
+    {
+      "name": "City Square Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.31135169933195",
+      "longitude": "103.856724057693",
+      "distance": "1.54 km"
+    }
+  ],
+  "Watten House": [
+    {
+      "name": "Raffles Girls' School",
+      "category": "Primary Schools",
+      "latitude": "1.29501383373269",
+      "longitude": "103.85000246607",
+      "distance": "0.47 km"
+    },
+    {
+      "name": "National Junior College",
+      "category": "Secondary Schools",
+      "latitude": "1.33029291072172",
+      "longitude": "103.804110905425",
+      "distance": "0.73 km"
+    },
+    {
+      "name": "Hwa Chong Institution",
+      "category": "Secondary Schools",
+      "latitude": "1.3249477928719",
+      "longitude": "103.805704361472",
+      "distance": "0.82 km"
+    },
+    {
+      "name": "National Junior College",
+      "category": "Integrated Schools",
+      "latitude": "1.33029291072172",
+      "longitude": "103.804110905425",
+      "distance": "0.73 km"
+    },
+    {
+      "name": "Hwa Chong Institution",
+      "category": "Integrated Schools",
+      "latitude": "1.3249477928719",
+      "longitude": "103.805704361472",
+      "distance": "0.82 km"
+    },
+    {
+      "name": "Coronation Shopping Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.32383512178759",
+      "longitude": "103.809999570047",
+      "distance": "0.61 km"
+    }
+  ],
+  "J'Den": [
+    {
+      "name": "Fuhua Primary",
+      "category": "Primary Schools",
+      "latitude": "1.33659726465816",
+      "longitude": "103.736089481883",
+      "distance": "0.58 km"
+    },
+    {
+      "name": "Yuhua Primary",
+      "category": "Primary Schools",
+      "latitude": "1.34280230475033",
+      "longitude": "103.741105772644",
+      "distance": "1.06 km"
+    },
+    {
+      "name": "Princess Elizabeth Primary",
+      "category": "Primary Schools",
+      "latitude": "1.34919098857585",
+      "longitude": "103.740719208011",
+      "distance": "1.77 km"
+    },
+    {
+      "name": "Crest Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.3431198045076",
+      "longitude": "103.742628105304",
+      "distance": "1.17 km"
+    },
+    {
+      "name": "Commonwealth Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.31920395934801",
+      "longitude": "103.745637393049",
+      "distance": "1.68 km"
+    },
+    {
+      "name": "Westgate",
+      "category": "Shopping Malls",
+      "latitude": "1.33415767556867",
+      "longitude": "103.742766484424",
+      "distance": "0.21 km"
+    },
+    {
+      "name": "Jem",
+      "category": "Shopping Malls",
+      "latitude": "1.33305999269581",
+      "longitude": "103.743503708169",
+      "distance": "0.31 km"
+    },
+    {
+      "name": "IMM",
+      "category": "Shopping Malls",
+      "latitude": "1.33487526118006",
+      "longitude": "103.746894773008",
+      "distance": "0.65 km"
+    }
+  ],
+  "Hillock Green": [
+    {
+      "name": "TE 5 Lentor",
+      "category": "MRT Stations",
+      "latitude": "1.3895476630487",
+      "longitude": "103.836419380941",
+      "distance": "0.15 km"
+    },
+    {
+      "name": "Anderson Primary",
+      "category": "Primary Schools",
+      "latitude": "1.38419941907925",
+      "longitude": "103.841411716006",
+      "distance": "0.79 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "1.28 km"
+    },
+    {
+      "name": "Mayflower Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37637683547682",
+      "longitude": "103.843252803742",
+      "distance": "1.38 km"
+    },
+    {
+      "name": "Presbyterian High",
+      "category": "Secondary Schools",
+      "latitude": "1.38201194250223",
+      "longitude": "103.843149382823",
+      "distance": "0.97 km"
+    },
+    {
+      "name": "Yio Chu Kang",
+      "category": "Secondary Schools",
+      "latitude": "1.39004530088896",
+      "longitude": "103.860607344073",
+      "distance": "1.12 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "1.28 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Integrated Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "1.28 km"
+    },
+    {
+      "name": "Broadway Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.37193729131781",
+      "longitude": "103.845949444498",
+      "distance": "1.94 km"
+    }
+  ],
+  "The Shorefront": [
+    {
+      "name": "CR 3 Loyang",
+      "category": "MRT Stations",
+      "latitude": "1.38501238239352",
+      "longitude": "103.97073772961",
+      "distance": "1.57 km"
+    },
+    {
+      "name": "Pasir Ris Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37245132722087",
+      "longitude": "103.962922699031",
+      "distance": "0.79 km"
+    },
+    {
+      "name": "Casuarina Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37246063927999",
+      "longitude": "103.957020286115",
+      "distance": "0.81 km"
+    },
+    {
+      "name": "White Sands Primary",
+      "category": "Primary Schools",
+      "latitude": "1.36563610941695",
+      "longitude": "103.960861814678",
+      "distance": "1.50 km"
+    },
+    {
+      "name": "Pasir Ris Crest Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.37284060102246",
+      "longitude": "103.959728202919",
+      "distance": "0.75 km"
+    },
+    {
+      "name": "Hai Sing Catholic",
+      "category": "Secondary Schools",
+      "latitude": "1.37434641160381",
+      "longitude": "103.954957944437",
+      "distance": "0.78 km"
+    },
+    {
+      "name": "Downtown East",
+      "category": "Shopping Malls",
+      "latitude": "1.37595122154029",
+      "longitude": "103.955598940037",
+      "distance": "0.67 km"
+    },
+    {
+      "name": "White Sands",
+      "category": "Shopping Malls",
+      "latitude": "1.37228761596577",
+      "longitude": "103.949733905672",
+      "distance": "1.37 km"
+    },
+    {
+      "name": "Loyang Point",
+      "category": "Shopping Malls",
+      "latitude": "1.36706634197242",
+      "longitude": "103.964635610477",
+      "distance": "1.49 km"
+    }
+  ],
+  "TMW Maxwell": [
+    {
+      "name": "Cantonment Primary",
+      "category": "Primary Schools",
+      "latitude": "1.27547252623201",
+      "longitude": "103.839962631748",
+      "distance": "0.66 km"
+    },
+    {
+      "name": "CHIJ (Kellock)",
+      "category": "Primary Schools",
+      "latitude": "1.275022722964",
+      "longitude": "103.828157564896",
+      "distance": "1.89 km"
+    },
+    {
+      "name": "Outram Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.28651357464735",
+      "longitude": "103.837127264403",
+      "distance": "1.18 km"
+    },
+    {
+      "name": "Tanjong Pagar Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.27661464758769",
+      "longitude": "103.843167023188",
+      "distance": "0.26 km"
+    }
+  ],
+  "The Arden": [
+    {
+      "name": "West View Primary",
+      "category": "Primary Schools",
+      "latitude": "1.38378546546228",
+      "longitude": "103.760273432258",
+      "distance": "0.81 km"
+    },
+    {
+      "name": "Teck Whye Primary",
+      "category": "Primary Schools",
+      "latitude": "1.38388660469396",
+      "longitude": "103.753924558586",
+      "distance": "0.82 km"
+    },
+    {
+      "name": "South View Primary",
+      "category": "Primary Schools",
+      "latitude": "1.38143123987698",
+      "longitude": "103.747153671",
+      "distance": "1.28 km"
+    },
+    {
+      "name": "Teck Whye Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.38333422637073",
+      "longitude": "103.75510327583",
+      "distance": "0.68 km"
+    },
+    {
+      "name": "Choa Chu Kang Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.39005109871311",
+      "longitude": "103.741190664845",
+      "distance": "0.87 km"
+    },
+    {
+      "name": "West Spring Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.38782283303782",
+      "longitude": "103.760128840155",
+      "distance": "1.23 km"
+    },
+    {
+      "name": "Junction 10",
+      "category": "Shopping Malls",
+      "latitude": "1.38018163022688",
+      "longitude": "103.76041930548",
+      "distance": "0.52 km"
+    },
+    {
+      "name": "Teck Whye Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.38004752975397",
+      "longitude": "103.752483841199",
+      "distance": "0.58 km"
+    },
+    {
+      "name": "Hillion Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.37841165144214",
+      "longitude": "103.76382945872",
+      "distance": "0.68 km"
+    }
+  ],
+  "Orchard Sophia": [
+    {
+      "name": "St. Margaret's Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32439150290682",
+      "longitude": "103.881624837373",
+      "distance": "0.09 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "0.93 km"
+    },
+    {
+      "name": "Farrer Park Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31236867681371",
+      "longitude": "103.850766402965",
+      "distance": "1.15 km"
+    },
+    {
+      "name": "School of the Arts Singapore (SOTA)",
+      "category": "Integrated Schools",
+      "latitude": "1.29936480411316",
+      "longitude": "103.848687419363",
+      "distance": "0.48 km"
+    },
+    {
+      "name": "Plaza Singapura",
+      "category": "Shopping Malls",
+      "latitude": "1.30083413030923",
+      "longitude": "103.845072743164",
+      "distance": "0.29 km"
+    },
+    {
+      "name": "Parklane Shopping Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30065102658844",
+      "longitude": "103.84944198056",
+      "distance": "0.42 km"
+    }
+  ],
+  "The LakeGarden Residences": [
+    {
+      "name": "Lakeside Primary",
+      "category": "Primary Schools",
+      "latitude": "1.33820397704287",
+      "longitude": "103.718089546664",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "Fuhua Primary",
+      "category": "Primary Schools",
+      "latitude": "1.33659726465816",
+      "longitude": "103.736089481883",
+      "distance": "1.31 km"
+    },
+    {
+      "name": "Shuqun Primary",
+      "category": "Primary Schools",
+      "latitude": "1.34765311431632",
+      "longitude": "103.721523713379",
+      "distance": "1.37 km"
+    },
+    {
+      "name": "Jurong Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.33002032220942",
+      "longitude": "103.723952961648",
+      "distance": "0.62 km"
+    },
+    {
+      "name": "Yuan Ching Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.34200635764467",
+      "longitude": "103.72089870437",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "Fuhua Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.34701408913756",
+      "longitude": "103.72652089832",
+      "distance": "1.29 km"
+    },
+    {
+      "name": "Taman Jurong Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.33484487471259",
+      "longitude": "103.720462024278",
+      "distance": "0.53 km"
+    },
+    {
+      "name": "Westgate",
+      "category": "Shopping Malls",
+      "latitude": "1.33415767556867",
+      "longitude": "103.742766484424",
+      "distance": "1.97 km"
+    },
+    {
+      "name": "Jem",
+      "category": "Shopping Malls",
+      "latitude": "1.33305999269581",
+      "longitude": "103.743503708169",
+      "distance": "2.08 km"
+    }
+  ],
+  "Altura": [
+    {
+      "name": "Dazhong Primary",
+      "category": "Primary Schools",
+      "latitude": "1.3591797447277",
+      "longitude": "103.74847210784",
+      "distance": "0.70 km"
+    },
+    {
+      "name": "St. Anthony's Primary",
+      "category": "Primary Schools",
+      "latitude": "1.3347253730189",
+      "longitude": "103.941234868202",
+      "distance": "0.95 km"
+    },
+    {
+      "name": "Princess Elizabeth Primary",
+      "category": "Primary Schools",
+      "latitude": "1.34919098857585",
+      "longitude": "103.740719208011",
+      "distance": "1.14 km"
+    },
+    {
+      "name": "Swiss Cottage Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.36471742697475",
+      "longitude": "103.750396136688",
+      "distance": "1.09 km"
+    },
+    {
+      "name": "Bukit Batok Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.34849111079052",
+      "longitude": "103.74087370482",
+      "distance": "1.22 km"
+    },
+    {
+      "name": "Hillgrove Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.35273576615912",
+      "longitude": "103.752986488399",
+      "distance": "1.41 km"
+    },
+    {
+      "name": "West Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.35009714832628",
+      "longitude": "103.74921385957",
+      "distance": "1.33 km"
+    }
+  ],
+  "Pinetree Hill": [
+    {
+      "name": "Pei Tong Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31666529308968",
+      "longitude": "103.767438999533",
+      "distance": "1.00 km"
+    },
+    {
+      "name": "Henry Park Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31667646178347",
+      "longitude": "103.784296227747",
+      "distance": "1.00 km"
+    },
+    {
+      "name": "Clementi Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31506321827875",
+      "longitude": "103.763144493687",
+      "distance": "1.51 km"
+    },
+    {
+      "name": "School of Science and Technology, Singapore",
+      "category": "Secondary Schools",
+      "latitude": "1.31292810600277",
+      "longitude": "103.774011529322",
+      "distance": "0.77 km"
+    },
+    {
+      "name": "New Town Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30977590011357",
+      "longitude": "103.77318863421",
+      "distance": "1.18 km"
+    },
+    {
+      "name": "Nan Hua High",
+      "category": "Secondary Schools",
+      "latitude": "1.30809529518605",
+      "longitude": "103.768561446725",
+      "distance": "1.54 km"
+    },
+    {
+      "name": "NUS High School of Mathematics and Science",
+      "category": "Integrated Schools",
+      "latitude": "1.30615665859431",
+      "longitude": "103.770148255807",
+      "distance": "1.64 km"
+    },
+    {
+      "name": "Methodist Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.33266213599636",
+      "longitude": "103.783382114018",
+      "distance": "1.66 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Independent)",
+      "category": "Integrated Schools",
+      "latitude": "1.30370409257783",
+      "longitude": "103.780363417671",
+      "distance": "1.87 km"
+    },
+    {
+      "name": "Clementi Avenue 2 Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.31427860227337",
+      "longitude": "103.771350557894",
+      "distance": "0.89 km"
+    },
+    {
+      "name": "The Clementi Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.31489619639366",
+      "longitude": "103.764423054189",
+      "distance": "1.38 km"
+    }
+  ],
+  "Grand Dunman": [
+    {
+      "name": "Kong Hwa",
+      "category": "Primary Schools",
+      "latitude": "1.31099674009193",
+      "longitude": "103.888352029067",
+      "distance": "0.45 km"
+    },
+    {
+      "name": "Tanjong Katong Primary",
+      "category": "Primary Schools",
+      "latitude": "1.30498489044822",
+      "longitude": "103.899999965407",
+      "distance": "1.03 km"
+    },
+    {
+      "name": "Geylang Methodist School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.31759126757284",
+      "longitude": "103.883845744916",
+      "distance": "1.33 km"
+    },
+    {
+      "name": "Chung Cheng High School (Main)",
+      "category": "Secondary Schools",
+      "latitude": "1.30509154753048",
+      "longitude": "103.891653229373",
+      "distance": "0.33 km"
+    },
+    {
+      "name": "Broadrick Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30705061123433",
+      "longitude": "103.886917922608",
+      "distance": "0.52 km"
+    },
+    {
+      "name": "Tanjong Katong Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.30821274627283",
+      "longitude": "103.895820094229",
+      "distance": "0.53 km"
+    },
+    {
+      "name": "Dunman High School",
+      "category": "Integrated Schools",
+      "latitude": "1.29996216014962",
+      "longitude": "103.88294155989",
+      "distance": "1.31 km"
+    },
+    {
+      "name": "City Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.3147868971977",
+      "longitude": "103.893472115119",
+      "distance": "0.77 km"
+    },
+    {
+      "name": "One KM",
+      "category": "Shopping Malls",
+      "latitude": "1.31461849889242",
+      "longitude": "103.894738004496",
+      "distance": "0.79 km"
+    },
+    {
+      "name": "Joo Chiat Complex",
+      "category": "Shopping Malls",
+      "latitude": "1.31567196429635",
+      "longitude": "103.899183182411",
+      "distance": "1.15 km"
+    }
+  ],
+  "Lentor Hills Residences": [
+    {
+      "name": "TE 5 Lentor",
+      "category": "MRT Stations",
+      "latitude": "1.3895476630487",
+      "longitude": "103.836419380941",
+      "distance": "0.23 km"
+    },
+    {
+      "name": "Anderson Primary",
+      "category": "Primary Schools",
+      "latitude": "1.38419941907925",
+      "longitude": "103.841411716006",
+      "distance": "0.79 km"
+    },
+    {
+      "name": "Mayflower Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37637683547682",
+      "longitude": "103.843252803742",
+      "distance": "1.30 km"
+    },
+    {
+      "name": "Presbyterian High",
+      "category": "Secondary Schools",
+      "latitude": "1.38201194250223",
+      "longitude": "103.843149382823",
+      "distance": "0.93 km"
+    },
+    {
+      "name": "Yio Chu Kang Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.37797597740925",
+      "longitude": "103.84213696352",
+      "distance": "1.05 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Integrated Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "1.16 km"
+    },
+    {
+      "name": "Broadway Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.37193729131781",
+      "longitude": "103.845949444498",
+      "distance": "1.86 km"
+    },
+    {
+      "name": "Djitsun Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.32611970329469",
+      "longitude": "103.929554495615",
+      "distance": "1.93 km"
+    }
+  ],
+  "The Myst": [
+    {
+      "name": "Bukit Panjang Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37350089986584",
+      "longitude": "103.769417337654",
+      "distance": "0.58 km"
+    },
+    {
+      "name": "CHIJ Our Lady Queen of Peace",
+      "category": "Primary Schools",
+      "latitude": "1.366603668561",
+      "longitude": "103.767412204602",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "Zhenghua Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37954887512229",
+      "longitude": "103.769313521752",
+      "distance": "0.88 km"
+    },
+    {
+      "name": "Assumption Pathway",
+      "category": "Secondary Schools",
+      "latitude": "1.3696707043227",
+      "longitude": "103.765959130581",
+      "distance": "0.47 km"
+    },
+    {
+      "name": "Assumption English",
+      "category": "Secondary Schools",
+      "latitude": "1.36838160662857",
+      "longitude": "103.766687526556",
+      "distance": "0.64 km"
+    },
+    {
+      "name": "Bukit Panjang Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.37992045176243",
+      "longitude": "103.764357180314",
+      "distance": "0.72 km"
+    },
+    {
+      "name": "Junction 10",
+      "category": "Shopping Malls",
+      "latitude": "1.38018163022688",
+      "longitude": "103.76041930548",
+      "distance": "0.92 km"
+    }
+  ],
+  "The Reserve Residences": [
+    {
+      "name": "DT 5 Beauty World",
+      "category": "MRT Stations",
+      "latitude": "1.34122317558549",
+      "longitude": "103.775794285083",
+      "distance": "0.05 km"
+    },
+    {
+      "name": "Pei Hwa Presbyterian Primary",
+      "category": "Primary Schools",
+      "latitude": "1.33807302121151",
+      "longitude": "103.776250903095",
+      "distance": "0.26 km"
+    },
+    {
+      "name": "Bukit Timah Primary",
+      "category": "Primary Schools",
+      "latitude": "1.3377498622588",
+      "longitude": "103.766855344779",
+      "distance": "1.18 km"
+    },
+    {
+      "name": "Methodist Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.33266213599636",
+      "longitude": "103.783382114018",
+      "distance": "0.98 km"
+    },
+    {
+      "name": "Bukit Timah Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.33875930729064",
+      "longitude": "103.778600077834",
+      "distance": "0.18 km"
+    },
+    {
+      "name": "Beauty World Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.34180018619223",
+      "longitude": "103.776259359854",
+      "distance": "0.26 km"
+    },
+    {
+      "name": "Bukit Timah Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.34316475341698",
+      "longitude": "103.776031354379",
+      "distance": "0.42 km"
+    }
+  ],
+  "The Continuum": [
+    {
+      "name": "Kong Hwa",
+      "category": "Primary Schools",
+      "latitude": "1.31099674009193",
+      "longitude": "103.888352029067",
+      "distance": "0.72 km"
+    },
+    {
+      "name": "Tanjong Katong Primary",
+      "category": "Primary Schools",
+      "latitude": "1.30498489044822",
+      "longitude": "103.899999965407",
+      "distance": "0.87 km"
+    },
+    {
+      "name": "Haig Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.31194344271383",
+      "longitude": "103.902902557195",
+      "distance": "0.91 km"
+    },
+    {
+      "name": "Tanjong Katong Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30873515955341",
+      "longitude": "103.897225196199",
+      "distance": "0.39 km"
+    },
+    {
+      "name": "Tanjong Katong Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.30821274627283",
+      "longitude": "103.895820094229",
+      "distance": "0.41 km"
+    },
+    {
+      "name": "Chung Cheng High School",
+      "category": "Secondary Schools",
+      "latitude": "1.30509154753048",
+      "longitude": "103.891653229373",
+      "distance": "0.77 km"
+    },
+    {
+      "name": "Dunman High School",
+      "category": "Integrated Schools",
+      "latitude": "1.29996216014962",
+      "longitude": "103.88294155989",
+      "distance": "1.79 km"
+    },
+    {
+      "name": "One KM",
+      "category": "Shopping Malls",
+      "latitude": "1.31461849889242",
+      "longitude": "103.894738004496",
+      "distance": "0.40 km"
+    },
+    {
+      "name": "City Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.3147868971977",
+      "longitude": "103.893472115119",
+      "distance": "0.45 km"
+    },
+    {
+      "name": "Joo Chiat Complex",
+      "category": "Supermarkets",
+      "latitude": "1.31567196429635",
+      "longitude": "103.899183182411",
+      "distance": "0.68 km"
+    }
+  ],
+  "Blossoms By The Park": [
+    {
+      "name": "EW 20 Commonwealth",
+      "category": "MRT Stations",
+      "latitude": "1.31140529320963",
+      "longitude": "103.778637841909",
+      "distance": "0.99 km"
+    },
+    {
+      "name": "Fairfield Methodist School",
+      "category": "Primary Schools",
+      "latitude": "1.30100441916733",
+      "longitude": "103.785455606827",
+      "distance": "0.62 km"
+    },
+    {
+      "name": "New Town Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29964188181021",
+      "longitude": "103.80010216304",
+      "distance": "1.29 km"
+    },
+    {
+      "name": "Henry Park Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31667646178347",
+      "longitude": "103.784296227747",
+      "distance": "1.49 km"
+    },
+    {
+      "name": "Fairfield Methodist School",
+      "category": "Secondary Schools",
+      "latitude": "1.30100441916733",
+      "longitude": "103.785455606827",
+      "distance": "0.62 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Independent)",
+      "category": "Secondary Schools",
+      "latitude": "1.30370409257783",
+      "longitude": "103.780363417671",
+      "distance": "1.02 km"
+    },
+    {
+      "name": "Queensway Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30022271592188",
+      "longitude": "103.802207291625",
+      "distance": "1.49 km"
+    },
+    {
+      "name": "Rochester Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30540765569962",
+      "longitude": "103.788446680148",
+      "distance": "0.17 km"
+    },
+    {
+      "name": "The Star Vista",
+      "category": "Shopping Malls",
+      "latitude": "1.30681500712523",
+      "longitude": "103.788462732266",
+      "distance": "0.32 km"
+    },
+    {
+      "name": "Holland Road Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.31027747574118",
+      "longitude": "103.795371163103",
+      "distance": "0.93 km"
+    }
+  ],
+  "The Giverny Residences": [
+    {
+      "name": "Singapore Chinese Girls' Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32080725235992",
+      "longitude": "103.827744749548",
+      "distance": "0.31 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.31837054523521",
+      "longitude": "103.835609732354",
+      "distance": "0.90 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "1.84 km"
+    },
+    {
+      "name": "Singapore Chinese Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.30239915719716",
+      "longitude": "103.839055904985",
+      "distance": "0.24 km"
+    },
+    {
+      "name": "Raffles Girls' School",
+      "category": "Secondary Schools",
+      "latitude": "1.29501383373269",
+      "longitude": "103.85000246607",
+      "distance": "0.83 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Barker Road)",
+      "category": "Secondary Schools",
+      "latitude": "1.31961649151328",
+      "longitude": "103.835772689988",
+      "distance": "0.92 km"
+    },
+    {
+      "name": "Delfi Orchard",
+      "category": "Shopping Malls",
+      "latitude": "1.30717887298465",
+      "longitude": "103.828469994324",
+      "distance": "1.32 km"
+    },
+    {
+      "name": "Palais Renaissance",
+      "category": "Shopping Malls",
+      "latitude": "1.30665484543191",
+      "longitude": "103.829588045188",
+      "distance": "1.39 km"
+    },
+    {
+      "name": "Tanglin Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.30640254147338",
+      "longitude": "103.827050620793",
+      "distance": "1.42 km"
+    }
+  ],
+  "Tembusu Grand": [
+    {
+      "name": "Tanjong Katong Primary",
+      "category": "Primary Schools",
+      "latitude": "1.30498489044822",
+      "longitude": "103.899999965407",
+      "distance": "0.36 km"
+    },
+    {
+      "name": "Haig Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.31194344271383",
+      "longitude": "103.902902557195",
+      "distance": "0.96 km"
+    },
+    {
+      "name": "Kong Hwa",
+      "category": "Primary Schools",
+      "latitude": "1.31099674009193",
+      "longitude": "103.888352029067",
+      "distance": "1.12 km"
+    },
+    {
+      "name": "Tanjong Katong Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.30821274627283",
+      "longitude": "103.895820094229",
+      "distance": "0.23 km"
+    },
+    {
+      "name": "Tanjong Katong Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30873515955341",
+      "longitude": "103.897225196199",
+      "distance": "0.33 km"
+    },
+    {
+      "name": "Chung Cheng High School",
+      "category": "Secondary Schools",
+      "latitude": "1.30509154753048",
+      "longitude": "103.891653229373",
+      "distance": "0.69 km"
+    },
+    {
+      "name": "Dunman High School",
+      "category": "Integrated Schools",
+      "latitude": "1.29996216014962",
+      "longitude": "103.88294155989",
+      "distance": "1.66 km"
+    },
+    {
+      "name": "Katong Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.30382040183737",
+      "longitude": "103.901040040407",
+      "distance": "0.49 km"
+    },
+    {
+      "name": "Katong V",
+      "category": "Shopping Malls",
+      "latitude": "1.30386120759163",
+      "longitude": "103.902871405205",
+      "distance": "0.69km"
+    },
+    {
+      "name": "112 Katong",
+      "category": "Shopping Malls",
+      "latitude": "1.30520653617341",
+      "longitude": "103.905046110228",
+      "distance": "0.89 km"
+    }
+  ],
+  "The Botany": [
+    {
+      "name": "CHIJ Our Lady Queen of Peace",
+      "category": "Primary Schools",
+      "latitude": "1.366603668561",
+      "longitude": "103.767412204602",
+      "distance": "0.62 km"
+    },
+    {
+      "name": "Bukit Panjang Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37350089986584",
+      "longitude": "103.769417337654",
+      "distance": "0.89 km"
+    },
+    {
+      "name": "Zhenghua Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37954887512229",
+      "longitude": "103.769313521752",
+      "distance": "1.51 km"
+    },
+    {
+      "name": "Assumption English",
+      "category": "Secondary Schools",
+      "latitude": "1.36838160662857",
+      "longitude": "103.766687526556",
+      "distance": "0.64 km"
+    },
+    {
+      "name": "Assumption Pathway",
+      "category": "Secondary Schools",
+      "latitude": "1.3696707043227",
+      "longitude": "103.765959130581",
+      "distance": "0.86 km"
+    },
+    {
+      "name": "The Rail Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.35773050150178",
+      "longitude": "103.768137724847",
+      "distance": "0.97 km"
+    },
+    {
+      "name": "HillV2",
+      "category": "Shopping Malls",
+      "latitude": "1.36267450828024",
+      "longitude": "103.76417292006",
+      "distance": "1.07 km"
+    },
+    {
+      "name": "Hillion Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.37841165144214",
+      "longitude": "103.76382945872",
+      "distance": "1.75 km"
+    }
+  ],
+  "Terra Hill": [
+    {
+      "name": "Blangah Rise Primary",
+      "category": "Primary Schools",
+      "latitude": "1.27612047924037",
+      "longitude": "103.808628535239",
+      "distance": "1.68 km"
+    },
+    {
+      "name": "Alexandra Retail Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.27414893629254",
+      "longitude": "103.801399416665",
+      "distance": "0.98 km"
+    },
+    {
+      "name": "Queensway Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.28761792586115",
+      "longitude": "103.803391140455",
+      "distance": "1.48 km"
+    },
+    {
+      "name": "Alexandra Central",
+      "category": "Shopping Malls",
+      "latitude": "1.28728320930592",
+      "longitude": "103.805283367958",
+      "distance": "1.62 km"
+    }
+  ],
+  "Gems Ville": [
+    {
+      "name": "Geylang Methodist School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.31759126757284",
+      "longitude": "103.883845744916",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "Kong Hwa",
+      "category": "Primary Schools",
+      "latitude": "1.31099674009193",
+      "longitude": "103.888352029067",
+      "distance": "1.20 km"
+    },
+    {
+      "name": "Canossa Catholic Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32664424544839",
+      "longitude": "103.882227964852",
+      "distance": "1.60 km"
+    },
+    {
+      "name": "Geylang Methodist School (Secondary)",
+      "category": "Secondary Schools",
+      "latitude": "1.31764900474601",
+      "longitude": "103.882661129303",
+      "distance": "0.74 km"
+    },
+    {
+      "name": "Broadrick Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30705061123433",
+      "longitude": "103.886917922608",
+      "distance": "1.21 km"
+    },
+    {
+      "name": "Dunman High School",
+      "category": "Integrated Schools",
+      "latitude": "1.29996216014962",
+      "longitude": "103.88294155989",
+      "distance": "1.59 km"
+    },
+    {
+      "name": "Kallang Wave Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30307515150401",
+      "longitude": "103.873149707591",
+      "distance": "1.16 km"
+    },
+    {
+      "name": "Leisure Park Kallang",
+      "category": "Shopping Malls",
+      "latitude": "1.30222177381282",
+      "longitude": "103.876152665088",
+      "distance": "1.20 km"
+    },
+    {
+      "name": "Paya Lebar Square",
+      "category": "Shopping Malls",
+      "latitude": "1.31881486980278",
+      "longitude": "103.892580778242",
+      "distance": "1.77 km"
+    }
+  ],
+  "Sceneca Residence": [
+    {
+      "name": "EW 4 Tanah Merah",
+      "category": "MRT Stations",
+      "latitude": "1.32718729074675",
+      "longitude": "103.946348600798",
+      "distance": "0.11 km"
+    },
+    {
+      "name": "St. Anthony's Canossian Primary",
+      "category": "Primary Schools",
+      "latitude": "1.3347253730189",
+      "longitude": "103.941234868202",
+      "distance": "0.91 km"
+    },
+    {
+      "name": "Bedok Green Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32344593287992",
+      "longitude": "103.937878976352",
+      "distance": "1.01 km"
+    },
+    {
+      "name": "Temasek Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31770677551333",
+      "longitude": "103.945590669163",
+      "distance": "1.14 km"
+    },
+    {
+      "name": "Bedok View Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.32415704029686",
+      "longitude": "103.943776245024",
+      "distance": "0.48 km"
+    },
+    {
+      "name": "Anglican High",
+      "category": "Secondary Schools",
+      "latitude": "1.33118107926966",
+      "longitude": "103.941853465631",
+      "distance": "0.53 km"
+    },
+    {
+      "name": "Bedok South Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.32513655159184",
+      "longitude": "103.950989139261",
+      "distance": "0.66 km"
+    },
+    {
+      "name": "Temasek Junior College",
+      "category": "Integrated Schools",
+      "latitude": "1.31849283027837",
+      "longitude": "103.935567309385",
+      "distance": "1.55 km"
+    },
+    {
+      "name": "East Village",
+      "category": "Shopping Malls",
+      "latitude": "1.30690573552745",
+      "longitude": "103.935137935777",
+      "distance": "0.43 km"
+    },
+    {
+      "name": "Bedok Shopping Complex",
+      "category": "Shopping Malls",
+      "latitude": "1.33188959185827",
+      "longitude": "103.948332182832",
+      "distance": "0.43 km"
+    },
+    {
+      "name": "Bedok Point",
+      "category": "Shopping Malls",
+      "latitude": "1.33054849915481",
+      "longitude": "103.947778439395",
+      "distance": "1.53 km"
+    }
+  ],
+  "Claydence": [
+    {
+      "name": "Haig Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.31194344271383",
+      "longitude": "103.902902557195",
+      "distance": "0.41 km"
+    },
+    {
+      "name": "CHIJ (Katong)",
+      "category": "Primary Schools",
+      "latitude": "1.30648535277087",
+      "longitude": "103.911105620496",
+      "distance": "0.94 km"
+    },
+    {
+      "name": "Tao Nan",
+      "category": "Primary Schools",
+      "latitude": "1.2943321052493",
+      "longitude": "103.849026157822",
+      "distance": "1.08 km"
+    },
+    {
+      "name": "Tanjong Katong Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30873515955341",
+      "longitude": "103.897225196199",
+      "distance": "1.13 km"
+    },
+    {
+      "name": "Tanjong Katong Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.30821274627283",
+      "longitude": "103.895820094229",
+      "distance": "1.31 km"
+    },
+    {
+      "name": "St. Patrick's",
+      "category": "Secondary Schools",
+      "latitude": "1.30782693897975",
+      "longitude": "103.916058241977",
+      "distance": "1.40 km"
+    },
+    {
+      "name": "i12 Katong",
+      "category": "Shopping Malls",
+      "latitude": "1.30522306203042",
+      "longitude": "103.905043928938",
+      "distance": "0.92 km"
+    },
+    {
+      "name": "Joo Chiat Complex",
+      "category": "Shopping Malls",
+      "latitude": "1.31567196429635",
+      "longitude": "103.899183182411",
+      "distance": "0.92 km"
+    },
+    {
+      "name": "Katong V",
+      "category": "Shopping Malls",
+      "latitude": "1.30386120759163",
+      "longitude": "103.902871405205",
+      "distance": "1.13 km"
+    }
+  ],
+  "Hill House": [
+    {
+      "name": "NS 23 Somerset",
+      "category": "MRT Stations",
+      "latitude": "1.30026416739006",
+      "longitude": "103.839085753124",
+      "distance": "0.61 km"
+    },
+    {
+      "name": "River Valley Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29418347842837",
+      "longitude": "103.836018941571",
+      "distance": "0.45 km"
+    },
+    {
+      "name": "St. Margaret's Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32439150290682",
+      "longitude": "103.881624837373",
+      "distance": "1.19 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "1.57 km"
+    },
+    {
+      "name": "Outram Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.28651357464735",
+      "longitude": "103.837127264403",
+      "distance": "1.04 km"
+    },
+    {
+      "name": "Robertson Walk",
+      "category": "Shopping Malls",
+      "latitude": "1.29204228788624",
+      "longitude": "103.841169001413",
+      "distance": "0.43 km"
+    },
+    {
+      "name": "UE Shopping Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.29265135224218",
+      "longitude": "103.843003298048",
+      "distance": "0.49 km"
+    },
+    {
+      "name": "Orchard Central",
+      "category": "Shopping Malls",
+      "latitude": "1.30083890839245",
+      "longitude": "103.839434733899",
+      "distance": "0.53 km"
+    }
+  ],
+  "Sophia Regency": [
+    {
+      "name": "St. Margaret's Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32439150290682",
+      "longitude": "103.881624837373",
+      "distance": "0.14 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "0.97 km"
+    },
+    {
+      "name": "Farrer Park Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31236867681371",
+      "longitude": "103.850766402965",
+      "distance": "1.20 km"
+    },
+    {
+      "name": "School of the Arts Singapore (SOTA)",
+      "category": "Integrated Schools",
+      "latitude": "1.29936480411316",
+      "longitude": "103.848687419363",
+      "distance": "0.44 km"
+    },
+    {
+      "name": "Plaza Singapura",
+      "category": "Shopping Malls",
+      "latitude": "1.30083413030923",
+      "longitude": "103.845072743164",
+      "distance": "0.23 km"
+    },
+    {
+      "name": "Parklane Shopping Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30065102658844",
+      "longitude": "103.84944198056",
+      "distance": "0.40 km"
+    }
+  ],
+  "K Suites": [
+    {
+      "name": "Haig Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.31194344271383",
+      "longitude": "103.902902557195",
+      "distance": "0.56 km"
+    },
+    {
+      "name": "CHIJ (Katong)",
+      "category": "Primary Schools",
+      "latitude": "1.30648535277087",
+      "longitude": "103.911105620496",
+      "distance": "0.77 km"
+    },
+    {
+      "name": "Tao Nan",
+      "category": "Primary Schools",
+      "latitude": "1.2943321052493",
+      "longitude": "103.849026157822",
+      "distance": "0.91 km"
+    },
+    {
+      "name": "St. Patrick's",
+      "category": "Secondary Schools",
+      "latitude": "1.30782693897975",
+      "longitude": "103.916058241977",
+      "distance": "1.21 km"
+    },
+    {
+      "name": "Tanjong Katong Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30873515955341",
+      "longitude": "103.897225196199",
+      "distance": "1.26 km"
+    },
+    {
+      "name": "CHIJ Katong Convent",
+      "category": "Secondary Schools",
+      "latitude": "1.30644268034894",
+      "longitude": "103.917144350028",
+      "distance": "1.27 km"
+    },
+    {
+      "name": "i12 Katong",
+      "category": "Shopping Malls",
+      "latitude": "1.30522306203042",
+      "longitude": "103.905043928938",
+      "distance": "0.88 km"
+    },
+    {
+      "name": "Joo Chiat Complex",
+      "category": "Shopping Malls",
+      "latitude": "1.31567196429635",
+      "longitude": "103.899183182411",
+      "distance": "1.12 km"
+    },
+    {
+      "name": "Katong V",
+      "category": "Shopping Malls",
+      "latitude": "1.30386120759163",
+      "longitude": "103.902871405205",
+      "distance": "1.13 km"
+    }
+  ],
+  "Lentor Modern": [
+    {
+      "name": "TE 5 Lentor",
+      "category": "MRT Stations",
+      "latitude": "1.3895476630487",
+      "longitude": "103.836419380941",
+      "distance": "0.10 km"
+    },
+    {
+      "name": "Anderson Primary",
+      "category": "Primary Schools",
+      "latitude": "1.38419941907925",
+      "longitude": "103.841411716006",
+      "distance": "0.77 km"
+    },
+    {
+      "name": "Mayflower Primary",
+      "category": "Primary Schools",
+      "latitude": "1.37637683547682",
+      "longitude": "103.843252803742",
+      "distance": "1.41 km"
+    },
+    {
+      "name": "Presbyterian High",
+      "category": "Secondary Schools",
+      "latitude": "1.38201194250223",
+      "longitude": "103.843149382823",
+      "distance": "0.97 km"
+    },
+    {
+      "name": "Yio Chu Kang Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.37797597740925",
+      "longitude": "103.84213696352",
+      "distance": "1.15 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Integrated Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "1.36 km"
+    },
+    {
+      "name": "Broadway Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.37193729131781",
+      "longitude": "103.845949444498",
+      "distance": "1.98 km"
+    }
+  ],
+  "Sky Eden": [
+    {
+      "name": "EW 4 Tanah Merah",
+      "category": "MRT Stations",
+      "latitude": "1.32718729074675",
+      "longitude": "103.946348600798",
+      "distance": "1.53 km"
+    },
+    {
+      "name": "Fengshan Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32980598760785",
+      "longitude": "103.931710293058",
+      "distance": "0.55 km"
+    },
+    {
+      "name": "Bedok Green Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32344593287992",
+      "longitude": "103.937878976352",
+      "distance": "0.64 km"
+    },
+    {
+      "name": "Red Swastika",
+      "category": "Primary Schools",
+      "latitude": "1.33405659580859",
+      "longitude": "103.934317528484",
+      "distance": "0.95 km"
+    },
+    {
+      "name": "Bedok Green Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.33451947288431",
+      "longitude": "103.935028383346",
+      "distance": "1.11 km"
+    },
+    {
+      "name": "Anglican High",
+      "category": "Secondary Schools",
+      "latitude": "1.33118107926966",
+      "longitude": "103.941853465631",
+      "distance": "1.19 km"
+    },
+    {
+      "name": "Temasek Junior College",
+      "category": "Integrated Schools",
+      "latitude": "1.31849283027837",
+      "longitude": "103.935567309385",
+      "distance": "0.81 km"
+    },
+    {
+      "name": "Bedok Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.32473632784728",
+      "longitude": "103.929256259998",
+      "distance": "0.35 km"
+    },
+    {
+      "name": "Siglap Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.31287712994036",
+      "longitude": "103.92394992858",
+      "distance": "1.62 km"
+    }
+  ],
+  "Enchante": [
+    {
+      "name": "Anglo-Chinese School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.31837054523521",
+      "longitude": "103.835609732354",
+      "distance": "0.61 km"
+    },
+    {
+      "name": "St. Joseph's Institution Junior",
+      "category": "Primary Schools",
+      "latitude": "1.31781476118551",
+      "longitude": "103.845633334522",
+      "distance": "0.62 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "0.77 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Barker Road)",
+      "category": "Secondary Schools",
+      "latitude": "1.31961649151328",
+      "longitude": "103.835772689988",
+      "distance": "0.66 km"
+    },
+    {
+      "name": "Raffles Girls' School (Secondary)",
+      "category": "Secondary Schools",
+      "latitude": "1.34217479932295",
+      "longitude": "103.84313404727",
+      "distance": "1.35 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.30239915719716",
+      "longitude": "103.839055904985",
+      "distance": "1.49 km"
+    },
+    {
+      "name": "Goldhill Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.31812370721176",
+      "longitude": "103.843898884933",
+      "distance": "0.43 km"
+    },
+    {
+      "name": "Velocity @ Novena Square",
+      "category": "Shopping Malls",
+      "latitude": "1.31978949204523",
+      "longitude": "103.844033569199",
+      "distance": "0.61 km"
+    }
+  ],
+  "AMO Residence": [
+    {
+      "name": "Ang Mo Kio Primary",
+      "category": "Primary Schools",
+      "latitude": "1.36932176584608",
+      "longitude": "103.839630858752",
+      "distance": "0.75 km"
+    },
+    {
+      "name": "Ai Tong",
+      "category": "Primary Schools",
+      "latitude": "1.3605834338904",
+      "longitude": "103.833020333986",
+      "distance": "0.93 km"
+    },
+    {
+      "name": "Mayflower Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.36827266209722",
+      "longitude": "103.835360726863",
+      "distance": "0.29 km"
+    },
+    {
+      "name": "Peirce Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.36665944653812",
+      "longitude": "103.83021606804",
+      "distance": "0.46 km"
+    },
+    {
+      "name": "CHIJ St. Nicholas Girls'",
+      "category": "Integrated Schools",
+      "latitude": "1.37347687878916",
+      "longitude": "103.834253269436",
+      "distance": "0.53 km"
+    },
+    {
+      "name": "Broadway Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.37193729131781",
+      "longitude": "103.845949444498",
+      "distance": "1.49 km"
+    },
+    {
+      "name": "Thomson Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.354837432321",
+      "longitude": "103.830972459031",
+      "distance": "1.65 km"
+    },
+    {
+      "name": "Jubilee Square",
+      "category": "Shopping Malls",
+      "latitude": "1.37178558575829",
+      "longitude": "103.847837565378",
+      "distance": "1.69 km"
+    }
+  ],
+  "IKIGAI": [
+    {
+      "name": "St. Joseph's Institution Junior",
+      "category": "Primary Schools",
+      "latitude": "1.31781476118551",
+      "longitude": "103.845633334522",
+      "distance": "0.19 km"
+    },
+    {
+      "name": "Farrer Park Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31236867681371",
+      "longitude": "103.850766402965",
+      "distance": "0.73 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "1.18 km"
+    },
+    {
+      "name": "Northlight",
+      "category": "Secondary Schools",
+      "latitude": "1.3191002158167",
+      "longitude": "103.85575955353",
+      "distance": "0.95 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Barker Road)",
+      "category": "Secondary Schools",
+      "latitude": "1.31961649151328",
+      "longitude": "103.835772689988",
+      "distance": "1.29 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.30239915719716",
+      "longitude": "103.839055904985",
+      "distance": "1.95 km"
+    },
+    {
+      "name": "Goldhill Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.31812370721176",
+      "longitude": "103.843898884933",
+      "distance": "0.42 km"
+    },
+    {
+      "name": "Velocity @ Novena Square",
+      "category": "Shopping Malls",
+      "latitude": "1.31978949204523",
+      "longitude": "103.844033569199",
+      "distance": "0.42 km"
+    }
+  ],
+  "Atlassia": [
+    {
+      "name": "Haig Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.31194344271383",
+      "longitude": "103.902902557195",
+      "distance": "0.26 km"
+    },
+    {
+      "name": "Tanjong Katong Primary",
+      "category": "Primary Schools",
+      "latitude": "1.30498489044822",
+      "longitude": "103.899999965407",
+      "distance": "0.9 km"
+    },
+    {
+      "name": "Eunos Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32447629876368",
+      "longitude": "103.904541254016",
+      "distance": "1.31 km"
+    },
+    {
+      "name": "Tanjong Katong Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30873515955341",
+      "longitude": "103.897225196199",
+      "distance": "0.66 km"
+    },
+    {
+      "name": "Tanjong Katong Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.30821274627283",
+      "longitude": "103.895820094229",
+      "distance": "0.84 km"
+    },
+    {
+      "name": "Chung Cheng High School (Main)",
+      "category": "Secondary Schools",
+      "latitude": "1.30509154753048",
+      "longitude": "103.891653229373",
+      "distance": "1.44 km"
+    },
+    {
+      "name": "Joo Chiat Complex",
+      "category": "Shopping Malls",
+      "latitude": "1.31567196429635",
+      "longitude": "103.899183182411",
+      "distance": "0.41 km"
+    },
+    {
+      "name": "One KM",
+      "category": "Shopping Malls",
+      "latitude": "1.31461849889242",
+      "longitude": "103.894738004496",
+      "distance": "0.71 km"
+    },
+    {
+      "name": "City Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.3147868971977",
+      "longitude": "103.893472115119",
+      "distance": "0.84 km"
+    }
+  ],
+  "North Gaia": [
+    {
+      "name": "Chongfu",
+      "category": "Primary Schools",
+      "latitude": "1.43839562897006",
+      "longitude": "103.839309173817",
+      "distance": "0.77 km"
+    },
+    {
+      "name": "Xishan Primary",
+      "category": "Primary Schools",
+      "latitude": "1.43347186925064",
+      "longitude": "103.837755319448",
+      "distance": "0.88 km"
+    },
+    {
+      "name": "North View Primary",
+      "category": "Primary Schools",
+      "latitude": "1.42752327193727",
+      "longitude": "103.848190787869",
+      "distance": "0.92 km"
+    },
+    {
+      "name": "Northland Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.43580183362637",
+      "longitude": "103.840104687784",
+      "distance": "0.61 km"
+    },
+    {
+      "name": "Yishun Town Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.43232156717386",
+      "longitude": "103.838094226361",
+      "distance": "0.88 km"
+    },
+    {
+      "name": "Junction Nine",
+      "category": "Shopping Malls",
+      "latitude": "1.43306021695327",
+      "longitude": "103.841649364872",
+      "distance": "0.49 km"
+    },
+    {
+      "name": "Northpoint",
+      "category": "Shopping Malls",
+      "latitude": "1.42790288991304",
+      "longitude": "103.836177650973",
+      "distance": "1.24 km"
+    }
+  ],
+  "Zyanya": [
+    {
+      "name": "Geylang Methodist School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.31759126757284",
+      "longitude": "103.883845744916",
+      "distance": "0.41 km"
+    },
+    {
+      "name": "Kong Hwa",
+      "category": "Primary Schools",
+      "latitude": "1.31099674009193",
+      "longitude": "103.888352029067",
+      "distance": "0.65 km"
+    },
+    {
+      "name": "Canossa Catholic Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32664424544839",
+      "longitude": "103.882227964852",
+      "distance": "1.42 km"
+    },
+    {
+      "name": "Geylang Methodist School (Secondary)",
+      "category": "Secondary Schools",
+      "latitude": "1.31764900474601",
+      "longitude": "103.882661129303",
+      "distance": "0.42 km"
+    },
+    {
+      "name": "Broadrick Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30705061123433",
+      "longitude": "103.886917922608",
+      "distance": "0.87 km"
+    },
+    {
+      "name": "Chung Cheng High School (Main)",
+      "category": "Secondary Schools",
+      "latitude": "1.30509154753048",
+      "longitude": "103.891653229373",
+      "distance": "1.27 km"
+    },
+    {
+      "name": "Dunman High School",
+      "category": "Integrated Schools",
+      "latitude": "1.29996216014962",
+      "longitude": "103.88294155989",
+      "distance": "1.57 km"
+    },
+    {
+      "name": "City Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.3147868971977",
+      "longitude": "103.893472115119",
+      "distance": "1.15 km"
+    },
+    {
+      "name": "Paya Lebar Square",
+      "category": "Shopping Malls",
+      "latitude": "1.31881486980278",
+      "longitude": "103.892580778242",
+      "distance": "1.17 km"
+    },
+    {
+      "name": "One KM",
+      "category": "Shopping Malls",
+      "latitude": "1.31461849889242",
+      "longitude": "103.894738004496",
+      "distance": "1.28 km"
+    }
+  ],
+  "Mori": [
+    {
+      "name": "Kong Hwa",
+      "category": "Primary Schools",
+      "latitude": "1.31099674009193",
+      "longitude": "103.888352029067",
+      "distance": "0.57 km"
+    },
+    {
+      "name": "Geylang Methodist School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.31759126757284",
+      "longitude": "103.883845744916",
+      "distance": "0.73 km"
+    },
+    {
+      "name": "Canossa Catholic Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32664424544839",
+      "longitude": "103.882227964852",
+      "distance": "1.74 km"
+    },
+    {
+      "name": "Broadrick Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.30705061123433",
+      "longitude": "103.886917922608",
+      "distance": "0.6 km"
+    },
+    {
+      "name": "Geylang Methodist School (Secondary)",
+      "category": "Secondary Schools",
+      "latitude": "1.31764900474601",
+      "longitude": "103.882661129303",
+      "distance": "0.74 km"
+    },
+    {
+      "name": "Chung Cheng High School (Main)",
+      "category": "Secondary Schools",
+      "latitude": "1.30509154753048",
+      "longitude": "103.891653229373",
+      "distance": "1.05 km"
+    },
+    {
+      "name": "Dunman High School",
+      "category": "Integrated Schools",
+      "latitude": "1.29996216014962",
+      "longitude": "103.88294155989",
+      "distance": "1.25 km"
+    },
+    {
+      "name": "Leisure Park Kallang",
+      "category": "Shopping Malls",
+      "latitude": "1.30222177381282",
+      "longitude": "103.876152665088",
+      "distance": "1.23 km"
+    },
+    {
+      "name": "City Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.3147868971977",
+      "longitude": "103.893472115119",
+      "distance": "1.23 km"
+    },
+    {
+      "name": "One KM",
+      "category": "Shopping Malls",
+      "latitude": "1.31461849889242",
+      "longitude": "103.894738004496",
+      "distance": "1.34 km"
+    }
+  ],
+  "Canninghill Piers": [
+    {
+      "name": "River Valley Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29418347842837",
+      "longitude": "103.836018941571",
+      "distance": "1.07 km"
+    },
+    {
+      "name": "St. Margaret's Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32439150290682",
+      "longitude": "103.881624837373",
+      "distance": "1.37 km"
+    },
+    {
+      "name": "Cantonment Primary",
+      "category": "Primary Schools",
+      "latitude": "1.27547252623201",
+      "longitude": "103.839962631748",
+      "distance": "1.88 km"
+    },
+    {
+      "name": "Outram Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.28651357464735",
+      "longitude": "103.837127264403",
+      "distance": "1.06 km"
+    },
+    {
+      "name": "Liang Court",
+      "category": "Shopping Malls",
+      "latitude": "1.29065860407434",
+      "longitude": "103.844547179775",
+      "distance": "0.04 km"
+    },
+    {
+      "name": "UE Shopping Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.29265135224218",
+      "longitude": "103.843003298048",
+      "distance": "0.21 km"
+    },
+    {
+      "name": "Riverside Point",
+      "category": "Shopping Malls",
+      "latitude": "1.2892925052942",
+      "longitude": "103.844167619098",
+      "distance": "0.25 km"
+    }
+  ],
+  "Klimt Cairnhill": [
+    {
+      "name": "NS 23 Somerset",
+      "category": "MRT Stations",
+      "latitude": "1.30026416739006",
+      "longitude": "103.839085753124",
+      "distance": "0.98 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "0.54 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.31837054523521",
+      "longitude": "103.835609732354",
+      "distance": "1.05 km"
+    },
+    {
+      "name": "St. Margaret's Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32439150290682",
+      "longitude": "103.881624837373",
+      "distance": "1.27 km"
+    },
+    {
+      "name": "Raffles Girls' School",
+      "category": "Secondary Schools",
+      "latitude": "1.29501383373269",
+      "longitude": "103.85000246607",
+      "distance": "0.85 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Barker Road)",
+      "category": "Secondary Schools",
+      "latitude": "1.31961649151328",
+      "longitude": "103.835772689988",
+      "distance": "1.18 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.30239915719716",
+      "longitude": "103.839055904985",
+      "distance": "1.62 km"
+    },
+    {
+      "name": "Far East Plaza",
+      "category": "Shopping Malls",
+      "latitude": "1.30730468891062",
+      "longitude": "103.833818438639",
+      "distance": "0.33 km"
+    },
+    {
+      "name": "Scotts Square",
+      "category": "Shopping Malls",
+      "latitude": "1.30585582603508",
+      "longitude": "103.832984356543",
+      "distance": "0.5 km"
+    },
+    {
+      "name": "Paragon",
+      "category": "Shopping Malls",
+      "latitude": "1.30418212572574",
+      "longitude": "103.835940962553",
+      "distance": "0.5 km"
+    }
+  ],
+  "Bartley Vue": [
+    {
+      "name": "Methodist Girls' School",
+      "category": "Primary Schools",
+      "latitude": "1.33266213599636",
+      "longitude": "103.783382114018",
+      "distance": "1.02 km"
+    },
+    {
+      "name": "Paya Lebar Methodist Girls' School",
+      "category": "Primary Schools",
+      "latitude": "1.3502545600894",
+      "longitude": "103.884846876112",
+      "distance": "1.02 km"
+    },
+    {
+      "name": "Bartley Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.33995415587811",
+      "longitude": "103.882806211705",
+      "distance": "0.13 km"
+    },
+    {
+      "name": "St. Gabriel's Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.34648798732177",
+      "longitude": "103.876094163287",
+      "distance": "1.12 km"
+    },
+    {
+      "name": "Maris Stella High School",
+      "category": "Integrated Schools",
+      "latitude": "1.34139473351039",
+      "longitude": "103.877852484979",
+      "distance": "0.68 km"
+    },
+    {
+      "name": "Upper Serangoon Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.35348082277147",
+      "longitude": "103.878828134896",
+      "distance": "1.56 km"
+    },
+    {
+      "name": "ICB Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.35458411338872",
+      "longitude": "103.877789977988",
+      "distance": "1.72 km"
+    },
+    {
+      "name": "NEX",
+      "category": "Shopping Malls",
+      "latitude": "1.35076935257845",
+      "longitude": "103.872296143862",
+      "distance": "1.75 km"
+    }
+  ],
+  "One Bernam": [
+    {
+      "name": "Cantonment Primary",
+      "category": "Primary Schools",
+      "latitude": "1.27547252623201",
+      "longitude": "103.839962631748",
+      "distance": "0.44 km"
+    },
+    {
+      "name": "CHIJ (Kellock)",
+      "category": "Primary Schools",
+      "latitude": "1.275022722964",
+      "longitude": "103.828157564896",
+      "distance": "1.72 km"
+    },
+    {
+      "name": "Outram Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.28651357464735",
+      "longitude": "103.837127264403",
+      "distance": "1.57 km"
+    },
+    {
+      "name": "Tanjong Pagar Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.27661464758769",
+      "longitude": "103.843167023188",
+      "distance": "0.37 km"
+    },
+    {
+      "name": "Marina One",
+      "category": "Shopping Malls",
+      "latitude": "1.27790635042143",
+      "longitude": "103.852851669795",
+      "distance": "1.06 km"
+    }
+  ],
+  "Grange 1866": [
+    {
+      "name": "River Valley Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29418347842837",
+      "longitude": "103.836018941571",
+      "distance": "0.98 km"
+    },
+    {
+      "name": "Alexandra Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29133439161334",
+      "longitude": "103.824424680531",
+      "distance": "1.08 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "1.7 km"
+    },
+    {
+      "name": "Raffles Girls' School",
+      "category": "Secondary Schools",
+      "latitude": "1.29501383373269",
+      "longitude": "103.85000246607",
+      "distance": "1.32 km"
+    },
+    {
+      "name": "Gan Eng Seng",
+      "category": "Secondary Schools",
+      "latitude": "1.28559516494962",
+      "longitude": "103.815547410064",
+      "distance": "1.34 km"
+    },
+    {
+      "name": "Crescent Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.29331947077104",
+      "longitude": "103.817544461755",
+      "distance": "1.47 km"
+    },
+    {
+      "name": "Wheelock Place",
+      "category": "Shopping Malls",
+      "latitude": "1.30467628730252",
+      "longitude": "103.830642027577",
+      "distance": "0.56 km"
+    },
+    {
+      "name": "Wisma Atria",
+      "category": "Shopping Malls",
+      "latitude": "1.30370452023703",
+      "longitude": "103.833200970183",
+      "distance": "0.63 km"
+    },
+    {
+      "name": "Far East Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.30550610748913",
+      "longitude": "103.829984822014",
+      "distance": "0.64 km"
+    }
+  ],
+  "Irwell Hill Residences": [
+    {
+      "name": "NS 23 Somerset",
+      "category": "MRT Stations",
+      "latitude": "1.30026416739006",
+      "longitude": "103.839085753124",
+      "distance": "0.82 km"
+    },
+    {
+      "name": "River Valley Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29418347842837",
+      "longitude": "103.836018941571",
+      "distance": "0.58 km"
+    },
+    {
+      "name": "Alexandra Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29133439161334",
+      "longitude": "103.824424680531",
+      "distance": "0.99 km"
+    },
+    {
+      "name": "Zhangde Primary",
+      "category": "Primary Schools",
+      "latitude": "1.28421153335379",
+      "longitude": "103.825951875662",
+      "distance": "1.54 km"
+    },
+    {
+      "name": "Gan Eng Seng",
+      "category": "Secondary Schools",
+      "latitude": "1.28559516494962",
+      "longitude": "103.815547410064",
+      "distance": "1.22 km"
+    },
+    {
+      "name": "Outram Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.28651357464735",
+      "longitude": "103.837127264403",
+      "distance": "1.33 km"
+    },
+    {
+      "name": "Crescent Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.29331947077104",
+      "longitude": "103.817544461755",
+      "distance": "1.59 km"
+    },
+    {
+      "name": "Great World City",
+      "category": "Shopping Malls",
+      "latitude": "1.2934759620704",
+      "longitude": "103.831975865363",
+      "distance": "0.39 km"
+    },
+    {
+      "name": "Valley Point",
+      "category": "Shopping Malls",
+      "latitude": "1.2930991715203",
+      "longitude": "103.827046215651",
+      "distance": "0.66 km"
+    }
+  ],
+  "Midtown Modern": [
+    {
+      "name": "Stamford Primary",
+      "category": "Primary Schools",
+      "latitude": "1.30345638467449",
+      "longitude": "103.857453500579",
+      "distance": "0.55 km"
+    },
+    {
+      "name": "St. Margaret's Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32439150290682",
+      "longitude": "103.881624837373",
+      "distance": "1.36 km"
+    },
+    {
+      "name": "Farrer Park Primary",
+      "category": "Primary Schools",
+      "latitude": "1.31236867681371",
+      "longitude": "103.850766402965",
+      "distance": "1.7 km"
+    },
+    {
+      "name": "Duo Tower",
+      "category": "Shopping Malls",
+      "latitude": "1.29940490828991",
+      "longitude": "103.858178555169",
+      "distance": "0.1 km"
+    },
+    {
+      "name": "Bugis Point",
+      "category": "Shopping Malls",
+      "latitude": "1.29883591544935",
+      "longitude": "103.856129271354",
+      "distance": "0.13 km"
+    },
+    {
+      "name": "Bugis Cube",
+      "category": "Shopping Malls",
+      "latitude": "1.2981408343975",
+      "longitude": "103.855635339249",
+      "distance": "0.18 km"
+    }
+  ],
+  "The Reef at King's Dock": [
+    {
+      "name": "Radin Mas Primary",
+      "category": "Primary Schools",
+      "latitude": "1.27489701529771",
+      "longitude": "103.824115781658",
+      "distance": "1.39 km"
+    },
+    {
+      "name": "Blangah Rise Primary",
+      "category": "Primary Schools",
+      "latitude": "1.27612047924037",
+      "longitude": "103.808628535239",
+      "distance": "1.61 km"
+    },
+    {
+      "name": "CHIJ (Kellock)",
+      "category": "Primary Schools",
+      "latitude": "1.275022722964",
+      "longitude": "103.828157564896",
+      "distance": "1.67 km"
+    },
+    {
+      "name": "CHIJ St. Theresa's Convent",
+      "category": "Secondary Schools",
+      "latitude": "1.27535177510054",
+      "longitude": "103.822440701642",
+      "distance": "1.33 km"
+    },
+    {
+      "name": "Harbourfront Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.26396991176004",
+      "longitude": "103.820243325181",
+      "distance": "0.22 km"
+    },
+    {
+      "name": "Vivocity",
+      "category": "Shopping Malls",
+      "latitude": "1.26429316783973",
+      "longitude": "103.82230469365",
+      "distance": "0.63 km"
+    },
+    {
+      "name": "Depot Heights Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.28084469467756",
+      "longitude": "103.810292618353",
+      "distance": "1.99 km"
+    }
+  ],
+  "The Landmark": [
+    {
+      "name": "TE 16 Havelock",
+      "category": "MRT Stations",
+      "latitude": "1.28919900048784",
+      "longitude": "103.833218329169",
+      "distance": "0.75 km"
+    },
+    {
+      "name": "River Valley Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29418347842837",
+      "longitude": "103.836018941571",
+      "distance": "0.99 km"
+    },
+    {
+      "name": "Cantonment Primary",
+      "category": "Primary Schools",
+      "latitude": "1.27547252623201",
+      "longitude": "103.839962631748",
+      "distance": "1.19 km"
+    },
+    {
+      "name": "Zhangde Primary",
+      "category": "Primary Schools",
+      "latitude": "1.28421153335379",
+      "longitude": "103.825951875662",
+      "distance": "1.52 km"
+    },
+    {
+      "name": "Outram Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.28651357464735",
+      "longitude": "103.837127264403",
+      "distance": "0.27 km"
+    },
+    {
+      "name": "Gan Eng Seng",
+      "category": "Secondary Schools",
+      "latitude": "1.28559516494962",
+      "longitude": "103.815547410064",
+      "distance": "1.78 km"
+    },
+    {
+      "name": "People's Park Complex",
+      "category": "Shopping Malls",
+      "latitude": "1.2848558843058",
+      "longitude": "103.842599920236",
+      "distance": "0.4 km"
+    },
+    {
+      "name": "People's Park Centre",
+      "category": "Supermarkets",
+      "latitude": "1.28564781446701",
+      "longitude": "103.843861556498",
+      "distance": "0.5 km"
+    }
+  ],
+  "19 Nassim": [
+    {
+      "name": "Alexandra Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29133439161334",
+      "longitude": "103.824424680531",
+      "distance": "1.74 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32080725235992",
+      "longitude": "103.827744749548",
+      "distance": "1.81 km"
+    },
+    {
+      "name": "Raffles Girls' School",
+      "category": "Secondary Schools",
+      "latitude": "1.29501383373269",
+      "longitude": "103.85000246607",
+      "distance": "1.02 km"
+    },
+    {
+      "name": "Crescent Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.29331947077104",
+      "longitude": "103.817544461755",
+      "distance": "1.54 km"
+    },
+    {
+      "name": "Queenstown Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.29352126774652",
+      "longitude": "103.813190980055",
+      "distance": "1.72 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.30239915719716",
+      "longitude": "103.839055904985",
+      "distance": "1.77 km"
+    },
+    {
+      "name": "Tanglin Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30485342102105",
+      "longitude": "103.823883490852",
+      "distance": "0.35 km"
+    },
+    {
+      "name": "Tanglin Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.30640254147338",
+      "longitude": "103.827050620793",
+      "distance": "0.64 km"
+    },
+    {
+      "name": "Delfi Orchard",
+      "category": "Shopping Malls",
+      "latitude": "1.30717887298465",
+      "longitude": "103.828469994324",
+      "distance": "0.8 km"
+    }
+  ],
+  "Midtown Bay": [
+    {
+      "name": "Stamford Primary",
+      "category": "Primary Schools",
+      "latitude": "1.30345638467449",
+      "longitude": "103.857453500579",
+      "distance": "0.79 km"
+    },
+    {
+      "name": "St. Margaret's Primary",
+      "category": "Primary Schools",
+      "latitude": "1.32439150290682",
+      "longitude": "103.881624837373",
+      "distance": "1.49 km"
+    },
+    {
+      "name": "Shaw Towers",
+      "category": "Shopping Malls",
+      "latitude": "1.29664455421758",
+      "longitude": "103.856855656294",
+      "distance": "0.07 km"
+    },
+    {
+      "name": "The South Beach",
+      "category": "Shopping Malls",
+      "latitude": "1.29498804392056",
+      "longitude": "103.856276242094",
+      "distance": "0.2 km"
+    },
+    {
+      "name": "Suntec City Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.29571152468885",
+      "longitude": "103.858552585838",
+      "distance": "0.22 km"
+    }
+  ],
+  "Cuscaden Reserve": [
+    {
+      "name": "Alexandra Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29133439161334",
+      "longitude": "103.824424680531",
+      "distance": "1.36 km"
+    },
+    {
+      "name": "River Valley Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29418347842837",
+      "longitude": "103.836018941571",
+      "distance": "1.58 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Secondary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "1.87 km"
+    },
+    {
+      "name": "Raffles Girls' School",
+      "category": "Secondary Schools",
+      "latitude": "1.29501383373269",
+      "longitude": "103.85000246607",
+      "distance": "1.0 km"
+    },
+    {
+      "name": "Crescent Girls'",
+      "category": "Primary Schools",
+      "latitude": "1.29331947077104",
+      "longitude": "103.817544461755",
+      "distance": "1.42 km"
+    },
+    {
+      "name": "Gan Eng Seng",
+      "category": "Secondary Schools",
+      "latitude": "1.28559516494962",
+      "longitude": "103.815547410064",
+      "distance": "1.62 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.30239915719716",
+      "longitude": "103.839055904985",
+      "distance": "1.98 km"
+    },
+    {
+      "name": "Tanglin Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30485342102105",
+      "longitude": "103.823883490852",
+      "distance": "0.2 km"
+    },
+    {
+      "name": "Tanglin Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.30640254147338",
+      "longitude": "103.827050620793",
+      "distance": "0.37 km"
+    },
+    {
+      "name": "Forum The Shopping Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30655430501572",
+      "longitude": "103.828652459744",
+      "distance": "0.48 km"
+    }
+  ],
+  "Jervois Prive": [
+    {
+      "name": "Alexandra Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29133439161334",
+      "longitude": "103.824424680531",
+      "distance": "0.79 km"
+    },
+    {
+      "name": "Gan Eng Seng Primary",
+      "category": "Primary Schools",
+      "latitude": "1.28559516494962",
+      "longitude": "103.815547410064",
+      "distance": "1.07 km"
+    },
+    {
+      "name": "Queenstown Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29559365009015",
+      "longitude": "103.807548617332",
+      "distance": "1.19 km"
+    },
+    {
+      "name": "Crescent Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.29331947077104",
+      "longitude": "103.817544461755",
+      "distance": "0.19 km"
+    },
+    {
+      "name": "Queenstown Secondary",
+      "category": "Secondary Schools",
+      "latitude": "1.29352126774652",
+      "longitude": "103.813190980055",
+      "distance": "0.58 km"
+    },
+    {
+      "name": "Gan Eng Seng",
+      "category": "Secondary Schools",
+      "latitude": "1.28559516494962",
+      "longitude": "103.815547410064",
+      "distance": "0.89 km"
+    },
+    {
+      "name": "Dawson Place",
+      "category": "Shopping Malls",
+      "latitude": "1.29270339855062",
+      "longitude": "103.810958956467",
+      "distance": "0.84 km"
+    },
+    {
+      "name": "Valley Point",
+      "category": "Shopping Malls",
+      "latitude": "1.2930991715203",
+      "longitude": "103.827046215651",
+      "distance": "0.99 km"
+    }
+  ],
+  "Boulevard 88": [
+    {
+      "name": "River Valley Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29418347842837",
+      "longitude": "103.836018941571",
+      "distance": "1.5 km"
+    },
+    {
+      "name": "Alexandra Primary",
+      "category": "Primary Schools",
+      "latitude": "1.29133439161334",
+      "longitude": "103.824424680531",
+      "distance": "1.56 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "1.56 km"
+    },
+    {
+      "name": "Raffles Girls' School",
+      "category": "Secondary Schools",
+      "latitude": "1.29501383373269",
+      "longitude": "103.85000246607",
+      "distance": "0.76 km"
+    },
+    {
+      "name": "Crescent Girls'",
+      "category": "Secondary Schools",
+      "latitude": "1.29331947077104",
+      "longitude": "103.817544461755",
+      "distance": "1.71 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.30239915719716",
+      "longitude": "103.839055904985",
+      "distance": "1.8 km"
+    },
+    {
+      "name": "Tanglin Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.30640254147338",
+      "longitude": "103.827050620793",
+      "distance": "0.16 km"
+    },
+    {
+      "name": "Forum The Shopping Mall",
+      "category": "Shopping Malls",
+      "latitude": "1.30655430501572",
+      "longitude": "103.828652459744",
+      "distance": "0.17 km"
+    },
+    {
+      "name": "Delfi Orchard",
+      "category": "Shopping Malls",
+      "latitude": "1.30717887298465",
+      "longitude": "103.828469994324",
+      "distance": "0.26 kmCold Storage - Specialty Tanglin Shopping Centre"
+    }
+  ],
+  "10 Evelyn": [
+    {
+      "name": "St. Joseph's Institution Junior",
+      "category": "Primary Schools",
+      "latitude": "1.31781476118551",
+      "longitude": "103.845633334522",
+      "distance": "0.59 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Primary)",
+      "category": "Primary Schools",
+      "latitude": "1.31837054523521",
+      "longitude": "103.835609732354",
+      "distance": "0.6 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Junior)",
+      "category": "Primary Schools",
+      "latitude": "1.30935041274966",
+      "longitude": "103.840950265464",
+      "distance": "0.76 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' Primary School",
+      "category": "Primary Schools",
+      "latitude": "1.32080725235992",
+      "longitude": "103.827744749548",
+      "distance": "1.27 km"
+    },
+    {
+      "name": "Anglo-Chinese School (Barker Road)",
+      "category": "Secondary Schools",
+      "latitude": "1.31961649151328",
+      "longitude": "103.835772689988",
+      "distance": "0.66 km"
+    },
+    {
+      "name": "Raffles Girls' School",
+      "category": "Secondary Schools",
+      "latitude": "1.29501383373269",
+      "longitude": "103.85000246607",
+      "distance": "1.38 km"
+    },
+    {
+      "name": "Singapore Chinese Girls' School",
+      "category": "Integrated Schools",
+      "latitude": "1.30239915719716",
+      "longitude": "103.839055904985",
+      "distance": "1.5 km"
+    },
+    {
+      "name": "Goldhill Shopping Centre",
+      "category": "Shopping Malls",
+      "latitude": "1.31812370721176",
+      "longitude": "103.843898884933",
+      "distance": "0.39 km"
+    },
+    {
+      "name": "Velocity@Novena Square",
+      "category": "Shopping Malls",
+      "latitude": "1.31978949204523",
+      "longitude": "103.844033569199",
+      "distance": "0.56 km"
+    }
+  ],
+  "SORA" : [
+    {
+      "name": "JS 8EW 26 Lakeside MRT Station",
+      "category": "MRT Stations",
+      "distance": "1.13 km",
+      "latitude": "1.34425911493819",
+      "longitude": "103.720949087456"
+    },
+    {
+      "name": "EW 25 Chinese Garden MRT Station",
+      "category": "MRT Stations",
+      "distance": "1.14 km",
+      "latitude": "1.34235282081401",
+      "longitude": "103.732596738363"
+    },
+    {
+      "name": "NS 1JE 5EW 24 Jurong East MRT Station",
+      "category": "MRT Stations",
+      "distance": "1.86 km",
+      "latitude": "1.33315281585758",
+      "longitude": "103.742286332403"
+    },
+    {
+      "name": "Lakeside Primary School",
+      "category": "Primary Schools",
+      "distance": "0.90 km",
+      "latitude": "1.33820397704287",
+      "longitude": "103.718089546664"
+    },
+    {
+      "name": "Fuhua Primary School",
+      "category": "Primary Schools",
+      "distance": "1.19 km",
+      "latitude": "1.33650394789627",
+      "longitude": "103.736103745748"
+    },
+    {
+      "name": "Shuqun Primary School",
+      "category": "Primary Schools",
+      "distance": "1.47 km",
+      "latitude": "1.34765311431632",
+      "longitude": "103.721523713379"
+    },
+    {
+      "name": "Jurong Secondary School",
+      "category": "Secondary Schools",
+      "distance": "0.57 km",
+      "latitude": "1.33002032220942",
+      "longitude": "103.723952961648"
+    },
+    {
+      "name": "Yuan Ching Secondary School",
+      "category": "Secondary Schools",
+      "distance": "0.93 km",
+      "latitude": "1.34200635764467",
+      "longitude": "103.72089870437"
+    },
+    {
+      "name": "Fuhua Secondary School",
+      "category": "Secondary Schools",
+      "distance": "1.34 km",
+      "latitude": "1.34701408913756",
+      "longitude": "103.72652089832"
+    },
+    {
+      "name": "Taman Jurong Shopping Centre",
+      "category": "Shopping Malls",
+      "distance": "0.56 km",
+      "latitude": "1.33484487416514",
+      "longitude": "103.720462024278"
+    },
+    {
+      "name": "Jurong Entertainment Centre",
+      "category": "Shopping Malls",
+      "distance": "1.64 km",
+      "latitude": "1.333319",
+      "longitude": "103.739975"
+    },
+    {
+      "name": "JEM",
+      "category": "Shopping Malls",
+      "distance": "1.87 km",
+      "latitude": "1.33305999269581",
+      "longitude": "103.743503708169"
+    }
+  ]
+  
+}

@@ -1,0 +1,30 @@
+.left-pane, .right-pane {
+    width: 50%;
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+.resizer {
+    width: 10px;
+    background-color: #39548a;
+    cursor: ew-resize;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .right-pane {
+        width: 100%;
+    }
+    .resizer {
+        display: none;
+    }
+    .left-pane{
+        width: 100%;
+        min-height: 100%;
+    }
+    
+}
