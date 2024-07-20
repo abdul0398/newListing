@@ -66,6 +66,11 @@
         height: 100vh;
         width: 100vw;
       }
+      #filters-container{
+        padding: 10px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
       .donate-detail-header {
         background-color: #efefef;
         position: relative;
@@ -219,9 +224,6 @@
           }
         }
       }
-      #mapdiv {
-        height: 95%;
-      }
       .mobile-switch-menu {
         bottom: 40px;
         z-index: 999;
@@ -237,22 +239,11 @@
           padding:20px 5px 100px 5px;
         } 
         .drop-down-search{
-          width: 88%;
+          width: 100%;
         }
         #search{
-          width: 90% !important;
-          max-width: 90% !important;
-          min-width: 90% !important;
+          width: 100% !important;
         }
-        .drop-down-search{
-          width: 90% !important;
-          max-width: 90% !important;
-          min-width: 90% !important;
-        }
-        #mapdiv{
-          height:100%;
-        }
-        
        
       }
       .filter-container {
@@ -384,7 +375,7 @@
         position: absolute;
         height: 350px;
         border: 1px solid;
-        z-index: 10;
+        z-index: 1000;
         top: 43px;
         border-radius: 5px;
         background-color: white;
@@ -396,9 +387,29 @@
         min-width: 100%;
       }
       .filter-select-div{
-        width: 20%;
+        width: 120px;
         height: 50px;
-        border-bottom: 1px solid black;
+      }
+      #mapdiv{
+        height: 450px;
+        margin: 30px 0px;
+        border-radius: 35px;
+      }
+      #map-cover{
+        position: absolute;
+        height: 40px;
+        bottom: 0px;
+        font-size: 8px;
+        z-index: 9999;
+        background-color: #ffefbe;
+        right: 0px;
+        text-align: center;
+        padding: 0px 5px;
+        font-weight: 600;
+      }
+      .filter-select-div {
+        margin: 0px 3px;
+        height: 50px;
       }
     </style>
     
@@ -745,39 +756,6 @@
       </div>
     </div>
 
-    <!--  Mobile Switch Button -->
-    <div
-      class="d-flex mobile-switch-menu start-50 bg-white rounded-3 d-lg-none d-md-none translate-middle-x position-fixed border border-1 w-75"
-    >
-      <div
-        class="w-50 border-end d-flex justify-content-center align-items-center"
-      >
-        <div>
-          <i class="fa-solid fa-list fa-xl" style="color: #39548a"></i>
-          <button
-            class="bg-transparent border-0"
-            onclick="mobileLayoutHandler(this)"
-          >
-            Listings
-          </button>
-        </div>
-      </div>
-      <div class="w-50 d-flex justify-content-center align-items-center">
-        <div>
-          <i
-            class="fa-solid fa-map-location-dot fa-xl"
-            style="color: #39548a"
-          ></i>
-          <button
-            class="bg-transparent border-0"
-            onclick="mobileLayoutHandler(this)"
-          >
-            Map
-          </button>
-        </div>
-      </div>
-    </div>
-
    
     
     <div class="d-flex h-100 main-container overflow-auto">
@@ -796,7 +774,7 @@
                   value=""
                 />
           
-                <div class="dropdown d-flex d-lg-none" style="justify-content: center; align-items: center;">
+                <!-- <div class="dropdown d-flex d-lg-none" style="justify-content: center; align-items: center;">
                   <button
                     class="filter-button"
                     style="margin: 0px;"
@@ -806,7 +784,7 @@
                   >
                     <i class="fa-solid fa-filter"></i>
                   </button>
-                </div>
+                </div> -->
                 
                  <div class="drop-down-search d-none">
                    
@@ -814,76 +792,108 @@
               </div>
 
               <div id="starting-page">
-                <div class="title mt-3">
-                  <div class="title-left">
-                    <i class="fa-solid fa-location-dot"></i>Near You
+                <div id="mapdiv" style="height: 450px;">
+
+
+                  <div id="map-cover">
+                    With powerful filtration algorithms, an innovative listing approach, and detailed sales analytics, supported by data from HDB OneMap and URA.gov, you'll quickly find the most suitable new launches.
                   </div>
-                  <div class="title-right">
-                    <button
-                      class="bg-transparent border-0"
-                      onclick="openAllListingsInner()"
+                </div>
+                <!-- <div id="filters-container" class="d-flex text-center justify-content-center">
+                  <div class="filter-select-div">
+                    <select
+                      class="form-select select-filter1"
+                      name="price"
+                      onchange="applyFilterSelect()"
                     >
-                      View All
+                      <option disabled selected>Price</option>
+                      <option value="all">All</option>
+                      <option value="0-3">$0 - $3M</option>
+                      <option value="3-6">$3M - $6M</option>
+                      <option value="6-10">$6m - $10M</option>
+                      <option value="10-100">above $10M</option>
+                    </select>
+                  </div>
+                  <div class="filter-select-div">
+                    <select
+                      class="form-select select-filter1"
+                      name="psf"
+                      onchange="applyFilterSelect()"
+                    >
+                      <option disabled selected>PSF</option>
+                      <option value="all">All</option>
+                      <option value="1-2">$1000 - $2000</option>
+                      <option value="2-3">$2000 - $3000</option>
+                      <option value="3-4">$3000 - $4000</option>
+                      <option value="4-10">4000+</option>
+                    </select>
+                  </div>
+                  <div class="filter-select-div">
+                    <select
+                      class="form-select select-filter1"
+                      name="bedrooms"
+                      onchange="applyFilterSelect()"
+                    >
+                      <option disabled selected>Beds</option>
+                      <option value="all">All</option>
+                      <option value="1">1 Bedroom</option>
+                      <option value="2">2 Bedroom</option>
+                      <option value="3">3 Bedroom</option>
+                      <option value="4">4 Bedroom</option>
+                      <option value="5">5+ Bedroom</option>
+                    </select>
+                  </div>
+                  <div class="filter-select-div">
+                    <select
+                      class="form-select select-filter1"
+                      name="sqft"
+                      onchange="applyFilterSelect()"
+                    >
+                      <option disabled selected>Floor area(sqft)</option>
+                      <option value="all">All</option>
+                      <option value="300-700">300 - 700 sqft</option>
+                      <option value="700-1200">700 - 1200 sqft</option>
+                      <option value="1000-2000">1000 - 2000 sqft</option>
+                      <option value="2000-4000">2000 - 4000 sqft</option>
+                      <option value="4000-10000">4000+ sqft</option>
+                    </select>
+                  </div>
+        
+                  <div>
+                    <button
+                      onclick="openFilterPopup()"
+                      style="
+                        margin-left: 3px;
+                        border: 1px solid #aaa;
+                        border-radius: 70px;
+                        font-weight: 500;
+                        width: 100px;
+                        box-shadow: -5px 5px 7px -3px rgb(189, 189, 189); 
+                        height: 50px;
+                        background-color: white;
+                        font-size: 14px;
+                        color: #7d7d7d;
+                      "
+                    >
+                      More
                     </button>
                   </div>
-                </div>
-                <div class="glide my-3">
-                  <div class="glide__track" data-glide-el="track">
-                    <ul class="glide__slides"></ul>
-                  </div>
-                  <div class="glide__bullets" data-glide-el="controls[nav]"></div>
-                </div>
-                <div class="title">
-                  <div class="title-left">Recomended For you</div>
-                  <div class="title-right">
-                    <button
-                      class="bg-transparent border-0"
-                      onclick="openAllListingsInner()"
-                    >
-                      View All
-                    </button>
-                  </div>
-                </div>
+                  
+                </div> -->
+                
+                
+               
                 <div class="recommended-slider">
                   <div class="card my-3" style="max-width: 100%">
                     <div class="row g-0">
                       <div class="col-md-4">
                         <img src="" alt="" />
                       </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title mb-3">Lentor Mansion</h5>
-                          <h6 class="card-subtitle mb-4 text-muted">
-                            North Region
-                          </h6>
-                          <div class="card-campaign-desc">
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>2 Bedroom
-                            </p>
-
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>3 Bedroom
-                            </p>
-
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>4 Bedroom
-                            </p>
-
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>5 Bedroom
-                            </p>
-
-                            <p class="campaign-icon">
-                              <i class="fa-solid fa-bed"></i>Overall
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
               </div>
-              <div id="all-listings-inner" class="d-none"></div>
             </div>
           </div>
         </div>
@@ -1252,67 +1262,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="resizer"></div>
-      <div id="map-container" class="right-pane h-100 d-none d-lg-block d-md-block">
-        <div id="filters-container" class="d-lg-flex d-none">
-          <div class="filter-select-div">
-            <select class="form-select select-filter1" name="region" onchange="applyFilterSelect()" >
-              <option disabled selected>Region</option>
-              <option value="all">All</option>
-              <option value="North Region">North Region</option>
-              <option value="East Region">East Region</option>
-              <option value="West Region">West Region</option>
-              <option value="North East Region">North East Region</option>
-              <option value="Downtown Core">Downtown Core</option>
-              <option value="Prime District">Prime District</option>
-              <option value="City Fringe">City Fringe</option>
-            </select>
-          </div>
-          <div class="filter-select-div">
-            <select class="form-select select-filter2" name="market_segment"  onchange="applyFilterSelect()">
-              <option disabled selected>Market Segment</option>
-              <option value="all">All</option>
-              <option value="Core Central Region">CCR - Core Central Region</option>
-              <option value="Rest of Central Region">RCR - Rest of Central Region</option>
-              <option value="Outside Central Region">OCR - Outside Central Region</option>
-            </select>
-          </div>
-          <div class="filter-select-div">
-            <select class="form-select select-filter3" name="unit_category"  onchange="applyFilterSelect()">
-              <option disabled selected >Unit Category</option>
-              <option value="all">All</option>
-              <option value="Private Condo">Private Condo</option>
-              <option value="Executive Condo">Executive Condo</option>
-              <option value="Landed House">Landed House</option>
-            </select>
-          </div>
-          <div class="filter-select-div">
-            <select class="form-select select-filter4" name="project_size"  onchange="applyFilterSelect()">
-              <option disabled selected>Project Size</option>
-              <option value="all">All</option>
-              <option value="0-99">0 - 99 Units</option>
-              <option value="100-399">100 - 399 Units</option>
-              <option value="400-699">400 - 699 Units</option>
-              <option value="700-999">700 - 999 Units</option>
-              <option value="1000+">1000 & Above Units</option>
-            </select>
-          </div>
-
-          <div class="filter-select-div">
-            <select class="form-select select-filter5" name="top" onchange="applyFilterSelect()">
-              <option disabled selected>Expected TOP</option>
-              <option value="all">All</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-            </select>
-          </div>
-      </div>
-        <div id="mapdiv"></div>
       </div>
      
 
