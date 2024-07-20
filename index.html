@@ -403,14 +403,16 @@
         border-radius: 4px;
       }
       .scroll-btn {
-        background: transparent;
-        border: none;
-        color: #39548a;
-        font-weight: 900;
+      border: none;
+      color: white;
+      font-size: 13px;
+      border-radius: 5px;
+      background-color: #39548a;
+      padding: 4px 8px;
       }
       #dev-form {
-        padding: 15px 0px;
-        border-radius: 4px;
+        padding: 25px 0px;
+        border-radius: 32px;
         margin-top: 9px;
       }
       .drop-down-search {
@@ -504,6 +506,25 @@
         height: 90%;
         overflow: auto;
         padding-bottom: 100px;
+      }
+
+      .slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        height: 550px;
+        font-size: 50px;
+        background: #fff;
+      }
+      #map-cover{
+        position: absolute;
+        height: 20px;
+        width: 80%;
+        bottom: 0px;
+        z-index: 99999999;
+        background-color: white;
+        right: 0px;
       }
     </style>
 
@@ -958,6 +979,7 @@
                 border-radius: 70px;
                 font-weight: 500;
                 width: 100px;
+                box-shadow: -5px 5px 7px -3px rgb(189, 189, 189); 
                 height: 100%;
                 background-color: white;
                 font-size: 14px;
@@ -1020,10 +1042,24 @@
             <i
               class="fa-solid fa-arrow-left fa-xl position-absolute text-white"
               onclick="showMainPage()"
-              style="top: 25px; left: 50px; cursor: pointer"
+              style="top: 25px; left: 50px; cursor: pointer; z-index: 1;"
             ></i>
-            <div class="donate-header-image"></div>
+            <div class="glide">
+              <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides donate-header-image">
 
+                </ul>
+              </div>
+              <!-- <div class="glide__controls" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="|<">prev</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir="|>">next</button>
+              </div>
+              -->
+              <div class="glide__bullets" data-glide-el="controls[nav]">
+               
+              </div> 
+            </div>
+            
             <div class="donate-header-text">
               <!-- Scroll buttons -->
 
@@ -1746,6 +1782,12 @@
         class="right-pane h-100 d-none d-lg-block d-md-block p-4"
       >
         <div id="mapdiv">
+          <div id="map-cover">
+
+          </div>
+
+
+
           <div
             class="map-search-container"
             style="z-index: 999; position: relative"

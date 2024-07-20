@@ -12,6 +12,7 @@
     margin-bottom: 15px;
     outline: none !important;
     transition: all .15s ease-in-out;
+    box-shadow: -5px 5px 7px -3px rgb(189, 189, 189);
   }
   
   .select2.select2-container .select2-selection .select2-selection__rendered {

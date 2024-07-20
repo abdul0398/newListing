@@ -71,38 +71,102 @@ function openMap() {
     }
 }
 
+
+function popuplateBottomListings(listing){
+    const address = listing?.details[0].para + ', ' + listing?.details[1].para ;
+
+    const totalUnits = listing?.unit_mix?.data.find(unit => unit.unitType == "Overall")?.totalUnits || 0;
+    const availableUnits = listing?.balance_units?.data.find(unit => unit.unitType == "Overall")?.availableUnits || 0;
+    const unitsSold = totalUnits - availableUnits;
+    const nearestMRT = listing?.location_map?.amenities?.find(detail => detail.Category == "MRT Stations") || null;
+    const dev_type = listing.dev_type;
+
+
+        const mapBottomListing = document.getElementById("map-bottom-listing");
+        mapBottomListing.innerHTML = "";
+        mapBottomListing.innerHTML = `
+        <div class="card my-3" style="max-width: 100%; height: 100%; border-radius: 40px; border:none;box-shadow: -5px 5px 23px -3px rgba(189,189,189,1);">
+      <div class="h-100 d-flex p-3">
+        <div class="w-50" style="position:relative">
+          <!-- ${dev_type?`<p style="
+          position: absolute;
+          background-color: #39548a;
+          color: white;
+          font-size: 10px;
+          padding: 2px 5px;
+          top: 10px;
+          left: 30px;
+          border-radius: 3px;
+          font-weight: bold;
+          ">${dev_type}</p>`:""} -->
+              <img class="w-100" style="height:100%; border-radius: 40px;" src="https://api.jomejourney-portal.com${listing.images[0]? listing.images[0] : listing.images[1]}">
+        </div>
+        <div class="w-50" style="padding-top: 0px;">
+          <div class="card-body">
+            <a class="pe-auto" onClick="">
+                <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onmouseover="hoverListingHandler(this)" onmouseout="removeHoverPopup(this)" onclick="openSingleListing(this)">${listing.name}</button></h5>
+            </a>
+            <h6 class="card-subtitle mb-1 text-muted" style="white-space: nowrap; text-overflow: ellipsis; width: 100%; overflow: hidden;">
+              
+                 ${address} <br>
+            </h6>
+              </div>
+              <p class='mb-2 text-muted' style="padding-left:1rem; font-size:11px">
+              <img src="public/placeholder.png" width="20px" />  West Region
+              </p>
+             ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
+            <div style="font-size:11px; padding:0px 1rem;line-height: 30px;">
+               <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
+            <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
+            <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
+            </div>
+            <div class="pt-3" style="padding-left: 1rem;">
+              <button class="read-more-btn" onclick="openSingleListing(this)" data_name="${listing.name}">Read More</button>
+            </div>
+          </div>
+
+      </div>
+  </div>
+        `
+}
+
+
+
+
+async function handlePopupClick(index){
+    popuplateBottomListings(listings[index]);
+}
+
 async function fetchCoordinatesAndPopulateMap(listings) {
     for (let i = 0; i < listings.length; i++) {
         const project = listings[i];
         const LATITUDE = project.latitude;
         const LONGITUDE = project.longitude;
-        if(!LATITUDE || !LONGITUDE) continue;
+        if (!LATITUDE || !LONGITUDE) continue;
 
-        const marker = L.marker([LATITUDE, LONGITUDE], { riseOnHover: true, title: project.name})
+        const marker = L.marker([LATITUDE, LONGITUDE], { riseOnHover: true, title: project.name })
             .addTo(map);
-
 
         const expectedTOP = project?.details.find(detail => detail.title == "Expected TOP")?.para || "";
         const Land_Tenure = project?.details.find(detail => detail.title == "Land Tenure")?.para || "";
         const Development_Size = project?.details.find(detail => detail.title == "Development Size")?.para || "";
-        const latestTransaction = Array.isArray(project.transactions)? project.transactions[0]: null;
+        const latestTransaction = Array.isArray(project.transactions) ? project.transactions[0] : null;
         const popupContent = `
-            <div class="w-200" id="popup-${i}" style="height: 180px;">
+            <div class="w-200" id="popup-${i}" style="height: 180px;" onclick="handlePopupClick(${i})">
                 <div class="donate-title d-flex" style="height: 120px; padding:5px">
-                    <img src="https://api.jomejourney-portal.com${project.images[0]? project.images[0]:project.images[1]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
+                    <img src="https://api.jomejourney-portal.com${project.images[0] ? project.images[0] : project.images[1]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
                     <div class="px-1">
                         <p class="mt-0" style="cursor:pointer; font-weight:900; margin-bottom:0px; font-size: 15px;">${project.name}</p>
                         <p style="margin-top: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${project.details[0].para}</p>
-                       ${expectedTOP? `<p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px"><span style="color:black">TOP: </span>${expectedTOP}</p>`:"" }
+                       ${expectedTOP ? `<p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px"><span style="color:black">TOP: </span>${expectedTOP}</p>` : ""}
                         <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Land_Tenure}</p>
                         <p style="margin: 0px; color:#6f6f6f; font-weight:600; font-size:11px">${Development_Size}</p>
                     </div>
                 </div>
                 <div>
-                    <hr style="margin-bottom:0px" >
+                    <hr style="margin-bottom:0px">
                 </div>
-                ${
-                latestTransaction?`
+                ${latestTransaction ? `
                 <div style="padding:5px">
                 <p style="margin:0px; font-size: 10px; font-weight: bold; color: #6f6f6f;">LATEST TRANSACTION</p>
                 <div style="display: flex;justify-content: space-between;font-size: 11px;margin-top: 3px;font-weight: bold; color:black;">
@@ -110,49 +174,31 @@ async function fetchCoordinatesAndPopulateMap(listings) {
                     <div>${latestTransaction.Size} sqft</div>
                     <div>${latestTransaction.Price}</div>
                 </div>
-
-                </div>     
-                `:""
-                } 
-                   
+                </div>` : ""}
             </div>
         `;
 
-        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup", autoClose: true});
+        marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup", autoClose: true });
         markerArray.push(marker);
 
-       // Assuming you have your map instance defined as 'map' and your marker defined as 'marker'
-
         marker.on('mouseover', function (e) {
-            // Open the popup
             marker.openPopup();
 
-            // Get the marker's latitude and longitude
             const latLng = marker.getLatLng();
 
-            // Calculate the new center position to move the marker slightly below the center
             const offsetLatLng = L.latLng(
                 latLng.lat - (map.getBounds().getSouth() - map.getBounds().getNorth()) * 0.15, // Adjust the factor as needed
                 latLng.lng
             );
 
-            // Center the map on the new position
             map.setView(offsetLatLng, map.getZoom(), {
                 animate: true,
                 pan: { duration: 0.5 }
             });
         });
+        
 
 
-        // Hide popup when mouse leaves
-        marker.on('mouseout', function (e) {
-            setTimeout(() => {
-                marker.closePopup();
-            }, 2000);
-            
-        });
-
-    
 
 
         marker.on('click', function (e) {
@@ -176,6 +222,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         });
     }
 }
+
         
 async function fetchNewListings(){
     const options = {
@@ -199,19 +246,33 @@ async function fetchNewListings(){
     }
 }
 
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("slideImages");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
+function carousel(length) {
+    // Destroy existing Glide instance if it exists
+    glide?.destroy();
+
+    const bulletsContainer = document.querySelector('.glide__bullets');
+
+    // Clear existing bullets if any
+    bulletsContainer.innerHTML = '';
+
+    // Create bullets dynamically
+    for (let i = 0; i < length; i++) {
+      const bullet = document.createElement('button');
+      bullet.classList.add('glide__bullet');
+      bullet.setAttribute('data-glide-dir', `=${i}`);
+      bulletsContainer.appendChild(bullet);
     }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    clearTimeout(timeoutId);
-    
-    timeoutId = setTimeout(carousel, 4000); // Change image every 4 seconds
-}
+
+
+    glide = new Glide('.glide', {
+      type: 'carousel',
+      perView: 1,
+      autoplay: 3000
+    });
+
+    // Mount Glide.js
+    glide.mount();
+  }
 
 function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions){
 
@@ -481,7 +542,13 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
         </a>
         
         `;
-        mainImages.innerHTML += `<img src="https://api.jomejourney-portal.com${img}" style="border-radius:35px"  class="slideImages h-100 w-100" alt="${name}">`;
+        mainImages.innerHTML += `
+        <li class="glide__slide">
+            <div class="slide">
+                <img src="https://api.jomejourney-portal.com${img}" style="border-radius:35px"  class="slideImages h-100 w-100" alt="${name}">        
+            </div>
+        </li>
+        `;
     }
     if(galleryIntance){
         galleryIntance.destroy();
@@ -490,7 +557,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
         thumbnail: true,
     });
     myIndex = 0;
-    carousel();
+    carousel(Galleryimages.length);
     
 }
 
@@ -550,7 +617,7 @@ function populateAllListings(listings){
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
                     </div>
-                    <div class="text-center pt-3" style="padding-left: 1rem;">
+                    <div class="pt-3" style="padding-left: 1rem;">
                       <button class="read-more-btn" onclick="openSingleListing(this)" data_name="${listings[i].name}">Read More</button>
                     </div>
                   </div>
@@ -685,6 +752,18 @@ function openSingleListing(btn) {
         marker.setZIndexOffset(1000);
         createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
         addAmmenitiesMarkers(name);
+
+        const latLng = marker.getLatLng();
+
+        const offsetLatLng = L.latLng(
+            latLng.lat - (map.getBounds().getSouth() - map.getBounds().getNorth()) * 0.15, // Adjust the factor as needed
+            latLng.lng - (map.getBounds().getWest() - map.getBounds().getEast()) * 0.18
+        );
+
+        map.setView(offsetLatLng, map.getZoom(), {
+            animate: true,
+            pan: { duration: 0.5 }
+        });
     
     }
 
@@ -1601,6 +1680,7 @@ function hoverListingHandler(btn){
     const marker = markerArray.find(marker => marker.options.title == name);
     if(marker){
         marker.openPopup();
+        
     }
 }
 
