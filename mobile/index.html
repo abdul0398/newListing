@@ -67,9 +67,10 @@
         width: 100vw;
       }
       #filters-container{
-        padding: 10px;
-        flex-wrap: wrap;
-        gap: 10px;
+        padding: 10px 0px 10px 244px;
+        overflow-x: auto;
+        width: 100%;
+        overflow-y: hidden;
       }
       .donate-detail-header {
         background-color: #efefef;
@@ -250,7 +251,7 @@
         max-width: 300px;
         width: 90%;
         height: 100vh;
-        z-index: 1000;
+        z-index: 10000;
         overflow-y: hidden;
         background-color: #39548a;
         transform: translateX(100%);
@@ -358,11 +359,14 @@
         padding: 15px 15px;
         border-radius: 4px;
       }
-      .scroll-btn{
-        background: transparent;
+      .scroll-btn {
         border: none;
-        color: #39548a;
-        font-weight: 900;
+        color: white;
+        font-size: 12px;
+        border-radius: 5px;
+        background-color: #39548a;
+        padding: 1px 9px;
+        margin: 0px 6px;
       }
       #dev-form{
         padding: 15px 0px;
@@ -387,8 +391,7 @@
         min-width: 100%;
       }
       .filter-select-div{
-        width: 120px;
-        height: 50px;
+        min-width: 120px;
       }
       #mapdiv{
         height: 450px;
@@ -408,8 +411,15 @@
         font-weight: 600;
       }
       .filter-select-div {
-        margin: 0px 3px;
+        margin: 0px 2px;
         height: 50px;
+        width: 50%;
+      }
+      #inner-mapdiv{
+        height: 450px;
+        width: 100%;
+        margin: 10px 0px;
+        border-radius: 20px;
       }
     </style>
     
@@ -799,7 +809,7 @@
                     With powerful filtration algorithms, an innovative listing approach, and detailed sales analytics, supported by data from HDB OneMap and URA.gov, you'll quickly find the most suitable new launches.
                   </div>
                 </div>
-                <!-- <div id="filters-container" class="d-flex text-center justify-content-center">
+                <div id="filters-container" class="d-flex text-center justify-content-center">
                   <div class="filter-select-div">
                     <select
                       class="form-select select-filter1"
@@ -879,7 +889,7 @@
                     </button>
                   </div>
                   
-                </div> -->
+                </div>
                 
                 
                
@@ -1254,6 +1264,13 @@
                   </div>
                 </div>
 
+                <div id="inner-mapdiv">
+                  
+                  
+                  <div id="map-cover">
+                    With powerful filtration algorithms, an innovative listing approach, and detailed sales analytics, supported by data from HDB OneMap and URA.gov, you'll quickly find the most suitable new launches.
+                  </div>
+                </div>
 
                  <!-- Bottom sticky card -->
                  <div class="h-200 sticky-bottom-banner">

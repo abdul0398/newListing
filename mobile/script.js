@@ -1,8 +1,8 @@
-
-
 let myIndex = 0;
-        
+
 let map;
+
+let innerMap;
 
 let timeoutId;
 
@@ -12,13 +12,23 @@ let glide;
 
 let circle;
 
+let innerCircle;
+
 let maskLayer;
+
+let innerMaskLayer;
 
 let selectedMarker;
 
+let innerSelectedMarker;
+
 let markerArray = [];
 
+let innerMarkerArray = [];
+
 let AmmenetiesMarkers = [];
+
+let innerAmmenetiesMarkers = [];
 
 let galleryIntance;
 
@@ -38,9 +48,9 @@ async function start(){
 
     selectProjectBasedOnParams();
     openMap();
-    populatAllListings(listings);
+    populateAllListings(listings);
     closeLoading();
-    await fetchCoordinatesAndPopulateMap(listings);
+    await fetchCoordinatesAndPopulateMap(listings, map, "outer");
     addEventListenerToInput();
 
 }
@@ -49,7 +59,7 @@ async function start(){
 function openMap(params) {
     map = L.map('mapdiv', {
        center: L.latLng(1.327450, 103.811203),
-       zoom: 13,
+       zoom: 11,
        zoomControl: false,
     });
 
@@ -80,14 +90,14 @@ function checkMarkersInView() {
     const filteredListings = filterArray.map(marker => {
         return listings.find(listing => listing.name == marker.options.title);
     });
-    populatAllListings(filteredListings);
+    populateAllListings(filteredListings);
 }
 async function handlePopupClick(index){
     const btn = document.createElement('button');
     btn.innerText = listings[index].name;
     openSingleListing(btn);
 }
-async function fetchCoordinatesAndPopulateMap(listings) {
+async function fetchCoordinatesAndPopulateMap(listings, map, type) {
     for (let i = 0; i < listings.length; i++) {
         const project = listings[i];
         const LATITUDE = project.latitude;
@@ -135,7 +145,12 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         `;
 
         marker.bindPopup(popupContent, { minWidth: 300, maxWidth: 300, padding: 0, className: "marker-popup", autoClose: true });
-        markerArray.push(marker);
+
+        if(type == "inner"){
+            innerMarkerArray.push(marker);
+        }else{
+            markerArray.push(marker);
+        }
 
         marker.on('mouseover', function (e) {
             marker.openPopup();
@@ -163,10 +178,16 @@ async function fetchCoordinatesAndPopulateMap(listings) {
 
 
         marker.on('click', function (e) {
-            changeSelectedMarkerLogo(marker);
-            marker.openPopup();
-            createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
             const name = project.name;
+            if (type == "inner") {
+                changeSelectedMarkerLogo(marker, "inner");
+                marker.setZIndexOffset(1000);
+                marker.openPopup();
+                createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
+                addAmmenitiesMarkers(name);
+                // scroll to top
+                document.querySelector('.main-container').scrollTop = 0;
+            }
             const desc = project.description;
             const region = project.geographical_region;
             const Galleryimages = project.images;
@@ -177,7 +198,6 @@ async function fetchCoordinatesAndPopulateMap(listings) {
             const balance_units = project.balance_units;
             const developer = project.developer;
             const transactions = project.transactions;
-            addAmmenitiesMarkers(name);
             addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions);
             
         });
@@ -495,9 +515,22 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     myIndex = 0;
     carousel();
     
+    openMapInner();
+    fetchCoordinatesAndPopulateMap(listings, innerMap, "inner");
+    const marker = innerMarkerArray.find(
+        (marker) => marker.options.title == name
+      );
+      if (marker) {
+        changeSelectedMarkerLogo(marker, "inner");
+        marker.openPopup();
+        marker.setZIndexOffset(1000);
+        createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
+        addAmmenitiesMarkers(name);
+        document.querySelector('.main-container').scrollTop = 0;
+      }
 }
 
-function populatAllListings(listings){
+function populateAllListings(listings){
 
     const recommendedContainer = document.querySelector(".recommended-slider");
     recommendedContainer.innerHTML = "";
@@ -671,18 +704,7 @@ function populateAllListingsInner(filterListing) {
 }
 
 function openSingleListing(btn) {
-    const name = btn.innerText;
-    const marker = markerArray.find(marker => marker.options.title == name);
-    
-    if (marker) {
-        changeSelectedMarkerLogo(marker);
-        marker.openPopup();
-        createCircleInMap(marker.getLatLng().lat, marker.getLatLng().lng, 3000);
-        addAmmenitiesMarkers(name);
-    
-    }
-
-
+    const name = btn.innerText; 
 
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
@@ -873,10 +895,22 @@ function applyFilterCheckbox() {
         }
         return isMatch;
     });
+ // remove all markers from the map
+ markerArray.forEach((marker) => {
+    marker.remove();
+  });
 
-    openAllListingsInner(filteredListings);
-    document.getElementById("map-container").classList.add("d-none");
-    document.getElementById("single-listing").classList.add("d-none");
+  const filteredMarkers = markerArray.filter((marker) => {
+    const name = marker.options.title;
+    const project = filteredListings.find((listing) => listing.name == name);
+    return project;
+  });
+
+  filteredMarkers.forEach((marker) => {
+    marker.addTo(map);
+  });
+  
+    populateAllListings(filteredListings);
     closeFilterPopup();
 
 }
@@ -950,55 +984,57 @@ function processText(text) {
 
 
 
-async function createCircleInMap(lat, long, radius) {
-    if (circle) {
-        map.removeLayer(circle);
+async function createCircleInMap(lat, long, radius, type) {
+    if (innerCircle) {
+      innerMap.removeLayer(innerCircle);
     }
-    if (maskLayer) {
-        map.removeLayer(maskLayer);
+    if (innerMaskLayer) {
+      innerMap.removeLayer(innerMaskLayer);
     }
-
+  
     let circleCenter = [lat, long];
-
+  
     // Create the circle
-    circle = L.circle(circleCenter, {
-        color: '#39548a',
-        fillColor: 'transparent',
-        fillOpacity: 0,
-        radius: radius,
-        weight:2
-    }).addTo(map);
-
+    innerCircle = L.circle(circleCenter, {
+      color: "#39548a",
+      fillColor: "transparent",
+      fillOpacity: 0,
+      radius: radius,
+      weight: 2,
+    }).addTo(innerMap);
+  
     // Define the outer bounds of the map to cover
     let bounds = [
-        [90, -180],
-        [90, 180],
-        [-90, 180],
-        [-90, -180]
+      [90, -180],
+      [90, 180],
+      [-90, 180],
+      [-90, -180],
     ];
-
+  
     // Create the hole (circle coordinates)
     let hole = [];
     let steps = 64; // Number of points to create a smooth circle
     for (let i = 0; i < steps; i++) {
-        let angle = (i / steps) * (2 * Math.PI);
-        let dx = radius * Math.cos(angle);
-        let dy = radius * Math.sin(angle);
-        let latLng = L.latLng(lat + (dy / 111320), long + (dx / (111320 * Math.cos(lat * Math.PI / 180))));
-        hole.push([latLng.lat, latLng.lng]);
+      let angle = (i / steps) * (2 * Math.PI);
+      let dx = radius * Math.cos(angle);
+      let dy = radius * Math.sin(angle);
+      let latLng = L.latLng(
+        lat + dy / 111320,
+        long + dx / (111320 * Math.cos((lat * Math.PI) / 180))
+      );
+      hole.push([latLng.lat, latLng.lng]);
     }
-
+  
     // Create a polygon with the outer bounds and the hole
-    maskLayer = L.polygon([bounds, hole], {
-        color: '#000',
-        fillColor: '#000',
-        fillOpacity: 0.5,
-        stroke: false
-    }).addTo(map);
-
-
-    map.fitBounds(circle.getBounds());
-}
+    innerMaskLayer = L.polygon([bounds, hole], {
+      color: "#000",
+      fillColor: "#000",
+      fillOpacity: 0.5,
+      stroke: false,
+    }).addTo(innerMap);
+  
+    innerMap.fitBounds(innerCircle.getBounds());
+  }
 
 function refreshMap() {
     let center = map.getCenter();
@@ -1009,10 +1045,10 @@ function refreshMap() {
 
 
 function changeSelectedMarkerLogo(marker){
-      if(selectedMarker){
-          selectedMarker.setIcon(new L.Icon.Default());
+      if(innerSelectedMarker){
+          innerSelectedMarker.setIcon(new L.Icon.Default());
       }
-      selectedMarker = marker;
+      innerSelectedMarker = marker;
       let activeIcon = L.icon({
         iconUrl: 'public/home.png', // Replace with the path to your active icon
         iconSize: [41, 47], // size of the icon
@@ -1067,167 +1103,342 @@ function closeDropDown() {
 
 
 function extractSelectValues() {
+
+    const container = document.getElementById("filters-container")
     let selectedFilters = {
-        project_size: [],
-        region: [],
-        unit_category: [],
-        market_segment: [],
-        TOP: []
+      project_size: [],
+      region: [],
+      unit_category: [],
+      market_segment: [],
+      TOP: [],
+      price: [],
+      psf: [],
+      bedrooms: [],
+      sqft: [],
     };
-
-    document.querySelectorAll("select[name='project_size'] option:checked").forEach(option => {
+  
+    container
+      .querySelectorAll("select[name='project_size'] option:checked")
+      .forEach((option) => {
         selectedFilters.project_size.push(option.value);
-    });
-    document.querySelectorAll("select[name='region'] option:checked").forEach(option => {
+      });
+    container
+      .querySelectorAll("select[name='region'] option:checked")
+      .forEach((option) => {
         selectedFilters.region.push(option.value);
-    });
-    document.querySelectorAll("select[name='unit_category'] option:checked").forEach(option => {
+      });
+    container
+      .querySelectorAll("select[name='unit_category'] option:checked")
+      .forEach((option) => {
         selectedFilters.unit_category.push(option.value);
-    });
-    document.querySelectorAll("select[name='market_segment'] option:checked").forEach(option => {
+      });
+    container
+      .querySelectorAll("select[name='market_segment'] option:checked")
+      .forEach((option) => {
         selectedFilters.market_segment.push(option.value);
-    });
-    document.querySelectorAll("select[name='top'] option:checked").forEach(option => {
+      });
+    container
+      .querySelectorAll("select[name='top'] option:checked")
+      .forEach((option) => {
         selectedFilters.TOP.push(option.value);
-    });
-
+      });
+  
+    container
+      .querySelectorAll("select[name='price'] option:checked")
+      .forEach((option) => {
+        selectedFilters.price.push(option.value);
+      });
+  
+    container
+      .querySelectorAll("select[name='psf'] option:checked")
+      .forEach((option) => {
+        selectedFilters.psf.push(option.value);
+      });
+  
+    container
+      .querySelectorAll("select[name='bedrooms'] option:checked")
+      .forEach((option) => {
+        selectedFilters.bedrooms.push(option.value);
+      });
+  
+    container
+      .querySelectorAll("select[name='sqft'] option:checked")
+      .forEach((option) => {
+        selectedFilters.sqft.push(option.value);
+      });
+  
     return selectedFilters;
-}
+  }
 
 
-function applyFilterSelect() {
+  function applyFilterSelect() {
+
     document.getElementById("all-listings").classList.remove("d-none");
+  
     // remove the circle from the map and zoom out
-
     if (circle) {
-        map.removeLayer(circle);
+      map.removeLayer(circle);
     }
     if (maskLayer) {
-        map.removeLayer(maskLayer);
+      map.removeLayer(maskLayer);
     }
     map.setView([1.3521, 103.8198], 12);
-
+  
     // remove all ammenities markers
-
-    AmmenetiesMarkers.forEach(marker => {
-        map.removeLayer(marker);
-    })
-
-
-
-    let selectedFilters = extractSelectValues();
-    const defaultValues = ['Region', 'Project Size', 'Unit Category', 'Market Segment', 'Expected TOP'];
-    let filteredListings = listings.filter(function(listing) {
-        const project_size = listing.project_size;
-        const region = listing.geographical_region;
-        const unit_category = listing.project_category;
-        const market_segment = listing.details.find(detail => detail.title == "Market Segment").para;
-        const TOP = listing?.details?.find(detail => detail.title == "Expected TOP")?.para || "all"
-
-        let isMatch = true;
-        for (let category in selectedFilters) {
-            if (selectedFilters[category].length > 0  && !selectedFilters[category].includes("all") && !defaultValues.includes(selectedFilters[category][0])) {
-                if (category === "project_size") {
-                    let sizeMatched = false;
-                    for (let i = 0; i < selectedFilters[category].length; i++) {
-                        let size = selectedFilters[category][i];
-                        if (size === "1000+") {
-                            if (project_size >= 1000) {
-                                sizeMatched = true;
-                                break;
-                            }
-                        } else {
-                            let range = size.split('-');
-                            let min = parseInt(range[0]);
-                            let max = parseInt(range[1]);
-                            if (project_size >= min && project_size <= max) {
-                                sizeMatched = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (!sizeMatched) {
-                        isMatch = false;
-                        break;
-                    }
-                } else if (category === "region") {
-                    let isLocalMatch = false;
-                    for (let i = 0; i < selectedFilters[category].length; i++) {
-                        let filterRegions = selectedFilters[category][i].toLowerCase().trim();
-                        if (region.toLowerCase().trim().includes(filterRegions)) {
-                            isLocalMatch = true;
-                            break;
-                        }
-                    }
-                    if (!isLocalMatch) {
-                        isMatch = false;
-                        break;
-                    }
-                } else if (category === "unit_category") {
-                    let isLocalMatch = false;
-                    for (let i = 0; i < selectedFilters[category].length; i++) {
-                        let filterUnitCategory = selectedFilters[category][i].toLowerCase().trim();
-                        if (unit_category.toLowerCase().trim().includes(filterUnitCategory)) {
-                            isLocalMatch = true;
-                            break;
-                        }
-                    }
-                    if (!isLocalMatch) {
-                        isMatch = false;
-                        break;
-                    }
-                } else if (category === "market_segment") {
-                    let isLocalMatch = false;
-                    for (let i = 0; i < selectedFilters[category].length; i++) {
-                        let filterSegment = selectedFilters[category][i].toLowerCase().trim();
-                        if (market_segment.toLowerCase().trim().includes(filterSegment)) {
-                            isLocalMatch = true;
-                            break;
-                        }
-                    }
-                    if (!isLocalMatch) {
-                        isMatch = false;
-                        break;
-                    }
-                }else if(category === "TOP"){
-                    let isLocalMatch = false;
-                    for (let i = 0; i < selectedFilters[category].length; i++) {
-                        let filterTOP = selectedFilters[category][i].toLowerCase().trim();
-                        if (TOP.includes(filterTOP) || TOP == "all") {
-                            isLocalMatch = true;
-                            break;
-                        }
-                    }
-                    if (!isLocalMatch) {
-                        isMatch = false;
-                        break;
-                    }
-                }
-            }
-        }
-        return isMatch;
+    AmmenetiesMarkers.forEach((marker) => {
+      map.removeLayer(marker);
     });
+  
+    //remove selected marker
+    if (selectedMarker) {
+      selectedMarker.setIcon(new L.Icon.Default());
+      selectedMarker.closePopup();
+      selectedMarker = null;
+    }
+  
+    let selectedFilters = extractSelectValues();
+    const defaultValues = [
+      "Region",
+      "Project Size",
+      "Unit Category",
+      "Market Segment",
+      "Expected TOP",
+      "Price",
+      "PSF",
+      "Beds",
+      "Floor area(sqft)",
+    ];
+    let filteredListings = listings.filter(function (listing) {
+      const project_size = listing.project_size;
+      const region = listing.geographical_region;
+      const unit_category = listing.project_category;
+      const market_segment = listing.details.find(
+        (detail) => detail.title == "Market Segment"
+      ).para;
+      const TOP =
+        listing?.details?.find((detail) => detail.title == "Expected TOP")
+          ?.para || "all";
+      const price =
+        listing?.balance_units?.data.find((unit) => unit.unitType == "Overall")
+          ?.price || 0;
+      const { lowerValue: lowerValueOfListing, upperValue: upperValueOfListing } =
+        changePriceString(price);
+  
+      const psf =
+        listing?.balance_units?.data.find((unit) => unit.unitType == "Overall")
+          ?.psf || 0;
+      const { lowerValue: lowerValueOfPSF, upperValue: upperValueOfPSF } =
+        changePsfString(psf);
+  
+      const bedroomstypes =
+        listing?.unit_mix?.data.map((unit) => unit.unitType) || [];
+  
+      const sqft =
+        listing?.unit_mix?.data.find((unit) => unit.unitType == "Overall")
+          ?.size_sqft || 0;
+      const { lowerValue: lowerValueOfSQFT, upperValue: upperValueOfSQFT } =
+        changeSqftString(sqft);
+  
+      let isMatch = true;
+      for (let category in selectedFilters) {
+        if (
+          selectedFilters[category].length > 0 &&
+          !selectedFilters[category].includes("all") &&
+          !defaultValues.includes(selectedFilters[category][0])
+        ) {
+          if (category === "project_size") {
+            let sizeMatched = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              let size = selectedFilters[category][i];
+              if (size === "1000+") {
+                if (project_size >= 1000) {
+                  sizeMatched = true;
+                  break;
+                }
+              } else {
+                let range = size.split("-");
+                let min = parseInt(range[0]);
+                let max = parseInt(range[1]);
+                if (project_size >= min && project_size <= max) {
+                  sizeMatched = true;
+                  break;
+                }
+              }
+            }
+            if (!sizeMatched) {
+              isMatch = false;
+              break;
+            }
+          } else if (category === "region") {
+            let isLocalMatch = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              let filterRegions = selectedFilters[category][i]
+                .toLowerCase()
+                .trim();
+              if (region.toLowerCase().trim().includes(filterRegions)) {
+                isLocalMatch = true;
+                break;
+              }
+            }
+            if (!isLocalMatch) {
+              isMatch = false;
+              break;
+            }
+          } else if (category === "unit_category") {
+            let isLocalMatch = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              let filterUnitCategory = selectedFilters[category][i]
+                .toLowerCase()
+                .trim();
+              if (
+                unit_category.toLowerCase().trim().includes(filterUnitCategory)
+              ) {
+                isLocalMatch = true;
+                break;
+              }
+            }
+            if (!isLocalMatch) {
+              isMatch = false;
+              break;
+            }
+          } else if (category === "market_segment") {
+            let isLocalMatch = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              let filterSegment = selectedFilters[category][i]
+                .toLowerCase()
+                .trim();
+              if (market_segment.toLowerCase().trim().includes(filterSegment)) {
+                isLocalMatch = true;
+                break;
+              }
+            }
+            if (!isLocalMatch) {
+              isMatch = false;
+              break;
+            }
+          } else if (category === "TOP") {
+            let isLocalMatch = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              let filterTOP = selectedFilters[category][i].toLowerCase().trim();
+              if (TOP.includes(filterTOP) || TOP == "all") {
+                isLocalMatch = true;
+                break;
+              }
+            }
+            if (!isLocalMatch) {
+              isMatch = false;
+              break;
+            }
+          } else if (category == "price") {
+            let isLocalMatch = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              const { lowerValue, upperValue } = changePriceString(
+                selectedFilters[category][i]
+              );
+              if (
+                (lowerValueOfListing >= lowerValue &&
+                  lowerValueOfListing <= upperValue) ||
+                (upperValueOfListing >= lowerValue &&
+                  upperValueOfListing <= upperValue) ||
+                selectedFilters[category][i] == "all"
+              ) {
+                isLocalMatch = true;
+                break;
+              }
+            }
+            if (!isLocalMatch) {
+              isMatch = false;
+              break;
+            }
+          } else if (category == "psf") {
+            let isLocalMatch = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              const { lowerValue, upperValue } = changePsfString(
+                selectedFilters[category][i]
+              );
+             
+              if (
+                (lowerValueOfPSF >= lowerValue &&
+                  lowerValueOfPSF <= upperValue) ||
+                (upperValueOfPSF >= lowerValue &&
+                  upperValueOfPSF <= upperValue) ||
+                selectedFilters[category][i] == "all"
+              ) {
+                isLocalMatch = true;
+                break;
+              }
+            }
+            if (!isLocalMatch) {
+              isMatch = false;
+              break;
+            }
+          } else if (category == "bedrooms") {
+            let isLocalMatch = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              const filterBedroom = selectedFilters[category][i];
+  
+              for (let i = 0; i < bedroomstypes.length; i++) {
+                if (
+                  bedroomstypes[i].includes(filterBedroom) ||
+                  filterBedroom == "all"
+                ) {
+                  isLocalMatch = true;
+                  break;
+                }
+              }
+            }
+            if (!isLocalMatch) {
+              isMatch = false;
+              break;
+            }
+          } else if (category == "sqft") {
+            let isLocalMatch = false;
+            for (let i = 0; i < selectedFilters[category].length; i++) {
+              const { lowerValue, upperValue } = changeSqftString(
+                selectedFilters[category][i]
+              );
+              if (
+                (lowerValueOfSQFT >= lowerValue &&
+                  lowerValueOfSQFT <= upperValue) ||
+                (upperValueOfSQFT >= lowerValue &&
+                  upperValueOfSQFT <= upperValue) ||
+                selectedFilters[category][i] == "all"
+              ) {
+                isLocalMatch = true;
+                break;
+              }
+            }
+            if (!isLocalMatch) {
+              isMatch = false;
+              break;
+            }
+          }
+        }
+      }
+      return isMatch;
+    });
+  
+  
     // remove all markers from the map
-
-    markerArray.forEach(marker => {
-        marker.remove();
-    })
-
-    const filteredMarkers = markerArray.filter(marker => {
-        const name = marker.options.title;
-        const project = filteredListings.find(listing => listing.name == name);
-        return project;
-    })
-
-    filteredMarkers.forEach(marker => {
-        marker.addTo(map);
-    })
-
-    openAllListingsInner(filteredListings);
+    markerArray.forEach((marker) => {
+      marker.remove();
+    });
+  
+    const filteredMarkers = markerArray.filter((marker) => {
+      const name = marker.options.title;
+      const project = filteredListings.find((listing) => listing.name == name);
+      return project;
+    });
+  
+    filteredMarkers.forEach((marker) => {
+      marker.addTo(map);
+    });
+  
+    populateAllListings(filteredListings);
     // document.getElementById("map-container").classList.add("d-none");
     document.getElementById("single-listing").classList.add("d-none");
     // closeFilterPopup();
-}
+  }
 
 function reopenSelectedMarkerPopup() {
     if (selectedMarker) {
@@ -1265,72 +1476,69 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     return R * 2 * Math.asin(Math.sqrt(a));
 }
 
-function addAmmenitiesMarkers(name){
-    AmmenetiesMarkers.forEach(marker => {
-        map.removeLayer(marker);
-    })
-
-    const amenities = ammenities[name] || [];
-    console.log(name);
-        
-    amenities.forEach(amenitie => {
-        const ammenitieMarker = L.marker([amenitie.latitude, amenitie.longitude], { title: amenitie.name })
-            .addTo(map)
-
-            const getIcon = (category)=>{
-                if(category?.toLowerCase()?.includes('school')){
-                    return 'public/schooll.png';
-                }else if(category?.toLowerCase()?.includes('station')){
-                    return 'public/train.png';
-                }else{
-                    return 'public/trolley.png';
-                }
-            }
-
-            let activeIcon = L.icon({
-                iconUrl: getIcon(amenitie.category), // Replace with the path to your active icon
-                iconSize: [31, 37], // size of the icon
-                iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
-                popupAnchor: [1, -34] // point from which the popup should open relative to the iconAnchor
-            });
-
-            ammenitieMarker.bindPopup(`<div style="display:flex; gap:10px;width:100%">
-            <div style="display: flex; justify-content: center; align-items: center;">
-            <img style="width:50px" src="${getIcon(amenitie.category)}"/>
-            </div>
-            <div>
-                <p style="font-weight: bold; margin-bottom:1px;">
-                <span style="font-size: 12px;sont-we: bold;font-weight: bold;color: #666;">
-                Name:
-                </span> ${amenitie.name}
-                </p>
-                <p style="font-weight: bold; margin-top:1px">
-                <span style="font-size: 12px;sont-we: bold;font-weight: bold;color: #666;">
-                Distance:
-                </span> ${amenitie.distance}
-                </p>
-            </div>
-           </div>`, { autoClose: false, closeOnClick: false });
-
-           ammenitieMarker.on('mouseover', function (e) {
-            ammenitieMarker.openPopup();
-        });
-
-        // Hide popup when mouse leaves
-        ammenitieMarker.on('mouseout', function (e) {
-            ammenitieMarker.closePopup();
-        });
-
-
-
-        ammenitieMarker.setIcon(activeIcon);
-        AmmenetiesMarkers.push(ammenitieMarker);
+function addAmmenitiesMarkers(name) {
+    innerAmmenetiesMarkers.forEach((marker) => {
+      innerMap.removeLayer(marker);
     });
-
-
-
-}
-
+  
+    const amenities = ammenities[name] || [];
+  
+    amenities.forEach((amenitie) => {
+      const ammenitieMarker = L.marker([amenitie.latitude, amenitie.longitude], {
+        title: amenitie.name,
+      }).addTo(innerMap);
+  
+      const getIcon = (category) => {
+        if (category?.toLowerCase()?.includes("school")) {
+          return "public/schooll.png";
+        } else if (category?.toLowerCase()?.includes("station")) {
+          return "public/train.png";
+        } else {
+          return "public/trolley.png";
+        }
+      };
+  
+      let activeIcon = L.icon({
+        iconUrl: getIcon(amenitie.category),
+        iconSize: [31, 37],
+        iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
+        popupAnchor: [1, -34], // point from which the popup should open relative to the iconAnchor
+      });
+  
+      ammenitieMarker.bindPopup(
+        `<div style="display:flex; gap:10px;width:100%">
+              <div style="display: flex; justify-content: center; align-items: center;">
+              <img style="width:50px" src="${getIcon(amenitie.category)}"/>
+              </div>
+              <div>
+                  <p style="font-weight: bold; margin-bottom:1px;">
+                  <span style="font-size: 12px;sont-we: bold;font-weight: bold;color: #666;">
+                  Name:
+                  </span> ${amenitie.name}
+                  </p>
+                  <p style="font-weight: bold; margin-top:1px">
+                  <span style="font-size: 12px;sont-we: bold;font-weight: bold;color: #666;">
+                  Distance:
+                  </span> ${amenitie.distance}
+                  </p>
+              </div>
+             </div>`,
+        { autoClose: false, closeOnClick: false }
+      );
+  
+      ammenitieMarker.on("mouseover", function (e) {
+        ammenitieMarker.openPopup();
+      });
+  
+      // Hide popup when mouse leaves
+      ammenitieMarker.on("mouseout", function (e) {
+        ammenitieMarker.closePopup();
+      });
+  
+      ammenitieMarker.setIcon(activeIcon);
+      innerAmmenetiesMarkers.push(ammenitieMarker);
+    });
+  }
 
 function handleFormSubmit() {
     const container = document.querySelector('#dev-form');
@@ -1432,3 +1640,62 @@ function searchResultHoverHandler(btn){
 function searchResultOutHandler(btn){
     btn.style.backgroundColor = "white";
 }
+
+
+function openMapInner() {
+    if(innerMap){
+        return;
+    }
+
+    innerMap = L.map('inner-mapdiv', {
+       center: L.latLng(1.327450, 103.811203),
+       zoom: 11,
+       zoomControl: false,
+    });
+
+    let basemap = L.tileLayer('https://www.onemap.gov.sg/maps/tiles/Default/{z}/{x}/{y}.png', {
+       detectRetina: true,
+       maxZoom: 19,
+       minZoom: 5,
+    });
+    basemap.addTo(innerMap);
+}
+
+
+
+function changePriceString(priceRange) {
+    const prices = priceRange.replace(/\$|M/g, "").split(/\s*-\s*/);
+    const lowerValue = parseFloat(prices[0]) * 1000000;
+    const upperValue = parseFloat(prices[1]) * 1000000;
+  
+    return {
+      lowerValue,
+      upperValue,
+    };
+  }
+  function changePsfString(psfRange) {
+    // Remove the dollar sign and "M" suffix, then split by the hyphen with optional spaces around it
+    const psf = psfRange.replace(/\$|M/g, "").split(/\s*-\s*/);
+  
+    // Convert to numbers and multiply by one million
+    const lowerValue = parseFloat(psf[0]);
+    const upperValue = parseFloat(psf[1]);
+  
+    return {
+      lowerValue,
+      upperValue,
+    };
+  }
+  
+  function changeSqftString(sqftRange) {
+    const sqft = sqftRange.replace(/\$|M|,/g, "").split(/\s*-\s*/);
+  
+    // Convert to numbers
+    const lowerValue = parseFloat(sqft[0]);
+    const upperValue = parseFloat(sqft[1]);
+  
+    return {
+      lowerValue,
+      upperValue,
+    };
+  }
