@@ -60,7 +60,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <style>
       body {
         margin: 0;
@@ -224,7 +224,7 @@
         }
       }
       #mapdiv {
-        height: 60%;
+        height: 70%;
         border-radius: 32px;
       }
       .mobile-switch-menu {
@@ -403,12 +403,13 @@
         border-radius: 4px;
       }
       .scroll-btn {
-      border: none;
-      color: white;
-      font-size: 13px;
-      border-radius: 5px;
-      background-color: #39548a;
-      padding: 4px 8px;
+        border: none;
+        color: #39548a;
+        font-size: 13px;
+        border-radius: 5px;
+        background-color: transparent;
+        padding: 4px 8px;
+
       }
       #dev-form {
         padding: 25px 0px;
@@ -450,7 +451,7 @@
       }
       .single-listing-inner {
         padding-right: 20px;
-        width: 70%;
+        max-width: 80%;
       }
       .listing-form-container {
         width: 45%;
@@ -527,6 +528,18 @@
         text-align: center;
         padding: 0px 5px;
         font-weight: 600;
+      }
+      .map-btn{
+        position: absolute;
+        z-index: 99;
+        font-weight: 900;
+        right: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: white;
+        padding: 10px;
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
       }
     </style>
 
@@ -986,7 +999,10 @@
 
 
         </div>
-        <div id="single-listing" class="d-none w-100 h-100">
+        <div id="single-listing" class="d-none w-100 h-100  position-relative">
+          <div class="map-btn" style="cursor: pointer;" onclick="toggleMap()">
+            <img src="public/map.png" width="50px" alt="">
+          </div>
           <div class="donate-detail-header">
             <i
               class="fa-solid fa-arrow-left fa-xl position-absolute text-white"
@@ -1009,7 +1025,7 @@
               </div> 
             </div>
             
-            <div class="donate-header-text">
+            <div class="donate-header-text overflow-auto">
               <!-- Scroll buttons -->
 
               <div style="height: 50px; overflow-x: auto; font-size: 12px">
@@ -1728,7 +1744,7 @@
       <div class="divider"></div>
       <div
         id="map-container"
-        class="right-pane h-100 d-none d-lg-block d-md-block p-4"
+        class="right-pane h-100 d-block p-4"
       >
         <div id="mapdiv">
           <div id="map-cover">
@@ -1797,12 +1813,13 @@
           </div> -->
         </div>
 
-        <div id="map-bottom-listing" style="height: 40%"></div>
+        <div id="map-bottom-listing" style="height: 30%"></div>
       </div>
     </div>
 
     <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
     <script src="script.js"></script>
     <script src="select2.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </body>
 </html>

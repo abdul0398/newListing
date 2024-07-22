@@ -101,7 +101,7 @@ function popuplateBottomListings(listing){
           ">${dev_type}</p>`:""} -->
               <img class="w-100" style="height:100%; border-radius: 40px;" src="https://api.jomejourney-portal.com${listing.images[0]? listing.images[0] : listing.images[1]}">
         </div>
-        <div class="w-50" style="padding-top: 0px;">
+        <div class="w-50" style="padding-top: 0px; overflow:auto">
           <div class="card-body">
             <a class="pe-auto" onClick="">
                 <h5 class="card-title mb-3" style="color:#4d4d4d"><button style="padding:0px" class="bg-transparent border-0" onmouseover="hoverListingHandler(this)" onmouseout="removeHoverPopup(this)" onclick="openSingleListing(this)">${listing.name}</button></h5>
@@ -152,7 +152,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
         const Development_Size = project?.details.find(detail => detail.title == "Development Size")?.para || "";
         const latestTransaction = Array.isArray(project.transactions) ? project.transactions[0] : null;
         const popupContent = `
-            <div class="w-200" id="popup-${i}" style="height: 180px;" onclick="handlePopupClick(${i})">
+            <div class="w-200" id="popup-${i}" style="height: 180px; cursor:pointer" onclick="handlePopupClick(${i})">
                 <div class="donate-title d-flex" style="height: 120px; padding:5px">
                     <img src="https://api.jomejourney-portal.com${project.images[0] ? project.images[0] : project.images[1]}" alt="${project.name}" class="h-100 w-50 me-1 rounded-2">
                     <div class="px-1">
@@ -191,10 +191,12 @@ async function fetchCoordinatesAndPopulateMap(listings) {
                 latLng.lng
             );
 
+
             map.setView(offsetLatLng, map.getZoom(), {
                 animate: true,
                 pan: { duration: 0.5 }
             });
+            // popuplateBottomListings(listings[i]);
         });
         
 
@@ -267,7 +269,18 @@ function carousel(length) {
     glide = new Glide('.glide', {
       type: 'carousel',
       perView: 1,
-      autoplay: 3000
+      autoplay: 3000,
+      breakpoints: {
+        1024: {
+          perView: 1
+        },
+        768: {
+          perView: 1
+        },
+        480: {
+          perView: 1
+        }
+      }
     });
 
     // Mount Glide.js
@@ -281,7 +294,6 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
     document.getElementById("single-listing").classList.remove("d-none");
     document.getElementById("all-listings").classList.add("d-none");
-    document.getElementsByClassName("right-pane")[0].classList.add("d-none");
     document.getElementsByClassName("left-pane")[0].classList.remove("d-none");
 
 
@@ -584,7 +596,7 @@ function populateAllListings(listings){
                 mapBottomListing.innerHTML = `
                 <div class="card my-3" style="max-width: 100%; height: 100%; border-radius: 40px; border:none;box-shadow: -5px 5px 23px -3px rgba(189,189,189,1);">
               <div class="h-100 d-flex p-3">
-                <div class="w-50" style="position:relative">
+                <div class="w-50" style="position:relative; max-width: 300px;">
                   <!-- ${dev_type?`<p style="
                   position: absolute;
                   background-color: #39548a;
@@ -650,7 +662,7 @@ function populateAllListings(listings){
 
 
             listingContainer.innerHTML += `
-        <div class="card mb-3" style="max-width: 100%; border-radius: 40px; border: 1px solid #dbdbdb; box-shadow:none">
+        <div class="card mb-3" style="max-width: 100%; border-radius: 40px; border: 1px solid #dbdbdb; box-shadow: -5px 5px 23px -3px rgba(189, 189, 189, 1);">
                 <div class="row g-0 p-3">
                     <div class="col-md-4" style="position:relative">
                     ${dev_type?`<p style="
@@ -724,7 +736,9 @@ function showMainPage() {
         map.removeLayer(marker);
     })
     document.getElementById("single-listing").classList.add("d-none");
+    document.getElementById("map-container").classList.remove("d-none");
     document.getElementById("all-listings").classList.remove("d-none");
+    document.querySelector(".left-pane").style.width = "50%";
 
     // uncheck all filter checkbox
     const checkboxes = document.querySelectorAll('.filter-container input[type="checkbox"]');
@@ -1009,7 +1023,6 @@ function applyFilterCheckbox() {
 
 
     populateAllListings(filteredListings);
-    document.getElementById("map-container").classList.add("d-none");
     document.getElementById("single-listing").classList.add("d-none");
     closeFilterPopup();
 
@@ -1791,4 +1804,24 @@ function changeMapDimentionsAndToggleBottomListings(show){
     const dropodown_container = document.querySelector(".drop-down-search")
     dropodown_container.innerHTML = "";
     dropodown_container.classList.add("d-none");
+}
+
+
+
+function toggleMap(){
+    const map = document.getElementById("map-container");
+    const listings = document.querySelector(".left-pane");
+    const single_listing = document.querySelector(".single-listing-inner");
+    if(map.classList.contains("d-none")){
+        map.classList.remove("d-none");
+        listings.style.width = "70%";
+        single_listing.style.maxWidth = "70% !important";
+    }else{
+        map.classList.add("d-none");
+        listings.style.width = "100%";
+        single_listing.style.maxWidth = "80% !important";
+    }
+
+    map.invalidateSize();
+    glide.refresh()
 }
