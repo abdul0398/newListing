@@ -250,7 +250,7 @@ async function fetchNewListings(){
 
 function carousel(length) {
     // Destroy existing Glide instance if it exists
-    glide?.destroy();
+    
 
     const bulletsContainer = document.querySelector('.glide__bullets');
 
@@ -264,10 +264,13 @@ function carousel(length) {
       bullet.setAttribute('data-glide-dir', `=${i}`);
       bulletsContainer.appendChild(bullet);
     }
-
+    if(glide){
+        glide.update();
+        return;
+    }
 
     glide = new Glide('.glide', {
-      type: 'carousel',
+      type: 'slider',
       perView: 1,
       autoplay: 3000,
       breakpoints: {
@@ -812,6 +815,7 @@ function openSingleListing(btn) {
     const transactions = listing.transactions;
     addInfoToSingleListing(desc, name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions);
     closeFilterPopup();
+    toggleMap();
 }
 
 function mobileLayoutHandler(btn) {
@@ -868,14 +872,10 @@ function searchhandler(input) {
 
 function openFilterPopup() {
     document.querySelector(".filter-container").style.transform = "translateX(0)";
-    document.querySelector(".main-container").classList.remove("overflow-auto");
-    document.querySelector(".main-container").classList.add("overflow-hidden");
 }
 
 function closeFilterPopup() {
     document.querySelector(".filter-container").style.transform = "translateX(100%)";
-    document.querySelector(".main-container").classList.remove("overflow-hidden");
-    document.querySelector(".main-container").classList.add("overflow-auto");
 }
 
 function applyFilterCheckbox() {
@@ -1789,7 +1789,7 @@ function toggleForm(){
 function changeMapDimentionsAndToggleBottomListings(show){
     if(show){
         document.getElementById("map-bottom-listing").classList.remove("d-none");
-        document.getElementById("mapdiv").style.height = "60%";
+        document.getElementById("mapdiv").style.height = "70%";
         document.querySelector(".left-pane").style.width = "50%"
         document.querySelector(".right-pane").style.width = "50%"
         map.invalidateSize();
@@ -1809,15 +1809,15 @@ function changeMapDimentionsAndToggleBottomListings(show){
 
 
 function toggleMap(){
-    const map = document.getElementById("map-container");
+    const map_container = document.getElementById("map-container");
     const listings = document.querySelector(".left-pane");
     const single_listing = document.querySelector(".single-listing-inner");
-    if(map.classList.contains("d-none")){
-        map.classList.remove("d-none");
+    if(map_container.classList.contains("d-none")){
+        map_container.classList.remove("d-none");
         listings.style.width = "70%";
         single_listing.style.maxWidth = "70% !important";
     }else{
-        map.classList.add("d-none");
+        map_container.classList.add("d-none");
         listings.style.width = "100%";
         single_listing.style.maxWidth = "80% !important";
     }

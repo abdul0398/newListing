@@ -361,11 +361,12 @@
       }
       .scroll-btn {
         border: none;
-        color: #39548a;
+        color: white;
         font-size: 13px;
         border-radius: 5px;
         background-color: transparent;
         padding: 4px 8px;
+        transition: ease-in-out 0.2s;
       }
       #dev-form{
         padding: 15px 0px;
@@ -919,35 +920,35 @@
 
               <!-- Scroll buttons -->
 
-              <div style="height: 50px; overflow-x: auto;font-size: 12px;">
+              <div style="height: 50px; overflow-x: auto; background-color: #39548a; font-size: 12px; display: flex; border-radius: 10px;">
                 <div style="display: flex; min-width: 620px; justify-content: space-around;">
                   <button data="projectDetailTable" class="scroll-btn" onclick="handleScroll(this)">
                     <i class="fa-solid fa-circle-info"></i>
                     Project Details
                   </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
+                  
                   <button data="sitePlan" class="scroll-btn" onclick="handleScroll(this)">
                     <i class="fa-solid fa-chart-area"></i>
                     Site Plan
                   </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
+                  
                   
                   <button data="location-map-container" class="scroll-btn" onclick="handleScroll(this)">
                     <i class="fa-solid fa-map"></i>
                     Location Map
                   </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
+                  
                   
                   <button data="unitMix" class="scroll-btn" onclick="handleScroll(this)">
                     <i class="fa-solid fa-square-poll-horizontal"></i>
                     Unit Mix
                   </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
+                  
                   <button data="balanceUnits" class="scroll-btn" onclick="handleScroll(this)">
                     <i class="fa-solid fa-scale-balanced"></i>
                     Balance Units
                   </button>
-                  <div style="border: 1px solid #aeaeae;"></div>
+                  
                   <button data="transaction" class="scroll-btn" onclick="handleScroll(this)">
                     <i class="fa-solid fa-chart-simple"></i>
                     Transactions

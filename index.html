@@ -62,6 +62,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <style>
+      *{
+        box-sizing: border-box;
+      }
       body {
         margin: 0;
         padding: 0;
@@ -404,11 +407,12 @@
       }
       .scroll-btn {
         border: none;
-        color: #39548a;
+        color: white;
         font-size: 13px;
         border-radius: 5px;
         background-color: transparent;
         padding: 4px 8px;
+        transition: ease-in-out 0.2s;
 
       }
       #dev-form {
@@ -540,6 +544,13 @@
         padding: 10px;
         border-top-left-radius: 40px;
         border-bottom-left-radius: 40px;
+        border: 1px solid #bfbfbf;
+      }
+
+      .scroll-btn:hover{
+        scale: 1.2;
+
+        
       }
     </style>
 
@@ -1028,12 +1039,15 @@
             <div class="donate-header-text overflow-auto">
               <!-- Scroll buttons -->
 
-              <div style="height: 50px; overflow-x: auto; font-size: 12px">
+              <div style="height: 50px; overflow-x: auto; background-color: #39548a; font-size: 12px; display: flex; border-radius: 10px;">
                 <div
                   style="
                     display: flex;
                     min-width: 620px;
                     justify-content: space-around;
+                    align-items: center;
+                    width: 100%;
+                    
                   "
                 >
                   <button
@@ -1044,7 +1058,7 @@
                     <i class="fa-solid fa-circle-info"></i>
                     Project Details
                   </button>
-                  <div style="border: 1px solid #aeaeae"></div>
+                  
                   <button
                     data="sitePlan"
                     class="scroll-btn"
@@ -1053,7 +1067,7 @@
                     <i class="fa-solid fa-chart-area"></i>
                     Site Plan
                   </button>
-                  <div style="border: 1px solid #aeaeae"></div>
+                  
 
                   <button
                     data="location-map-container"
@@ -1063,7 +1077,7 @@
                     <i class="fa-solid fa-map"></i>
                     Location Map
                   </button>
-                  <div style="border: 1px solid #aeaeae"></div>
+                  
 
                   <button
                     data="unitMix"
@@ -1073,7 +1087,7 @@
                     <i class="fa-solid fa-square-poll-horizontal"></i>
                     Unit Mix
                   </button>
-                  <div style="border: 1px solid #aeaeae"></div>
+                  
                   <button
                     data="balanceUnits"
                     class="scroll-btn"
@@ -1082,7 +1096,7 @@
                     <i class="fa-solid fa-scale-balanced"></i>
                     Balance Units
                   </button>
-                  <div style="border: 1px solid #aeaeae"></div>
+                  
                   <button
                     data="transaction"
                     class="scroll-btn"
