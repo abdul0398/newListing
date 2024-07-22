@@ -22,6 +22,8 @@ let AmmenetiesMarkers = [];
 
 let galleryIntance;
 
+let isSlick = false;
+
 let ammenities = [];
 
 const isMobile = window.innerWidth < 768;
@@ -249,48 +251,62 @@ async function fetchNewListings(){
 }
 
 function carousel(length) {
-    // Destroy existing Glide instance if it exists
-    
+    // // Destroy existing Glide instance if it exists
 
-    const bulletsContainer = document.querySelector('.glide__bullets');
+    isSlick = true;
 
-    // Clear existing bullets if any
-    bulletsContainer.innerHTML = '';
-
-    // Create bullets dynamically
-    for (let i = 0; i < length; i++) {
-      const bullet = document.createElement('button');
-      bullet.classList.add('glide__bullet');
-      bullet.setAttribute('data-glide-dir', `=${i}`);
-      bulletsContainer.appendChild(bullet);
-    }
-    if(glide){
-        glide.update();
-        return;
-    }
-
-    glide = new Glide('.glide', {
-      type: 'slider',
-      perView: 1,
-      autoplay: 3000,
-      breakpoints: {
-        1024: {
-          perView: 1
-        },
-        768: {
-          perView: 1
-        },
-        480: {
-          perView: 1
-        }
-      }
+    $('.glide').slick({
+        // Slick options
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        autoplay: true,    
+        autoplaySpeed: 2000,  
     });
+    // const bulletsContainer = document.querySelector('.glide__bullets');
 
-    // Mount Glide.js
-    glide.mount();
+    // // Clear existing bullets if any
+    // bulletsContainer.innerHTML = '';
+
+    // // Create bullets dynamically
+    // for (let i = 0; i < length; i++) {
+    //   const bullet = document.createElement('button');
+    //   bullet.classList.add('glide__bullet');
+    //   bullet.setAttribute('data-glide-dir', `=${i}`);
+    //   bulletsContainer.appendChild(bullet);
+    // }
+    // if(glide){
+    //     glide.update();
+    //     return;
+    // }
+
+    // glide = new Glide('.glide', {
+    //   type: 'slider',
+    //   perView: 1,
+    //   autoplay: 3000,
+    //   breakpoints: {
+    //     1024: {
+    //       perView: 1
+    //     },
+    //     768: {
+    //       perView: 1
+    //     },
+    //     480: {
+    //       perView: 1
+    //     }
+    //   }
+    // });
+
+    // // Mount Glide.js
+    // glide.mount();
   }
 
 function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions){
+    if(isSlick){
+        $('.glide').slick('unslick');
+    }
 
       // hiding bottom listings and changing map dimensions
       changeMapDimentionsAndToggleBottomListings(false);
@@ -305,7 +321,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     document.getElementById('projectRegion').innerText = region;
 
     const galleryDiv = document.getElementsByClassName("gallery-list")[0];
-    const mainImages = document.getElementsByClassName("donate-header-image")[0];
+    const mainImages = document.getElementsByClassName("glide")[0];
     const sideMapImageContainer = document.getElementById("sideMapImageContainer");
     const sidePlanDetails = document.getElementById('siteplan-details-inner')
     const projectDetailTable = document.getElementById("projectDetailInnerDiv");
@@ -542,6 +558,7 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
 
     // Gallery
     galleryDiv.innerHTML = "";
+    
     mainImages.innerHTML = "";
     for (let i = 0; i < Galleryimages.length; i++) {
         if(i == 0){
@@ -558,11 +575,9 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
         
         `;
         mainImages.innerHTML += `
-        <li class="glide__slide">
             <div class="slide">
                 <img src="https://api.jomejourney-portal.com${img}" style="border-radius:35px"  class="slideImages h-100 w-100" alt="${name}">        
             </div>
-        </li>
         `;
     }
     if(galleryIntance){
@@ -1823,5 +1838,5 @@ function toggleMap(){
     }
 
     map.invalidateSize();
-    glide.refresh()
+    // glide.refresh()
 }
