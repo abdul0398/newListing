@@ -8,7 +8,6 @@ let timeoutId;
 
 let listings = [];
 
-let glide;
 
 let circle;
 
@@ -265,42 +264,7 @@ function carousel(length) {
         autoplay: true,    
         autoplaySpeed: 2000,  
     });
-    // const bulletsContainer = document.querySelector('.glide__bullets');
-
-    // // Clear existing bullets if any
-    // bulletsContainer.innerHTML = '';
-
-    // // Create bullets dynamically
-    // for (let i = 0; i < length; i++) {
-    //   const bullet = document.createElement('button');
-    //   bullet.classList.add('glide__bullet');
-    //   bullet.setAttribute('data-glide-dir', `=${i}`);
-    //   bulletsContainer.appendChild(bullet);
-    // }
-    // if(glide){
-    //     glide.update();
-    //     return;
-    // }
-
-    // glide = new Glide('.glide', {
-    //   type: 'slider',
-    //   perView: 1,
-    //   autoplay: 3000,
-    //   breakpoints: {
-    //     1024: {
-    //       perView: 1
-    //     },
-    //     768: {
-    //       perView: 1
-    //     },
-    //     480: {
-    //       perView: 1
-    //     }
-    //   }
-    // });
-
-    // // Mount Glide.js
-    // glide.mount();
+   
   }
 
 function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, details, locationMap, unit_mix, balance_units, developer, transactions){
@@ -1838,5 +1802,4 @@ function toggleMap(){
     }
 
     map.invalidateSize();
-    // glide.refresh()
 }
