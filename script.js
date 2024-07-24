@@ -195,7 +195,7 @@ async function fetchCoordinatesAndPopulateMap(listings) {
 
             map.setView(offsetLatLng, map.getZoom(), {
                 animate: true,
-                pan: { duration: 0.5 }
+                pan: { duration: 1.5 }
             });
             // popuplateBottomListings(listings[i]);
         });
