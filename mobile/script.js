@@ -77,6 +77,13 @@ function openMap(params) {
         checkMarkersInView();
     });
 
+    let southWest = L.latLng(1.130475, 103.609082);
+    let northEast = L.latLng(1.450475, 104.009082);
+    let bounds = L.latLngBounds(southWest, northEast);
+
+    // Set the max bounds for the map
+    map.setMaxBounds(bounds);
+
 }
 
 function checkMarkersInView() {
@@ -546,7 +553,7 @@ function populateAllListings(listings){
         recommendedContainer.innerHTML += `
          
         <div class="card mb-3" style="max-width: 100%; border-radius: 40px; border: 1px solid #dbdbdb; box-shadow:none">
-                <div class="row g-0 p-3">
+                <div class="row g-0 " style="padding: 10px !important">
                     <div class="col-md-4" style="position:relative">
                     ${dev_type?`<p style="
                     position: absolute;
@@ -574,7 +581,7 @@ function populateAllListings(listings){
                     <img src="public/placeholder.png" width="20px" /> ${listings[i].geographical_region}
                     </p>
                   ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
-                  <div style="font-size:11px; padding:0px 1rem;line-height: 30px;">
+                  <div style="font-size:10px; padding:0px 1rem;line-height: 30px;">
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
