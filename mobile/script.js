@@ -581,7 +581,7 @@ function populateAllListings(listings){
                     <img src="public/placeholder.png" width="20px" /> ${listings[i].geographical_region}
                     </p>
                   ${nearestMRT?`<p style="margin-bottom:0px; padding-left: 1rem; font-size: 11px; color: #6c757d !important; display: flex;align-items: center;gap: 6px;display: flex;align-items: center;gap: 6px;"><img src="public/meter.png" width="20px" /> ${nearestMRT.Distance} to ${nearestMRT.Location}</p>`:""}
-                  <div style="font-size:10px; padding:0px 1rem;line-height: 30px;">
+                  <div style="font-size:10px; padding:0px 1rem;line-height: 30px; text-align:center">
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Total: ${totalUnits} units</span>
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Available: ${availableUnits} units</span>
                     <span style="font-weight: bold; color: black; padding: 3px;border-radius: 2px;">Sold: ${unitsSold} units</span>
