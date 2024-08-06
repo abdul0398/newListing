@@ -486,10 +486,10 @@ function addInfoToSingleListing(desc,name, region, Galleryimages, sitePlan, deta
     }
 
     // Developer Logo
-    dev_logo[0].src = `https://api.jomejourney-portal.com${developer.image}`;
-    dev_logo[1].src = `https://api.jomejourney-portal.com${developer.image}`;
+    // dev_logo[0].src = `https://api.jomejourney-portal.com${developer.image}`;
+    // dev_logo[1].src = `https://api.jomejourney-portal.com${developer.image}`;
     
-    dev_para.innerText = developer.description;
+    // dev_para.innerText = developer.description;
 
 
 
